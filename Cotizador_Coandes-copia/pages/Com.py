@@ -1,29 +1,28 @@
 import streamlit as st
-import sys
 import os
-import importlib.util
 
-# 1. Estética limpia
-st.set_page_config(initial_sidebar_state="collapsed")
+# 1. Configuración de pantalla
+st.set_page_config(page_title="Cotizador Coandes", initial_sidebar_state="collapsed")
+
+# Ocultar barra lateral
 st.markdown("<style>[data-testid='stSidebar']{display:none;}</style>", unsafe_allow_html=True)
 
-# 2. RUTA EXACTA (Ajustada a tu estructura de GitHub)
-# Buscamos: /mount/src/cotizador/Cotizador_Coandes-copia/Computadores/app.py
-ruta_proyecto = os.path.dirname(os.path.dirname(__file__)) # Sube un nivel desde 'pages'
-ruta_app = os.path.join(ruta_proyecto, "Computadores", "app.py")
+# 2. RUTA MANUAL (Basada en tu error anterior)
+# El error decía que estás en: /mount/src/cotizador/Cotizador_Coandes-copia/pages/Com.py
+# Queremos ir a: /mount/src/cotizador/Cotizador_Coandes-copia/Computadores/app.py
 
-# 3. CARGA DINÁMICA (Sin usar 'import app' normal)
-if os.path.exists(ruta_app):
+ruta_al_archivo = "Computadores/app.py"
+
+if os.path.exists(ruta_al_archivo):
     try:
-        spec = importlib.util.spec_from_file_location("modulo_cotizador", ruta_app)
-        modulo = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(modulo) 
-        # Esto ejecuta el código de app.py aquí mismo
+        # LA LLAVE MAESTRA: Lee el código y lo ejecuta
+        with open(ruta_al_archivo, "r", encoding="utf-8") as file:
+            codigo = file.read()
+        exec(codigo)
     except Exception as e:
-        st.error("Error al ejecutar el cotizador")
+        st.error("Error al ejecutar el código del cotizador")
         st.exception(e)
 else:
-    st.error(f"❌ No encontré el archivo en: {ruta_app}")
-    # Si falla, te mostrará qué hay en esa carpeta para corregirlo
-    if os.path.exists(ruta_proyecto):
-        st.write("Dentro de la carpeta encontré:", os.listdir(ruta_proyecto))
+    st.error(f"No se encontró el archivo en: {os.path.abspath(ruta_al_archivo)}")
+    # Auxilio visual para saber dónde estamos
+    st.write("Archivos detectados en la raíz:", os.listdir("."))
