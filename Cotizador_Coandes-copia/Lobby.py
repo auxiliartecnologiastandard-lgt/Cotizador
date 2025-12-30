@@ -1,4 +1,9 @@
 import streamlit as st
+
+st.set_page_config(
+    page_title="Cotizador Coandes",
+    initial_sidebar_state="collapsed" # Esto la cierra al cargar
+)
 st.set_page_config(page_title="Lobby de Ventas", layout="wide")
 
 
