@@ -5,7 +5,9 @@ import numpy as np
 
 # Cargar el modelo
 try:
-    modelo = joblib.load('Computadores/modelo_pcs.pkl')
+    # Busca el modelo dentro de la carpeta de la copia
+    ruta_modelo = "Cotizador_Coandes-copia/Computadores/modelo_pcs.pkl"
+    modelo = joblib.load(ruta_modelo)
 
 except:
     st.error("⚠️ No se encontró el modelo. Ejecuta 'py Computadores/entrenar.py' primero.")
