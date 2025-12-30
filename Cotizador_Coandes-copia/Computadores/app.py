@@ -12,17 +12,25 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-        # Navegación y botón de sidebar
-        [data-testid="stSidebarNav"] {display: none;}
-        [data-testid="collapsedControl"] {display: none;}
+        /* Elimina el botón > de la esquina superior izquierda */
+        [data-testid="collapsedControl"] {
+            display: none !important;
+        }
+
+        /* Elimina la barra lateral por completo */
+        [data-testid="stSidebar"] {
+            display: none !important;
+        }
         
-        # Esto elimina el margen superior que deja el botón
-        .stAppDeployButton {display:none;}
-        [data-testid="stHeader"] {background: rgba(0,0,0,0); border: none;}
+        /* Elimina el encabezado superior para que no quede espacio vacío */
+        header {
+            visibility: hidden !important;
+            height: 0 !important;
+        }
     </style>
     """,
     unsafe_allow_html=True
-) 
+)
 
 # Cargar el modelo
 try:
