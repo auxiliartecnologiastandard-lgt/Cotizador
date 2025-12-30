@@ -49,7 +49,7 @@ with col1:
 
 with col2:
     if st.button("Neveras (Próximamente)", use_container_width=True, disabled=True):
-        pass
+        st.switch_page("pages/Nev.py")
 
 with col3:
     if st.button("Motos (Próximamente)", use_container_width=True, disabled=True):
