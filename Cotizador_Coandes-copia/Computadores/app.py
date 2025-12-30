@@ -12,11 +12,9 @@ try:
 except:
     st.error("⚠️ No se encontró el modelo. Ejecuta 'py Computadores/entrenar.py' primero.")
 
-# Parte superior (titulo y boton de regreso)
-
-if st.button("⬅️ Volver al Menú Principal"):
-    st.switch_page("lobby.py")
-st.divider() 
+# Busca el botón de volver en tu app.py y ajusta la ruta así:
+if st.button("Volver al Menú Principal"):
+    st.switch_page("Lobby.py")
 
 st.title("💻 Cotizador Pro Coandes")
 st.markdown("---")
