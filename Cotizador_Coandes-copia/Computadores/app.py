@@ -3,6 +3,10 @@ import pandas as pd
 import joblib
 import numpy as np
 
+st.set_page_config(
+    page_title="Cotizador Coandes",
+    initial_sidebar_state="collapsed" # Esto la cierra al cargar
+)
 # Cargar el modelo
 try:
     # Busca el modelo dentro de la carpeta de la copia
