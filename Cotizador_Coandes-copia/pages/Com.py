@@ -1,21 +1,22 @@
 import streamlit as st
 import os
 
-# 1. Configuración de estética limpia (Sin barra lateral)
-st.set_page_config(page_title="Cargando Cotizador...", initial_sidebar_state="collapsed")
+st.set_page_config(initial_sidebar_state="collapsed")
 
-# Ocultar la barra lateral por completo
-st.markdown("<style>[data-testid='stSidebar']{display:none;}</style>", unsafe_allow_html=True)
+# 1. ESTO NOS DIRÁ LA VERDAD
+st.title("🔍 Buscador de archivos")
+archivos_raiz = os.listdir(".") # Mira la carpeta principal
+st.write("Archivos en la raíz del proyecto:", archivos_raiz)
 
-# 2. EL SALTO DIRECTO (El reemplazo de runpy)
-# En Streamlit Cloud, la ruta debe ser relativa desde la raíz del proyecto
-# Si tu archivo real se llama app.py y está dentro de la carpeta Computadores:
-ruta_objetivo = "Computadores/app.py"
-
-try:
-    st.switch_page(ruta_objetivo)
-except Exception as e:
-    st.error("No se pudo encontrar el archivo del cotizador.")
-    # Esto te ayudará a ver qué archivos detecta el servidor actualmente
-    st.write("Buscando en:", ruta_objetivo)
-    st.info("Verifica que en GitHub la carpeta se llame 'Computadores' y el archivo 'app.py'")
+# 2. INTENTO DE NAVEGACIÓN DINÁMICA
+# Ajusta el nombre según lo que veas en la lista de arriba
+if "Computadores" in archivos_raiz:
+    st.success("✅ Carpeta 'Computadores' encontrada")
+    archivos_comp = os.listdir("Computadores")
+    st.write("Archivos dentro de Computadores:", archivos_comp)
+    
+    if st.button("🚀 Forzar entrada al Cotizador"):
+        st.switch_page("Computadores/app.py")
+else:
+    st.error("❌ No veo ninguna carpeta llamada 'Computadores'")
+    st.info("Revisa si tiene mayúsculas, espacios o si se llama 'Computadoras'")
