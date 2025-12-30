@@ -1,23 +1,26 @@
 import streamlit as st
 import os
-import sys
 
-st.set_page_config(page_title="Diagnóstico", initial_sidebar_state="collapsed")
+# 1. Configuración de pantalla
+st.set_page_config(page_title="Cotizador Coandes", initial_sidebar_state="collapsed")
 
-# 1. Verificamos si joblib está instalado
-try:
-    import joblib
-    st.success("✅ ¡Increíble! joblib SÍ está instalado. El problema es la ruta.")
-except ImportError:
-    st.error("❌ joblib NO está instalado. El archivo requirements.txt falló.")
+# Ocultar barra lateral
+st.markdown("<style>[data-testid='stSidebar']{display:none;}</style>", unsafe_allow_html=True)
 
-# 2. Verificamos dónde está parado el servidor
-st.write("### Diagnóstico de Carpeta")
-st.write(f"Estás aquí: `{os.getcwd()}`")
-st.write("Archivos que veo aquí afuera:")
-st.json(os.listdir("."))
+# 2. RUTA EXACTA (Basada en tu diagnóstico)
+# El archivo está en: Cotizador_Coandes-copia/Computadores/app.py
+ruta_archivo = os.path.join("Cotizador_Coandes-copia", "Computadores", "app.py")
 
-# 3. Verificamos si existe la carpeta de la copia
-if os.path.exists("Cotizador_Coandes-copia"):
-    st.write("Contenido de 'Cotizador_Coandes-copia':")
-    st.json(os.listdir("Cotizador_Coandes-copia"))
+if os.path.exists(ruta_archivo):
+    try:
+        with open(ruta_archivo, "r", encoding="utf-8") as f:
+            codigo = f.read()
+        
+        # Como ya tenemos joblib (CUADRO VERDE), esto ya no fallará
+        exec(codigo)
+        
+    except Exception as e:
+        st.error("Error al ejecutar el cotizador")
+        st.exception(e)
+else:
+    st.error(f"No se encontró el archivo en: {ruta_archivo}")
