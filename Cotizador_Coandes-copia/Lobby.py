@@ -48,7 +48,7 @@ with col1:
         st.switch_page("pages/Com.py")
 
 with col2:
-    if st.button("🎶 Neveras", use_container_width=True,):
+    if st.button("🎶 Neveras", use_container_width=True):
         st.switch_page("pages/Nev.py")
 
 with col3:
