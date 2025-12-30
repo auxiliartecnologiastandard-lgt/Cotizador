@@ -3,10 +3,27 @@ import pandas as pd
 import joblib
 import numpy as np
 
+# ELIMINAR BARRA LATERAL
 st.set_page_config(
     page_title="Cotizador Coandes",
     initial_sidebar_state="collapsed" # Esto la cierra al cargar
 )
+
+st.markdown(
+    """
+    <style>
+        # Navegación y botón de sidebar
+        [data-testid="stSidebarNav"] {display: none;}
+        [data-testid="collapsedControl"] {display: none;}
+        
+        # Esto elimina el margen superior que deja el botón
+        .stAppDeployButton {display:none;}
+        [data-testid="stHeader"] {background: rgba(0,0,0,0); border: none;}
+    </style>
+    """,
+    unsafe_allow_html=True
+) 
+
 # Cargar el modelo
 try:
     # Busca el modelo dentro de la carpeta de la copia
