@@ -183,7 +183,7 @@ if "datos_peritaje" in st.session_state and st.session_state.datos_peritaje["lis
     v_venta = f"${precio_venta_redondo:,.0f}".replace(",", ".")
     v_compra = f"${precio_base_redondo:,.0f}".replace(",", ".")
     
-    st.success(f"### Precio Sugerido Venta: {v_venta}")
+    st.success(f"Precio: {v_compra}")
     st.info(f"### Oferta de Compra Coandes: {v_compra}")
     
     # --- NUEVO: MOSTRAR MENSAJE DE LA IA AL FINAL ---
