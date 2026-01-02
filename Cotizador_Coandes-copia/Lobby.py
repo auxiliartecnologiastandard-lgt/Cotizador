@@ -44,7 +44,7 @@ if os.path.exists(ruta_logo):
     with col_centro:
         st.image(ruta_logo, width=200)
 with col_der:
-    st.title("Si estas leyendo esto streamlit se actualizo")
+    st.title("Sistema de Cotización Inteligente")
     st.write("Bienvenido. Selecciona una categoría para empezar:")
     st.divider()
 
