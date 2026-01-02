@@ -1,7 +1,7 @@
 import streamlit as st
 import os
 
-# Detectamos dónde está este archivo para no perdernos
+# 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
 
