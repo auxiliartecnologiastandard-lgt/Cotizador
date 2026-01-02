@@ -114,21 +114,35 @@ st.divider()
 
 # 5. Verificador de daños con IA
 if st.toggle("🔍 Verificar estado con IA"):
-    # Selector de paso para no colapsar la cámara del celular
-    paso_foto = st.radio("Seleccione foto a tomar:", ["Foto 1", "Foto 2", "Foto 3"], horizontal=True)
+    st.info("📱 Tip: Si la cámara abre la frontal, usa el icono 🔄 dentro del cuadro de la cámara para cambiar a la trasera.")
     
-    if paso_foto == "Foto 1":
-        f1 = st.camera_input("Tome Foto 1", key="c1")
+    # INICIALIZACIÓN: Creamos el espacio en el baúl si no existe
+    if "foto_1" not in st.session_state: st.session_state.foto_1 = None
+    if "foto_2" not in st.session_state: st.session_state.foto_2 = None
+    if "foto_3" not in st.session_state: st.session_state.foto_3 = None
+
+    c1, c2, c3 = st.columns(3)
+    
+    with c1:
+        f1 = st.camera_input("Foto 1", key="c1")
         if f1: st.session_state.foto_1 = f1
-    elif paso_foto == "Foto 2":
-        f2 = st.camera_input("Tome Foto 2", key="c2")
+    
+    with c2:
+        f2 = st.camera_input("Foto 2", key="c2")
         if f2: st.session_state.foto_2 = f2
-    else:
-        f3 = st.camera_input("Tome Foto 3", key="c3")
+        
+    with c3:
+        f3 = st.camera_input("Foto 3", key="c3")
         if f3: st.session_state.foto_3 = f3
 
-    if all(k in st.session_state for k in ["foto_1", "foto_2", "foto_3"]):
-        st.success("✅ ¡Las 3 fotos están guardadas en memoria!")
+    # Verificamos qué tenemos guardado
+    fotos_tomadas = [st.session_state.foto_1, st.session_state.foto_2, st.session_state.foto_3]
+    conteo = sum(1 for f in fotos_tomadas if f is not None)
+    
+    if conteo > 0:
+        st.write(f"✅ Fotos en memoria: {conteo} de 3")
+    if conteo == 3:
+        st.success("📸 ¡Listas las 3 fotos para procesar!")
         
 # --- CÁLCULO FINAL ---
 if st.button("🚀 CALCULAR VALOR"):
