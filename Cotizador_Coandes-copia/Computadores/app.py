@@ -114,23 +114,21 @@ st.divider()
 
 # 5. Verificador de daños con IA
 if st.toggle("🔍 Verificar estado con IA"):
-    st.write("Tome las 3 fotos requeridas:")
-    c1, c2, c3 = st.columns(3)
+    # Selector de paso para no colapsar la cámara del celular
+    paso_foto = st.radio("Seleccione foto a tomar:", ["Foto 1", "Foto 2", "Foto 3"], horizontal=True)
     
-    # Usamos f1, f2, f3 para capturar el momento
-    f1 = c1.camera_input("Foto 1", key="cam_1")
-    f2 = c2.camera_input("Foto 2", key="cam_2")
-    f3 = c3.camera_input("Foto 3", key="cam_3")
-    
-    # IMPORTANTE: Guardamos las fotos en el 'baúl' (session_state) 
-    # para que no se borren al presionar el botón de calcular.
-    if f1: st.session_state.foto_1 = f1
-    if f2: st.session_state.foto_2 = f2
-    if f3: st.session_state.foto_3 = f3
-    
-    # El mensaje de éxito solo aparece si las 3 están capturadas
-    if f1 and f2 and f3:
-        st.success("📸 Fotos listas para el análisis.")
+    if paso_foto == "Foto 1":
+        f1 = st.camera_input("Tome Foto 1", key="c1")
+        if f1: st.session_state.foto_1 = f1
+    elif paso_foto == "Foto 2":
+        f2 = st.camera_input("Tome Foto 2", key="c2")
+        if f2: st.session_state.foto_2 = f2
+    else:
+        f3 = st.camera_input("Tome Foto 3", key="c3")
+        if f3: st.session_state.foto_3 = f3
+
+    if all(k in st.session_state for k in ["foto_1", "foto_2", "foto_3"]):
+        st.success("✅ ¡Las 3 fotos están guardadas en memoria!")
         
 # --- CÁLCULO FINAL ---
 if st.button("🚀 CALCULAR VALOR"):
