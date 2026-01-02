@@ -1,13 +1,10 @@
 import streamlit as st
-from PIL import Image
 
 # 1. Configuración de la pagina
 st.set_page_config(
     page_title="Cotizador Coandes",
     initial_sidebar_state="collapsed"
 )
-
-imagen = Image.open("Cotizador_Coandes-copia", "Standard_logo.png")
 
 st.markdown(
     """
@@ -37,8 +34,7 @@ st.set_page_config(page_title="Lobby de Ventas", layout="wide")
 
 # 2. Tamaño y orietación del logo y titulo
 col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
-with col_centro:
-    st.image(imagen, use_container_width=True)
+
 with col_der:
     st.title("Sistema de Cotización Inteligente")
     st.write("Bienvenido. Selecciona una categoría para empezar:")
