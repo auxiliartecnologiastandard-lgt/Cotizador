@@ -127,7 +127,8 @@ if st.toggle("🔍 Verificar estado con IA"):
 
 # --- CÁLCULO FINAL ---
 if st.button("🚀 CALCULAR VALOR"):
-
+    st.write("DEBUG: El botón funciona y el código está corriendo") # <--- AÑADE ESTO
+    # ... el resto de tu código ...
 # --- DENTRO DEL BOTÓN DE CÁLCULO ACTUAL ---
     if "cam_1" in st.session_state and st.session_state.cam_1:
     # 1. Abrimos las fotos desde la memoria
