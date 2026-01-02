@@ -9,7 +9,7 @@ st.markdown("<style>[data-testid='stSidebar']{display:none;}</style>", unsafe_al
 
 # 2. RUTA EXACTA (Basada en tu diagnóstico)
 # El archivo está en: Cotizador_Coandes-copia/Computadores/app.py
-ruta_archivo = os.path.join("Cotizador_Coandes-copia", "Computadores", "app.py")
+ruta_archivo = os.path.join("Cotizador_Coandes-copia", "Neveras", "app.py")
 
 if os.path.exists(ruta_archivo):
     try:
