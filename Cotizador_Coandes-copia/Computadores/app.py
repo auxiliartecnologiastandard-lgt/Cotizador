@@ -158,7 +158,7 @@ if st.toggle("🔍 Verificar estado con IA"):
     if conteo > 0:
         st.write(f"✅ Fotos en memoria: {conteo} de 3")
     if conteo == 3:
-        st.success("📸 ¡Listas las 3 fotos para procesar!")
+        st.write("📸 ¡Listas las 3 fotos para procesar!")
         
 # --- CÁLCULO FINAL ---
 if st.button("🚀 CALCULAR VALOR"):
