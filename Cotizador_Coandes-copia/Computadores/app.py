@@ -172,6 +172,8 @@ if st.button("🚀 CALCULAR VALOR"):
     # --- LÓGICA DE LA IA ---
     if st.session_state.foto_1 and st.session_state.foto_2 and st.session_state.foto_3:
         try:
+            # AJUSTE: Importamos PIL aquí mismo por seguridad
+            from PIL import Image
             fotos_para_ia = [
                 Image.open(st.session_state.foto_1),
                 Image.open(st.session_state.foto_2),
@@ -203,7 +205,7 @@ if st.button("🚀 CALCULAR VALOR"):
     elif valor_procesador == 30 and grafica == 0: precio_base = min(precio_base, 500000)
 
     precio_base_redondo = round(precio_base / 10000) * 10000
-    precio_venta_redondo = round((precio_base_redondo * 1.4) / 10000) * 10000
+    # Quitamos el cálculo de venta de aquí para que se haga DESPUÉS del descuento
 
     # --- NUEVO: CÁLCULO DE DESCUENTO POR IA ---
     dinero_reducido = 0
@@ -217,6 +219,8 @@ if st.button("🚀 CALCULAR VALOR"):
         precio_base_redondo -= dinero_reducido
 
     # --- FORMATEO DE RESULTADOS (Importante: Después de la resta) ---
+    # AJUSTE: Calculamos el precio de venta sobre el precio ya descontado
+    precio_venta_redondo = round((precio_base_redondo * 1.4) / 10000) * 10000
     v_venta = f"${precio_venta_redondo:,.0f}".replace(",", ".")
     v_compra = f"${precio_base_redondo:,.0f}".replace(",", ".")
 
