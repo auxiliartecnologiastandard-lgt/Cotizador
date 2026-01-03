@@ -128,6 +128,7 @@ grafica = 1 if tiene_grafica else 0
 st.divider()
 
 # 6. Verificador de daños con IA
+# CAMBIO: Usamos una variable para que el toggle no "olvide" su estado
 if st.toggle("🔍 Verificar estado con IA"):
     
     # --- INICIALIZACIÓN DEL BAÚL ---
@@ -138,15 +139,10 @@ if st.toggle("🔍 Verificar estado con IA"):
     if "datos_peritaje" not in st.session_state: 
         st.session_state.datos_peritaje = {"porcentaje": 0, "motivo": "", "listo": False}
 
-    # --- LÓGICA DE CONTEO (Corregida para evitar NameError) ---
+    # --- LÓGICA DE CONTEO ---
     conteo = sum(1 for f in ["foto_1", "foto_2", "foto_3"] if st.session_state.get(f))
 
-    if conteo > 0:
-        st.write(f"✅ Fotos en memoria: {conteo} de 3")
-    if conteo == 3:
-        st.write("📸 ¡Listas las 3 fotos para procesar!")
-
-    # --- INTERFAZ FOTOS (Una sola vez para evitar 6 cámaras) ---
+    # --- INTERFAZ FOTOS ---
     c1, c2, c3 = st.columns(3)
     
     with c1:
@@ -159,17 +155,22 @@ if st.toggle("🔍 Verificar estado con IA"):
         f3 = st.camera_input("Foto Lateral", key="c3")
         if f3: st.session_state.foto_3 = f3
 
+    if conteo > 0:
+        st.write(f"✅ Fotos en memoria: {conteo} de 3")
+    if conteo == 3:
+        st.success("📸 ¡Listas las 3 fotos para procesar!")
+
 # --- CÁLCULO FINAL ---
 if st.button("🚀 CALCULAR VALOR"):
     
-    # Aseguramos que la variable exista dentro del botón también
+    # IMPORTANTE: Asegurar que el diccionario de peritaje exista siempre
     if "datos_peritaje" not in st.session_state:
         st.session_state.datos_peritaje = {"porcentaje": 0, "motivo": "", "listo": False}
         
     st.write("DEBUG: Iniciando cálculos...") 
 
     # --- LÓGICA DE LA IA ---
-    # Recuperamos las fotos del baúl (session_state)
+    # Buscamos en el session_state directamente, sin importar el toggle
     foto_a = st.session_state.get("foto_1")
     foto_b = st.session_state.get("foto_2")
     foto_c = st.session_state.get("foto_3")
@@ -177,33 +178,32 @@ if st.button("🚀 CALCULAR VALOR"):
     if foto_a and foto_b and foto_c:
         try:
             from PIL import Image
-            fotos_para_ia = [
-                Image.open(foto_a),
-                Image.open(foto_b),
-                Image.open(foto_c)
-            ]
+            fotos_para_ia = [Image.open(foto_a), Image.open(foto_b), Image.open(foto_c)]
             
-            with st.spinner("Analizando fotos..."):
+            with st.spinner("Analizando fotos con IA..."):
                 analisis = analizar_con_ia(fotos_para_ia, 1, "Computadora")
             
-            if analisis and analisis["exito"]:
+            if analisis and analisis.get("exito"):
                 st.session_state.datos_peritaje = {
                     "porcentaje": analisis["porcentaje"],
                     "motivo": analisis["motivo"],
                     "listo": True
                 }
                 st.write(f"DEBUG IA: Daño detectado: {analisis['porcentaje']*100}%")
+            else:
+                st.error(f"Error en IA: {analisis.get('error')}")
         except Exception as e:
             st.error(f"Error procesando fotos: {e}")
     else:
-        st.info("ℹ️ No se detectaron fotos completas. Calculando solo precio base.")
+        # Si el usuario NO activó la IA, nos aseguramos de que no aplique descuentos viejos
+        st.session_state.datos_peritaje = {"porcentaje": 0, "motivo": "", "listo": False}
+        st.info("ℹ️ No se detectaron fotos completas. Calculando precio base.")
 
     # --- LÓGICA DE PRECIO EXISTENTE (No tocar) ---
     valor_disco_ia = valor_disco_final * 0.01 if valor_procesador <= 15 else valor_disco_final
     entrada = np.array([[valor_ram, valor_disco_ia, valor_procesador, grafica]])
     precio_base = modelo.predict(entrada)[0]
     
-    # Filtros de Realidad
     if valor_procesador == 5: precio_base = min(precio_base, 100000)
     elif valor_procesador == 15: precio_base = min(precio_base, 150000)
     elif valor_procesador == 30 and grafica == 0: precio_base = min(precio_base, 500000)
@@ -212,7 +212,7 @@ if st.button("🚀 CALCULAR VALOR"):
 
     # --- NUEVO: CÁLCULO DE DESCUENTO POR IA ---
     dinero_reducido = 0
-    info_ia = st.session_state.get("datos_peritaje", {"listo": False})
+    info_ia = st.session_state.datos_peritaje # Leemos directamente del estado actualizado
     
     if info_ia.get("listo"):
         porcentaje = info_ia.get("porcentaje", 0)
@@ -228,9 +228,9 @@ if st.button("🚀 CALCULAR VALOR"):
     if info_ia.get("listo"):
         motivo = info_ia.get("motivo", "Estado general")
         if dinero_reducido > 0:
-            st.warning(f"⚠️ Por los daños detectados ({motivo}), se redujeron ${dinero_reducido:,.0f} pesos.")
+            st.warning(f"⚠️ Reducción por daños ({motivo}): -${dinero_reducido:,.0f}")
         else:
-            st.success("✅ No se detectaron daños físicos, el precio se mantiene.")
+            st.success("✅ Equipo en excelente estado físico.")
 
     # Estos salen SIEMPRE
     st.success(f"### Precio sugerido venta: {v_venta}")
