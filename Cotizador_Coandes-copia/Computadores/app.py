@@ -206,15 +206,14 @@ if st.button("🚀 CALCULAR VALOR"):
     # --- NUEVO: CÁLCULO DE DESCUENTO POR IA ---
     dinero_reducido = 0
     # Usamos .get() por seguridad extra
-    peritaje = st.session_state.get("datos_peritaje", {"listo": False})
-        
-    # --- CÁLCULO DEL DESCUENTO IA ---
-    if peritaje.get("listo"):
-        porcentaje = peritaje.get("porcentaje", 0)
+    info_ia = st.session_state.get("datos_peritaje", {"listo": False})
+    
+        # --- CÁLCULO DEL DESCUENTO IA ---
+    dinero_reducido = 0
+    if info_ia.get("listo"):
+        porcentaje = info_ia.get("porcentaje", 0)
         dinero_reducido = precio_base_redondo * porcentaje
         precio_base_redondo -= dinero_reducido
-    else:
-        dinero_reducido = 0
 
     # --- FORMATEO DE RESULTADOS (Importante: Después de la resta) ---
     v_venta = f"${precio_venta_redondo:,.0f}".replace(",", ".")
