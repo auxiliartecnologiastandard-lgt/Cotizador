@@ -157,7 +157,7 @@ if st.toggle("🔍 Verificar estado con IA"):
     
     if conteo > 0:
         st.write(f"✅ Fotos en memoria: {conteo} de 3")
-    else:
+    if conteo == 3:
         st.write("📸 ¡Listas las 3 fotos para procesar!")
         
 # --- CÁLCULO FINAL ---
@@ -208,8 +208,7 @@ if st.button("🚀 CALCULAR VALOR"):
     # Usamos .get() por seguridad extra
     info_ia = st.session_state.get("datos_peritaje", {"listo": False})
     
-        # --- CÁLCULO DEL DESCUENTO IA ---
-    dinero_reducido = 0
+    # --- CÁLCULO DEL DESCUENTO IA ---
     if info_ia.get("listo"):
         porcentaje = info_ia.get("porcentaje", 0)
         dinero_reducido = precio_base_redondo * porcentaje
@@ -220,8 +219,9 @@ if st.button("🚀 CALCULAR VALOR"):
     v_compra = f"${precio_base_redondo:,.0f}".replace(",", ".")
 
     # --- MENSAJE DE LA IA AL FINAL ---
-    if peritaje.get("listo"):
-        motivo = peritaje.get("motivo", "Estado general")
+    # Cambiado 'peritaje' por 'info_ia' para que coincida con lo definido arriba
+    if info_ia.get("listo"):
+        motivo = info_ia.get("motivo", "Estado general")
         
         if dinero_reducido > 0:
             # Caso con daños: Mostramos advertencia y precios rebajados
@@ -233,3 +233,7 @@ if st.button("🚀 CALCULAR VALOR"):
             st.success(f"### Precio sugerido venta: {v_venta}")
             st.info(f"### Oferta de Compra Coandes: {v_compra}")
             st.success("✅ No se detectaron daños físicos, el precio se mantiene.")
+    else:
+        # Si la IA no se usó, mostramos los precios estándar
+        st.success(f"### Precio sugerido venta: {v_venta}")
+        st.info(f"### Oferta de Compra Coandes: {v_compra}")
