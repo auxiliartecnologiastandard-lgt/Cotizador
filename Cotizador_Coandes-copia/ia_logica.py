@@ -1,64 +1,52 @@
 import streamlit as st
 from google import genai
+import json
 
 def analizar_con_ia(lista_imagenes, precio_base, tipo_producto):
     """
-    Cerebro universal de peritaje para Coandes.
-    Recibe: lista de fotos, precio inicial y nombre del producto (PC, Nevera, etc.)
-    Devuelve: Diccionario con categoría, descuento, monto reducido y motivo.
+    Cerebro universal de peritaje para Coandes con salida JSON estricta.
     """
     try:
-        # 1. Configuración del cliente (Usa el Secret configurado en Streamlit Cloud)
+        # 1. Configuración del cliente
         client = genai.Client(api_key=st.secrets["GEMINI_KEY"])
         
-        # 2. Instrucción dinámica según el producto
+        # 2. Instrucción con formato JSON (Más difícil de romper)
         prompt = f"""
         Actúa como un perito técnico experto en la compra de {tipo_producto}.
-        Analiza detalladamente estas 3 imágenes en busca de fallas, desgaste, golpes o suciedad.
+        Analiza estas 3 imágenes en busca de fallas, desgaste o daños.
         
-        REGLAS DE CLASIFICACIÓN:
-        - NUEVO: Sin detalles, 0% descuento.
-        - LEVE: Rayones mínimos o suciedad, 10-15% descuento.
-        - MODERADO: Abolladuras, teclas/piezas faltantes o manchas, 25-40% descuento.
-        - GRAVE: Daño estructural, óxido profundo o fallas críticas, 50-80% descuento.
-        
-        FORMATO DE RESPUESTA OBLIGATORIO:
-        CATEGORIA | PORCENTAJE_DECIMAL | JUSTIFICACION_CORTA
-        
-        Ejemplo: MODERADO | 0.30 | Pantalla con píxeles muertos y bordes desgastados.
+        Responde EXCLUSIVAMENTE en formato JSON con la siguiente estructura:
+        {{
+            "categoria": "NUEVO, LEVE, MODERADO o GRAVE",
+            "porcentaje": valor_decimal_entre_0_y_1,
+            "motivo": "explicación breve"
+        }}
+
+        REGLAS:
+        - NUEVO: 0.0
+        - LEVE: 0.10 a 0.15
+        - MODERADO: 0.25 a 0.40
+        - GRAVE: 0.50 a 0.80
         """
 
-        # 3. Llamada al modelo Gemini 1.5 Flash (Optimizado para visión y velocidad)
+        # 3. Llamada al modelo
         response = client.models.generate_content(
             model="gemini-1.5-flash",
             contents=[prompt, *lista_imagenes]
         )
 
-        # 4. Limpieza y procesamiento de la respuesta
-        respuesta_texto = response.text.strip()
-        partes = respuesta_texto.split("|")
+        # 4. Limpieza de la respuesta (Quitamos posibles marcas de markdown ```json)
+        texto = response.text.replace("```json", "").replace("```", "").strip()
+        datos = json.loads(texto) # Convertimos el texto en un diccionario real
         
-        if len(partes) == 3:
-            categoria = partes[0].strip()
-            porcentaje = float(partes[1].strip())
-            motivo = partes[2].strip()
-            
-            # Cálculo del impacto financiero
-            dinero_reducido = precio_base * porcentaje
-            
-            return {
-                "exito": True,
-                "categoria": categoria,
-                "porcentaje": porcentaje,
-                "dinero_reducido": dinero_reducido,
-                "motivo": motivo
-            }
-        else:
-            return {"exito": False, "error": "Formato de respuesta IA inválido."}
+        # 5. Devolvemos el resultado formateado
+        return {
+            "exito": True,
+            "categoria": datos.get("categoria", "DESCONOCIDO"),
+            "porcentaje": float(datos.get("porcentaje", 0)),
+            "motivo": datos.get("motivo", "Sin motivo especificado")
+        }
 
     except Exception as e:
-        # Manejo de errores de cuota o conexión
-        error_msg = str(e)
-        if "429" in error_msg:
-            return {"exito": False, "error": "Límite de la IA alcanzado. Espera 60 segundos."}
-        return {"exito": False, "error": f"Error técnico: {error_msg}"}
+        # Si algo falla (JSON mal formado o conexión)
+        return {"exito": False, "error": str(e)}
