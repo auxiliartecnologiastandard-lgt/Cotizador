@@ -5,3 +5,4 @@ joblib
 numpy
 Pillow
 google-genai
+google-generativeai
