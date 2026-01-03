@@ -138,41 +138,27 @@ if st.toggle("🔍 Verificar estado con IA"):
     if "datos_peritaje" not in st.session_state: 
         st.session_state.datos_peritaje = {"porcentaje": 0, "motivo": "", "listo": False}
 
-    # --- INTERFAZ FOTOS ---
+    # --- LÓGICA DE CONTEO (Corregida para evitar NameError) ---
+    conteo = sum(1 for f in ["foto_1", "foto_2", "foto_3"] if st.session_state.get(f))
+
+    if conteo > 0:
+        st.write(f"✅ Fotos en memoria: {conteo} de 3")
+    if conteo == 3:
+        st.write("📸 ¡Listas las 3 fotos para procesar!")
+
+    # --- INTERFAZ FOTOS (Una sola vez para evitar 6 cámaras) ---
     c1, c2, c3 = st.columns(3)
     
     with c1:
-        f1 = st.camera_input("foto_1", key="c1")
+        f1 = st.camera_input("Foto Frontal", key="c1")
         if f1: st.session_state.foto_1 = f1
     with c2:
-        f2 = st.camera_input("foto_2", key="c2")
+        f2 = st.camera_input("Foto Teclado", key="c2")
         if f2: st.session_state.foto_2 = f2
     with c3:
-        f3 = st.camera_input("foto_3", key="c3")
+        f3 = st.camera_input("Foto Lateral", key="c3")
         if f3: st.session_state.foto_3 = f3
 
-    # --- CODIGO CUANDO SE TOMARON LAS FOTOS ---
-    fotos_tomadas = [st.session_state.foto_1, st.session_state.foto_2, st.session_state.foto_3]
-    conteo = sum(1 for f in ["foto_1", "foto_2", "foto_3"] if st.session_state.get(f))
-
-if conteo > 0:
-    st.write(f"✅ Fotos en memoria: {conteo} de 3")
-if conteo == 3:
-    st.write("📸 ¡Listas las 3 fotos para procesar!")
-
-# 2. Entradas de cámara y guardado en memoria persistente
-foto1 = st.camera_input("Foto Frontal")
-if foto1:
-    st.session_state.foto_1 = foto1
-
-foto2 = st.camera_input("Foto Teclado")
-if foto2:
-    st.session_state.foto_2 = foto2
-
-foto3 = st.camera_input("Foto Lateral")
-if foto3:
-    st.session_state.foto_3 = foto3
-        
 # --- CÁLCULO FINAL ---
 if st.button("🚀 CALCULAR VALOR"):
     
@@ -183,21 +169,24 @@ if st.button("🚀 CALCULAR VALOR"):
     st.write("DEBUG: Iniciando cálculos...") 
 
     # --- LÓGICA DE LA IA ---
-    if st.session_state.foto_1 and st.session_state.foto_2 and st.session_state.foto_3:
+    # Recuperamos las fotos del baúl (session_state)
+    foto_a = st.session_state.get("foto_1")
+    foto_b = st.session_state.get("foto_2")
+    foto_c = st.session_state.get("foto_3")
+
+    if foto_a and foto_b and foto_c:
         try:
-            # AJUSTE: Importamos PIL aquí mismo por seguridad
             from PIL import Image
             fotos_para_ia = [
-                Image.open(st.session_state.foto_1),
-                Image.open(st.session_state.foto_2),
-                Image.open(st.session_state.foto_3)
+                Image.open(foto_a),
+                Image.open(foto_b),
+                Image.open(foto_c)
             ]
             
             with st.spinner("Analizando fotos..."):
                 analisis = analizar_con_ia(fotos_para_ia, 1, "Computadora")
             
             if analisis and analisis["exito"]:
-                # AQUÍ GUARDAMOS EL RESULTADO
                 st.session_state.datos_peritaje = {
                     "porcentaje": analisis["porcentaje"],
                     "motivo": analisis["motivo"],
@@ -206,6 +195,8 @@ if st.button("🚀 CALCULAR VALOR"):
                 st.write(f"DEBUG IA: Daño detectado: {analisis['porcentaje']*100}%")
         except Exception as e:
             st.error(f"Error procesando fotos: {e}")
+    else:
+        st.info("ℹ️ No se detectaron fotos completas. Calculando solo precio base.")
 
     # --- LÓGICA DE PRECIO EXISTENTE (No tocar) ---
     valor_disco_ia = valor_disco_final * 0.01 if valor_procesador <= 15 else valor_disco_final
@@ -218,21 +209,17 @@ if st.button("🚀 CALCULAR VALOR"):
     elif valor_procesador == 30 and grafica == 0: precio_base = min(precio_base, 500000)
 
     precio_base_redondo = round(precio_base / 10000) * 10000
-    # Quitamos el cálculo de venta de aquí para que se haga DESPUÉS del descuento
 
     # --- NUEVO: CÁLCULO DE DESCUENTO POR IA ---
     dinero_reducido = 0
-    # Obtenemos lo que la IA guardó justo arriba
     info_ia = st.session_state.get("datos_peritaje", {"listo": False})
     
-    # --- CÁLCULO DEL DESCUENTO IA ---
     if info_ia.get("listo"):
         porcentaje = info_ia.get("porcentaje", 0)
         dinero_reducido = precio_base_redondo * porcentaje
         precio_base_redondo -= dinero_reducido
 
-    # --- FORMATEO DE RESULTADOS (Importante: Después de la resta) ---
-    # AJUSTE: Calculamos el precio de venta sobre el precio ya descontado
+    # --- FORMATEO DE RESULTADOS ---
     precio_venta_redondo = round((precio_base_redondo * 1.4) / 10000) * 10000
     v_venta = f"${precio_venta_redondo:,.0f}".replace(",", ".")
     v_compra = f"${precio_base_redondo:,.0f}".replace(",", ".")
@@ -240,14 +227,11 @@ if st.button("🚀 CALCULAR VALOR"):
     # --- MENSAJE DE LA IA AL FINAL ---
     if info_ia.get("listo"):
         motivo = info_ia.get("motivo", "Estado general")
-        
         if dinero_reducido > 0:
-            # Caso con daños: Mostramos advertencia y precios rebajados
             st.warning(f"⚠️ Por los daños detectados ({motivo}), se redujeron ${dinero_reducido:,.0f} pesos.")
         else:
-            # Caso sin daños: Confirmación verde
             st.success("✅ No se detectaron daños físicos, el precio se mantiene.")
 
-    # Estos salen SIEMPRE (con o sin descuento)
+    # Estos salen SIEMPRE
     st.success(f"### Precio sugerido venta: {v_venta}")
     st.info(f"### Oferta de Compra Coandes: {v_compra}")
