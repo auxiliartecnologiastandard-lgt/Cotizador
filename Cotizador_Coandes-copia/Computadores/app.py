@@ -206,7 +206,7 @@ if st.button("🚀 CALCULAR VALOR"):
     if peritaje["listo"]:
         motivo = peritaje["motivo"]
         if dinero_reducido > 0:
-            (f"⚠️ Por los daños detectados ({motivo}), se redujeron ${dinero_reducido:,.0f} pesos.")
+            st.warning(f"⚠️ Por los daños detectados ({motivo}), se redujeron ${dinero_reducido:,.0f} pesos.")
             st.success(f"### Precio sugerido venta: {v_venta}")
             st.info(f"### Oferta de Compra Coandes: {v_compra}")
         
