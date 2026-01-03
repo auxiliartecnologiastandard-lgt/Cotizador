@@ -182,11 +182,13 @@ if st.button("🚀 CALCULAR VALOR"):
                 analisis = analizar_con_ia(fotos_para_ia, 1, "Computadora")
             
             if analisis and analisis["exito"]:
+                # AQUÍ GUARDAMOS EL RESULTADO
                 st.session_state.datos_peritaje = {
                     "porcentaje": analisis["porcentaje"],
                     "motivo": analisis["motivo"],
                     "listo": True
                 }
+                st.write(f"DEBUG IA: Daño detectado: {analisis['porcentaje']*100}%")
         except Exception as e:
             st.error(f"Error procesando fotos: {e}")
 
@@ -205,7 +207,7 @@ if st.button("🚀 CALCULAR VALOR"):
 
     # --- NUEVO: CÁLCULO DE DESCUENTO POR IA ---
     dinero_reducido = 0
-    # Usamos .get() por seguridad extra
+    # Obtenemos lo que la IA guardó justo arriba
     info_ia = st.session_state.get("datos_peritaje", {"listo": False})
     
     # --- CÁLCULO DEL DESCUENTO IA ---
@@ -219,21 +221,16 @@ if st.button("🚀 CALCULAR VALOR"):
     v_compra = f"${precio_base_redondo:,.0f}".replace(",", ".")
 
     # --- MENSAJE DE LA IA AL FINAL ---
-    # Cambiado 'peritaje' por 'info_ia' para que coincida con lo definido arriba
     if info_ia.get("listo"):
         motivo = info_ia.get("motivo", "Estado general")
         
         if dinero_reducido > 0:
             # Caso con daños: Mostramos advertencia y precios rebajados
             st.warning(f"⚠️ Por los daños detectados ({motivo}), se redujeron ${dinero_reducido:,.0f} pesos.")
-            st.success(f"### Precio sugerido venta: {v_venta}")
-            st.info(f"### Oferta de Compra Coandes: {v_compra}")
         else:
-            # Caso sin daños: Mostramos precios normales y confirmación verde
-            st.success(f"### Precio sugerido venta: {v_venta}")
-            st.info(f"### Oferta de Compra Coandes: {v_compra}")
+            # Caso sin daños: Confirmación verde
             st.success("✅ No se detectaron daños físicos, el precio se mantiene.")
-    else:
-        # Si la IA no se usó, mostramos los precios estándar
-        st.success(f"### Precio sugerido venta: {v_venta}")
-        st.info(f"### Oferta de Compra Coandes: {v_compra}")
+
+    # Estos salen SIEMPRE (con o sin descuento)
+    st.success(f"### Precio sugerido venta: {v_venta}")
+    st.info(f"### Oferta de Compra Coandes: {v_compra}")
