@@ -5,6 +5,21 @@ import numpy as np
 from ia_logica import analizar_con_ia
 from PIL import Image
 
+# 0. Preparando el terreno para la IA ( Variables en 0 )
+# --- INICIALIZACIÓN DE VARIABLES (Evita el NameError y AttributeError) ---
+if "peritaje" not in st.session_state:
+    st.session_state.peritaje = {"listo": False, "motivo": "", "porcentaje": 0.0}
+
+if "foto_1" not in st.session_state:
+    st.session_state.foto_1 = None
+if "foto_2" not in st.session_state:
+    st.session_state.foto_2 = None
+if "foto_3" not in st.session_state:
+    st.session_state.foto_3 = None
+
+# Creamos una variable local para que el código no falle al buscar 'peritaje'
+peritaje = st.session_state.peritaje
+
 # 1. Configuración de la pagina
 st.set_page_config(
     page_title="Cotizador Coandes",
