@@ -153,12 +153,25 @@ if st.toggle("🔍 Verificar estado con IA"):
 
     # --- CODIGO CUANDO SE TOMARON LAS FOTOS ---
     fotos_tomadas = [st.session_state.foto_1, st.session_state.foto_2, st.session_state.foto_3]
-    conteo = sum(1 for f in fotos_tomadas if f is not None)
-    
-    if conteo > 0:
-        st.write(f"✅ Fotos en memoria: {conteo} de 3")
-    if conteo == 3:
-        st.write("📸 ¡Listas las 3 fotos para procesar!")
+    conteo = sum(1 for f in ["foto_1", "foto_2", "foto_3"] if st.session_state.get(f))
+
+if conteo > 0:
+    st.write(f"✅ Fotos en memoria: {conteo} de 3")
+if conteo == 3:
+    st.write("📸 ¡Listas las 3 fotos para procesar!")
+
+# 2. Entradas de cámara y guardado en memoria persistente
+foto1 = st.camera_input("Foto Frontal")
+if foto1:
+    st.session_state.foto_1 = foto1
+
+foto2 = st.camera_input("Foto Teclado")
+if foto2:
+    st.session_state.foto_2 = foto2
+
+foto3 = st.camera_input("Foto Lateral")
+if foto3:
+    st.session_state.foto_3 = foto3
         
 # --- CÁLCULO FINAL ---
 if st.button("🚀 CALCULAR VALOR"):
