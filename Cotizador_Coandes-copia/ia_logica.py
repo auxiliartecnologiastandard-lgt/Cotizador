@@ -9,7 +9,7 @@ def analizar_con_ia(lista_imagenes, precio_base, tipo_producto):
     Cerebro universal de peritaje para Coandes con salida JSON estricta.
     """
     try:
-        # 1. Configuración del cliente
+        # 1. Configuración del cliente (SDK Nuevo)
         client = genai.Client(api_key=st.secrets["GEMINI_KEY"])
         
         # --- PROCESAMIENTO DE IMÁGENES ---
@@ -37,23 +37,30 @@ def analizar_con_ia(lista_imagenes, precio_base, tipo_producto):
             "motivo": "explicación corta del daño"
         }}
 
-        REGLAS DE CLASIFICACIÓN:
-        - NUEVO: 0.0
-        - LEVE: 0.10 a 0.15
-        - MODERADO: 0.25 a 0.40
-        - GRAVE: 0.50 a 0.80
+        REGLAS DE CLASIFICACIÓN (Sé estricto):
+        - NUEVO: 0.0 (Sin un solo rasguño)
+        - LEVE: 0.10 a 0.15 (Rayones superficiales)
+        - MODERADO: 0.25 a 0.40 (Golpes visibles o mucha suciedad)
+        - GRAVE: 0.50 a 0.80 (Pantalla rota, piezas faltantes o daño estructural)
         """
 
-        # 3. LLAMADA CORREGIDA (Sintaxis exacta para el SDK nuevo)
-        # Se eliminó la instancia redundante de GenerativeModel que causaba el error de paréntesis
+        # 3. LLAMADA CORREGIDA (Sin -latest para máxima compatibilidad)
         response = client.models.generate_content(
-            model='gemini-1.5-flash-latest',
+            model='gemini-1.5-flash',
             contents=[prompt, *imagenes_listas]
         )
 
-        # 4. Limpieza y procesamiento de la respuesta JSON
-        texto_limpio = response.text.replace("```json", "").replace("```", "").strip()
-        datos = json.loads(texto_limpio)
+        # 4. EXTRACCIÓN DE JSON ROBUSTA
+        # Esto evita errores si la IA pone texto extra
+        res_text = response.text
+        start_index = res_text.find('{')
+        end_index = res_text.rfind('}') + 1
+        
+        if start_index == -1 or end_index == 0:
+            return {"exito": False, "error": "La IA no devolvió un formato válido."}
+            
+        json_str = res_text[start_index:end_index]
+        datos = json.loads(json_str)
         
         # 5. Devolvemos el resultado formateado
         return {
@@ -64,4 +71,5 @@ def analizar_con_ia(lista_imagenes, precio_base, tipo_producto):
         }
 
     except Exception as e:
+        # Este mensaje te dirá exactamente qué falla si algo sale mal
         return {"exito": False, "error": f"Error técnico: {str(e)}"}

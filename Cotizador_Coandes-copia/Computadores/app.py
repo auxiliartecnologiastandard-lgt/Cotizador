@@ -128,37 +128,34 @@ grafica = 1 if tiene_grafica else 0
 st.divider()
 
 # 6. Verificador de daños con IA
-# CAMBIO: Usamos una variable para que el toggle no "olvide" su estado
 if st.toggle("🔍 Verificar estado con IA"):
     
-    # --- INICIALIZACIÓN DEL BAÚL ---
-    if "foto_1" not in st.session_state: st.session_state.foto_1 = None
-    if "foto_2" not in st.session_state: st.session_state.foto_2 = None
-    if "foto_3" not in st.session_state: st.session_state.foto_3 = None
-
-    if "datos_peritaje" not in st.session_state: 
-        st.session_state.datos_peritaje = {"porcentaje": 0, "motivo": "", "listo": False}
-
-    # --- LÓGICA DE CONTEO ---
-    conteo = sum(1 for f in ["foto_1", "foto_2", "foto_3"] if st.session_state.get(f))
+    # Inicialización silenciosa
+    for i in ["1", "2", "3"]:
+        if f"foto_{i}" not in st.session_state:
+            st.session_state[f"foto_{i}"] = None
 
     # --- INTERFAZ FOTOS ---
     c1, c2, c3 = st.columns(3)
     
     with c1:
-        f1 = st.camera_input("Foto Frontal", key="c1")
+        f1 = st.camera_input("Frontal", key="c1")
         if f1: st.session_state.foto_1 = f1
     with c2:
-        f2 = st.camera_input("Foto Teclado", key="c2")
+        f2 = st.camera_input("Teclado", key="c2")
         if f2: st.session_state.foto_2 = f2
     with c3:
-        f3 = st.camera_input("Foto Lateral", key="c3")
+        f3 = st.camera_input("Lateral", key="c3")
         if f3: st.session_state.foto_3 = f3
 
+    # --- LÓGICA DE CONTEO (Ubicada después de las cámaras) ---
+    conteo = sum(1 for i in [1, 2, 3] if st.session_state.get(f"foto_{i}") is not None)
+
     if conteo > 0:
-        st.write(f"✅ Fotos en memoria: {conteo} de 3")
-    if conteo == 3:
-        st.success("📸 ¡Listas las 3 fotos para procesar!")
+        if conteo == 3:
+            st.success("📸 ¡Listas las 3 fotos para procesar!")
+        else:
+            st.info(f"✅ Fotos en memoria: {conteo} de 3")
 
 # --- CÁLCULO FINAL ---
 if st.button("🚀 CALCULAR VALOR"):
