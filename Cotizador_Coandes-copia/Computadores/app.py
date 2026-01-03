@@ -189,14 +189,14 @@ if st.button("🚀 CALCULAR VALOR"):
     precio_venta_redondo = round((precio_base_redondo * 1.4) / 10000) * 10000
 
     # --- NUEVO: CÁLCULO DE DESCUENTO POR IA ---
-    dinero_reducido, = 0
+    dinero_reducido = 0
     # Usamos .get() por seguridad extra
     peritaje = st.session_state.get("datos_peritaje", {"listo": False})
     
     if peritaje["listo"]:
         porcentaje = peritaje["porcentaje"]
-        dinero_reducido, = precio_base_redondo * porcentaje
-        precio_base_redondo = precio_base_redondo - dinero_reducido,
+        dinero_reducido = precio_base_redondo * porcentaje
+        precio_base_redondo = precio_base_redondo - dinero_reducido
 
     # --- RESULTADOS ---
     v_venta = f"${precio_venta_redondo:,.0f}".replace(",", ".")
