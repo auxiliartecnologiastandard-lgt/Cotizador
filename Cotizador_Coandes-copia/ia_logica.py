@@ -5,54 +5,32 @@ import json
 
 def analizar_con_ia(lista_imagenes, precio_base, tipo_producto):
     try:
-        # 1. Configuración limpia
         genai.configure(api_key=st.secrets["GEMINI_KEY"])
         
-        # 2. Configuración de seguridad (para evitar bloqueos por error)
-        safety_settings = [
-            {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
-            {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
-            {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
-            {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
-        ]
+        # CAMBIO CLAVE: Usamos el nombre técnico de producción v1
+        # Intentamos con la versión "8b" que es más ligera y compatible
+        model = genai.GenerativeModel('gemini-1.5-flash-8b') 
         
-        # 3. Probamos con el nombre corto del modelo
-        model = genai.GenerativeModel(
-            model_name='gemini-1.5-flash',
-            safety_settings=safety_settings
-        )
-        
-        # 4. Preparar imágenes
         imagenes_listas = []
         for img_data in lista_imagenes:
             if hasattr(img_data, 'read'):
                 img_data.seek(0)
-                imagenes_listas.append(Image.open(img_data))
-            else:
-                imagenes_listas.append(img_data)
+                img = Image.open(img_data).convert('RGB')
+                imagenes_listas.append(img)
         
-        if not imagenes_listas:
-            return {"exito": False, "error": "No se recibieron imágenes"}
-
-        # 5. El Prompt
-        prompt = f"Analiza estas fotos de {tipo_producto}. Detecta daños. Responde SOLO un JSON con: 'categoria' (NUEVO, LEVE, MODERADO, GRAVE), 'porcentaje' (0.0 a 1.0) y 'motivo'."
-
-        # 6. Llamada Directa
-        response = model.generate_content([prompt] + imagenes_listas)
-
-        # 7. Procesar respuesta
-        res_text = response.text
-        start = res_text.find('{')
-        end = res_text.rfind('}') + 1
-        datos = json.loads(res_text[start:end])
+        prompt = "Analiza estas fotos y detecta daños. Responde solo JSON: {\"categoria\": \"...\", \"porcentaje\": 0.0, \"motivo\": \"...\"}"
         
-        return {
-            "exito": True,
-            "categoria": datos.get("categoria", "MODERADO"),
-            "porcentaje": float(datos.get("porcentaje", 0)),
-            "motivo": datos.get("motivo", "Procesado")
-        }
+        # Forzamos que la respuesta no use la versión beta
+        response = model.generate_content(
+            [prompt] + imagenes_listas,
+            generation_config={"temperature": 0.1}
+        )
+        
+        texto = response.text
+        start = texto.find('{')
+        end = texto.rfind('}') + 1
+        return {**json.loads(texto[start:end]), "exito": True}
 
     except Exception as e:
-        # Si esto vuelve a dar 404, vamos a imprimir qué modelos ve la llave
-        return {"exito": False, "error": f"Error persistente: {str(e)}"}
+        # Si esto vuelve a dar 404, el problema es la región de tu API KEY
+        return {"exito": False, "error": f"Fallo crítico: {str(e)}"}
