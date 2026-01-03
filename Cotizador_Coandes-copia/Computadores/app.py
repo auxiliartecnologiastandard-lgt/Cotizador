@@ -47,7 +47,7 @@ except:
 if st.button("Volver al Menú Principal"):
     st.switch_page("Lobby.py")
 
-st.title("😀😀😀 Cotizador Pro Coandes")
+st.title("💻 Cotizador Pro Coandes")
 st.markdown("---")
 
 # 1.3 Logica de gemini
@@ -207,6 +207,9 @@ if st.button("🚀 CALCULAR VALOR"):
         motivo = peritaje["motivo"]
         if dinero_reducido > 0:
             st.error(f"⚠️ Por los daños detectados ({motivo}), se redujeron ${dinero_reducido:,.0f} pesos.")
+            st.success(f"### Precio sugerido venta: {v_venta}")
+            st.info(f"### Oferta de Compra Coandes: {v_compra}")
+        
         else:
             st.success(f"### Precio sugerido venta: {v_venta}")
             st.info(f"### Oferta de Compra Coandes: {v_compra}")
