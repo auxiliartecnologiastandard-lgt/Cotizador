@@ -193,24 +193,29 @@ if st.button("🚀 CALCULAR VALOR"):
     # Usamos .get() por seguridad extra
     peritaje = st.session_state.get("datos_peritaje", {"listo": False})
     
-    if peritaje["listo"]:
-        porcentaje = peritaje["porcentaje"]
-        dinero_reducido = precio_base_redondo * porcentaje
-        precio_base_redondo = precio_base_redondo - dinero_reducido
+# --- CÁLCULO DEL DESCUENTO IA ---
+if peritaje.get("listo"):
+    porcentaje = peritaje.get("porcentaje", 0)
+    dinero_reducido = precio_base_redondo * porcentaje
+    precio_base_redondo -= dinero_reducido
+else:
+    dinero_reducido = 0
 
-    # --- RESULTADOS ---
-    v_venta = f"${precio_venta_redondo:,.0f}".replace(",", ".")
-    v_compra = f"${precio_base_redondo:,.0f}".replace(",", ".")
+# --- FORMATEO DE RESULTADOS (Importante: Después de la resta) ---
+v_venta = f"${precio_venta_redondo:,.0f}".replace(",", ".")
+v_compra = f"${precio_base_redondo:,.0f}".replace(",", ".")
+
+# --- MENSAJE DE LA IA AL FINAL ---
+if peritaje.get("listo"):
+    motivo = peritaje.get("motivo", "Estado general")
     
-    # --- MENSAJE DE LA IA AL FINAL ---
-    if peritaje["listo"]:
-        motivo = peritaje["motivo"]
-        if dinero_reducido > 0:
-            st.warning(f"⚠️ Por los daños detectados ({motivo}), se redujeron ${dinero_reducido:,.0f} pesos.")
-            st.success(f"### Precio sugerido venta: {v_venta}")
-            st.info(f"### Oferta de Compra Coandes: {v_compra}")
-        
-        else:
-            st.success(f"### Precio sugerido venta: {v_venta}")
-            st.info(f"### Oferta de Compra Coandes: {v_compra}")
-            ("✅ No se detectaron daños físicos, el precio se mantiene.")
+    if dinero_reducido > 0:
+        # Caso con daños: Mostramos advertencia y precios rebajados
+        st.warning(f"⚠️ Por los daños detectados ({motivo}), se redujeron ${dinero_reducido:,.0f} pesos.")
+        st.success(f"### Precio sugerido venta: {v_venta}")
+        st.info(f"### Oferta de Compra Coandes: {v_compra}")
+    else:
+        # Caso sin daños: Mostramos precios normales y confirmación verde
+        st.success(f"### Precio sugerido venta: {v_venta}")
+        st.info(f"### Oferta de Compra Coandes: {v_compra}")
+        st.success("✅ No se detectaron daños físicos, el precio se mantiene.")
