@@ -35,17 +35,17 @@ st.markdown(
 # Cargar el modelo
 try:
     # Busca el modelo dentro de la carpeta de la copia
-    ruta_modelo = "Cotizador_Coandes-copia/Computadores/modelo_pcs.pkl"
+    ruta_modelo = "Cotizador_Coandes-copia/Neveras/modelo_pcs.pkl"
     modelo = joblib.load(ruta_modelo)
 
 except:
-    st.error("⚠️ No se encontró el modelo. Ejecuta 'py Computadores/entrenar.py' primero.")
+    st.error("⚠️ No se encontró el modelo. Ejecuta 'py Neveras/entrenar.py' primero.")
 
 # Busca el botón de volver en tu app.py y ajusta la ruta así:
 if st.button("Volver al Menú Principal"):
     st.switch_page("Lobby.py")
 
-st.title("💻 Cotizador Pro Coandes")
+st.title("🧊 Cotizador de Neveras")
 st.markdown("---")
 
 # --- LÓGICA DE SINCRONIZACIÓN ---
