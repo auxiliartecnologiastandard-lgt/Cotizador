@@ -23,7 +23,6 @@ else:
         df = pd.read_csv(ruta_csv)
         
         # 3. ENTRENAMIENTO (Asegúrate de que estas columnas existan en tu CSV)
-        # Ajusta los nombres de las columnas si son diferentes en tu archivo
         X = df[['ram', 'disco', 'procesador', 'grafica']] 
         y = df['precio_venta']
 
