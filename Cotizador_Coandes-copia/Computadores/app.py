@@ -118,14 +118,6 @@ if st.button("🚀 CALCULAR VALOR"):
     # 2. Predicción
     entrada = np.array([[valor_ram, valor_disco_ia, valor_procesador, grafica]])
     precio_base = modelo.predict(entrada)[0]
-    
-    # 3. Filtros de Realidad (Anclas de precio)
-    if valor_procesador == 5: 
-        precio_base = min(precio_base, 100000)
-    elif valor_procesador == 15: 
-        precio_base = min(precio_base, 150000)
-    elif valor_procesador == 30 and grafica == 0:
-        precio_base = min(precio_base, 500000)
 
     # 4. Redondear precios
     precio_base_redondo = round(precio_base / 10000) * 10000
