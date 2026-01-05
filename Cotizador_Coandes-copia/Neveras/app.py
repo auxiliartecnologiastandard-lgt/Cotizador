@@ -73,17 +73,16 @@ sel_ram = st.selectbox("Seleccione capacidad de RAM:", list(ram_opciones.keys())
 valor_ram = ram_opciones[sel_ram]
 
 # 2. ALMACENAMIENTO
-st.markdown("### 2. Capacidad de Almacenamiento (GB)")
+st.markdown("### 2. Rangos de Capacidad (Litros Brutos)")
 disco_dict = {
-    "128 GB": 128,
-    "256 GB": 256,
-    "512 GB": 512,
-    "1 TB": 1024,
-    "2 TB": 2048,
+    "Mini / Compactas 40L-120L": 1,
+    "Pequeñas 120L-250L": 2,
+    "Medianas 250L-450L": 3,
+    "Grandes 450L-800L+": 4,
     "Otro (Escribir valor... )": "OTRO"
 }
 
-seleccion = st.selectbox("Seleccione capacidad o elija 'Otro':", list(disco_dict.keys()), index=1)
+seleccion = st.selectbox("Seleccione el rango de capacidad o elija 'Otro':", list(disco_dict.keys()), index=1)
     # Si elige 'Otro', mostramos un campo de entrada numérica
 if disco_dict[seleccion] == "OTRO":
     valor_disco_final = st.number_input("Escriba el valor exacto en GB:", min_value=1, max_value=10000)
@@ -97,7 +96,7 @@ proc_opciones = {
     "Auto frost": 5, 
     "No frost": 10,
 }
-seleccion = st.selectbox("Seleccione el Modelo:", list(proc_opciones.keys()), index=1)
+seleccion = st.selectbox("Seleccione el Sistema de Enfriamientoelo:", list(proc_opciones.keys()), index=1)
 valor_procesador = proc_opciones[seleccion]
 
 # 4. GRÁFICA
