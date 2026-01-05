@@ -58,18 +58,24 @@ def sync_num_to_slider(key_num, key_slider):
 # --- INTERFAZ ---
 
 # 1. MEMORIA RAM (Mapeada por potencia)
-st.markdown("### 1. Memoria RAM")
+st.markdown("### 1. Marca")
 ram_opciones = {
-    "2 GB (Cantidad minima)": 2,
-    "4 GB (Uso básico)": 4,
-    "6 GB (Uso de hogar)": 6,
-    "8 GB (Estándar/Oficina)": 8,
-    "12 GB (Multitarea fluida)": 12,
-    "16 GB (Diseño/Gaming)": 16,
-    "32 GB (Profesional/Streaming)": 32,
-    "64 GB (Servidores/Rendimiento Extremo)": 64,
+    "Kalley": 1,
+    "Indurama": 2,
+    "Challenger": 3,
+    "Midea / Hisense": 4,
+    "Mabe": 5,
+    "Haceb": 6,
+    "Whirlpool": 7,
+    "Electrolux": 8,
+    "Samsung":9,
+    "LG":10,
+    "Bosch":11,
+    "KitchenAid":12,
+    "Frigidaire / GE Profile":13,
+    "Sub-Zero / Monogram / Liebherr":14,
 }
-sel_ram = st.selectbox("Seleccione capacidad de RAM:", list(ram_opciones.keys()), index=1)
+sel_ram = st.selectbox("Seleccione la marca:", list(ram_opciones.keys()), index=1)
 valor_ram = ram_opciones[sel_ram]
 
 # 2. ALMACENAMIENTO
