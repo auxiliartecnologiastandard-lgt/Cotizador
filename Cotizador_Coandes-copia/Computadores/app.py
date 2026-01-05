@@ -123,7 +123,7 @@ if st.button("🚀 CALCULAR VALOR"):
     if valor_procesador == 5: 
         precio_base = min(precio_base, 100000)
     elif valor_procesador == 15: 
-        precio_base = max(100000, min(precio_base, 150000))
+        precio_base = min(100000, max(precio_base, 150000))
     elif valor_procesador == 30 and grafica == 0:
         precio_base = min(precio_base, 500000)
 
