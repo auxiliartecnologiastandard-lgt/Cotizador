@@ -126,13 +126,15 @@ if st.button("🚀 CALCULAR VALOR"):
     elif valor_procesador <= 30:
             precio_base = precio_base * 0.88
     elif valor_procesador <= 30:
-        # Si es el i5 10th (Procesador 30) y tiene buen desempeño (RAM 16)
-        if valor_ram >= 16 and grafica > 0: 
-            # Subimos el multiplicador para llegar al 1.000.000
+        # Si el modelo ya predice algo alto (como el i5), le damos el empujón final
+        if precio_base > 750000: 
             precio_base = precio_base * 1.35
-        else:
-            # El Ryzen 5 con HDD o equipos con menos RAM se quedan aquí
+        # Si predice algo intermedio (como el Ryzen 5), lo ajustamos a los 700k
+        elif precio_base > 500000:
             precio_base = precio_base * 0.88
+        else:
+            precio_base = precio_base * 0.80
+    
 
     # 4. Redondear precios
     precio_base_redondo = round(precio_base / 10000) * 10000
