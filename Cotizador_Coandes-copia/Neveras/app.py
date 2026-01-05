@@ -85,7 +85,7 @@ disco_dict = {
 seleccion = st.selectbox("Seleccione el rango de capacidad o elija 'Otro':", list(disco_dict.keys()), index=1)
     # Si elige 'Otro', mostramos un campo de entrada numérica
 if disco_dict[seleccion] == "OTRO":
-    valor_disco_final = st.number_input("Escriba el valor exacto en GB:", min_value=1, max_value=10000)
+    valor_disco_final = st.number_input("Escriba el valor exacto en L:", min_value=1, max_value=10000000000000000000000000000000000000000000000000000000000)
 
 else:
     valor_disco_final = disco_dict[seleccion]
