@@ -92,13 +92,10 @@ else:
     valor_disco_final = disco_dict[seleccion]
 
 # 3. PROCESADOR (Ahora mapeado del 1 al 5 según tu lista)
-st.markdown("### 3. Procesador")
+st.markdown("### 3. Sistema de Enfriamiento")
 proc_opciones = {
-    "Básico (Celeron/Pentium/AMD A-Series/Athlon)": 5, 
-    "Core i3 / Ryzen 3": 15, 
-    "Core i5 / Ryzen 5": 30, 
-    "Core i7 / Ryzen 7": 70, 
-    "Core i9 / Ryzen 9": 120,
+    "Auto frost": 5, 
+    "No frost": 10,
 }
 seleccion = st.selectbox("Seleccione el Modelo:", list(proc_opciones.keys()), index=1)
 valor_procesador = proc_opciones[seleccion]
