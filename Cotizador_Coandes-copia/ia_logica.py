@@ -16,6 +16,7 @@ def analizar_con_ia(lista_imagenes, precio_base, tipo_producto):
             if hasattr(img_data, 'read'):
                 img_data.seek(0)
                 img = Image.open(img_data).convert('RGB')
+                img.thumbnail((800, 800)) 
                 imagenes_listas.append(img)
         
         prompt = f"""
