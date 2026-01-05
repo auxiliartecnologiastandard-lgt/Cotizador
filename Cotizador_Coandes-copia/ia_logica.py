@@ -7,15 +7,16 @@ def analizar_con_ia(lista_imagenes, precio_base, tipo_producto):
     try:
         genai.configure(api_key=st.secrets["GEMINI_KEY"])
         
-        # 1. Usamos la versión LITE (Más rápida y con más cuota disponible)
+        # 1. Usamos la versión 2.0 flash (Más rápida y con más cuota disponible)
         model = genai.GenerativeModel('gemini-2.0-flash') 
         
+        # 2. Codigo para cuando la IA reciba las imagenes
         imagenes_listas = []
         for img_data in lista_imagenes:
             if hasattr(img_data, 'read'):
                 img_data.seek(0)
                 img = Image.open(img_data).convert('RGB')
-                # 2. REDUCCIÓN DE IMAGEN: Fundamental para no agotar la cuota de tokens
+                # 2.1 REDUCCIÓN DE IMAGEN: Fundamental para no agotar la cuota de tokens
                 img.thumbnail((512, 512)) 
                 imagenes_listas.append(img)
         
