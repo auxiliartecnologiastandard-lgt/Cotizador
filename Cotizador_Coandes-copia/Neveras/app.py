@@ -68,12 +68,12 @@ ram_opciones = {
     "Haceb": 6,
     "Whirlpool": 7,
     "Electrolux": 8,
-    "Samsung":9,
-    "LG":10,
-    "Bosch":11,
-    "KitchenAid":12,
-    "Frigidaire / GE Profile":13,
-    "Sub-Zero / Monogram / Liebherr":14,
+    "Samsung": 9,
+    "LG": 10,
+    "Bosch": 11,
+    "KitchenAid": 12,
+    "Frigidaire / GE Profile": 13,
+    "Sub-Zero / Monogram / Liebherr": 14,
 }
 sel_ram = st.selectbox("Seleccione la marca:", list(ram_opciones.keys()), index=1)
 valor_ram = ram_opciones[sel_ram]
