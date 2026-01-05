@@ -119,38 +119,18 @@ if st.button("🚀 CALCULAR VALOR"):
     precio_base = modelo.predict(entrada)[0]
     
     # 3. Filtros de Realidad (Anclas de precio)
-# --- CÁLCULO FINAL CALIBRADO COANDES ---
-    if valor_procesador == 5: 
-        # Caso Celeron: Meta 100k. Bajamos factor y ponemos techo estricto.
-        precio_base = np.clip(precio_base * 0.40, 100000, 110000)
-        
-    elif valor_procesador == 15: 
-        # Caso i3 / Ryzen 3: Meta 120k-150k.
-        precio_base = np.clip(precio_base * 0.42, 110000, 150000)
-        
-    elif valor_procesador == 30:
-        if grafica > 0:
-            # Aquí combinamos el ajuste con la lógica de disco (SSD vs HDD)
-            # Usamos el valor_disco_ia para diferenciar el i5 del Ryzen 5
-            if valor_disco_ia > 300: # Si es un disco grande (HDD 1TB o SSD 500)
-                # Si el equipo es muy rápido (SSD), le damos el multiplicador del millón
-                # Si sospechamos que es HDD (por el valor de mercado), lo ajustamos hacia 700k
-                if "SSD" in valor_disco_ia or valor_ram > 8: 
-                    # El i5 10th entra aquí
-                    precio_base = precio_base * 1.10
-                else:
-                    # El Ryzen 5 con HDD entra aquí
-                    precio_base = precio_base * 0.75
-            else:
-                precio_base = precio_base * 0.85
+    if valor_procesador <= 5: 
+        precio_base = np.clip(precio_base * 0.30, 100000, 150000)
+    elif valor_procesador <= 15: 
+        precio_base = np.clip(precio_base * 0.40, 100000, 150000)
+    elif valor_procesador <= 30:
+            precio_base = precio_base * 0.88
+    elif valor_procesador <= 30:
+        if grafica > 0 and valor_disco_ia > 400: # Si es HDD 1TB o similar
+            precio_base = precio_base * 0.65
         else:
-            # i5 o Ryzen 5 de oficina (sin gráfica)
-            precio_base = min(precio_base, 500000)
-
-    elif valor_procesador >= 70:
-        # Gama alta i7/i9
-        precio_base = precio_base * 1.15
-
+            precio_base = precio_base * 1.10
+            
     # 4. Redondear precios
     precio_base_redondo = round(precio_base / 10000) * 10000
     precio_venta_redondo = round((precio_base_redondo * 1.4) / 10000) * 10000
