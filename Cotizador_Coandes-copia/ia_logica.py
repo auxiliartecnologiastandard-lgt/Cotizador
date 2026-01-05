@@ -8,7 +8,7 @@ def analizar_con_ia(lista_imagenes, precio_base, tipo_producto):
         genai.configure(api_key=st.secrets["GEMINI_KEY"])
         
         # 1. Usamos la versión LITE (Más rápida y con más cuota disponible)
-        model = genai.GenerativeModel('gemini-1.5-flash-8b') 
+        model = genai.GenerativeModel('gemini-2.0-flash') 
         
         imagenes_listas = []
         for img_data in lista_imagenes:
