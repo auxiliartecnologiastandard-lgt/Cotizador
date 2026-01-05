@@ -9,7 +9,7 @@ def analizar_con_ia(lista_imagenes, precio_base, tipo_producto):
         
         # USAMOS EL MODELO QUE TU CUENTA SÍ VE (Gemini 2.0 Flash)
         # Es mucho mejor que el 1.5 y está disponible para ti
-        model = genai.GenerativeModel('gemini-2.0-flash') 
+        model = genai.GenerativeModel('gemini-1.0-pro-vision') 
         
         imagenes_listas = []
         for img_data in lista_imagenes:
