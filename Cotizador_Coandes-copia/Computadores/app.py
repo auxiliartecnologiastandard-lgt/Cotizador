@@ -125,7 +125,7 @@ if st.button("🚀 CALCULAR VALOR"):
             precio_base = np.clip(precio_base * 0.60, 110000, 180000)
     elif valor_procesador <= 30:
             precio_base = precio_base * 0.88
-    elif valor_procesador >= 300:
+    elif valor_procesador >= 30:
             precio_base = precio_base * 1.35
 
     # 4. Redondear precios
