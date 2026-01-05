@@ -125,15 +125,6 @@ if st.button("🚀 CALCULAR VALOR"):
         precio_base = np.clip(precio_base * 0.40, 100000, 150000)
     elif valor_procesador <= 30:
             precio_base = precio_base * 0.88
-    elif valor_procesador <= 30:
-        # Si el modelo ya predice algo alto (como el i5), le damos el empujón final
-        if precio_base > 750000: 
-            precio_base = precio_base * 1.35
-        # Si predice algo intermedio (como el Ryzen 5), lo ajustamos a los 700k
-        elif precio_base > 500000:
-            precio_base = precio_base * 0.88
-        else:
-            precio_base = precio_base * 0.80
     
 
     # 4. Redondear precios
