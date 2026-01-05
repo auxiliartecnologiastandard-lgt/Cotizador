@@ -126,11 +126,11 @@ if st.button("🚀 CALCULAR VALOR"):
     elif valor_procesador <= 30:
             precio_base = precio_base * 0.88
     elif valor_procesador <= 30:
-        if grafica > 0 and valor_disco_ia > 400: # Si es HDD 1TB o similar
-            precio_base = precio_base * 0.65
-        else:
-            precio_base = precio_base * 1.10
-            
+        if grafica > 0 and valor_disco_ia < 400: # Filtra el SSD 500 del i5
+            precio_base = precio_base * 1.35
+        else: # El Ryzen 5 con HDD 1TB caerá aquí
+            precio_base = precio_base * 0.88
+
     # 4. Redondear precios
     precio_base_redondo = round(precio_base / 10000) * 10000
     precio_venta_redondo = round((precio_base_redondo * 1.4) / 10000) * 10000
