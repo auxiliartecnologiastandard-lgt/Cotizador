@@ -163,8 +163,6 @@ if st.button("🚀 CALCULAR VALOR"):
     # IMPORTANTE: Asegurar que el diccionario de peritaje exista siempre
     if "datos_peritaje" not in st.session_state:
         st.session_state.datos_peritaje = {"porcentaje": 0, "motivo": "", "listo": False}
-        
-    st.write("DEBUG: Iniciando cálculos...") 
 
     # --- LÓGICA DE LA IA ---
     # Buscamos en el session_state directamente, sin importar el toggle
