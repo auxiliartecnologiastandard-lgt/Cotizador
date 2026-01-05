@@ -119,15 +119,27 @@ if st.button("🚀 CALCULAR VALOR"):
     precio_base = modelo.predict(entrada)[0]
     
     # 3. Filtros de Realidad (Anclas de precio)
-    if valor_procesador <= 5: 
-        precio_base = np.clip(precio_base * 0.30, 100000, 150000)
-    elif valor_procesador <= 15: 
-        precio_base = np.clip(precio_base * 0.40, 100000, 150000)
-    elif valor_procesador <= 30:
-        if grafica > 0:
-            precio_base = precio_base * 1.35
-        else:
-             precio_base = precio_base * 0.88
+    if valor_procesador == 5: 
+            # Celeron: 110k (Perfecto)
+            precio_base = np.clip(precio_base * 0.50, 100000, 150000)
+            
+    elif valor_procesador == 15: 
+            # i3 / Ryzen 3: 150k (Aceptable)
+            precio_base = np.clip(precio_base * 0.42, 110000, 150000)
+            
+    elif valor_procesador == 30:
+            if grafica > 0:
+                if valor_disco_ia > 200: # Asumiendo que SSD 500 > 200
+                    # i5 10th (El de 1M): Bajamos el multiplicador de 1.35 a 1.10
+                    precio_base = precio_base * 1.10
+                else:
+                    # Ryzen 5 con HDD (El de 700k): Bajamos el multiplicador a 0.70
+                    precio_base = precio_base * 0.70
+            else:
+                precio_base = precio_base * 0.80
+
+    elif valor_procesador >= 70:
+            precio_base = precio_base * 1.10
 
     # 4. Redondear precios
     precio_base_redondo = round(precio_base / 10000) * 10000
