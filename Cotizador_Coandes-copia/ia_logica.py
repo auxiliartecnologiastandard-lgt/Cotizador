@@ -5,36 +5,45 @@ import json
 
 def analizar_con_ia(lista_imagenes, precio_base, tipo_producto):
     try:
-        # 1. Forzamos la configuración a la versión estable V1
-        genai.configure(api_key=st.secrets["GEMINI_KEY"], transport='rest')
+        genai.configure(api_key=st.secrets["GEMINI_KEY"])
         
-        # 2. Usamos el modelo más básico y compatible
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        # USAMOS EL MODELO QUE TU CUENTA SÍ VE (Gemini 2.0 Flash)
+        # Es mucho mejor que el 1.5 y está disponible para ti
+        model = genai.GenerativeModel('gemini-2.0-flash') 
         
         imagenes_listas = []
         for img_data in lista_imagenes:
             if hasattr(img_data, 'read'):
                 img_data.seek(0)
-                imagenes_listas.append(Image.open(img_data).convert('RGB'))
+                img = Image.open(img_data).convert('RGB')
+                imagenes_listas.append(img)
         
-        prompt = f"Analiza estas fotos de {tipo_producto}. Responde solo JSON: {{\"categoria\": \"LEVE\", \"porcentaje\": 0.1, \"motivo\": \"...\"}}"
+        prompt = f"""
+        Actúa como perito técnico. Analiza estas fotos de {tipo_producto}.
+        Detecta daños o estado de uso.
+        Responde exclusivamente en JSON:
+        {{
+            "categoria": "NUEVO, LEVE, MODERADO o GRAVE",
+            "porcentaje": 0.1,
+            "motivo": "razón del estado"
+        }}
+        """
 
-        # 3. Llamada con configuración de generación explícita
-        response = model.generate_content(
-            contents=[prompt] + imagenes_listas
-        )
+        # Generación de contenido
+        response = model.generate_content([prompt] + imagenes_listas)
 
-        # 4. Procesar con seguridad
+        # Procesamiento del JSON
         texto = response.text
         start = texto.find('{')
         end = texto.rfind('}') + 1
-        return {**json.loads(texto[start:end]), "exito": True}
+        datos = json.loads(texto[start:end])
+        
+        return {
+            "exito": True,
+            "categoria": datos.get("categoria", "MODERADO"),
+            "porcentaje": float(datos.get("porcentaje", 0)),
+            "motivo": datos.get("motivo", "Analizado con Gemini 2.0")
+        }
 
     except Exception as e:
-        # ESTO ES CLAVE: Si vuelve a fallar, vamos a pedirle a la API que nos diga
-        # qué modelos SÍ tiene permitidos tu cuenta.
-        modelos_disponibles = [m.name for m in genai.list_models()]
-        return {
-            "exito": False, 
-            "error": f"Error: {str(e)}. Modelos que ve tu cuenta: {modelos_disponibles}"
-        }
+        return {"exito": False, "error": f"Error con Gemini 2.0: {str(e)}"}
