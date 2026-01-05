@@ -63,6 +63,6 @@ with col3:
     if st.button("Motos (Próximamente)", use_container_width=True, disabled=True):
         pass
 
-with col4:
+with col1:
     if st.button("Oro (Próximamente)", use_container_width=True, disabled=True):
         pass
