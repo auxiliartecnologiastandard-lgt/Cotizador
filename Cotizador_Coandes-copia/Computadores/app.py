@@ -119,27 +119,37 @@ if st.button("🚀 CALCULAR VALOR"):
     precio_base = modelo.predict(entrada)[0]
     
     # 3. Filtros de Realidad (Anclas de precio)
+# --- CÁLCULO FINAL CALIBRADO COANDES ---
     if valor_procesador == 5: 
-            # Celeron: 110k (Perfecto)
-            precio_base = np.clip(precio_base * 0.50, 100000, 150000)
-            
+        # Caso Celeron: Meta 100k. Bajamos factor y ponemos techo estricto.
+        precio_base = np.clip(precio_base * 0.40, 100000, 110000)
+        
     elif valor_procesador == 15: 
-            # i3 / Ryzen 3: 150k (Aceptable)
-            precio_base = np.clip(precio_base * 0.42, 110000, 150000)
-            
+        # Caso i3 / Ryzen 3: Meta 120k-150k.
+        precio_base = np.clip(precio_base * 0.42, 110000, 150000)
+        
     elif valor_procesador == 30:
-            if grafica > 0:
-                if valor_disco_ia > 200: # Asumiendo que SSD 500 > 200
-                    # i5 10th (El de 1M): Bajamos el multiplicador de 1.35 a 1.10
+        if grafica > 0:
+            # Aquí combinamos el ajuste con la lógica de disco (SSD vs HDD)
+            # Usamos el valor_disco_ia para diferenciar el i5 del Ryzen 5
+            if valor_disco_ia > 300: # Si es un disco grande (HDD 1TB o SSD 500)
+                # Si el equipo es muy rápido (SSD), le damos el multiplicador del millón
+                # Si sospechamos que es HDD (por el valor de mercado), lo ajustamos hacia 700k
+                if "SSD" in valor_disco_ia or valor_ram > 8: 
+                    # El i5 10th entra aquí
                     precio_base = precio_base * 1.10
                 else:
-                    # Ryzen 5 con HDD (El de 700k): Bajamos el multiplicador a 0.70
-                    precio_base = precio_base * 0.70
+                    # El Ryzen 5 con HDD entra aquí
+                    precio_base = precio_base * 0.75
             else:
-                precio_base = precio_base * 0.80
+                precio_base = precio_base * 0.85
+        else:
+            # i5 o Ryzen 5 de oficina (sin gráfica)
+            precio_base = min(precio_base, 500000)
 
     elif valor_procesador >= 70:
-            precio_base = precio_base * 1.10
+        # Gama alta i7/i9
+        precio_base = precio_base * 1.15
 
     # 4. Redondear precios
     precio_base_redondo = round(precio_base / 10000) * 10000
