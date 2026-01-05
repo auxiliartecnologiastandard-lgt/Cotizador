@@ -124,10 +124,8 @@ if st.button("🚀 CALCULAR VALOR"):
         precio_base = max(100000, min(precio_base * 0.30, 150000))
     elif valor_procesador <= 15: 
         precio_base = max(100000, min(precio_base * 0.40, 150000))
-    elif valor_procesador < 30:
+    elif valor_procesador <= 30:
         precio_base = precio_base * 0.88
-    elif valor_procesador == 30:
-        precio_base = precio_base * 1.30
 
     # 4. Redondear precios
     precio_base_redondo = round(precio_base / 10000) * 10000
