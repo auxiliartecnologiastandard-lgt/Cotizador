@@ -8,15 +8,15 @@ from sklearn.ensemble import RandomForestRegressor
 base_path = os.path.dirname(os.path.abspath(__file__))
 
     # Construimos las rutas exactas
-ruta_csv = os.path.join(base_path, "datos_pcs.csv")
-ruta_modelo = os.path.join(base_path, "modelo_pcs.pkl")
+ruta_csv = os.path.join(base_path, "datos_nev.csv")
+ruta_modelo = os.path.join(base_path, "modelo_nev.pkl")
 
 print(f"--- Iniciando Entrenamiento ---")
 print(f"Buscando datos en: {ruta_csv}")
 
 # 2. CARGAR DATOS
 if not os.path.exists(ruta_csv):
-    print(f"❌ ERROR: No encuentro el archivo 'datos_pcs.csv' en {base_path}")
+    print(f"❌ ERROR: No encuentro el archivo 'datos_nev.csv' en {base_path}")
     print("Asegúrate de que el CSV esté en la misma carpeta que este script.")
 else:
     try:

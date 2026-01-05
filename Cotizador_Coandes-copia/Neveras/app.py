@@ -35,7 +35,7 @@ st.markdown(
 # Cargar el modelo
 try:
     # Busca el modelo dentro de la carpeta de la copia
-    ruta_modelo = "Cotizador_Coandes-copia/Neveras/modelo_pcs.pkl"
+    ruta_modelo = "Cotizador_Coandes-copia/Neveras/modelo_nev.pkl"
     modelo = joblib.load(ruta_modelo)
 
 except:
