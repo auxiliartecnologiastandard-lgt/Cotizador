@@ -113,7 +113,7 @@ grafica = 1 if tiene_grafica else 0
 st.divider()
 
 # --- CÁLCULO FINAL ---
-if st.button("🚀 CALCULAR VALOR"):
+if st.button("🗿 CALCULAR VALOR"):
     # 1. Ajuste de peso para que el disco no infle el precio en equipos básicos
     valor_disco_ia = valor_disco_final * 0.01 if valor_procesador <= 15 else valor_disco_final
     
