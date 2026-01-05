@@ -139,4 +139,3 @@ if st.button("🚀 CALCULAR VALOR"):
     
     st.success(f"### Precio Sugerido Venta: {v_venta}")
     st.info(f"### Oferta de Compra Coandes: {v_compra}")
-    st.print("Hola :D")
