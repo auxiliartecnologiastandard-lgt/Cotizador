@@ -46,7 +46,6 @@ if st.button("Volver al Menú Principal"):
     st.switch_page("Lobby.py")
 
 st.title("💻 Cotizador de computadores")
-st.markdown("---")
 
 # --- LÓGICA DE SINCRONIZACIÓN ---
 def sync_slider_to_num(key_slider, key_num):
@@ -122,11 +121,11 @@ if st.button("🚀 CALCULAR VALOR"):
     # 3. Filtros de Realidad (Anclas de precio)
     if valor_procesador <= 5: 
             precio_base = np.clip(precio_base * 0.50, 100000, 150000)
-    elif valor_procesador <= 20: 
+    elif valor_procesador <= 15: 
             precio_base = np.clip(precio_base * 0.60, 110000, 180000)
-    elif valor_procesador <= 35:
+    elif valor_procesador <= 30:
             precio_base = precio_base * 0.88
-    elif valor_procesador >= 40:
+    elif valor_procesador >= 300:
             precio_base = precio_base * 1.35
 
     # 4. Redondear precios
