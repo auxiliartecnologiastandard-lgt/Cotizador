@@ -57,7 +57,7 @@ def sync_num_to_slider(key_num, key_slider):
 
 # --- INTERFAZ ---
 
-# 1. MEMORIA RAM (Mapeada por potencia)
+# 1. Marca de la nevera (Mapeada por potencia)
 st.markdown("### 1. Marca")
 ram_opciones = {
     "Kalley": 1,
@@ -78,7 +78,7 @@ ram_opciones = {
 sel_ram = st.selectbox("Seleccione la marca:", list(ram_opciones.keys()), index=1)
 valor_ram = ram_opciones[sel_ram]
 
-# 2. ALMACENAMIENTO
+# 2. Rango de capacidad
 st.markdown("### 2. Rangos de Capacidad (Litros Brutos)")
 disco_dict = {
     "Mini / Compactas 40L-120L": 1,
@@ -96,7 +96,7 @@ if disco_dict[seleccion] == "OTRO":
 else:
     valor_disco_final = disco_dict[seleccion]
 
-# 3. PROCESADOR (Ahora mapeado del 1 al 5 según tu lista)
+# 3. Sistema de enfriamiento
 st.markdown("### 3. Sistema de Enfriamiento")
 proc_opciones = {
     "Auto frost": 5, 
@@ -105,7 +105,7 @@ proc_opciones = {
 seleccion = st.selectbox("Seleccione el Sistema de Enfriamientoelo:", list(proc_opciones.keys()), index=1)
 valor_procesador = proc_opciones[seleccion]
 
-# 4. GRÁFICA
+# 4. Esto hay que borrarlo
 st.markdown("### 4. Potencia Gráfica")
 tiene_grafica = st.checkbox("¿Tiene Tarjeta de Video Dedicada? (Nvidia/Radeon)", value=False)
 grafica = 1 if tiene_grafica else 0
