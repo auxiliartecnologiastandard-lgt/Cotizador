@@ -136,4 +136,4 @@ if st.button("🚀 CALCULAR VALOR"):
     v_venta = f"${precio_venta_redondo:,.0f}".replace(",", ".")
     v_compra = f"${precio_base_redondo:,.0f}".replace(",", ".")
     
-    st.info(f"### Oferta de Compra Coandes: {v_compra}")
+    st.info(f"### Oferta de Compraventa: {v_compra}")
