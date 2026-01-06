@@ -24,7 +24,7 @@ else:
         
         # 3. ENTRENAMIENTO (Asegúrate de que estas columnas existan en tu CSV)
         # Ajusta los nombres de las columnas si son diferentes en tu archivo
-        X = df[['ram', 'disco', 'procesador', 'grafica']] 
+        X = df[['ram', 'disco', 'procesador']] 
         y = df['precio_venta']
 
         modelo = RandomForestRegressor(n_estimators=100, random_state=42)
