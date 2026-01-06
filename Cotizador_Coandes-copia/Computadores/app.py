@@ -87,10 +87,12 @@ seleccion = st.selectbox("Seleccione capacidad o elija 'Otro':", list(disco_dict
 if disco_dict[seleccion] == "OTRO":
     Valor_Usuario = st.number_input("Escriba el valor exacto en GB:", min_value=1, max_value=10000)
     # Ancla de realidad para ajustar el precio
-    if Valor_Usuario  >= 128 and Valor_Usuario  < 256:
+    if Valor_Usuario  >= 110 and Valor_Usuario  < 256:
             valor_disco_final = 128
-    elif Valor_Usuario  >= 256 and Valor_Usuario  < 512:
+    elif Valor_Usuario  >= 256 and Valor_Usuario  < 500:
             valor_disco_final = 256
+    elif Valor_Usuario  >= 500 and Valor_Usuario  < 512:
+            valor_disco_final = 512
     elif Valor_Usuario > 512:
             valor_disco_final = Valor_Usuario
     
