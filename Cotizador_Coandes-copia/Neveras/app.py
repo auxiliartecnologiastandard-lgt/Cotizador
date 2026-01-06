@@ -106,6 +106,7 @@ SE_opciones = {
 seleccion = st.selectbox("Seleccione el Sistema de Enfriamientoelo:", list(SE_opciones.keys()), index=1)
 valor_Sistema_de_enfriamiento = SE_opciones[seleccion]
 
+st.divider()
 
 # --- CÁLCULO FINAL ---
 if st.button("🗿 CALCULAR VALOR"):
