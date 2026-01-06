@@ -87,7 +87,7 @@ seleccion = st.selectbox("Seleccione capacidad o elija 'Otro':", list(disco_dict
 if disco_dict[seleccion] == "OTRO":
     Valor_Usuario = st.number_input("Escriba el valor exacto en GB:", min_value=1, max_value=10000)
     # Ancla de realidad para ajustar el precio
-    if Valor_Usuario  >= 110 and Valor_Usuario  < 256:
+    if Valor_Usuario  >= 1 and Valor_Usuario  < 256:
             valor_disco_final = 128
     elif Valor_Usuario  >= 256 and Valor_Usuario  < 500:
             valor_disco_final = 256
@@ -134,7 +134,11 @@ if st.button("🚀 CALCULAR VALOR"):
     elif valor_procesador <= 15: 
         precio_base = np.clip(precio_base * 0.38, 100000, 150000)
     elif valor_procesador <= 30:
-            precio_base = precio_base * 0.88
+        precio_base = precio_base * 0.88
+    # ANCLA DE RAM (Sujeta a pruebas)
+    if valor_ram < 16:
+        precio_base = precio_base * 0.1
+
 
     # 4. Redondear precios
     precio_base_redondo = round(precio_base / 10000) * 10000
