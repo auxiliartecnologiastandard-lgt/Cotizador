@@ -135,9 +135,6 @@ if st.button("🚀 CALCULAR VALOR"):
         precio_base = np.clip(precio_base * 0.38, 100000, 150000)
     elif valor_procesador <= 30:
         precio_base = precio_base * 0.88
-    # ANCLA DE RAM (Sujeta a pruebas)
-    if valor_ram < 16:
-        precio_base = precio_base * 0.1
 
 
     # 4. Redondear precios
