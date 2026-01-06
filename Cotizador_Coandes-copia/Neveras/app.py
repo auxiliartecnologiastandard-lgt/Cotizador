@@ -59,7 +59,7 @@ def sync_num_to_slider(key_num, key_slider):
 
 # 1. Marca de la nevera (Mapeada por potencia)
 st.markdown("### 1. Marca")
-ram_opciones = {
+Marca_opciones = {
     "Kalley": 1,
     "Indurama": 2,
     "Challenger": 3,
@@ -75,12 +75,12 @@ ram_opciones = {
     "Frigidaire / GE Profile": 13,
     "Sub-Zero / Monogram / Liebherr": 14,
 }
-sel_ram = st.selectbox("Seleccione la marca:", list(ram_opciones.keys()), index=1)
-valor_ram = ram_opciones[sel_ram]
+sel_marca = st.selectbox("Seleccione la marca:", list(Marca_opciones.keys()), index=1)
+valor_marca = Marca_opciones[sel_marca]
 
 # 2. Rango de capacidad
 st.markdown("### 2. Rangos de Capacidad (Litros Brutos)")
-disco_dict = {
+Litro_dict = {
     "Mini / Compactas 40L-120L": 1,
     "Pequeñas 120L-250L": 2,
     "Medianas 250L-450L": 3,
@@ -88,22 +88,22 @@ disco_dict = {
     "Otro (Escribir valor... )": "OTRO"
 }
 
-seleccion = st.selectbox("Seleccione el rango de capacidad o elija 'Otro':", list(disco_dict.keys()), index=1)
+seleccion = st.selectbox("Seleccione el rango de capacidad o elija 'Otro':", list(Litro_dict.keys()), index=1)
     # Si elige 'Otro', mostramos un campo de entrada numérica
-if disco_dict[seleccion] == "OTRO":
-    valor_disco_final = st.number_input("Escriba el valor exacto en L:", min_value=1, max_value=10000)
+if Litro_dict[seleccion] == "OTRO":
+    valor_litro_final = st.number_input("Escriba el valor exacto en L:", min_value=1, max_value=10000)
 
 else:
-    valor_disco_final = disco_dict[seleccion]
+    valor_litro_final = Litro_dict[seleccion]
 
 # 3. Sistema de enfriamiento
 st.markdown("### 3. Sistema de Enfriamiento")
-proc_opciones = {
+SI_opciones = {
     "Auto frost": 5, 
     "No frost": 10,
 }
-seleccion = st.selectbox("Seleccione el Sistema de Enfriamientoelo:", list(proc_opciones.keys()), index=1)
-valor_procesador = proc_opciones[seleccion]
+seleccion = st.selectbox("Seleccione el Sistema de Enfriamientoelo:", list(SI_opciones.keys()), index=1)
+valor_Sistema_de_enfriamiento = SI_opciones[seleccion]
 
 # 4. Esto hay que borrarlo
 st.markdown("### 4. Potencia Gráfica")
@@ -115,19 +115,11 @@ st.divider()
 # --- CÁLCULO FINAL ---
 if st.button("🗿 CALCULAR VALOR"):
     # 1. Ajuste de peso para que el disco no infle el precio en equipos básicos
-    valor_disco_ia = valor_disco_final * 0.01 if valor_procesador <= 15 else valor_disco_final
+    valor_litro_ia = valor_litro_final * 0.01 if valor_Sistema_de_enfriamiento <= 15 else valor_litro_final
     
     # 2. Predicción
-    entrada = np.array([[valor_ram, valor_disco_ia, valor_procesador, grafica]])
+    entrada = np.array([[valor_marca, valor_litro_ia, valor_Sistema_de_enfriamiento, grafica]])
     precio_base = modelo.predict(entrada)[0]
-    
-    # 3. Filtros de Realidad (Anclas de precio)
-    if valor_procesador == 5: 
-        precio_base = min(precio_base, 100000)
-    elif valor_procesador == 15: 
-        precio_base = min(precio_base, 150000)
-    elif valor_procesador == 30 and grafica == 0:
-        precio_base = min(precio_base, 500000)
 
     # 4. Redondear precios
     precio_base_redondo = round(precio_base / 10000) * 10000
