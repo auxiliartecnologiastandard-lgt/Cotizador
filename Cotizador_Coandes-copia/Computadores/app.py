@@ -61,7 +61,7 @@ st.markdown("### 1. Memoria RAM")
 ram_opciones = {
     "2 GB (Cantidad minima)": 2,
     "4 GB (Uso básico)": 4,
-    "6 GB (Uso de hogar)": 6,
+    "5 / 6 GB (Uso de hogar)": 6,
     "8 GB (Estándar/Oficina)": 7,
     "12 GB (Multitarea fluida)": 12,
     "16 GB (Diseño/Gaming)": 16,
@@ -114,7 +114,7 @@ valor_procesador = proc_opciones[seleccion]
 # 4. GRÁFICA
 st.markdown("### 4. Potencia Gráfica")
 tiene_grafica = st.checkbox("¿Tiene Tarjeta de Video Dedicada? (Nvidia/Radeon)", value=False)
-grafica = 1 if tiene_grafica else 0
+grafica = 2 if tiene_grafica else 0
 
 st.divider()
 
