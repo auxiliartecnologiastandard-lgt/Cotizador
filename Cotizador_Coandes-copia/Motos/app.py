@@ -38,4 +38,4 @@ if st.button("⬅  Volver al Menú Principal"):
 
     st.title("🛵 Cotizador de motos")
     st.divider()
-    st.title("🛑 PAGINA AUN EN DESARROLLO")
+    st.warning("🛑 PAGINA AUN EN DESARROLLO")
