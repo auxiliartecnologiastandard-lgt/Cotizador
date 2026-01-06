@@ -114,7 +114,7 @@ valor_procesador = proc_opciones[seleccion]
 # 4. GRÁFICA
 st.markdown("### 4. Potencia Gráfica")
 tiene_grafica = st.checkbox("¿Tiene Tarjeta de Video Dedicada? (Nvidia/Radeon)", value=False)
-grafica = 2 if tiene_grafica else 0
+grafica = 1 if tiene_grafica else 0
 
 st.divider()
 
