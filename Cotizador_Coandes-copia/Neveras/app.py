@@ -98,12 +98,12 @@ else:
 
 # 3. Sistema de enfriamiento
 st.markdown("### 3. Sistema de Enfriamiento")
-SI_opciones = {
+SE_opciones = {
     "Auto frost": 5, 
     "No frost": 10,
 }
-seleccion = st.selectbox("Seleccione el Sistema de Enfriamientoelo:", list(SI_opciones.keys()), index=1)
-valor_Sistema_de_enfriamiento = SI_opciones[seleccion]
+seleccion = st.selectbox("Seleccione el Sistema de Enfriamientoelo:", list(SE_opciones.keys()), index=1)
+valor_Sistema_de_enfriamiento = SE_opciones[seleccion]
 
 
 # --- CÁLCULO FINAL ---
