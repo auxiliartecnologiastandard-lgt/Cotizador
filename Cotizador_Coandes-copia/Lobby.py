@@ -60,9 +60,11 @@ with col2:
         st.switch_page("pages/Nev.py")
 
 with col3:
-    if st.button("🛵 Motos", use_container_width=True):
+    if st.button("Motos (Próximamente)", use_container_width=True, disabled=True):
+        pass
         st.switch_page("pages/Mot.py")
 
 with col1:
-    if st.button("🥇 Oro", use_container_width=True):
+    if st.button("Oro (Próximamente)", use_container_width=True, disabled=True):
+        pass
         st.switch_page("pages/Oro.py")
