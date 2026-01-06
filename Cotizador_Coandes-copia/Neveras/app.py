@@ -105,12 +105,6 @@ SI_opciones = {
 seleccion = st.selectbox("Seleccione el Sistema de Enfriamientoelo:", list(SI_opciones.keys()), index=1)
 valor_Sistema_de_enfriamiento = SI_opciones[seleccion]
 
-# 4. Esto hay que borrarlo
-st.markdown("### 4. Potencia Gráfica")
-tiene_grafica = st.checkbox("¿Tiene Tarjeta de Video Dedicada? (Nvidia/Radeon)", value=False)
-grafica = 1 if tiene_grafica else 0
-
-st.divider()
 
 # --- CÁLCULO FINAL ---
 if st.button("🗿 CALCULAR VALOR"):
@@ -118,7 +112,7 @@ if st.button("🗿 CALCULAR VALOR"):
     valor_litro_ia = valor_litro_final * 0.01 if valor_Sistema_de_enfriamiento <= 15 else valor_litro_final
     
     # 2. Predicción
-    entrada = np.array([[valor_marca, valor_litro_ia, valor_Sistema_de_enfriamiento, grafica]])
+    entrada = np.array([[valor_marca, valor_litro_ia, valor_Sistema_de_enfriamiento]])
     precio_base = modelo.predict(entrada)[0]
 
     # 4. Redondear precios
