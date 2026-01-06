@@ -123,7 +123,7 @@ if st.button("🚀 CALCULAR VALOR"):
     if valor_procesador <= 5: 
         precio_base = np.clip(precio_base * 0.25, 100000, 150000)
     elif valor_procesador <= 15: 
-        precio_base = np.clip(precio_base * 0.35, 100000, 150000)
+        precio_base = np.clip(precio_base * 0.38, 100000, 150000)
     elif valor_procesador <= 30:
             precio_base = precio_base * 0.88
     
