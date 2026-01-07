@@ -122,9 +122,10 @@ st.divider()
 if st.button("🚀 CALCULAR VALOR"):
     
     # 1. Ajuste de peso para que el disco no infle el precio en equipos básicos
+    valor_disco_ia = valor_disco_final * 0.01 if valor_procesador <= 15 else valor_disco_final
     
     # 2. Predicción
-    entrada = np.array([[valor_ram, valor_disco_final, valor_procesador, grafica]])
+    entrada = np.array([[valor_ram, valor_disco_ia, valor_procesador, grafica]])
     precio_base = modelo.predict(entrada)[0]
     
     # 3. Filtros de Realidad (Anclas de precio)
@@ -135,8 +136,6 @@ if st.button("🚀 CALCULAR VALOR"):
         precio_base = np.clip(precio_base * 0.38, 100000, 150000)
     elif valor_procesador <= 30:
         precio_base = precio_base * 0.88
-    elif valor_procesador == 30 & valor_disco_final >= 1024: 
-        precio_base = np.clip(precio_base * 0.38, 100000, 150000)
 
 
     # 4. Redondear precios
