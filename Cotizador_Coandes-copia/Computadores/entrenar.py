@@ -26,7 +26,7 @@ else:
         X = df[["marca", 'ram', 'disco', 'procesador', 'grafica']] 
         y = df['precio_venta']
 
-        modelo = RandomForestRegressor(n_estimators=100, random_state=42)
+        modelo = RandomForestRegressor(n_estimators=300, random_state=42)
         modelo.fit(X, y)
 
         # 4. GUARDAR EL CEREBRO
