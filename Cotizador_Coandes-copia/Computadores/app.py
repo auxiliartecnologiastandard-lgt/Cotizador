@@ -129,6 +129,8 @@ if st.button("🚀 CALCULAR VALOR"):
     precio_base = modelo.predict(entrada)[0]
     
     # 3. Filtros de Realidad (Anclas de precio)
+    if valor_ram <= 5: 
+        precio_base = precio_base * 1.5
     if valor_procesador <= 5: 
         precio_base = np.clip(precio_base * 0.25, 100000, 150000)
     elif valor_procesador <= 15: 
