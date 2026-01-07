@@ -72,11 +72,11 @@ marca_opciones = {
     "Apple": 11,
     
 }
-sel_ram = st.selectbox("Seleccione capacidad de RAM:", list(marca_opciones.keys()), index=1)
-valor_marca = marca_opciones
+sel_marca = st.selectbox("Seleccione la marca del equipo:", list(marca_opciones.keys()), index=1)
+valor_marca = marca_opciones[sel_marca]
 
 # 2. MEMORIA RAM (Mapeada por potencia)
-st.markdown("### 1. Memoria RAM")
+st.markdown("### 2. Memoria RAM")
 ram_opciones = {
     "2 GB (Cantidad minima)": 2,
     "4 GB (Uso básico)": 4,
@@ -91,7 +91,7 @@ sel_ram = st.selectbox("Seleccione capacidad de RAM:", list(ram_opciones.keys())
 valor_ram = ram_opciones[sel_ram]
 
 # 3. ALMACENAMIENTO
-st.markdown("### 2. Capacidad de Almacenamiento (GB)")
+st.markdown("### 3. Capacidad de Almacenamiento (GB)")
 disco_dict = {
     "128 GB": 128,
     "256 GB": 256,
@@ -109,7 +109,7 @@ else:
     valor_disco_final = disco_dict[seleccion]
 
 # 4. PROCESADOR (Ahora mapeado del 1 al 5 según tu lista)
-st.markdown("### 3. Procesador")
+st.markdown("### 4. Procesador")
 proc_opciones = {
     "Básico (Celeron/Pentium/AMD A-Series/Athlon)": 5, 
     "Core i3 / Ryzen 3": 15, 
@@ -121,7 +121,7 @@ seleccion = st.selectbox("Seleccione el Modelo:", list(proc_opciones.keys()), in
 valor_procesador = proc_opciones[seleccion]
 
 # 5. GRÁFICA
-st.markdown("### 4. Potencia Gráfica")
+st.markdown("### 5. Potencia Gráfica")
 tiene_grafica = st.checkbox("¿Tiene Tarjeta de Video Dedicada? (Nvidia/Radeon)", value=False)
 grafica = 1 if tiene_grafica else 0
 
