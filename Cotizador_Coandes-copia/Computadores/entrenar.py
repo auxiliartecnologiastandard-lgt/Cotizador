@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import joblib
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.neighbors import KNeighborsRegressor
 
 # 1. LOCALIZAR CARPETAS (La forma más segura)
 # Esto busca la carpeta donde está guardado este archivo entrenar.py
@@ -26,11 +26,11 @@ else:
         X = df[["marca", 'ram', 'disco', 'procesador', 'grafica']] 
         y = df['precio_venta']
 
-        modelo = RandomForestRegressor(n_estimators=100, random_state=42)
-        modelo.fit(X, y)
+        modelo_ia = KNeighborsRegressor(n_neighbors=10)
+        modelo_ia.fit(X, y)
 
         # 4. GUARDAR EL CEREBRO
-        joblib.dump(modelo, ruta_modelo)
+        joblib.dump(modelo_ia, ruta_modelo)
         
         print(f"✅ ¡ÉXITO! IA entrenada.")
         print(f"Modelo guardado en: {ruta_modelo}")
