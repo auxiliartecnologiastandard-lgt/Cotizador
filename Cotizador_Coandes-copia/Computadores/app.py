@@ -56,7 +56,26 @@ def sync_num_to_slider(key_num, key_slider):
 
 # --- INTERFAZ ---
 
-# 1. MEMORIA RAM (Mapeada por potencia)
+# 1. Marca
+st.markdown("### 1. Marca del equipo")
+marca_opciones = {
+    "WINDOWS": 1,
+    "Koorui": 2,
+    "Acer": 3,
+    "Hewlettpacka": 4,
+    "VICTUS": 5,
+    "Asus": 6,
+    "SONY": 7,
+    "Samsung": 8,
+    "Dell": 9,
+    "LENOVO": 10,
+    "Apple": 11,
+    
+}
+sel_ram = st.selectbox("Seleccione capacidad de RAM:", list(marca_opciones.keys()), index=1)
+valor_marca = marca_opciones
+
+# 2. MEMORIA RAM (Mapeada por potencia)
 st.markdown("### 1. Memoria RAM")
 ram_opciones = {
     "2 GB (Cantidad minima)": 2,
@@ -71,7 +90,7 @@ ram_opciones = {
 sel_ram = st.selectbox("Seleccione capacidad de RAM:", list(ram_opciones.keys()), index=1)
 valor_ram = ram_opciones[sel_ram]
 
-# 2. ALMACENAMIENTO
+# 3. ALMACENAMIENTO
 st.markdown("### 2. Capacidad de Almacenamiento (GB)")
 disco_dict = {
     "128 GB": 128,
@@ -85,21 +104,11 @@ disco_dict = {
 seleccion = st.selectbox("Seleccione capacidad o elija 'Otro':", list(disco_dict.keys()), index=1)
     # Si elige 'Otro', mostramos un campo de entrada numérica
 if disco_dict[seleccion] == "OTRO":
-    Valor_Usuario = st.number_input("Escriba el valor exacto en GB:", min_value=1, max_value=10000)
-    # Ancla de realidad para ajustar el precio
-    if Valor_Usuario  >= 1 and Valor_Usuario  < 256:
-            valor_disco_final = 128
-    elif Valor_Usuario  >= 256 and Valor_Usuario  < 500:
-            valor_disco_final = 256
-    elif Valor_Usuario  >= 500 and Valor_Usuario  < 512:
-            valor_disco_final = 512
-    elif Valor_Usuario > 512:
-            valor_disco_final = Valor_Usuario
-    
+    valor_disco_final = st.number_input("Escriba el valor exacto en GB:", min_value=1, max_value=10000)
 else:
     valor_disco_final = disco_dict[seleccion]
 
-# 3. PROCESADOR (Ahora mapeado del 1 al 5 según tu lista)
+# 4. PROCESADOR (Ahora mapeado del 1 al 5 según tu lista)
 st.markdown("### 3. Procesador")
 proc_opciones = {
     "Básico (Celeron/Pentium/AMD A-Series/Athlon)": 5, 
@@ -111,7 +120,7 @@ proc_opciones = {
 seleccion = st.selectbox("Seleccione el Modelo:", list(proc_opciones.keys()), index=1)
 valor_procesador = proc_opciones[seleccion]
 
-# 4. GRÁFICA
+# 5. GRÁFICA
 st.markdown("### 4. Potencia Gráfica")
 tiene_grafica = st.checkbox("¿Tiene Tarjeta de Video Dedicada? (Nvidia/Radeon)", value=False)
 grafica = 1 if tiene_grafica else 0
@@ -125,17 +134,10 @@ if st.button("🚀 CALCULAR VALOR"):
     valor_disco_ia = valor_disco_final * 0.01 if valor_procesador <= 15 else valor_disco_final
     
     # 2. Predicción
-    entrada = np.array([[valor_ram, valor_disco_ia, valor_procesador, grafica]])
+    entrada = np.array([[valor_marca, valor_ram, valor_disco_ia, valor_procesador, grafica]])
     precio_base = modelo.predict(entrada)[0]
     
-    # 3. Filtros de Realidad (Anclas de precio)
 
-    if valor_procesador <= 5: 
-        precio_base = np.clip(precio_base * 0.25, 100000, 150000)
-    elif valor_procesador <= 15: 
-        precio_base = np.clip(precio_base * 0.38, 100000, 150000)
-    elif valor_procesador <= 30:
-        precio_base = precio_base * 0.88
 
 
     # 4. Redondear precios

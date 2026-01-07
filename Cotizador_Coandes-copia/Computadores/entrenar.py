@@ -23,7 +23,7 @@ else:
         df = pd.read_csv(ruta_csv)
         
         # 3. ENTRENAMIENTO (Asegúrate de que estas columnas existan en tu CSV)
-        X = df[['ram', 'disco', 'procesador', 'grafica']] 
+        X = df[["marca", 'ram', 'disco', 'procesador', 'grafica']] 
         y = df['precio_venta']
 
         modelo = RandomForestRegressor(n_estimators=100, random_state=42)
