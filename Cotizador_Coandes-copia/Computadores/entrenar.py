@@ -26,7 +26,7 @@ else:
         X = df[["marca", 'ram', 'disco', 'procesador', 'grafica']] 
         y = df['precio_venta']
 
-        modelo_ia = KNeighborsRegressor(n_neighbors=10)
+        modelo_ia = KNeighborsRegressor(n_neighbors=3)
         modelo_ia.fit(X, y)
 
         # 4. GUARDAR EL CEREBRO
