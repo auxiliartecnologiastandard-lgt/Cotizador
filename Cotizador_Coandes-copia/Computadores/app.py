@@ -61,10 +61,10 @@ st.markdown("### 1. Marca del equipo")
 marca_opciones = {
     "WINDOWS": 1,
     "Koorui": 2,
-    "Acer": 6,
+    "Acer": 3,
     "Hewlettpacka": 4,
     "VICTUS": 5,
-    "Asus": 3,
+    "Asus": 6,
     "SONY": 7,
     "Samsung": 8,
     "Dell": 9,
