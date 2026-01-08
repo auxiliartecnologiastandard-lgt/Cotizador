@@ -152,13 +152,12 @@ if st.button("🚀 CALCULAR VALOR"):
         precio_base = np.clip(precio_base * 0.25, 100000, 150000)
     # 3.1 Ancla para el los procesadores I3 
     elif valor_procesador <= 15:
-        if valor_ram >= 7 or valor_disco_ia >= 480:
-            precio_base = np.clip(precio_base * 1.1, 300000, 700000)
-        elif valor_ram >= 4 and valor_disco_ia >= 240:
-            precio_base = np.clip(precio_base * 0.90, 200000, 450000)
+        if valor_ram >= 8 or valor_disco_ia >= 480 or precio_base > 500000:
+            precio_base = np.clip(precio_base * 1.05, 380000, 650000)
+        elif valor_ram >= 4 and precio_base > 250000:
+            precio_base = np.clip(precio_base * 0.90, 220000, 370000)
         else:
-            precio_base = np.clip(precio_base * 0.75, 120000, 250000)    
-
+            precio_base = np.clip(precio_base * 0.80, 110000, 210000)
     elif valor_procesador <= 30:
         precio_base = precio_base * 0.88
 
