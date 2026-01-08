@@ -155,11 +155,11 @@ if st.button("🚀 CALCULAR VALOR"):
         if valor_ram >= 7:
             precio_base = np.clip(precio_base * 1.05, 300000, 480000)
         elif valor_ram >= 4 and valor_disco_ia >= 900:
-            precio_base = np.clip(precio_base * 0.9, 290000, 620000)
-        elif valor_disco_ia >= 480 or precio_base > 380000:
+            precio_base = np.clip(precio_base * 0.90, 260000, 420000)
+        elif valor_ram >= 4 and precio_base > 460000:
             precio_base = np.clip(precio_base * 1.0, 300000, 620000)
         else:
-            precio_base = np.clip(precio_base * 0.35, 120000, 190000)
+            precio_base = np.clip(precio_base * 0.35, 120000, 210000)
 
     elif valor_procesador <= 30:
         precio_base = precio_base * 0.88
