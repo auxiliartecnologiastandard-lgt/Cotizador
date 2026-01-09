@@ -6,7 +6,7 @@ import numpy as np
 # ELIMINAR BARRA LATERAL
 st.set_page_config(
     page_title="Cotizador Coandes",
-    initial_sidebar_state="collapsed" # Esto la cierra al cargar
+    initial_sidebar_state="collapsed"
 )
 
 st.markdown(
@@ -34,14 +34,14 @@ st.markdown(
 
 # Cargar el modelo
 try:
-    # Busca el modelo dentro de la carpeta de la copia
+    # Busca el modelo dentro de la carpeta
     ruta_modelo = "Cotizador_Coandes-copia/Computadores/modelo_pcs.pkl"
     modelo = joblib.load(ruta_modelo)
 
 except:
     st.error("⚠️ No se encontró el modelo. Ejecuta 'py Computadores/entrenar.py' primero.")
 
-# Busca el botón de volver en tu app.py y ajusta la ruta así:
+# Botón volver
 if st.button("⬅  Volver al Menú Principal"):
     st.switch_page("Lobby.py")
 
@@ -75,7 +75,7 @@ marca_opciones = {
 sel_marca = st.selectbox("Seleccione la marca del equipo:", list(marca_opciones.keys()), index=1)
 valor_marca = marca_opciones[sel_marca]
 
-# 2. MEMORIA RAM (Mapeada por potencia)
+# 2. Memoria RAM (Mapeada por potencia)
 st.markdown("### 2. Memoria RAM")
 ram_opciones = {
     "2 GB (Cantidad minima)": 2,
@@ -90,7 +90,7 @@ ram_opciones = {
 sel_ram = st.selectbox("Seleccione capacidad de RAM:", list(ram_opciones.keys()), index=1)
 valor_ram = ram_opciones[sel_ram]
 
-# 3. ALMACENAMIENTO
+# 3. Almacenamiento
 st.markdown("### 3. Capacidad de Almacenamiento (GB)")
 disco_dict = {
     "128 GB": 128,
@@ -118,7 +118,7 @@ if disco_dict[seleccion] == "OTRO":
 else:
     valor_disco_final = disco_dict[seleccion]
 
-# 4. PROCESADOR (Ahora mapeado del 1 al 5 según tu lista)
+# 4. Procesador
 st.markdown("### 4. Procesador")
 proc_opciones = {
     "Básico (Celeron/Pentium/AMD A-Series/Athlon)": 5, 
@@ -130,7 +130,7 @@ proc_opciones = {
 seleccion = st.selectbox("Seleccione el Modelo:", list(proc_opciones.keys()), index=1)
 valor_procesador = proc_opciones[seleccion]
 
-# 5. GRÁFICA
+# 5. Gráfica
 st.markdown("### 5. Potencia Gráfica")
 tiene_grafica = st.checkbox("¿Tiene Tarjeta de Video Dedicada? (Nvidia/Radeon)", value=False)
 grafica = 1 if tiene_grafica else 0
@@ -174,4 +174,5 @@ if st.button("🚀 CALCULAR VALOR"):
     v_venta = f"${precio_venta_redondo:,.0f}".replace(",", ".")
     v_compra = f"${precio_base_redondo:,.0f}".replace(",", ".")
     
+    #st.success(f"### Precio Sugerido Venta: {v_venta}")
     st.info(f"### Oferta de Compraventa: {v_compra}")

@@ -7,8 +7,7 @@ st.set_page_config(page_title="Cotizador Coandes", initial_sidebar_state="collap
 # Ocultar barra lateral
 st.markdown("<style>[data-testid='stSidebar']{display:none;}</style>", unsafe_allow_html=True)
 
-# 2. RUTA EXACTA (Basada en tu diagnóstico)
-# El archivo está en: Cotizador_Coandes-copia/Computadores/app.py
+# 2. RUTA EXACTA
 ruta_archivo = os.path.join("Cotizador_Coandes-copia", "Neveras", "app.py")
 
 if os.path.exists(ruta_archivo):

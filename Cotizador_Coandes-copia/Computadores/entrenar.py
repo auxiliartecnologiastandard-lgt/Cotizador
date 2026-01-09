@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 from sklearn.ensemble import RandomForestRegressor
 
-# 1. LOCALIZAR CARPETAS (La forma más segura)
+# 1. LOCALIZAR CARPETAS
 # Esto busca la carpeta donde está guardado este archivo entrenar.py
 base_path = os.path.dirname(os.path.abspath(__file__))
 
