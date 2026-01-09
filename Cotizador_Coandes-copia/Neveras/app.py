@@ -125,3 +125,30 @@ if st.button("🗿 CALCULAR VALOR"):
     v_compra = f"${precio_base_redondo:,.0f}".replace(",", ".")
 
     st.info(f"### Oferta de Compraventa: {v_compra}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if v_compra >= 300000:
+        v_compra = 100000000000
+    else: st.info(f"### HOLA MUCHO GUSTO")
