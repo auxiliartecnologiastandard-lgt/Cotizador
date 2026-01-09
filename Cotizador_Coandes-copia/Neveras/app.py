@@ -110,11 +110,10 @@ st.divider()
 
 # --- CÁLCULO FINAL ---
 if st.button("🗿 CALCULAR VALOR"):
-    # 1. Ajuste de peso para que el disco no infle el precio en equipos básicos
-    valor_litro_ia = valor_litro_final * 0.01 if valor_Sistema_de_enfriamiento <= 15 else valor_litro_final
+
     
     # 2. Predicción
-    entrada = np.array([[valor_marca, valor_litro_ia, valor_Sistema_de_enfriamiento]])
+    entrada = np.array([[valor_marca, valor_litro_final, valor_Sistema_de_enfriamiento]])
     precio_base = modelo.predict(entrada)[0]
 
     # 4. Redondear precios
