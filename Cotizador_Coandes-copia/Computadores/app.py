@@ -166,6 +166,9 @@ if st.button("🚀 CALCULAR VALOR"):
     elif valor_procesador <= 30:
         precio_base = precio_base * 0.88
         precio_base = precio_base * 1.10
+    # 3.3 Ancla de los procesadores I5
+    elif valor_procesador <= 70:
+        precio_base = precio_base * 1.08
 
     # 4. Redondear precios
     precio_base_redondo = round(precio_base / 10000) * 10000
