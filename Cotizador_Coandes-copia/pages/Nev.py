@@ -1,16 +1,6 @@
 import streamlit as st
 import os
 
-st.markdown(
-    """
-    <style>
-    .stApp {
-        background-color: #F0F2F6;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 # 1. Configuración de pantalla
 st.set_page_config(page_title="Cotizador Coandes", initial_sidebar_state="collapsed")
 
