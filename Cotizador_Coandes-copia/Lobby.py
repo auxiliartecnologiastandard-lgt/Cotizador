@@ -45,7 +45,7 @@ if os.path.exists(ruta_logo):
         st.image(ruta_logo, width=200)
 with col_der:
     st.title("Sistema de Cotización Inteligente")
-    st.write("Bienvenido. Selecciona una categoría para empezar:")
+    st.write("Bienvenido/a. Selecciona una categoría para empezar:")
     st.divider()
 
 # 3. Botones del menu
