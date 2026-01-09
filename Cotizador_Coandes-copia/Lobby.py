@@ -58,7 +58,7 @@ with col1:
 with col2:
     if st.button("🧊 Neveras", use_container_width=True):
         st.switch_page("pages/Nev.py")
-
+    st.divider()
 with col3:
     if st.button("Motos (Próximamente)", use_container_width=True, disabled=True):
         pass
