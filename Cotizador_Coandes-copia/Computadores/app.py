@@ -147,10 +147,10 @@ if st.button("🚀 CALCULAR VALOR"):
     entrada = np.array([[valor_marca, valor_ram, valor_disco_ia, valor_procesador, grafica]])
     precio_base = modelo.predict(entrada)[0]
 
-    # 3. Filtros de Realidad (Anclas de precio)
+    # 3. Filtros de Realidad (Anclas de precio de los procesadores basicos)
     if valor_procesador <= 5: 
         precio_base = np.clip(precio_base * 0.25, 100000, 150000)
-    # 3.1 Ancla para el los procesadores I3 
+    # 3.1 Ancla para los procesadores I3 
     elif valor_procesador <= 15:
         if valor_ram >= 7:
             precio_base = np.clip(precio_base * 1.05, 300000, 480000)
@@ -162,7 +162,7 @@ if st.button("🚀 CALCULAR VALOR"):
              precio_base == 600000
         else:
             precio_base = np.clip(precio_base * 0.35, 120000, 210000)
-
+    # 3.2 Ancla de los procesadores I5
     elif valor_procesador <= 30:
         precio_base = precio_base * 0.88
 
