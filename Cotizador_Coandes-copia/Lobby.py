@@ -30,45 +30,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 # 2. Tamaño y orietación del logo y titulo
-
-import streamlit as st
-import os
-import base64
-
-ruta_logo = "Standard_logo.png"  # Ajusta según tu archivo
-
-# Convertir logo a Base64 para incrustarlo en HTML
-if os.path.exists(ruta_logo):
-    with open(ruta_logo, "rb") as f:
-        logo_base64 = base64.b64encode(f.read()).decode()
-else:
-    logo_base64 = ""
-
-# Crear un contenedor completo con fondo rojo
-with st.container():
-    st.markdown(
-        f"""
-        <div style="
-            background-color: #FF0000;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 40px;
-            border-radius: 10px;
-        ">
-            <img src="data:image/png;base64,{logo_base64}" width="200" style="margin-right: 30px;">
-            <div>
-                <h1 style="color:white; margin:0;">Sistema de Cotización Inteligente</h1>
-                <p style="color:white; margin:0;">Bienvenido/a. Selecciona una categoría para empezar:</p>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-st.divider()  # Todo lo que esté después queda normal
-
-
 col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
 
 if os.path.exists(ruta_logo):
