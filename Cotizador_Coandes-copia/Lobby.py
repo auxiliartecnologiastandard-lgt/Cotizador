@@ -1,6 +1,20 @@
 import streamlit as st
 import os
 
+import streamlit as st
+
+st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: url("https://tse4.mm.bing.net/th/id/OIP.iWK5wwCJ-2E5Jy_Sn8WXbgHaFY?rs=1&pid=ImgDetMain&o=7&rm=3");
+        background-attachment: fixed;
+        background-size: cover;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
