@@ -60,13 +60,13 @@ with col_der:
 # 3.1 Color de las letras y el fondo
 st.markdown("""
     <style>
-    .stApp { background-color: #F5F5F5; }
+    .stApp { background-color: #FFFFFF; }
     * { color: #000000 !important; }
     
     /* Estilo para los botones */
     .stButton>button {
         background-color: #FF0000 !important; /* Fondo blanco */
-        color: #000000 !important;           /* Texto negro */
+        color: #FFFFFF !important;           /* Texto negro */
         border: 2px solid #000000 !important; /* Borde rojo como tu logo */
     }
     </style>
