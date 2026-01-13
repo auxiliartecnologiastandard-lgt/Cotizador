@@ -43,41 +43,40 @@ with col_der:
 
 # 3. Botones del menu
 
-# Línea 98
-with st.container(border=True):
+# Línea 99
+zona_especial = st.expander("DATOS DE LA NEVERA", expanded=True)
 
-    st.markdown("""
-        <style>
-        .stApp { background-color: #F5F5F5; }
-        * { color: #000000 !important; }
-        </style>
-        """, unsafe_allow_html=True)
-    col1, col2, col3, = st.columns(3)
+with zona_especial:
+    # Todo lo que pongas aquí tendrá un fondo ligeramente diferente
+    # y estará agrupado visualmente.
+    st.write("Contenido de la línea 99 a 134")
 
-    with col1:
-        if st.button ("💻 Computadores",  use_container_width=True):
-            st.switch_page("pages/Com.py")
+col1, col2, col3, = st.columns(3)
 
-    with col2:
-        if st.button("🧊 Neveras", use_container_width=True):
-            st.switch_page("pages/Nev.py")
+with col1:
+    if st.button ("💻 Computadores",  use_container_width=True):
+        st.switch_page("pages/Com.py")
 
-    with col3:
-        if st.button("🛵 Motos (Próximamente)", use_container_width=True, disabled=True):
-            pass
-            st.switch_page("pages/Mot.py")
+with col2:
+    if st.button("🧊 Neveras", use_container_width=True):
+        st.switch_page("pages/Nev.py")
 
-    with col1:
-        if st.button("🥇 Oro (Próximamente)", use_container_width=True, disabled=True):
-            pass
-            st.switch_page("pages/Oro.py")
+with col3:
+    if st.button("🛵 Motos (Próximamente)", use_container_width=True, disabled=True):
+        pass
+        st.switch_page("pages/Mot.py")
 
-    with col2:
-        if st.button("🔨 Herramientas (Próximamente)", use_container_width=True, disabled=True):
-            pass
-            st.switch_page("pages/Herr.py")
+with col1:
+    if st.button("🥇 Oro (Próximamente)", use_container_width=True, disabled=True):
+        pass
+        st.switch_page("pages/Oro.py")
 
-    with col3:
-        if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True, disabled=True):
-            pass
-            st.switch_page("pages/ins.py")
+with col2:
+    if st.button("🔨 Herramientas (Próximamente)", use_container_width=True, disabled=True):
+        pass
+        st.switch_page("pages/Herr.py")
+
+with col3:
+    if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True, disabled=True):
+        pass
+        st.switch_page("pages/ins.py")
