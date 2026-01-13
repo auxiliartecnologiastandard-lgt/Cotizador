@@ -1,6 +1,19 @@
 import streamlit as st
 import os
 
+st.markdown("""
+<style>
+.section-red {
+    background-color: #FF0000;
+    padding: 20px;
+    border-radius: 10px;
+}
+.section-B {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;     
+    """, unsafe_allow_html=True)
+
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
@@ -39,6 +52,9 @@ st.set_page_config(page_title="Lobby", layout="wide")
 
 # 2. Tamaño y orietación del logo y titulo
 
+st.markdown("""
+    <div class="section-red"> """, unsafe_allow_html=True)
+
 col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
 
 if os.path.exists(ruta_logo):
@@ -47,7 +63,8 @@ if os.path.exists(ruta_logo):
 with col_der:
     st.title("Sistema de Cotización Inteligente")
     st.write("Bienvenido/a. Selecciona una categoría para empezar:")
-    st.divider()
+
+st.divider()
 
 # 3. Botones del menu
 col1, col2, col3, = st.columns(3)
