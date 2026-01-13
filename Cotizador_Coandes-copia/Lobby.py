@@ -3,7 +3,7 @@ import os
 
 st.markdown("""
     <style>
-    { background-color: #FF0000; }
+    Lobby.py { background-color: #FF0000; }
     * { color: #000000 !important; }
     </style>
     """, unsafe_allow_html=True)
