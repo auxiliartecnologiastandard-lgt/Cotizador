@@ -1,6 +1,44 @@
 import streamlit as st
 import os
 
+def aplicar_estilo_lobby():
+    st.markdown(
+        """
+        <style>
+        /* Color de fondo de toda la aplicación */
+        .stApp {
+            background-color: #F5F5F5;
+        }
+
+        /* Forzar que todos los textos principales sean negros */
+        h1, h2, h3, h4, h5, h6, p, label, .stMarkdown {
+            color: #000000 !important;
+        }
+
+        /* Estilo específico para el Sidebar (menú lateral) si lo usas */
+        [data-testid="stSidebar"] {
+            background-color: #FFFFFF; /* Un blanco puro para diferenciarlo del fondo */
+        }
+
+        /* Ajuste de color para los inputs y selectores para que no se pierdan */
+        .stTextInput input, .stSelectbox div {
+            color: #000000 !important;
+            background-color: #FFFFFF !important;
+            border: 1px solid #D1D1D1 !important;
+        }
+        
+        /* Ajuste del header de Streamlit para que sea transparente */
+        header {
+            background-color: rgba(0,0,0,0) !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+# Llamas a la función al inicio de tu script
+aplicar_estilo_lobby()
+
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
