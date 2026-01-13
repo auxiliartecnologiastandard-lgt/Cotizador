@@ -9,7 +9,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed" # Esto la cierra al cargar
     
 )
-st.toast('Bienvenido al Sistema Coandes', icon='🏢')
+
 st.markdown(
     """
     <style>
