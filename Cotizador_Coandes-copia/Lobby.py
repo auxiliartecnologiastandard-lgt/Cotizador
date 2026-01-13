@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-
+st.toast('Bienvenido al Sistema Coandes', icon='🏢')
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
@@ -49,7 +49,7 @@ with col1:
         st.switch_page("pages/Com.py")
 
 with col2:
-    if st.button("🧊 Neveras", use_container_width=True, type="primary"):
+    if st.button("🧊 Neveras", use_container_width=True):
         st.switch_page("pages/Nev.py")
 
 with col3:
