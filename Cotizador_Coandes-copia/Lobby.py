@@ -25,6 +25,21 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<div class="section-red">
+    <h2>Sección Roja</h2>
+    <p>Este contenido tiene fondo rojo.</p>
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<div class="section-blue">
+    <h2>Sección Azul</h2>
+    <p>Este contenido tiene otro color.</p>
+</div>
+""", unsafe_allow_html=True)
+
+
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
