@@ -41,8 +41,19 @@ st.set_page_config(page_title="Lobby de Ventas", layout="wide")
 
 st.markdown("""
     <style>
-    .stApp { background-color: #FF0000; }
-    * { color: #FFFFFF !important; }
+    /* Fondo general (Lado derecho - Claro) */
+    .stApp { background-color: #F5F5F5; } 
+
+    /* Fondo de la barra lateral (Lado izquierdo - Rojo) */
+    [data-testid="stSidebar"] {
+        background-color: #FF0000 !important;
+    }
+
+    /* Color de texto para que resalte en lo blanco */
+    h1, h2, p, label { color: #000000 !important; }
+
+    /* Texto blanco solo para lo que esté dentro del sidebar rojo */
+    [data-testid="stSidebar"] * { color: #FFFFFF !important; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -58,13 +69,6 @@ with col_der:
 
 # 3. Botones del menu
 col1, col2, col3, = st.columns(3)
-
-st.markdown("""
-    <style>
-    .stApp { background-color: #FFFFFF; }
-    * { color: #FFFFFF !important; }
-    </style>
-    """, unsafe_allow_html=True)
 
 with col1:
     if st.button ("💻 Computadores",  use_container_width=True):
