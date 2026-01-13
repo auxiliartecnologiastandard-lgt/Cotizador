@@ -44,7 +44,7 @@ with col_der:
 # 3. Botones del menu
 col1, col2, col3, = st.columns(3)
 
-with col1:
+with col_izq:
     if st.button ("💻 Computadores",  use_container_width=True):
         st.switch_page("pages/Com.py")
 
