@@ -35,6 +35,8 @@ col_izq, col_centro, col_der = st.columns([0.01, 0.025, 0.2])
 # Columna del logo
 if os.path.exists(ruta_logo):
     with col_centro:
+        st.image(ruta_logo, width=200)
+
         st.markdown(
             f"""
             <div style="background-color: #FF0000; padding: 20px; text-align: center; border-radius: 10px;">
