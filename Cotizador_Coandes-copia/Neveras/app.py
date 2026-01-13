@@ -92,7 +92,7 @@ Litro_dict = {
 seleccion = st.selectbox("Seleccione el rango de capacidad o elija 'Otro':", list(Litro_dict.keys()), index=1)
     # Si elige 'Otro', mostramos un campo de entrada numérica
 if Litro_dict[seleccion] == "OTRO":
-    valor_litro_final = st.number_input("Escriba el valor exacto en L:", min_value=1, max_value=10000)
+    valor_litro_final = st.number_input("Escriba el valor exacto en L:", min_value=0, max_value=10000)
 
 else:
     valor_litro_final = Litro_dict[seleccion]
@@ -112,15 +112,15 @@ st.divider()
 if st.button("🗿 CALCULAR VALOR"):
 
     
-    # 2. Predicción
+    # 1. Predicción
     entrada = np.array([[valor_marca, valor_litro_final, valor_Sistema_de_enfriamiento]])
     precio_base = modelo.predict(entrada)[0]
 
-    # 4. Redondear precios
+    # 2. Redondear precios
     precio_base_redondo = round(precio_base / 10000) * 10000
     precio_venta_redondo = round((precio_base_redondo * 1.4) / 10000) * 10000
 
-    # 5. Resultados
+    # 3. Resultados
     v_venta = f"${precio_venta_redondo:,.0f}".replace(",", ".")
     v_compra = f"${precio_base_redondo:,.0f}".replace(",", ".")
 
