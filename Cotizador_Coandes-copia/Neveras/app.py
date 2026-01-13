@@ -108,11 +108,11 @@ valor_Sistema_de_enfriamiento = SE_opciones[seleccion]
 st.divider()
 
 # --- CÁLCULO FINAL ---
-st.button("Calcular", icon=":material/calculate:")
+if st.button("🗿 CALCULAR VALOR"):
 
     
     # 1. Predicción
-entrada = np.array([[valor_marca, valor_litro_final, valor_Sistema_de_enfriamiento]])
+    entrada = np.array([[valor_marca, valor_litro_final, valor_Sistema_de_enfriamiento]])
 precio_base = modelo.predict(entrada)[0]
 
     # 2. Redondear precios
