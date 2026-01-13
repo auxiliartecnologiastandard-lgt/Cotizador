@@ -3,9 +3,9 @@ import os
 
 st.markdown("""
     <style>
-    hr { border: 0; height: 3px; background: #FF0000; } /* Divisor Rojo */
-    div.stButton > button { border: 2px solid #000000; color: black; }
-    </style>
+    .main { background-color: #FF0000; } /* Fondo Lobby */
+    .header { background-color: #FF0000; border-bottom;}
+    div.stButton > button { border: 2px solid #FF0000; color: black; background: white; font-weight: bold; }
     """, unsafe_allow_html=True)
 
 # 0. Ubicar la imagen del logo
