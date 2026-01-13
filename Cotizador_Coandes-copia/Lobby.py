@@ -50,30 +50,6 @@ st.set_page_config(page_title="Lobby", layout="wide")
 col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
 
 if os.path.exists(ruta_logo):
-    st.markdown("""
-<style>
-.section-red {
-    background-color: #FF0000;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.section-blue {
-    background-color: #00BFFF;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.section-red * {
-    color: black !important;
-}
-
-.section-blue * {
-    color: white !important;
-}
-</style>
-""", unsafe_allow_html=True)
-    
     with col_centro:
         st.image(ruta_logo, width=200)
 with col_der:
