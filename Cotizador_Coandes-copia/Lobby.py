@@ -2,43 +2,12 @@ import streamlit as st
 import os
 
 st.markdown("""
-<style>
-.section-red {
-    background-color: #FF0000;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.section-blue {
-    background-color: #00BFFF;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.section-red * {
-    color: black !important;
-}
-
-.section-blue * {
-    color: white !important;
-}
-</style>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<div class="section-red">
-    <h2>Sección Roja</h2>
-    <p>Este contenido tiene fondo rojo.</p>
-</div>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<div class="section-blue">
-    <h2>Sección Azul</h2>
-    <p>Este contenido tiene otro color.</p>
-</div>
-""", unsafe_allow_html=True)
-
+    <style>
+    .stApp { background-color: #FF0000; }
+    * { color: #000000 !important; }
+    </style>
+        
+    """, unsafe_allow_html=True)
 
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
@@ -81,6 +50,30 @@ st.set_page_config(page_title="Lobby", layout="wide")
 col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
 
 if os.path.exists(ruta_logo):
+    st.markdown("""
+<style>
+.section-red {
+    background-color: #FF0000;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.section-blue {
+    background-color: #00BFFF;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.section-red * {
+    color: black !important;
+}
+
+.section-blue * {
+    color: white !important;
+}
+</style>
+""", unsafe_allow_html=True)
+    
     with col_centro:
         st.image(ruta_logo, width=200)
 with col_der:
