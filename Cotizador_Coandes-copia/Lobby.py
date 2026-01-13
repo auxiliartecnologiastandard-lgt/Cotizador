@@ -1,19 +1,6 @@
 import streamlit as st
 import os
 
-st.markdown("""
-<style>
-.section-red {
-    background-color: #FF0000;
-    padding: 20px;
-    border-radius: 10px;
-}
-.section-B {
-    background-color: #FFFFFF;
-    padding: 20px;
-    border-radius: 10px;     
-    """, unsafe_allow_html=True)
-
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
