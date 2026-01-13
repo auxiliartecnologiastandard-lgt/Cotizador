@@ -1,6 +1,13 @@
 import streamlit as st
 import os
 
+st.markdown("""
+    <style>
+    hr { border: 0; height: 3px; background: #FF0000; } /* Divisor Rojo */
+    div.stButton > button { border: 2px solid #FF0000; color: black; }
+    </style>
+    """, unsafe_allow_html=True)
+
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
