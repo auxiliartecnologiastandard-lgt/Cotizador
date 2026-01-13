@@ -30,7 +30,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 # 2. Tamaño y orietación del logo y titulo
-col_izq, col_centro, col_der = st.columns([0.01, 0.025, 0.2]) 
+col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
 
 if os.path.exists(ruta_logo):
     with col_centro:
