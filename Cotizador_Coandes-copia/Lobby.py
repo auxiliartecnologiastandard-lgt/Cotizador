@@ -42,6 +42,14 @@ with col_der:
     st.divider()
 
 # 3. Botones del menu
+
+# Línea 99
+with st.chat_message("user", avatar="📄"): 
+    # El fondo será gris claro automáticamente
+    st.write("ESTA ES TU SECCIÓN DIVIDIDA")
+    # Pon aquí tus botones o inputs...
+# Línea 134
+
 col1, col2, col3, = st.columns(3)
 
 with col1:
