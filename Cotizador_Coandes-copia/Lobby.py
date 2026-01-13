@@ -53,9 +53,14 @@ if os.path.exists(ruta_logo):
     with col_centro:
         st.image(ruta_logo, width=200)
 with col_der:
-    st.title("Sistema de Cotización Inteligente")
-    st.write("Bienvenido/a. Selecciona una categoría para empezar:")
-    st.divider()
+        st.markdown("""
+    <div class="col-der-bg">
+        <h6></h6>
+        <p>Bienvenido/a. Selecciona una categoría para empezar:</p>
+        <hr>
+    </div>
+    """, unsafe_allow_html=True)
+st.divider()
 
 # 3. Botones del menu
 col1, col2, col3, = st.columns(3)
