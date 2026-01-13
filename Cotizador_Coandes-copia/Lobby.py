@@ -60,8 +60,6 @@ with col_der:
 # 3.1 Color de las letras y el fondo
 st.markdown("""
     <style>
-    .stApp { background-color: #FFFFFF; }
-    * { color: #000000 !important; }
     
     /* Estilo para los botones */
     .stButton>button {
