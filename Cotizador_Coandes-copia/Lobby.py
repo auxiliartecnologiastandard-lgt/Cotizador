@@ -4,10 +4,10 @@ import os
 st.markdown("""
 <style>
 .menu-fondo {
-    background-color: #FF0000;
-    padding: 250px;
-    border-radius: 150px;
-    margin-top: 200px;
+    background-color: #f5f7fa;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -43,31 +43,27 @@ st.markdown(
 )
 # 2. Tamaño y orietación del logo y titulo
 
-st.markdown('<div class="menu-fondo">', unsafe_allow_html=True)
+with st.container():
+        st.markdown('<div class="menu-fondo">', unsafe_allow_html=True)
 
 
-col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
+        col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
 
-if os.path.exists(ruta_logo):
-    with col_centro:
-        st.image(ruta_logo, width=200)
-with col_der:
-    st.title("Sistema de Cotización Inteligente")
-    st.write("Bienvenido/a. Selecciona una categoría para empezar:")
-    
-    st.divider()
+        if os.path.exists(ruta_logo):
+            with col_centro:
+                st.image(ruta_logo, width=200)
+        with col_der:
+            st.title("Sistema de Cotización Inteligente")
+            st.write("Bienvenido/a. Selecciona una categoría para empezar:")
+            st.markdown('</div>', unsafe_allow_html=True)
 
-st.markdown('</div>', unsafe_allow_html=True)
-
-
+        st.divider()
 
 # 3. Botones del menu
-st.markdown('<div class="menu-fondo">', unsafe_allow_html=True)
-
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, = st.columns(3)
 
 with col1:
-    if st.button("💻 Computadores", use_container_width=True):
+    if st.button ("💻 Computadores",  use_container_width=True):
         st.switch_page("pages/Com.py")
 
 with col2:
@@ -77,17 +73,19 @@ with col2:
 with col3:
     if st.button("🛵 Motos (Próximamente)", use_container_width=True, disabled=True):
         pass
+        st.switch_page("pages/Mot.py")
 
 with col1:
     if st.button("🥇 Oro (Próximamente)", use_container_width=True, disabled=True):
         pass
+        st.switch_page("pages/Oro.py")
 
 with col2:
     if st.button("🔨 Herramientas (Próximamente)", use_container_width=True, disabled=True):
         pass
+        st.switch_page("pages/Herr.py")
 
 with col3:
     if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True, disabled=True):
         pass
-
-st.markdown('</div>', unsafe_allow_html=True)
+        st.switch_page("pages/ins.py")
