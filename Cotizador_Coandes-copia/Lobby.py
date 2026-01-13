@@ -1,11 +1,6 @@
 import streamlit as st
 import os
-st.markdown("""
-    <style>
-    .stApp { background-color: #FF0000; }
-    * { color: #000000 !important; }
-    </style>
-    """, unsafe_allow_html=True)
+
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
@@ -47,14 +42,6 @@ with col_der:
     st.divider()
 
 # 3. Botones del menu
-
-# Línea 99
-with st.chat_message("user", avatar="📄"): 
-    # El fondo será gris claro automáticamente
-    st.write("ESTA ES TU SECCIÓN DIVIDIDA")
-    # Pon aquí tus botones o inputs...
-# Línea 134
-
 col1, col2, col3, = st.columns(3)
 
 with col1:
