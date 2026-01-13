@@ -19,6 +19,7 @@ st.markdown("""
     /* Color de los textos abajo */
     h2, p, label {
         color: #000000 !important;
+               background-color: #F5F5F5;
     }
     """, unsafe_allow_html=True)
 
