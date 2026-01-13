@@ -5,9 +5,9 @@ st.markdown("""
 <style>
 .menu-fondo {
     background-color: #FF0000;
-    padding: 25px;
-    border-radius: 15px;
-    margin-top: 20px;
+    padding: 250px;
+    border-radius: 150px;
+    margin-top: 200px;
 }
 </style>
 """, unsafe_allow_html=True)
