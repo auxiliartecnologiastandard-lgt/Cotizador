@@ -1,15 +1,5 @@
 import streamlit as st
 import os
-st.markdown("""
-<style>
-.menu-fondo {
-    background-color: #FF0000;
-    padding: 25px;
-    border-radius: 15px;
-    margin-top: 20px;
-}
-</style>
-""", unsafe_allow_html=True)
 
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
@@ -52,10 +42,7 @@ with col_der:
     st.divider()
 
 # 3. Botones del menu
-
-st.container()
-st.markdown('<div class="menu-fondo">', unsafe_allow_html=True)
-
+ 
 col1, col2, col3, = st.columns(3)
 
 with col1:
@@ -85,5 +72,3 @@ with col3:
     if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True, disabled=True):
         pass
         st.switch_page("pages/ins.py")
-st.markdown('</div>', unsafe_allow_html=True)
-
