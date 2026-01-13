@@ -71,8 +71,3 @@ with col3:
     if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True, disabled=True):
         pass
         st.switch_page("pages/ins.py")
-
-col_a, col_b, col_c = st.columns(3)
-col_a.metric("Gramo de Oro", "$280,000", "+1.2%")
-col_b.metric("Dólar (TRM)", "$4,100", "-0.5%")
-col_c.metric("Cotizaciones hoy", "14", "Nuevo")
