@@ -42,15 +42,6 @@ with col_der:
     st.divider()
 
 # 3. Botones del menu
-
-# Línea 99
-zona_especial = st.expander("DATOS DE LA NEVERA", expanded=True)
-
-with zona_especial:
-    # Todo lo que pongas aquí tendrá un fondo ligeramente diferente
-    # y estará agrupado visualmente.
-    st.write("Contenido de la línea 99 a 134")
-
 col1, col2, col3, = st.columns(3)
 
 with col1:
