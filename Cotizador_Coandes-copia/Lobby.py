@@ -42,7 +42,6 @@ with col_der:
     st.divider()
 
 # 3. Botones del menu
- 
 col1, col2, col3, = st.columns(3)
 
 with col1:
