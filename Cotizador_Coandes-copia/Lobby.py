@@ -39,13 +39,6 @@ st.set_page_config(page_title="Lobby de Ventas", layout="wide")
 
 # 2. Tamaño y orietación del logo y titulo
 
-st.markdown("""
-    <style>
-    .stApp { header-color: #FF0000; }
-    * { color: #000000 !important; }
-    </style>
-    """, unsafe_allow_html=True)
-
 col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
 
 if os.path.exists(ruta_logo):
@@ -55,6 +48,14 @@ with col_der:
     st.title("Sistema de Cotización Inteligente")
     st.write("Bienvenido/a. Selecciona una categoría para empezar:")
     st.divider()
+
+with col_izq, col_centro, col_der:
+    st.markdown("""
+    <style>
+    .stApp { background-color: #FF0000; }
+    * { color: #000000 !important; }
+    </style>
+    """, unsafe_allow_html=True)
 
 # 3. Botones del menu
 col1, col2, col3, = st.columns(3)
