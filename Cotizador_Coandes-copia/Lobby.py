@@ -30,36 +30,16 @@ st.markdown(
     unsafe_allow_html=True
 )
 # 2. Tamaño y orietación del logo y titulo
-col_izq, col_centro, col_der = st.columns([0.01, 0.025, 0.2])
+col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
 
-# Columna del logo
 if os.path.exists(ruta_logo):
     with col_centro:
         st.image(ruta_logo, width=200)
-
-        st.markdown(
-            f"""
-            <div style="background-color: #FF0000; padding: 20px; text-align: center; border-radius: 10px;">
-                <img src="{ruta_logo}" width="200">
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-# Columna del título y texto
 with col_der:
-    st.markdown(
-        """
-        <div style="background-color: #FF0000; padding: 20px; border-radius: 10px;">
-            <h1 style="color:white;">Sistema de Cotización Inteligente</h1>
-            <p style="color:white;">Bienvenido/a. Selecciona una categoría para empezar:</p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    st.title("Sistema de Cotización Inteligente")
+    st.write("Bienvenido/a. Selecciona una categoría para empezar:")
 
-st.divider()  # Todo lo que esté después queda normal
-
+    st.divider()
 
 # 3. Botones del menu
 col1, col2, col3, = st.columns(3)
