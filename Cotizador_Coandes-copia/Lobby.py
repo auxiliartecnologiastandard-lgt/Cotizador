@@ -59,6 +59,10 @@ with col_der:
 # 3. Botones del menu
 # 3.1 Color de las letras y el fondo
 st.markdown("""
+    <style>
+    .stApp { background-color: #F5F5F5; }
+    * { color: #000000 !important; }
+    
     /* Estilo para los botones */
     .stButton>button {
         background-color: #FF0000 !important; /* Fondo blanco */
