@@ -3,11 +3,12 @@ import os
 
 st.markdown("""
     <style>
-    Lobby.py { background-color: #FF0000; }
+    .stApp { background-color: #FF0000; }
     * { color: #000000 !important; }
     </style>
+        
     """, unsafe_allow_html=True)
-
+st.divider
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
