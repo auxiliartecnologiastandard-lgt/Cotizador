@@ -10,64 +10,51 @@ st.set_page_config(page_title="Lobby", initial_sidebar_state="collapsed", layout
 st.markdown(
     """
     <style>
-        /* Elimina el botón > de la esquina superior izquierda */
-        [data-testid="collapsedControl"] {
-            display: none !important;
-        }
-
-        /* Elimina la barra lateral por completo */
-        [data-testid="stSidebar"] {
-            display: none !important;
-        }
+        [data-testid="collapsedControl"], [data-testid="stSidebar"] { display: none !important; }
+        header { visibility: hidden !important; height: 0 !important; }
         
-        /* Elimina el encabezado superior para que no quede espacio vacío */
-        header {
-            visibility: hidden !important;
-            height: 0 !important;
+        /* Esto hace que el contenedor de botones se vea como una "zona" diferente */
+        .stElementContainer div[data-testid="stVerticalBlockBorderWrapper"] {
+            background-color: #F0F2F6; /* Color gris sutil para la zona de botones */
+            padding: 20px;
+            border-radius: 15px;
         }
     </style>
     """,
     unsafe_allow_html=True
 )
-# 2. Tamaño y orietación del logo y titulo
-col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
+
+# 2. Encabezado (Logo y Título)
+col_logo, col_titulo = st.columns([0.2, 0.8]) 
 
 if os.path.exists(ruta_logo):
-    with col_centro:
-        st.image(ruta_logo, width=200)
-with col_der:
+    with col_logo:
+        st.image(ruta_logo, width=180)
+with col_titulo:
     st.title("Sistema de Cotización Inteligente")
     st.write("Bienvenido/a. Selecciona una categoría para empezar:")
 
-    st.divider()
+st.divider()
 
-# 3. Botones del menu
-col1, col2, col3, = st.columns(3)
+# 3. ZONA DIVIDIDA (Contenedor de botones)
+# Todo lo que esté dentro de este "with" se verá como una sección aparte
+with st.container(border=True):
+    col1, col2, col3 = st.columns(3)
 
-with col1:
-    if st.button ("💻 Computadores",  use_container_width=True):
-        st.switch_page("pages/Com.py")
+    with col1:
+        if st.button("Computadores", use_container_width=True):
+            st.switch_page("pages/Com.py")
+        if st.button("Oro (Próximamente)", use_container_width=True, disabled=True):
+            pass
 
-with col2:
-    if st.button("🧊 Neveras", use_container_width=True):
-        st.switch_page("pages/Nev.py")
+    with col2:
+        if st.button("Neveras", use_container_width=True):
+            st.switch_page("pages/Nev.py")
+        if st.button("Herramientas (Próximamente)", use_container_width=True, disabled=True):
+            pass
 
-with col3:
-    if st.button("🛵 Motos (Próximamente)", use_container_width=True, disabled=True):
-        pass
-        st.switch_page("pages/Mot.py")
-
-with col1:
-    if st.button("🥇 Oro (Próximamente)", use_container_width=True, disabled=True):
-        pass
-        st.switch_page("pages/Oro.py")
-
-with col2:
-    if st.button("🔨 Herramientas (Próximamente)", use_container_width=True, disabled=True):
-        pass
-        st.switch_page("pages/Herr.py")
-
-with col3:
-    if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True, disabled=True):
-        pass
-        st.switch_page("pages/ins.py")
+    with col3:
+        if st.button("Motos (Próximamente)", use_container_width=True, disabled=True):
+            pass
+        if st.button("Instrumentos (Próximamente)", use_container_width=True, disabled=True):
+            pass
