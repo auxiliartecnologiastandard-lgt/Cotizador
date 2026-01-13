@@ -58,8 +58,7 @@ with col3:
         st.switch_page("pages/Mot.py")
 
 with col1:
-    if st.button("🥇 Oro (Próximamente)", use_container_width=True, disabled=True):
-        pass
+    if st.button("🥇 Oro (Próximamente)", use_container_width=True):
         st.switch_page("pages/Oro.py")
 
 with col2:
