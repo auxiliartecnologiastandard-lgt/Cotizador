@@ -62,10 +62,12 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 
 # 3. Botones del menu
-col1, col2, col3, = st.columns(3)
+st.markdown('<div class="menu-fondo">', unsafe_allow_html=True)
+
+col1, col2, col3 = st.columns(3)
 
 with col1:
-    if st.button ("💻 Computadores",  use_container_width=True):
+    if st.button("💻 Computadores", use_container_width=True):
         st.switch_page("pages/Com.py")
 
 with col2:
@@ -75,19 +77,17 @@ with col2:
 with col3:
     if st.button("🛵 Motos (Próximamente)", use_container_width=True, disabled=True):
         pass
-        st.switch_page("pages/Mot.py")
 
 with col1:
     if st.button("🥇 Oro (Próximamente)", use_container_width=True, disabled=True):
         pass
-        st.switch_page("pages/Oro.py")
 
 with col2:
     if st.button("🔨 Herramientas (Próximamente)", use_container_width=True, disabled=True):
         pass
-        st.switch_page("pages/Herr.py")
 
 with col3:
     if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True, disabled=True):
         pass
-        st.switch_page("pages/ins.py")
+
+st.markdown('</div>', unsafe_allow_html=True)
