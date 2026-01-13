@@ -38,6 +38,14 @@ st.set_page_config(page_title="Lobby de Ventas", layout="wide")
 
 
 # 2. Tamaño y orietación del logo y titulo
+
+st.markdown("""
+    <style>
+    .stApp { background-color: #FF0000; }
+    * { color: #FFFFFF !important; }
+    </style>
+    """, unsafe_allow_html=True)
+
 col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
 
 if os.path.exists(ruta_logo):
