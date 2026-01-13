@@ -4,7 +4,7 @@ import os
 
 st.markdown("""
     <style>
-    .stApp { background-color: #9D9D9D; }
+    .stApp { background-color: #F5F5F5; }
     * { color: #000000 !important; }
     </style>
     """, unsafe_allow_html=True)
