@@ -30,27 +30,16 @@ st.markdown(
     unsafe_allow_html=True
 )
 # 2. Tamaño y orietación del logo y titulo
+col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
 
-with st.container(border=True): # El border ayuda a delimitar
-    st.markdown("""
-        <style>
-        /* Esto solo afectará a los elementos dentro de este bloque */
-        div[data-testid="stVerticalBlock"] > div:has(input) 
-            background-color: #FF0000; 
-        }
-        </style>
-    """, unsafe_allow_html=True)
-    
-    col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
+if os.path.exists(ruta_logo):
+    with col_centro:
+        st.image(ruta_logo, width=200)
+with col_der:
+    st.title("Sistema de Cotización Inteligente")
+    st.write("Bienvenido/a. Selecciona una categoría para empezar:")
 
-    if os.path.exists(ruta_logo):
-        with col_centro:
-            st.image(ruta_logo, width=200)
-    with col_der:
-        st.title("Sistema de Cotización Inteligente")
-        st.write("Bienvenido/a. Selecciona una categoría para empezar:")
-
-        st.divider()
+    st.divider()
 
 # 3. Botones del menu
  
