@@ -68,6 +68,5 @@ with col2:
         st.switch_page("pages/Herr.py")
 
 with col3:
-    if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True, disabled=True):
-        pass
+    if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True):
         st.switch_page("pages/ins.py")
