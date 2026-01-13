@@ -1,6 +1,18 @@
 import streamlit as st
 import os
 
+st.markdown("""
+<style>
+.menu-fondo {
+    background-color: #FF0000;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+</style>
+""", unsafe_allow_html=True)
+
+
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
@@ -30,6 +42,10 @@ st.markdown(
     unsafe_allow_html=True
 )
 # 2. Tamaño y orietación del logo y titulo
+
+st.markdown('<div class="menu-fondo">', unsafe_allow_html=True)
+
+
 col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
 
 if os.path.exists(ruta_logo):
@@ -38,6 +54,9 @@ if os.path.exists(ruta_logo):
 with col_der:
     st.title("Sistema de Cotización Inteligente")
     st.write("Bienvenido/a. Selecciona una categoría para empezar:")
+
+st.markdown('</div>', unsafe_allow_html=True)
+
 
 st.divider()
 
