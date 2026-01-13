@@ -1,14 +1,6 @@
 import streamlit as st
 import os
 
-st.markdown("""
-    <style>
-    .stApp { background-color: #FF0000; }
-    * { color: #000000 !important; }
-    </style>
-        
-    """, unsafe_allow_html=True)
-
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
@@ -53,14 +45,9 @@ if os.path.exists(ruta_logo):
     with col_centro:
         st.image(ruta_logo, width=200)
 with col_der:
-        st.markdown("""
-    <div class="col-der-bg">
-        <h6></h6>
-        <p>Bienvenido/a. Selecciona una categoría para empezar:</p>
-        <hr>
-    </div>
-    """, unsafe_allow_html=True)
-st.divider()
+    st.title("Sistema de Cotización Inteligente")
+    st.write("Bienvenido/a. Selecciona una categoría para empezar:")
+    st.divider()
 
 # 3. Botones del menu
 col1, col2, col3, = st.columns(3)
