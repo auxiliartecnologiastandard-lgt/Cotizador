@@ -34,7 +34,8 @@ st.markdown(
 with st.container(border=True): # El border ayuda a delimitar
     st.markdown("""
         <style>
-        /* Esto solo afectará a los elementos dentro de este bloque */{ 
+        /* Esto solo afectará a los elementos dentro de este bloque */
+        div[data-testid="stVerticalBlock"] > div:has(input) 
             background-color: #FF0000; 
         }
         </style>
