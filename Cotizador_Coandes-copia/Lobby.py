@@ -57,6 +57,17 @@ with col_der:
     st.divider()
 
 # 3. Botones del menu
+# 3.1 Color de las letras y el fondo
+st.markdown("""
+    /* Estilo para los botones */
+    .stButton>button {
+        background-color: #FF0000 !important; /* Fondo blanco */
+        color: #000000 !important;           /* Texto negro */
+        border: 2px solid #000000 !important; /* Borde rojo como tu logo */
+    }
+    </style>
+    """, unsafe_allow_html=True)
+ # 3.2 Configuración botones
 col1, col2, col3, = st.columns(3)
 
 with col1:
