@@ -43,8 +43,15 @@ with col_der:
 
 # 3. Botones del menu
 
+# Línea 98
 with st.container(border=True):
 
+    st.markdown("""
+        <style>
+        .stApp { background-color: #F5F5F5; }
+        * { color: #000000 !important; }
+        </style>
+        """, unsafe_allow_html=True)
     col1, col2, col3, = st.columns(3)
 
     with col1:
