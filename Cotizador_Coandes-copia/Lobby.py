@@ -47,15 +47,16 @@ if os.path.exists(ruta_logo):
 with col_der:
     st.title("Sistema de Cotización Inteligente")
     st.write("Bienvenido/a. Selecciona una categoría para empezar:")
-    st.divider()
-
-with col_izq:
+    
+with col_izq, col_centro, col_der:
     st.markdown("""
     <style>
     .stApp { background-color: #FF0000; }
     * { color: #000000 !important; }
     </style>
     """, unsafe_allow_html=True)
+
+    st.divider()
 
 # 3. Botones del menu
 col1, col2, col3, = st.columns(3)
