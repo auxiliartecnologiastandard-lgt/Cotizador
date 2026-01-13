@@ -34,7 +34,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.set_page_config(page_title="Lobby de Ventas", layout="wide")
+st.set_page_config(page_title="Lobby", layout="wide")
 
 
 # 2. Tamaño y orietación del logo y titulo
