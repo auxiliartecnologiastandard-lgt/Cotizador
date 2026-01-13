@@ -1,13 +1,6 @@
 import streamlit as st
 import os
 
-st.markdown("""
-    <style>
-    .main { background-color: #FF0000; } /* Fondo Lobby */
-    .header { background-color: #FF0000; border-bottom;}
-    div.stButton > button { border: 2px solid #FF0000; color: black; background: white; font-weight: bold; }
-    """, unsafe_allow_html=True)
-
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
