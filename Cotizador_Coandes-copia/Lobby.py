@@ -43,7 +43,7 @@ with col_der:
 
 # 3. Botones del menu
 
-st.markdown('<div style="background-color: #FF0000; padding: 20px; border-radius: 0x;">', unsafe_allow_html=True)
+st.markdown('<div style="background-color: #FF0000; padding: 20px; border-radius: 1000x;">', unsafe_allow_html=True)
 col1, col2, col3, = st.columns(3)
 
 with col1:
