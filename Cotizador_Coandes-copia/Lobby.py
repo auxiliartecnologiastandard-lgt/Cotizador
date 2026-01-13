@@ -41,19 +41,8 @@ st.set_page_config(page_title="Lobby de Ventas", layout="wide")
 
 st.markdown("""
     <style>
-    /* Fondo general (Lado derecho - Claro) */
-    .stApp { background-color: #F5F5F5; } 
-
-    /* Fondo de la barra lateral (Lado izquierdo - Rojo) */
-    [data-testid="stSidebar"] {
-        background-color: #FF0000 !important;
-    }
-
-    /* Color de texto para que resalte en lo blanco */
-    h1, h2, p, label { color: #000000 !important; }
-
-    /* Texto blanco solo para lo que esté dentro del sidebar rojo */
-    [data-testid="stSidebar"] * { color: #FFFFFF !important; }
+    .stApp { header-color: #FF0000; }
+    * { color: #FFFFFF !important; }
     </style>
     """, unsafe_allow_html=True)
 
