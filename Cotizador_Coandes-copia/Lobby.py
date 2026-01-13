@@ -41,8 +41,20 @@ st.set_page_config(page_title="Lobby de Ventas", layout="wide")
 
 st.markdown("""
     <style>
-    .stApp { header-color: #FF0000; }
-    * { color: #FFFFFF !important; }
+    /* 1. La parte de arriba (Header) Roja */
+    [data-testid="stHeader"] {
+        background-color: #FF0000 !important;
+    }
+    
+    /* 2. El fondo de abajo (Lobby) Gris Claro */
+    .stApp {
+        background-color: #FFFFFF;
+    }
+
+    /* 3. Texto en negro para que se lea bien abajo */
+    h1, h2, p, span {
+        color: #000000 !important;
+    }
     </style>
     """, unsafe_allow_html=True)
 
