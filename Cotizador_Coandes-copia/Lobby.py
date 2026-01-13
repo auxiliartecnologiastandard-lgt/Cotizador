@@ -7,48 +7,67 @@ ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
 
 # 1. Configuración de la pagina
 st.set_page_config(page_title="Lobby", initial_sidebar_state="collapsed", layout="wide")
-
 st.markdown(
     """
     <style>
-        [data-testid="collapsedControl"], [data-testid="stSidebar"] { display: none !important; }
-        header { visibility: hidden !important; height: 0 !important; }
+        /* Elimina el botón > de la esquina superior izquierda */
+        [data-testid="collapsedControl"] {
+            display: none !important;
+        }
+
+        /* Elimina la barra lateral por completo */
+        [data-testid="stSidebar"] {
+            display: none !important;
+        }
         
-        /* Quitamos el icono predeterminado de la caja de info */
-        [data-testid="stNotificationIcon"] { display: none !important; }
-        /* Ajustamos el color de la franja (puedes cambiar el LightBlue) */
-        [data-testid="stNotification"] {
-            background-color: #F0F2F6 !important; 
-            border: none !important;
-            color: black !important;
+        /* Elimina el encabezado superior para que no quede espacio vacío */
+        header {
+            visibility: hidden !important;
+            height: 0 !important;
         }
     </style>
     """,
     unsafe_allow_html=True
 )
+# 2. Tamaño y orietación del logo y titulo
+col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
 
-# 2. Encabezado (LOGO Y TITULO DENTRO DE UNA FRANJA)
-with st.container():
-    # Usamos st.info como "franja" de color porque Streamlit sí permite columnas dentro
-    with st.chat_message("assistant", avatar=None): # El chat_message crea un fondo gris garantizado
-        col_logo, col_titulo = st.columns([0.2, 0.8])
-        
-        with col_logo:
-            if os.path.exists(ruta_logo):
-                st.image(ruta_logo, width=150)
-        
-        with col_titulo:
-            st.title("Sistema de Cotización Inteligente")
-            st.write("Bienvenido/a. Selecciona una categoría para empezar:")
+if os.path.exists(ruta_logo):
+    with col_centro:
+        st.image(ruta_logo, width=200)
+with col_der:
+    st.title("Sistema de Cotización Inteligente")
+    st.write("Bienvenido/a. Selecciona una categoría para empezar:")
 
-# 3. Resto de la página (Fondo normal)
-st.divider()
+    st.divider()
 
-col1, col2, col3 = st.columns(3)
+# 3. Botones del menu
+col1, col2, col3, = st.columns(3)
+
 with col1:
-    if st.button("💻 Computadores", use_container_width=True):
+    if st.button ("💻 Computadores",  use_container_width=True):
         st.switch_page("pages/Com.py")
+
 with col2:
     if st.button("🧊 Neveras", use_container_width=True):
         st.switch_page("pages/Nev.py")
-# ... el resto de tus botones ...
+
+with col3:
+    if st.button("🛵 Motos (Próximamente)", use_container_width=True, disabled=True):
+        pass
+        st.switch_page("pages/Mot.py")
+
+with col1:
+    if st.button("🥇 Oro (Próximamente)", use_container_width=True, disabled=True):
+        pass
+        st.switch_page("pages/Oro.py")
+
+with col2:
+    if st.button("🔨 Herramientas (Próximamente)", use_container_width=True, disabled=True):
+        pass
+        st.switch_page("pages/Herr.py")
+
+with col3:
+    if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True, disabled=True):
+        pass
+        st.switch_page("pages/ins.py")
