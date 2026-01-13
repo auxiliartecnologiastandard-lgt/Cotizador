@@ -1,20 +1,6 @@
 import streamlit as st
 import os
 
-import streamlit as st
-
-st.markdown(
-    f"""
-    <style>
-    .stApp {{
-        background-image: url("https://tse4.mm.bing.net/th/id/OIP.iWK5wwCJ-2E5Jy_Sn8WXbgHaFY?rs=1&pid=ImgDetMain&o=7&rm=3");
-        background-attachment: fixed;
-        background-size: cover;
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
@@ -44,16 +30,27 @@ st.markdown(
     unsafe_allow_html=True
 )
 # 2. Tamaño y orietación del logo y titulo
-col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
 
-if os.path.exists(ruta_logo):
-    with col_centro:
-        st.image(ruta_logo, width=200)
-with col_der:
-    st.title("Sistema de Cotización Inteligente")
-    st.write("Bienvenido/a. Selecciona una categoría para empezar:")
+with st.container(border=True): # El border ayuda a delimitar
+    st.markdown("""
+        <style>
+        /* Esto solo afectará a los elementos dentro de este bloque */
+        div[data-testid="stVerticalBlock"] > div:has(input) { 
+            background-color: #FF0000; 
+        }
+        </style>
+    """, unsafe_allow_html=True)
+    
+    col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
 
-    st.divider()
+    if os.path.exists(ruta_logo):
+        with col_centro:
+            st.image(ruta_logo, width=200)
+    with col_der:
+        st.title("Sistema de Cotización Inteligente")
+        st.write("Bienvenido/a. Selecciona una categoría para empezar:")
+
+        st.divider()
 
 # 3. Botones del menu
  
