@@ -53,7 +53,17 @@ st.set_page_config(page_title="Lobby", layout="wide")
 # 2. Tamaño y orietación del logo y titulo
 
 st.markdown("""
-    <div class="section-red"> """, unsafe_allow_html=True)
+<style>
+.section-red {
+    background-color: #FF0000;
+    padding: 20px;
+    border-radius: 10px;
+}
+.section-red * {
+    color: black !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
 col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
 
@@ -61,9 +71,12 @@ if os.path.exists(ruta_logo):
     with col_centro:
         st.image(ruta_logo, width=200)
 with col_der:
-    st.title("Sistema de Cotización Inteligente")
-    st.write("Bienvenido/a. Selecciona una categoría para empezar:")
-
+    st.markdown("""
+    <div class="section-red">
+        <h6>Sistema de Cotización Inteligente</h6>
+        <p>Bienvenido/a. Selecciona una categoría para empezar:</p>
+    </div>
+    """, unsafe_allow_html=True)
 st.divider()
 
 # 3. Botones del menu
