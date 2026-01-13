@@ -42,6 +42,8 @@ with col_der:
     st.divider()
 
 # 3. Botones del menu
+
+st.markdown('<div style="background-color: #FF0000; padding: 20px; border-radius: 10px;">', unsafe_allow_html=True)
 col1, col2, col3, = st.columns(3)
 
 with col1:
@@ -71,3 +73,5 @@ with col3:
     if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True, disabled=True):
         pass
         st.switch_page("pages/ins.py")
+
+st.markdown('</div>', unsafe_allow_html=True)
