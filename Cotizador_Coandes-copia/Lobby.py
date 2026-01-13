@@ -49,7 +49,7 @@ with col_der:
     st.write("Bienvenido/a. Selecciona una categoría para empezar:")
     st.divider()
 
-with col_izq, col_centro, col_der:
+with col_izq:
     st.markdown("""
     <style>
     .stApp { background-color: #FF0000; }
