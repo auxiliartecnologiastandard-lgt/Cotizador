@@ -5,15 +5,20 @@ st.markdown("""
     <style>
     /* Fondo de la parte de abajo */
     .stApp {
-        background-color: #F5F5F5;
+        background-color: #FF0000;
     }
 
     /* Franja Roja Superior */
     .custom-header {
-        background-color: #FF0000;
+        background-color: #F5F5F5;
         padding: 20px;
         margin: -70px -50px 20px -50px; /* Estira la franja a los bordes */
         text-align: center;
+    }
+
+    /* Color de los textos abajo */
+    h2, p, label {
+        color: #000000 !important;
     }
     """, unsafe_allow_html=True)
 
