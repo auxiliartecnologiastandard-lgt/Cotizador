@@ -59,6 +59,13 @@ with col_der:
 # 3. Botones del menu
 col1, col2, col3, = st.columns(3)
 
+st.markdown("""
+    <style>
+    .stApp { background-color: #FFFFFF; }
+    * { color: #FFFFFF !important; }
+    </style>
+    """, unsafe_allow_html=True)
+
 with col1:
     if st.button ("💻 Computadores",  use_container_width=True):
         st.switch_page("pages/Com.py")
