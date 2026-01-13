@@ -1,6 +1,22 @@
 import streamlit as st
 import os
 
+st.markdown("""
+    <style>
+    /* Fondo de la parte de abajo */
+    .stApp {
+        background-color: #F5F5F5;
+    }
+
+    /* Franja Roja Superior */
+    .custom-header {
+        background-color: #FF0000;
+        padding: 20px;
+        margin: -70px -50px 20px -50px; /* Estira la franja a los bordes */
+        text-align: center;
+    }
+    """, unsafe_allow_html=True)
+
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
@@ -47,15 +63,6 @@ if os.path.exists(ruta_logo):
 with col_der:
     st.title("Sistema de Cotización Inteligente")
     st.write("Bienvenido/a. Selecciona una categoría para empezar:")
-    
-with col_izq:
-    st.markdown("""
-    <style>
-    .stApp { background-color: #FF0000; }
-    * { color: #000000 !important; }
-    </style>
-    """, unsafe_allow_html=True)
-
     st.divider()
 
 # 3. Botones del menu
