@@ -42,32 +42,35 @@ with col_der:
     st.divider()
 
 # 3. Botones del menu
-col1, col2, col3, = st.columns(3)
 
-with col1:
-    if st.button ("💻 Computadores",  use_container_width=True):
-        st.switch_page("pages/Com.py")
+with st.container(border=True):
 
-with col2:
-    if st.button("🧊 Neveras", use_container_width=True):
-        st.switch_page("pages/Nev.py")
+    col1, col2, col3, = st.columns(3)
 
-with col3:
-    if st.button("🛵 Motos (Próximamente)", use_container_width=True, disabled=True):
-        pass
-        st.switch_page("pages/Mot.py")
+    with col1:
+        if st.button ("💻 Computadores",  use_container_width=True):
+            st.switch_page("pages/Com.py")
 
-with col1:
-    if st.button("🥇 Oro (Próximamente)", use_container_width=True, disabled=True):
-        pass
-        st.switch_page("pages/Oro.py")
+    with col2:
+        if st.button("🧊 Neveras", use_container_width=True):
+            st.switch_page("pages/Nev.py")
 
-with col2:
-    if st.button("🔨 Herramientas (Próximamente)", use_container_width=True, disabled=True):
-        pass
-        st.switch_page("pages/Herr.py")
+    with col3:
+        if st.button("🛵 Motos (Próximamente)", use_container_width=True, disabled=True):
+            pass
+            st.switch_page("pages/Mot.py")
 
-with col3:
-    if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True, disabled=True):
-        pass
-        st.switch_page("pages/ins.py")
+    with col1:
+        if st.button("🥇 Oro (Próximamente)", use_container_width=True, disabled=True):
+            pass
+            st.switch_page("pages/Oro.py")
+
+    with col2:
+        if st.button("🔨 Herramientas (Próximamente)", use_container_width=True, disabled=True):
+            pass
+            st.switch_page("pages/Herr.py")
+
+    with col3:
+        if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True, disabled=True):
+            pass
+            st.switch_page("pages/ins.py")
