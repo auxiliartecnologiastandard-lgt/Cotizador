@@ -46,7 +46,6 @@ if st.button("⬅  Volver al Menú Principal"):
     st.switch_page("Lobby.py")
 
 st.title("🧊 Cotizador de Neveras")
-st.markdown("---")
 
 # --- LÓGICA DE SINCRONIZACIÓN ---
 def sync_slider_to_num(key_slider, key_num):
