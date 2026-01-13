@@ -57,7 +57,7 @@ with st.container():
         st.title("Sistema de Cotización Inteligente")
         st.write("Bienvenido/a. Selecciona una categoría para empezar:")
 
-st.divider()
+st.markdown("<hr style='border: 2px solid #FF0000;'>", unsafe_allow_html=True)
 
 # 3. Botones del menu
 col1, col2, col3, = st.columns(3)
