@@ -1,14 +1,6 @@
 import streamlit as st
 import os
 
-
-st.markdown("""
-    <style>
-    .stApp { background-color: #FF0000; }
-    * { color: #FFFFFF !important; }
-    </style>
-    """, unsafe_allow_html=True)
-
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
@@ -57,19 +49,6 @@ with col_der:
     st.divider()
 
 # 3. Botones del menu
-# 3.1 Color de las letras y el fondo
-st.markdown("""
-    <style>
-    
-    /* Estilo para los botones */
-    .stButton>button {
-        background-color: #FF0000 !important; /* Fondo blanco */
-        color: #FFFFFF !important;           /* Texto negro */
-        border: 2px solid #000000 !important; /* Borde rojo como tu logo */
-    }
-    </style>
-    """, unsafe_allow_html=True)
- # 3.2 Configuración botones
 col1, col2, col3, = st.columns(3)
 
 with col1:
