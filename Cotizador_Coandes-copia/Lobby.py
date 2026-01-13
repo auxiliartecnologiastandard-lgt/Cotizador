@@ -4,7 +4,7 @@ import os
 st.markdown("""
     <style>
     hr { border: 0; height: 3px; background: #FF0000; } /* Divisor Rojo */
-    div.stButton > button { border: 2px solid #FF0000; color: black; }
+    div.stButton > button { border: 2px solid #000000; color: black; }
     </style>
     """, unsafe_allow_html=True)
 
