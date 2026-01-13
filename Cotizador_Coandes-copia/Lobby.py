@@ -6,11 +6,7 @@ ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
 
 # 1. Configuración de la pagina
-st.set_page_config(
-    page_title="Cotizador Coandes",
-    initial_sidebar_state="collapsed"
-)
-
+st.set_page_config(page_title="Lobby", initial_sidebar_state="collapsed", layout="wide")
 st.markdown(
     """
     <style>
@@ -33,10 +29,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-st.set_page_config(layout="wide")
-
-
 # 2. Tamaño y orietación del logo y titulo
 col_izq, col_centro, col_der = st.columns([0.000000000000000000000000000000001, 0.025, 0.2]) 
 
