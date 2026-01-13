@@ -1,6 +1,13 @@
 import streamlit as st
 import os
-st.toast('Bienvenido al Sistema Coandes', icon='🏢')
+
+if 'saludo_mostrado' not in st.session_state:
+    # Esto solo se ejecuta la primera vez que entras
+    st.toast('Bienvenido al Sistema Coandes', icon='🏢')
+    
+    # Guardamos en la memoria que ya saludamos
+    st.session_state['saludo_mostrado'] = True
+    
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
