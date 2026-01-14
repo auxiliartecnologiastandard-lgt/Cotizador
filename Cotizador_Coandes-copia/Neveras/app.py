@@ -129,10 +129,10 @@ def main():
         st.session_state["v_compra"] = f"${precio_base_redondo:,.0f}".replace(",", ".")
         st.session_state["v_venta"] = f"${precio_venta_redondo:,.0f}".replace(",", ".")
         #PARA CONTRATOS
-        st.session_state("valor_marca") = valor_marca
-        st.session_state("valor_litro_final") = valor_litro_final
-        st.session_state("valor_Sistema_de_enfriamiento") = valor_Sistema_de_enfriamiento
-        st.session_state("valor_tasa") = valor_tasa
+        st.session_state["valor_marca"] = valor_marca
+        st.session_state["valor_litro_final"] = valor_litro_final
+        st.session_state["valor_Sistema_de_enfriamiento"] = valor_Sistema_de_enfriamiento
+        st.session_state["valor_tasa"] = valor_tasa
 
         #RESULTADO
         st.info(f"### Oferta de Compraventa: {st.session_state['v_compra']}")
