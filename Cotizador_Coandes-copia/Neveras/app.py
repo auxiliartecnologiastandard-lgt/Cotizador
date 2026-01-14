@@ -3,6 +3,15 @@ import pandas as pd
 import joblib
 import numpy as np
 
+if "v_compra" not in st.session_state:
+    st.session_state.v_compra = ""
+
+if "v_venta" not in st.session_state:
+    st.session_state.v_venta = ""
+
+if "mostrar_venta" not in st.session_state:
+    st.session_state.mostrar_venta = False
+
 # ELIMINAR BARRA LATERAL
 st.set_page_config(
     page_title="Cotizador Coandes",
@@ -118,10 +127,14 @@ if st.button("🗿 CALCULAR VALOR"):
 
     st.session_state.v_compra = f"${precio_base_redondo:,.0f}".replace(",", ".")
     st.session_state.v_venta = f"${precio_venta_redondo:,.0f}".replace(",", ".")
-    st.session_state.calculado = True
+    st.session_state.mostrar_venta = False
 
-    if st.session_state.calculado:
+    if st.session_state.v_compra:
         st.info(f"### Oferta de Compraventa: {st.session_state.v_compra}")
 
-    if st.button("💰 Mostrar precio de venta"):
+        if st.button("💰 Mostrar precio de venta"):
+            st.session_state.mostrar_venta = True
+
+    if st.session_state.mostrar_venta:
         st.success(f"### Precio de Venta Sugerido: {st.session_state.v_venta}")
+
