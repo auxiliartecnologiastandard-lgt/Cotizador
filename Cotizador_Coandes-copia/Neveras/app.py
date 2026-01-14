@@ -84,7 +84,7 @@ st.markdown("### 2. Rangos de Capacidad (Litros Brutos)")
 Litro_dict = {
     "Mini / Compactas 40L-120L": 1,
     "Pequeñas 120L-250L": 2,
-    "Medianas 250L-450L": 3,
+    "Medianas 251L-450L": 3,
     "Grandes 450L-800L+": 4,
     "Otro (Escribir valor... )": "OTRO"
 }
@@ -101,7 +101,7 @@ else:
 st.markdown("### 3. Sistema de Enfriamiento")
 SE_opciones = {
     "Auto frost": 5, 
-    "No frost": 10,
+    "No frost": 8,
 }
 seleccion = st.selectbox("Seleccione el Sistema de Enfriamientoelo:", list(SE_opciones.keys()), index=1)
 valor_Sistema_de_enfriamiento = SE_opciones[seleccion]
