@@ -1,6 +1,5 @@
 import streamlit as st
 import os
-import joblib
 
 # 1. Configuración de pantalla
 st.set_page_config(page_title="Cotizador Coandes", initial_sidebar_state="collapsed")
@@ -17,7 +16,7 @@ if os.path.exists(ruta_archivo):
             codigo = f.read()
         
         # Como ya tenemos joblib (CUADRO VERDE), esto ya no fallará
-
+        exec(codigo)
         
     except Exception as e:
         st.error("Error al ejecutar el cotizador")
