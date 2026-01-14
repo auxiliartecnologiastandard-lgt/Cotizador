@@ -1,5 +1,15 @@
 import streamlit as st
 import os
+# pages/puente.py
+import streamlit as st
+
+# Guardamos la página de origen
+st.session_state['origen'] = 'puente'
+
+# Redirigimos al usuario a la página general
+st.experimental_set_query_params(page='pagina_general')
+
+st.write("Redirigiendo...")
 
 # 1. Configuración de pantalla
 st.set_page_config(page_title="Cotizador Computadores", initial_sidebar_state="collapsed")
