@@ -106,6 +106,10 @@ SE_opciones = {
 seleccion = st.selectbox("Seleccione el Sistema de Enfriamientoelo:", list(SE_opciones.keys()), index=1)
 valor_Sistema_de_enfriamiento = SE_opciones[seleccion]
 
+# 4. Tasa para contrato
+if st.toggle("OPCIONAL: Agregar tasa"):
+    valor_tasa = st.number_input("Escriba el valor exacto en L:", min_value=1, max_value=100)
+
 st.divider()
 
 # --- CÁLCULO FINAL ---
@@ -125,3 +129,19 @@ if st.button("🗿 CALCULAR VALOR"):
     v_venta = f"${precio_venta_redondo:,.0f}".replace(",", ".")
 
     st.info(f"### Oferta de Compraventa: {v_compra}")
+
+    if st.button("Crear contrato"):
+        st.session_state['datos_cotizador'] = {
+        "Origen": "nevera",
+        "Marca": valor_marca,
+        "Litros": valor_litro_final,
+        "Sistema": valor_Sistema_de_enfriamiento,
+        "Tasa": valor_tasa,
+        "Precio": v_compra
+    }
+
+    st.success("Datos guardados. Redirigiendo al contrato...")
+
+    # Redirigir a la página de contrato
+    st.experimental_set_query_params("pages/Contrato_Standard.py")
+    st.experimental_rerun()
