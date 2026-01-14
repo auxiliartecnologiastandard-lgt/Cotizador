@@ -114,10 +114,6 @@ def main():
     st.divider()
 
     # --- CÁLCULO FINAL ---
-    
-    if st.button("IR A CONTRATO"):
-        st.switch_page("pages/Contrato_Standard.py")
-
     if st.button("🗿 CALCULAR VALOR"):
 
 
@@ -154,7 +150,7 @@ def main():
                 st.success("Contrato generado correctamente!")
 
                 # Esto funciona si el nombre de la página en Streamlit es 'Contrato_Standard'
-                st.switch_page("Contrato_Standard")  # NO usar "pages/Contrato_Standard.py"
+                st.switch_page("pages/Contrato_Standard.py")  # NO usar "pages/Contrato_Standard.py"
                 
             else:
                 st.warning("Primero calcula el precio en el cotizador")
