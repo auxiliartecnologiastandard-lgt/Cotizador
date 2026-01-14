@@ -44,7 +44,7 @@ except:
 
 def main():
     # Busca el botón de volver en tu app.py y ajusta la ruta así:
-    if st.button("⬅  Volver al Menú Principal"):
+    if st.button("⬅  Volver al Menú Principal", key="btn_volver_menu"):
         st.switch_page("Lobby.py")
 
     st.title("🧊 Cotizador de Neveras")
