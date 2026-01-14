@@ -116,7 +116,8 @@ def main():
     # --- CÁLCULO FINAL ---
     
     if st.button("IR A CONTRATO"):
-        st.switch_page("Contrato_Standard")
+        st.switch_page("pages/Contrato_Standard.py")
+
     if st.button("🗿 CALCULAR VALOR"):
 
 
