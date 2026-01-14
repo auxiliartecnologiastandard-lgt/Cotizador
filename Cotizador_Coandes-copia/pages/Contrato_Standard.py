@@ -1,26 +1,22 @@
 import streamlit as st
 
-st.title("Contrato de Compraventa - Nevera")
+st.set_page_config(page_title="Contrato de Compraventa")
 
-# Verificamos si hay datos en session_state
-datos = st.session_state.get('datos_cotizador', None)
+st.title("📄 Contrato de Compraventa – Nevera")
+
+datos = st.session_state.get("datos_cotizador")
 
 if not datos:
-    st.warning("No se han recibido datos desde ningún cotizador. Por favor, vuelve al cotizador.")
-else:
-    # Solo consideramos nevera
-    if datos.get("Origen") != "nevera":
-        st.warning("Los datos recibidos no corresponden a una nevera.")
-    else:
-        st.subheader("Detalles del Contrato")
+    st.warning("No hay datos del cotizador. Regresa y calcula primero.")
+    st.stop()
 
-        st.write(f"Marca: {datos.get('Marca', 'No especificada')}")
-        st.write(f"Capacidad: {datos.get('Litros', 'No especificada')} litros")
-        st.write(f"Sistema de enfriamiento: {datos.get('Sistema', 'No especificado')}")
-        st.write(f"Tasa de interés o comisión: {datos.get('Tasa', 'No especificada')}")
-        st.write(f"Precio estimado: {datos.get('Precio', 'No especificado')}")
+# Mostrar solo datos de nevera
+if datos["Origen"] != "nevera":
+    st.error("Este contrato no corresponde a una nevera.")
+    st.stop()
 
-        # Botón opcional para guardar o descargar contrato
-        if st.button("Generar PDF del contrato"):
-            # Aquí pondrías la lógica para generar PDF
-            st.success("PDF generado (funcionalidad pendiente de implementar).")
+st.write(f"**Marca:** {datos['Marca']}")
+st.write(f"**Capacidad:** {datos['Litros']} litros")
+st.write(f"**Sistema:** {datos['Sistema']}")
+st.write(f"**Tasa:** {datos['Tasa']} %")
+st.write(f"**Precio:** ${datos['Precio']}")
