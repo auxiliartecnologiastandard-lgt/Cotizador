@@ -138,14 +138,15 @@ def main():
         st.info(f"### Oferta de Compraventa: {st.session_state['v_compra']}")
 
         if st.button("Crear contrato"):
-            st.session_state['datos_cotizador'] = {
-                "Origen": "nevera",
-                "Marca": st.session_state.get("valor_marca"),
-                "Litros": st.session_state.get("valor_litro_final"),
-                "Sistema": st.session_state.get("valor_Sistema_de_enfriamiento"),
-                "Precio": st.session_state.get("v_compra"),
-                "Tasa": st.session_state.get("valor_tasa")
-
-            }
-
-            st.success("Datos guardados. Creando cntrato...")
+            if "v_compra" in st.session_state:
+                st.session_state["datos_cotizador"] = {
+                    "Origen": "nevera",
+                    "Marca": st.session_state["valor_marca"],
+                    "Litros": st.session_state["valor_litro_final"],
+                    "Sistema": st.session_state["valor_Sistema_de_enfriamiento"],
+                    "Precio": st.session_state["v_compra"],
+                    "Tasa": st.session_state["valor_tasa"]
+                }
+                st.success("Contrato generado correctamente!")
+            else:
+                st.warning("Primero calcula el precio en el cotizador")

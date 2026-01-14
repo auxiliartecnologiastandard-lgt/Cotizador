@@ -14,11 +14,11 @@ else:
     else:
         st.subheader("Detalles del Contrato")
 
-        st.write(f"Marca: {datos['Marca']}")
-        st.write(f"Capacidad: {datos['Litros']} litros")
-        st.write(f"Sistema de enfriamiento: {datos['Sistema']}")
-        st.write(f"Tasa de interés o comisión: {datos['Tasa']}")  # según lo que represente
-        st.write(f"Precio estimado: ${datos['Precio']}")
+        st.write(f"Marca: {datos.get('Marca', 'No especificada')}")
+        st.write(f"Capacidad: {datos.get('Litros', 'No especificada')} litros")
+        st.write(f"Sistema de enfriamiento: {datos.get('Sistema', 'No especificado')}")
+        st.write(f"Tasa de interés o comisión: {datos.get('Tasa', 'No especificada')}")
+        st.write(f"Precio estimado: {datos.get('Precio', 'No especificado')}")
 
         # Botón opcional para guardar o descargar contrato
         if st.button("Generar PDF del contrato"):
