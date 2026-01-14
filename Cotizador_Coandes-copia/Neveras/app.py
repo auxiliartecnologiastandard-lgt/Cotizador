@@ -150,3 +150,7 @@ def main():
                 st.success("Contrato generado correctamente!")
             else:
                 st.warning("Primero calcula el precio en el cotizador")
+
+            # Esto funciona si el nombre de la página en Streamlit es 'Contrato_Standard'
+            st.experimental_set_query_params(page="Contrato_Standard.py")
+            st.experimental_rerun()
