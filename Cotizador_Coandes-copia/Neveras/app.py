@@ -134,11 +134,10 @@ def main():
         if st.button("Crear contrato"):
             st.session_state['datos_cotizador'] = {
                 "Origen": "nevera",
-                "Marca": valor_marca,
-                "Litros": valor_litro_final,
-                "Sistema": valor_Sistema_de_enfriamiento,
-                "Tasa": valor_tasa,
-                "Precio": st.session_state["v_compra"]
+                "Marca": st.session_state.get("valor_marca"),
+                "Litros": st.session_state.get("valor_litro_final"),
+                "Sistema": st.session_state.get("valor_Sistema_de_enfriamiento"),
+                "Precio": st.session_state.get("v_compra")
 
             }
 
