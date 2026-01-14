@@ -151,7 +151,7 @@ def main():
 
                 # Esto funciona si el nombre de la página en Streamlit es 'Contrato_Standard'
                 st.switch_page("Contrato_Standard")  # NO usar "pages/Contrato_Standard.py"
-                st.experimental_rerun()
                 
             else:
                 st.warning("Primero calcula el precio en el cotizador")
+main()
