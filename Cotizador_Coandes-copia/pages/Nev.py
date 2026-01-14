@@ -16,7 +16,7 @@ if os.path.exists(ruta_archivo):
             codigo = f.read()
         
         # Como ya tenemos joblib (CUADRO VERDE), esto ya no fallará
-        exec(codigo)
+        
         
     except Exception as e:
         st.error("Error al ejecutar el cotizador")
