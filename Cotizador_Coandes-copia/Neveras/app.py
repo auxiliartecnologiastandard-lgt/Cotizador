@@ -125,6 +125,3 @@ if st.button("🗿 CALCULAR VALOR"):
     v_venta = f"${precio_venta_redondo:,.0f}".replace(",", ".")
 
     st.info(f"### Oferta de Compraventa: {v_compra}")
-
-if st.button("🧊 Neveras", use_container_width=True):
-    st.switch_page("pages/pagina_general.py")
