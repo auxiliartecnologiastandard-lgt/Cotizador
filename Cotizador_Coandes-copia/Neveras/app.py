@@ -117,12 +117,14 @@ if st.button("🗿 CALCULAR VALOR"):
     precio_base = modelo.predict(entrada)[0]
 
     # 2. Redondear precios
-    precio_base_redondo = round(precio_base / 10000) * 10000
-    precio_venta_redondo = round((precio_base_redondo * 1.4) / 10000) * 10000
+    st.session_state['precio_base_redondo'] = f"${round(precio_base / 10000) * 10000:,.0f}".replace(",", ".")
+    st.session_state['precio_venta_redondo'] = f"${round((precio_base * 1.4) / 10000) * 10000:,.0f}".replace(",", ".")
+    # Limpiamos el estado del contrato por si había uno viejo
+    st.session_state['ver_contrato'] = False
 
     # 3. Resultados
-    v_venta = f"${precio_venta_redondo:,.0f}".replace(",", ".")
-    v_compra = f"${precio_base_redondo:,.0f}".replace(",", ".")
+    v_venta = f"${"precio_venta_redondo":,.0f}".replace(",", ".")
+    v_compra = f"${'precio_base_redondo':,.0f}".replace(",", ".")
 
     st.info(f"### Oferta de Compraventa: {v_compra}")
 
