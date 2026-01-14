@@ -137,7 +137,7 @@ def main():
         #RESULTADO
         st.info(f"### Oferta de Compraventa: {st.session_state['v_compra']}")
 
-    if st.session_state.get("precio_calculado"):
+         if st.session_state.get("precio_calculado"):
         if st.button("Crear contrato"):
             if "v_compra" in st.session_state:
                 st.session_state["datos_cotizador"] = {
