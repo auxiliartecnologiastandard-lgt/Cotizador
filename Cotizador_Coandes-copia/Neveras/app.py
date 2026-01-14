@@ -108,6 +108,11 @@ valor_Sistema_de_enfriamiento = SE_opciones[seleccion]
 
 st.divider()
 
+if "calculado" not in st.session_state:
+    st.session_state.calculado = False
+    st.session_state.v_venta = None
+    st.session_state.v_compra = None
+
 # --- CÁLCULO FINAL ---
 
 if st.button("🗿 CALCULAR VALOR"):
@@ -120,8 +125,18 @@ if st.button("🗿 CALCULAR VALOR"):
     precio_base_redondo = round(precio_base / 10000) * 10000
     precio_venta_redondo = round((precio_base_redondo * 1.4) / 10000) * 10000
 
-    # 3. Resultados
-    v_venta = f"${precio_venta_redondo:,.0f}".replace(",", ".")
-    v_compra = f"${precio_base_redondo:,.0f}".replace(",", ".")
+    # 3. Formato
+    st.session_state.v_compra = f"${precio_base_redondo:,.0f}".replace(",", ".")
+    st.session_state.v_venta = f"${precio_venta_redondo:,.0f}".replace(",", ".")
 
-    st.info(f"### Oferta de Compraventa: {v_compra}")
+    st.session_state.calculado = True
+
+    st.info(f"### Oferta de Compraventa: {st.session_state.v_compra}")
+
+
+# --- BOTÓN FINAL ---
+if st.button("✋😐🤚"):
+    if st.session_state.calculado:
+        st.success(f"### Precio de Venta: {st.session_state.v_venta}")
+    else:
+        st.error("Error")
