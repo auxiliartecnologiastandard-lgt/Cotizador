@@ -134,25 +134,26 @@ def main():
         st.session_state["valor_Sistema_de_enfriamiento"] = valor_Sistema_de_enfriamiento
         st.session_state["valor_tasa"] = valor_tasa
 
-        #RESULTADO
-        st.info(f"### Oferta de Compraventa: {st.session_state['v_compra']}")
 
-    if st.session_state.get("precio_calculado"):
-        if st.button("Crear contrato"):
-            if "v_compra" in st.session_state:
-                st.session_state["datos_cotizador"] = {
-                     "Origen": "nevera",
-                    "Marca": st.session_state["valor_marca"],
-                    "Litros": st.session_state["valor_litro_final"],
-                    "Sistema": st.session_state["valor_Sistema_de_enfriamiento"],
-                     "Precio": st.session_state["v_compra"],
-                    "Tasa": st.session_state["valor_tasa"]
-                   }
-                st.success("Contrato generado correctamente!")
 
-                    # Esto funciona si el nombre de la página en Streamlit es 'Contrato_Standard'
-                st.switch_page("pages/Contrato_Standard.py")  # NO usar "pages/Contrato_Standard.py"
+        if "v_compra" in st.session_state:
+            st.session_state["datos_cotizador"] = {
+                "Origen": "nevera",
+                "Marca": st.session_state["valor_marca"],
+                "Litros": st.session_state["valor_litro_final"],
+                "Sistema": st.session_state["valor_Sistema_de_enfriamiento"],
+                "Precio": st.session_state["v_compra"],
+                "Tasa": st.session_state["valor_tasa"]
+                }
+            st.success("Contrato generado correctamente!")
                     
-            else:
-                st.warning("Primero calcula el precio en el cotizador")
+        else:
+            st.warning("Primero calcula el precio en el cotizador")
+        
+        if st.session_state.get("precio_calculado"):
+            #RESULTADO
+            st.info(f"### Oferta de Compraventa: {st.session_state['v_compra']}")
+            if st.button("Crear contrato"):
+                # Esto funciona si el nombre de la página en Streamlit es 'Contrato_Standard'
+                st.switch_page("pages/Contrato_Standard.py")  # NO usar "pages/Contrato_Standard.py"
 main()
