@@ -101,7 +101,7 @@ else:
 st.markdown("### 3. Sistema de Enfriamiento")
 SE_opciones = {
     "Auto frost": 5, 
-    "No frost": 8,
+    "No frost": 1000,
 }
 seleccion = st.selectbox("Seleccione el Sistema de Enfriamientoelo:", list(SE_opciones.keys()), index=1)
 valor_Sistema_de_enfriamiento = SE_opciones[seleccion]
