@@ -132,16 +132,12 @@ if st.button("🗿 CALCULAR VALOR"):
 
     if st.button("Crear contrato"):
         st.session_state['datos_cotizador'] = {
-        "Origen": "nevera",
-        "Marca": valor_marca,
-        "Litros": valor_litro_final,
-        "Sistema": valor_Sistema_de_enfriamiento,
-        "Tasa": valor_tasa,
-        "Precio": v_compra
-    }
+            "Origen": "nevera",
+            "Marca": valor_marca,
+            "Litros": valor_litro_final,
+            "Sistema": valor_Sistema_de_enfriamiento,
+            "Tasa": valor_tasa,
+            "Precio": v_compra
+        }
 
-    st.success("Datos guardados. Redirigiendo al contrato...")
-
-    # Redirigir a la página de contrato
-    st.experimental_set_query_params("pages/Contrato_Standard.py")
-    st.experimental_rerun()
+        st.success("Datos guardados. Creando cntrato...")
