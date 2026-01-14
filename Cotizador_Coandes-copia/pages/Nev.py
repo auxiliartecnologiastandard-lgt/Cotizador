@@ -112,14 +112,11 @@ def main():
         valor_tasa = st.number_input("Escriba el valor exacto en L:", min_value=1, max_value=100)
 
     st.divider()
-    import streamlit as st
-
-    st.title("PRUEBA")
-
-    if st.button("IR A CONTRATO"):
-        st.switch_page("Contrato_Standard")
 
     # --- CÁLCULO FINAL ---
+    
+    if st.button("IR A CONTRATO"):
+        st.switch_page("Contrato_Standard")
     if st.button("🗿 CALCULAR VALOR"):
 
 
