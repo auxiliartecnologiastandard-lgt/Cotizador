@@ -108,13 +108,14 @@ valor_Sistema_de_enfriamiento = SE_opciones[seleccion]
 
 st.divider()
 
+# Inicializar estado
 if "calculado" not in st.session_state:
     st.session_state.calculado = False
     st.session_state.v_venta = None
     st.session_state.v_compra = None
 
-# --- CÁLCULO FINAL ---
 
+# --- CÁLCULO FINAL ---
 if st.button("🗿 CALCULAR VALOR"):
 
     # 1. Predicción
@@ -137,6 +138,27 @@ if st.button("🗿 CALCULAR VALOR"):
 # --- BOTÓN FINAL ---
 if st.button("✋😐🤚"):
     if st.session_state.calculado:
-        st.success(f"### Precio de Venta: {st.session_state.v_venta}")
+       # Preparamos el texto del contrato dinámico
+        # Puedes personalizar este texto según lo que necesites
+        texto_contrato = f"""
+        CONTRATO DE COMPRAVENTA DE ARTÍCULO USADO
+        -------------------------------------------
+        FECHA: 2026
+        ARTÍCULO: Nevera / Computador
+        MARCA: {valor_marca} 
+        VALOR ACORDADO: {st.session_state['v_compra']}
+        
+        POR MEDIO DEL PRESENTE, EL VENDEDOR DECLARA QUE EL ARTÍCULO 
+        ES DE SU PROPIEDAD Y ESTÁ LIBRE DE GRAVÁMENES O PENDIENTES JUDICIALES.
+        SISTEMA COANDES - REGISTRO DE OPERACIÓN EXITOSA.
+        -------------------------------------------
+        FIRMA VENDEDOR: ___________________________
+        C.C:
+        """
+        
+        st.subheader("Copia el siguiente texto para tu documento:")
+        # Usamos st.code porque incluye un botón de "copiar" automático en la esquina
+        st.code(texto_contrato, language="markdown")
+        st.caption("Presiona el icono de la esquina derecha del cuadro negro para copiar todo el texto.")
     else:
         st.error("Error")
