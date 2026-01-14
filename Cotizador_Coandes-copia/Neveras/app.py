@@ -126,5 +126,5 @@ if st.button("🗿 CALCULAR VALOR"):
 
     st.info(f"### Oferta de Compraventa: {v_compra}")
 
-    if st.button("🗿 CALCULAR VALOR"):
+    if st.button("🗿 CALCULAR VALOR",  use_container_width=True):
         st.switch_page("pages/Com.py")
