@@ -127,5 +127,5 @@ if st.button("🗿 CALCULAR VALOR"):
     st.info(f"### Oferta de Compraventa: {v_compra}")
 
 
-if st.button("✋😐🤚"):
-    st.warning(f"### Oferta de Compraventa: {v_venta}")
+    if st.button("✋😐🤚"):
+            st.warning(f"### Oferta de Compraventa: {v_venta}")
