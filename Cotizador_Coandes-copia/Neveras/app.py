@@ -111,6 +111,7 @@ st.divider()
 # --- CÁLCULO FINAL ---
 if st.button("🗿 CALCULAR VALOR"):
 
+
     # 1. Predicción
     entrada = np.array([[valor_marca, valor_litro_final, valor_Sistema_de_enfriamiento]])
     precio_base = modelo.predict(entrada)[0]
