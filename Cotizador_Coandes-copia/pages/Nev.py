@@ -12,12 +12,7 @@ ruta_archivo = os.path.join("Cotizador_Coandes-copia", "Neveras", "app.py")
 
 if os.path.exists(ruta_archivo):
     try:
-        with open(ruta_archivo, "r", encoding="utf-8") as f:
-            codigo = f.read()
-        
-        # Como ya tenemos joblib (CUADRO VERDE), esto ya no fallará
-        exec(codigo)
-        
+        st.switch_page("pages/Nev.py")
     except Exception as e:
         st.error("Error al ejecutar el cotizador")
         st.exception(e)
