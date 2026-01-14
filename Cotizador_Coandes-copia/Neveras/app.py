@@ -125,6 +125,3 @@ if st.button("🗿 CALCULAR VALOR"):
     v_compra = f"${precio_base_redondo:,.0f}".replace(",", ".")
 
     st.info(f"### Oferta de Compraventa: {v_compra}")
-
-if st.button("Boton prueba",  use_container_width=True):
-    st.switch_page("pages/Com.py")
