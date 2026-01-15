@@ -225,9 +225,8 @@ elif datos["Origen"] == "Computador":
     texto_grande = f"""
     Hola"""
 
-    pdf_buffer = io.BytesIO()
-    pdf.output(pdf_buffer)
-    pdf_buffer.seek(0)
+    pdf_bytes = pdf.output(dest="S").encode("latin-1")
+    pdf_buffer = io.BytesIO(pdf_bytes)
 
     # Botón de descarga
     st.download_button(
