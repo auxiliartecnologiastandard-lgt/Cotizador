@@ -145,7 +145,6 @@ def main():
                 "Precio": st.session_state["v_compra"],
                 "Tasa": st.session_state["valor_tasa"]
                 }
-            st.success("Contrato generado correctamente!")
                     
         else:
             st.warning("Primero calcula el precio en el cotizador")
