@@ -154,4 +154,3 @@ def main():
     if st.session_state.get("precio_calculado"):
             if st.button("Crear contrato"):
                 st.switch_page("pages/Contrato_Standard.py")
-main()
