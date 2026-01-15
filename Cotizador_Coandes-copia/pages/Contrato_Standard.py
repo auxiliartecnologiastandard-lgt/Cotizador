@@ -45,6 +45,39 @@ elif datos['Marca'] == 2:
     datos['Marca'] = "Indurama"
 elif datos['Marca'] == 3:
     datos['Marca'] = "Challenger"
+elif datos['Marca'] == 4:
+    datos['Marca'] = "Midea"
+elif datos['Marca'] == 4.1:
+    datos['Marca'] = "Hisense"
+elif datos['Marca'] == 5:
+    datos['Marca'] = "Mabe"
+elif datos['Marca'] == 6:
+    datos['Marca'] = "Haceb"
+elif datos['Marca'] == 6.1:
+    datos['Marca'] = "Abba"
+elif datos['Marca'] == 7:
+    datos['Marca'] = "Whirlpool"
+elif datos['Marca'] == 8:
+    datos['Marca'] = "Electrolux"
+elif datos['Marca'] == 9:
+    datos['Marca'] = "Samsung"
+elif datos['Marca'] == 10:
+    datos['Marca'] = "LG"
+elif datos['Marca'] == 11:
+    datos['Marca'] = "Bosch"
+elif datos['Marca'] == 12:
+    datos['Marca'] = "KitchenAid"
+elif datos['Marca'] == 13:
+    datos['Marca'] = "Frigidaire"
+elif datos['Marca'] == 13.1:
+    datos['Marca'] = "GE Profile"
+elif datos['Marca'] == 14:
+    datos['Marca'] = "Sub-Zero"
+elif datos['Marca'] == 14.1:
+    datos['Marca'] = "Monogram"
+elif datos['Marca'] == 14.01:
+    datos['Marca'] = "Liebherr"
+
 
 # Adaptamos los números a texto ( Sistema de enfriamiento )
 if datos['Sistema'] == 5:
