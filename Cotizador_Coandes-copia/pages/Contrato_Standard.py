@@ -180,7 +180,7 @@ elif datos["Origen"] == "Computador":
 
     # TITULO DEL PDF
     pdf.set_font("Arial", "B", 14)
-    pdf.ln(30)  # baja el cursor para no chocar con el logo
+    pdf.ln(35)  # baja el cursor para no chocar con el logo
     pdf.cell(0, 10, "CONTRATO STANDARD", ln=True, align="C")
 
     # CONSEGUIR FECHA ACTUAL
@@ -191,11 +191,14 @@ elif datos["Origen"] == "Computador":
     qr = qrcode.make(link)
     qr.save("qr_temp.png")
 
-    # Ubicación tabla
-    tabla_x = 50
-    tabla_y = 50
+    # Posición base del bloque (debajo del título)
+    y_bloque = 55
 
-    # QR a la izquierda de la tabla
+    # Posición de la tabla (derecha)
+    tabla_x = 70
+    tabla_y = y_bloque
+
+    # QR a la izquierda de la tabla (NO de la hoja)
     pdf.image(
         "qr_temp.png",
         x=tabla_x - 35,
@@ -220,7 +223,7 @@ elif datos["Origen"] == "Computador":
     # CONTENIDO DEL PDF
     pdf.ln(15)
     pdf.set_font("Arial", size=12)  # sin "B" que significa negrilla
-    pdf.cell(0, 8, "CONTRATO DE COMPRAVENTA CON PACTO DE RETROVENTA. Artículo 1939 del Código Civil Colombiano.", ln=True)
+    pdf.multi_cell(0, 8, "CONTRATO DE COMPRAVENTA CON PACTO DE RETROVENTA. Artículo 1939 del Código Civil Colombiano.", ln=True)
 
     texto_grande = f"""
     Hola"""
