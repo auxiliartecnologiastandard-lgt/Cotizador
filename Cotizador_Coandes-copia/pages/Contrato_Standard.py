@@ -78,6 +78,15 @@ elif datos['Marca'] == 14.1:
 elif datos['Marca'] == 14.01:
     datos['Marca'] = "Liebherr"
 
+# Adaptamos los números a texto ( Litros )
+if datos['Litros'] == 1:
+    datos['Litros'] = "40 y 120 litros"
+elif datos['Litros'] == 2:
+    datos['Litros'] = "121 y 250 litros"
+elif datos['Litros'] == 3:
+    datos['Litros'] = "251 y 450 litros"
+elif datos['Litros'] == 4:
+    datos['Litros'] = "450 y 800 litros"
 
 # Adaptamos los números a texto ( Sistema de enfriamiento )
 if datos['Sistema'] == 5:

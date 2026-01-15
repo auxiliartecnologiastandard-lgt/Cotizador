@@ -89,7 +89,7 @@ def main():
     Litro_dict = {
         "Mini / Compactas 40L-120L": 1,
         "Pequeñas 120L-250L": 2,
-        "Medianas 251L-450L": 3,
+        "Medianas 250L-450L": 3,
         "Grandes 450L-800L+": 4,
         "Otro (Escribir valor... )": "OTRO"
     }
