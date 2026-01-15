@@ -133,6 +133,7 @@ def main():
         st.session_state["valor_litro_final"] = valor_litro_final
         st.session_state["valor_Sistema_de_enfriamiento"] = valor_Sistema_de_enfriamiento
         st.session_state["valor_tasa"] = valor_tasa
+        st.info(f"### Oferta de Compraventa: {st.session_state['v_compra']}")
 
 
 
@@ -151,7 +152,6 @@ def main():
         
     if st.session_state.get("precio_calculado"):
             #RESULTADO
-            st.info(f"### Oferta de Compraventa: {st.session_state['v_compra']}")
             if st.button("Crear contrato"):
                 # Esto funciona si el nombre de la página en Streamlit es 'Contrato_Standard'
                 st.switch_page("pages/Contrato_Standard.py")  # NO usar "pages/Contrato_Standard.py"Nev.py

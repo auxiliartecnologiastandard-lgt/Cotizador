@@ -1,5 +1,28 @@
 import streamlit as st
 
+st.markdown(
+    """
+    <style>
+        /* Elimina el botón > de la esquina superior izquierda */
+        [data-testid="collapsedControl"] {
+            display: none !important;
+        }
+
+        /* Elimina la barra lateral por completo */
+        [data-testid="stSidebar"] {
+            display: none !important;
+        }
+        
+        /* Elimina el encabezado superior para que no quede espacio vacío */
+        header {
+            visibility: hidden !important;
+            height: 0 !important;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 st.set_page_config(page_title="Contrato de Compraventa")
 
 st.title("📄 Contrato de Compraventa – Nevera")
@@ -20,4 +43,4 @@ st.write(f"**Capacidad:** {datos['Litros']} litros")
 st.write(f"**Sistema:** {datos['Sistema']}")
 st.write(f"**Tasa:** {datos['Tasa']} %")
 st.write(f"**Precio:** ${datos['Precio']}")
-st.write(f"Este contrato se basa en la compra de una {datos["Origen"]}, de la marca {datos['Marca']}, con una capacidad de {datos['Litros']} Y sistema {datos['Sistema']}, Al precio de: {datos['Precio']}  pesos con una tasa de {datos['Tasa']} %")
+st.write(f"Este contrato se basa en la compra de una {datos["Origen"]}, de la marca {datos['Marca']}, con una capacidad entre {datos['Litros']}, y sistema {datos['Sistema']}, Al precio de: {datos['Precio']}  pesos con una tasa de {datos['Tasa']} %")
