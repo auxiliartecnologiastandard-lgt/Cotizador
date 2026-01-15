@@ -168,7 +168,7 @@ def main():
 
                 if "v_compra" in st.session_state:
                     st.session_state["datos_cotizador"] = {
-                        "Origen": "nevera",
+                        "Origen": "Nevera",
                         "Marca": st.session_state["valor_marca"],
                         "Litros": st.session_state["valor_litro_final"],
                         "Sistema": st.session_state["valor_Sistema_de_enfriamiento"],
