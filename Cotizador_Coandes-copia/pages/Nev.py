@@ -112,6 +112,7 @@ def main():
         valor_tasa = st.number_input("Escriba el valor exacto en L:", min_value=1, max_value=100)
     else:
         valor_tasa = 0
+        
     st.divider()
 
     col1, col2, = st.columns(2)
@@ -136,7 +137,7 @@ def main():
 
 
     with col2:
-        if st.button("Calcular y crear contrato"):
+        if st.button("📄 Crear contrato"):
             st.session_state["precio_calculado"] = True
 
             # 1. Predicción
