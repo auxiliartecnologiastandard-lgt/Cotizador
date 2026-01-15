@@ -192,10 +192,10 @@ elif datos["Origen"] == "Computador":
     qr.save("qr_temp.png")
 
     # Posición base del bloque (debajo del título)
-    y_bloque = 25
+    y_bloque = 20
 
     # Posición de la tabla (derecha)
-    tabla_x = 100
+    tabla_x = 150
     tabla_y = y_bloque
 
     # QR a la izquierda de la tabla (NO de la hoja)
