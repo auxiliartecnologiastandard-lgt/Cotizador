@@ -110,7 +110,8 @@ def main():
     # 4. Tasa para contrato
     if st.toggle("OPCIONAL: Agregar tasa"):
         valor_tasa = st.number_input("Escriba el valor exacto en L:", min_value=1, max_value=100)
-
+    else:
+        valor_tasa = 0
     st.divider()
 
     # --- CÁLCULO FINAL ---
