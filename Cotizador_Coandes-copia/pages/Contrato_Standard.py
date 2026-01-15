@@ -2,7 +2,7 @@ import streamlit as st
 from fpdf import FPDF
 from datetime import date
 import qrcode
-
+import os
 
 st.markdown(
     """
@@ -173,12 +173,9 @@ elif datos["Origen"] == "Computador":
     pdf.add_page()
 
     # LOGO DE LA EMPRESA
-    import os
-    st.write("Directorio actual:", os.getcwd())
-    st.write("Archivos en raíz:", os.listdir())
-    st.write("Archivos en pages:", os.listdir("pages"))
-
-    pdf.image("pages/Standard_logo.png", x=10, y=8, w=40)
+    ruta_base = os.path.dirname(__file__)
+    ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
+    pdf.image(ruta_logo, x=10, y=8, w=40)
 
     # TITULO DEL PDF
     pdf.set_font("Arial", "B", 14)
