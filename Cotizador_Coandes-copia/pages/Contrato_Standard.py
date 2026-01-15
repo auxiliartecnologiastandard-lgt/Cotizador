@@ -97,7 +97,6 @@ if datos["Origen"] == "Nevera":
 elif datos["Origen"] == "Computador":
     # CONTRATO DE COMPUTADOR
     # Adaptamos de número a nombre ( Marca )
-    # Adaptamos los números a texto (Marca)
     if datos['Marca'] == 1:
         datos['Marca'] = "WINDOWS"
     elif datos['Marca'] == 2:
@@ -120,4 +119,48 @@ elif datos["Origen"] == "Computador":
         datos['Marca'] = "LENOVO"
     elif datos['Marca'] == 11:
         datos['Marca'] = "Apple"
-st.write(f"Este contrato se basa en la compraventa de una {datos["Origen"]}, de la marca {datos['Marca']}")
+
+    # Adaptamos de número a texto ( RAM )
+    if datos['RAM'] == 2:
+        datos['RAM'] = "2 GB de ram"
+    elif datos['RAM'] == 4:
+        datos['RAM'] = "4 GB de ram"
+    elif datos['RAM'] == 6:
+        datos['RAM'] = "6 GB de ram"
+    elif datos['RAM'] == 7:
+        datos['RAM'] = "8 GB de ram"
+    elif datos['RAM'] == 12:
+        datos['RAM'] = "12 GB de ram"
+    elif datos['RAM'] == 16:
+        datos['RAM'] = "16 GB de ram"
+    elif datos['RAM'] == 32:
+        datos['RAM'] = "32 GB de ram"
+    elif datos['RAM'] == 64:
+        datos['RAM'] = "64 GB de ram"
+
+    # Adaptamos de número a texto ( Procesador )
+    if datos["Procesador"] == 5:
+        datos["Procesador"] = "Celeron"
+    elif datos["Procesador"] == 5.000001:
+        datos["Procesador"] = "Pentium"
+    elif datos["Procesador"] == 5.0000001:
+        datos["Procesador"] = "AMD"
+    elif datos["Procesador"] == 5.00000001:
+        datos["Procesador"] = "Athlon"
+    elif datos["Procesador"] == 15:
+        datos["Procesador"] = "Core i3 / Ryzen 3"
+    elif datos["Procesador"] == 30:
+        datos["Procesador"] = "Core i5 / Ryzen 5"
+    elif datos["Procesador"] == 70:
+        datos["Procesador"] = "Core i7 / Ryzen 7"
+    elif datos["Procesador"] == 120:
+        datos["Procesador"] = "Core i9 / Ryzen 9"
+
+    # Adaptamos de número a texto ( Grafica )
+    if datos['Grafica'] == 0:
+        datos['Grafica'] = "Sin tarjeta grafica"
+    else:
+        datos['Grafica'] = "Con tarjeta grafica"
+
+    st.write(f"Este contrato se basa en la compraventa de un {datos["Origen"]}, de la marca {datos['Marca']}, con {datos["RAM"]}, {datos["Disco"]} de espacio, con procesador {datos["Procesador"]}, y {datos["Grafica"]} Al precio de: {datos['Precio']}  pesos con una tasa del {datos['Tasa']}%")
+    

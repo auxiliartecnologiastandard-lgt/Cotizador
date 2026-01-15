@@ -123,7 +123,10 @@ else:
 # 4. Procesador
 st.markdown("### 4. Procesador")
 proc_opciones = {
-    "Básico (Celeron/Pentium/AMD A-Series/Athlon)": 5, 
+    "Celeron": 5, 
+    "Pentium": 5.000001,
+    "AMD": 5.0000001,
+    "Athlon": 5.00000001,
     "Core i3 / Ryzen 3": 15, 
     "Core i5 / Ryzen 5": 30, 
     "Core i7 / Ryzen 7": 70, 
