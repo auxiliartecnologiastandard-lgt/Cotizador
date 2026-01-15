@@ -173,7 +173,7 @@ elif datos["Origen"] == "Computador":
     pdf.add_page()
 
     # LOGO DE LA EMPRESA
-    pdf.image("Cotizador_Coandes-copia, Standard_logo.png", x=10, y=8, w=40)
+    pdf.image("Standard_logo.png", x=10, y=8, w=40)
 
     # TITULO DEL PDF
     pdf.set_font("Arial", "B", 14)
