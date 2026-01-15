@@ -25,7 +25,7 @@ st.markdown(
 
 st.set_page_config(page_title="Contrato de Compraventa")
 
-st.title("📄 Contrato de Compraventa – Nevera")
+st.title("📄 Contrato")
 
 datos = st.session_state.get("datos_cotizador")
 
@@ -37,10 +37,6 @@ if not datos:
 if datos["Origen"] != "nevera":
     st.error("Este contrato no corresponde a una nevera.")
     st.stop()
-
-st.write(f"**Marca:** {datos['Marca']}")
-st.write(f"**Capacidad:** {datos['Litros']} litros")
-st.write(f"**Sistema:** {datos['Sistema']}")
-st.write(f"**Tasa:** {datos['Tasa']} %")
-st.write(f"**Precio:** ${datos['Precio']}")
+if {datos['Marca']} == 1:
+    {datos['Marca']} = "Kalley"
 st.write(f"Este contrato se basa en la compra de una {datos["Origen"]}, de la marca {datos['Marca']}, con una capacidad entre {datos['Litros']}, y sistema {datos['Sistema']}, Al precio de: {datos['Precio']}  pesos con una tasa del {datos['Tasa']}%")
