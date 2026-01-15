@@ -176,7 +176,7 @@ elif datos["Origen"] == "Computador":
     # LOGO DE LA EMPRESA
     ruta_base = os.path.dirname(__file__)
     ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
-    pdf.image(ruta_logo, x=5, y=5, w=10)
+    pdf.image(ruta_logo, x=10, y=8, w=40)
 
     # TITULO DEL PDF
     pdf.set_font("Arial", "B", 14)
@@ -198,24 +198,29 @@ elif datos["Origen"] == "Computador":
     tabla_x = 70
     tabla_y = y_bloque
 
-    # QR a la izquierda de la tabla (NO de la hoja)
+    y_bloque = pdf.get_y() + 8  # debajo del subtítulo
+
+    tabla_x = 70
+
+    # QR (izquierda de la tabla)
     pdf.image(
         "qr_temp.png",
         x=tabla_x - 35,
-        y=tabla_y,
-        w=30)
+        y=y_bloque,
+        w=30
+    )
 
     # Tabla
-    pdf.set_xy(tabla_x, tabla_y)
+    pdf.set_xy(tabla_x, y_bloque)
     pdf.set_font("Arial", size=10)
-    # Fila 1 – Fecha
+
     pdf.cell(35, 8, "Fecha", border=1)
     pdf.cell(40, 8, fecha_actual, border=1, ln=True)
-    # Fila 2 – Tasa
+
     pdf.set_x(tabla_x)
     pdf.cell(35, 8, "Tasa", border=1)
     pdf.cell(40, 8, f'{datos["Tasa"]}%', border=1, ln=True)
-    # Fila 3 – Precio
+
     pdf.set_x(tabla_x)
     pdf.cell(35, 8, "Precio", border=1)
     pdf.cell(40, 8, f'${datos["Precio"]}', border=1, ln=True)
