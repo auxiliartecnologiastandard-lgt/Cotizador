@@ -37,6 +37,7 @@ if not datos:
 if datos["Origen"] != "nevera":
     st.error("Este contrato no corresponde a una nevera.")
     st.stop()
-if {datos['Marca']} == 1:
-    {datos['Marca']} = "Kalley"
+if datos['Marca'] == 1:
+    datos['Marca'] = "Kalley"
+
 st.write(f"Este contrato se basa en la compra de una {datos["Origen"]}, de la marca {datos['Marca']}, con una capacidad entre {datos['Litros']}, y sistema {datos['Sistema']}, Al precio de: {datos['Precio']}  pesos con una tasa del {datos['Tasa']}%")
