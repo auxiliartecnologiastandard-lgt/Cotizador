@@ -64,7 +64,8 @@ def main():
         "Kalley": 1,
         "Indurama": 2,
         "Challenger": 3,
-        "Midea / Hisense": 4,
+        "Midea": 4,
+        "Hisense": 4.1,
         "Mabe": 5,
         "Haceb": 6,
         "Abba": 6.1,
@@ -74,8 +75,11 @@ def main():
         "LG": 10,
         "Bosch": 11,
         "KitchenAid": 12,
-        "Frigidaire / GE Profile": 13,
-        "Sub-Zero / Monogram / Liebherr": 14,
+        "Frigidaire": 13,
+        "GE Profile": 13.1,
+        "Sub-Zero": 14,
+        "Monogram": 14.1,
+        "Liebherr": 14.01
     }
     sel_marca = st.selectbox("Seleccione la marca:", list(Marca_opciones.keys()), index=1)
     valor_marca = Marca_opciones[sel_marca]
