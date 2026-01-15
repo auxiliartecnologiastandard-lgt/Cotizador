@@ -3,6 +3,7 @@ from fpdf import FPDF
 from datetime import date
 import qrcode
 import os
+import io
 
 st.markdown(
     """
@@ -223,3 +224,15 @@ elif datos["Origen"] == "Computador":
 
     texto_grande = f"""
     Hola"""
+
+    pdf_buffer = io.BytesIO()
+    pdf.output(pdf_buffer)
+    pdf_buffer.seek(0)
+
+    # Botón de descarga
+    st.download_button(
+        label="📥 Descargar PDF",
+        data=pdf_buffer,
+        file_name="contrato.pdf",
+        mime="application/pdf"
+    )
