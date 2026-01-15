@@ -106,6 +106,7 @@ seleccion = st.selectbox("Seleccione capacidad o elija 'Otro':", list(disco_dict
 if disco_dict[seleccion] == "OTRO":
     
     Valor_Usuario = st.number_input("Escriba el valor exacto en GB:", min_value=1, max_value=10000)
+    Valor_Memoria_Real = st.number_input("Escriba el valor exacto en GB:", min_value=1, max_value=10000)
     # Ancla de realidad para ajustar el precio
     if Valor_Usuario  >= 1 and Valor_Usuario  < 256:
             valor_disco_final = 128
@@ -140,7 +141,7 @@ if st.toggle("OPCIONAL: Agregar tasa"):
     valor_tasa = st.number_input("Escriba el valor exacto en L:", min_value=1, max_value=100)
 else:
     valor_tasa = 0
-    
+
 st.divider()
 
 # --- CÁLCULO FINAL ---
