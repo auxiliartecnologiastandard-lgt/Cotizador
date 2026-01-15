@@ -143,40 +143,42 @@ def main():
     with col2:
         if st.button("📄 Crear contrato"):
             st.session_state["precio_calculado"] = True
-
-            # 1. Predicción
-            entrada = np.array([[valor_marca, valor_litro_final, valor_Sistema_de_enfriamiento]])
-            precio_base = modelo.predict(entrada)[0]
-
-            # 2. Redondear precios
-            precio_base_redondo = round(precio_base / 10000) * 10000
-            precio_venta_redondo = round((precio_base_redondo * 1.4) / 10000) * 10000
-
-            # 3. Formato
-            st.session_state["v_compra"] = f"${precio_base_redondo:,.0f}".replace(",", ".")
-            st.session_state["v_venta"] = f"${precio_venta_redondo:,.0f}".replace(",", ".")
-            #PARA CONTRATOS
-            st.session_state["valor_marca"] = valor_marca
-            st.session_state["valor_litro_final"] = valor_litro_final
-            st.session_state["valor_Sistema_de_enfriamiento"] = valor_Sistema_de_enfriamiento
-            st.session_state["valor_tasa"] = valor_tasa
-            st.info(f"### Oferta de Compraventa: {st.session_state['v_compra']}")
-
-
-
-            if "v_compra" in st.session_state:
-                st.session_state["datos_cotizador"] = {
-                    "Origen": "nevera",
-                    "Marca": st.session_state["valor_marca"],
-                    "Litros": st.session_state["valor_litro_final"],
-                    "Sistema": st.session_state["valor_Sistema_de_enfriamiento"],
-                    "Precio": st.session_state["v_compra"],
-                    "Tasa": st.session_state["valor_tasa"]
-                    }
-                        
+            if valor_tasa == 0:
+                st.warning("Porfavor agregue una tasa")
             else:
-                st.warning("Primero calcula el precio en el cotizador")
-            
+                # 1. Predicción
+                entrada = np.array([[valor_marca, valor_litro_final, valor_Sistema_de_enfriamiento]])
+                precio_base = modelo.predict(entrada)[0]
 
-            st.switch_page("pages/Contrato_Standard.py")
+                # 2. Redondear precios
+                precio_base_redondo = round(precio_base / 10000) * 10000
+                precio_venta_redondo = round((precio_base_redondo * 1.4) / 10000) * 10000
+
+                # 3. Formato
+                st.session_state["v_compra"] = f"${precio_base_redondo:,.0f}".replace(",", ".")
+                st.session_state["v_venta"] = f"${precio_venta_redondo:,.0f}".replace(",", ".")
+                #PARA CONTRATOS
+                st.session_state["valor_marca"] = valor_marca
+                st.session_state["valor_litro_final"] = valor_litro_final
+                st.session_state["valor_Sistema_de_enfriamiento"] = valor_Sistema_de_enfriamiento
+                st.session_state["valor_tasa"] = valor_tasa
+                st.info(f"### Oferta de Compraventa: {st.session_state['v_compra']}")
+
+
+
+                if "v_compra" in st.session_state:
+                    st.session_state["datos_cotizador"] = {
+                        "Origen": "nevera",
+                        "Marca": st.session_state["valor_marca"],
+                        "Litros": st.session_state["valor_litro_final"],
+                        "Sistema": st.session_state["valor_Sistema_de_enfriamiento"],
+                        "Precio": st.session_state["v_compra"],
+                        "Tasa": st.session_state["valor_tasa"]
+                        }
+                            
+                else:
+                    st.warning("Primero calcula el precio en el cotizador")
+                
+
+                st.switch_page("pages/Contrato_Standard.py")
 main()
