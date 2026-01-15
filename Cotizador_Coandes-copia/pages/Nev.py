@@ -150,8 +150,8 @@ def main():
         else:
             st.warning("Primero calcula el precio en el cotizador")
         
-        if st.session_state["precio_calculado"] == True:
-                if st.button("Crear contrato"):
-                    # Esto funciona si el nombre de la página en Streamlit es 'Contrato_Standard'
-                    st.switch_page("pages/Contrato_Standard.py")  # NO usar "pages/Contrato_Standard.py"Nev.py
+    if st.session_state.get("precio_calculado"):
+            if st.button("Crear contrato"):
+                # Esto funciona si el nombre de la página en Streamlit es 'Contrato_Standard'
+                st.switch_page("pages/Contrato_Standard.py")  # NO usar "pages/Contrato_Standard.py"Nev.py
 main()
