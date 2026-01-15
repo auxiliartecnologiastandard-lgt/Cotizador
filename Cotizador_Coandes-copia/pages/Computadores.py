@@ -106,7 +106,7 @@ seleccion = st.selectbox("Seleccione capacidad o elija 'Otro':", list(disco_dict
 if disco_dict[seleccion] == "OTRO":
     
     Valor_Usuario = st.number_input("Escriba el valor exacto en GB:", min_value=1, max_value=10000)
-    # Valor_Memoria_Real ( Esto es para el contrato )
+    Valor_Memoria_Real = Valor_Usuario
     # Ancla de realidad para ajustar el precio
     if Valor_Usuario  >= 1 and Valor_Usuario  < 256:
             valor_disco_final = 128
@@ -118,6 +118,7 @@ if disco_dict[seleccion] == "OTRO":
             valor_disco_final = Valor_Usuario
 else:
     valor_disco_final = disco_dict[seleccion]
+    Valor_Memoria_Real = valor_disco_final
 
 # 4. Procesador
 st.markdown("### 4. Procesador")
@@ -140,7 +141,7 @@ st.divider()
 
 # 6. Tasa para contrato
 if st.toggle("OPCIONAL: Agregar tasa"):
-    valor_tasa = st.number_input("Escriba el valor exacto en L:", min_value=1, max_value=100)
+    valor_tasa = st.number_input("Escriba la tasa:", min_value=1, max_value=100)
 else:
     valor_tasa = 0
 
@@ -153,7 +154,7 @@ with col1:
     if st.button("🚀 CALCULAR VALOR"):
         
         # 1. Ajuste de peso para que el disco no infle el precio en equipos básicos
-        valor_disco_ia = valor_disco_final * 0.01 if valor_procesador <= 15 else valor_disco_final
+        valor_disco_ia = valor_disco_final * 0.01 if valor_procesador <= 16 else valor_disco_final
         
         # 2. Predicción
         entrada = np.array([[valor_marca, valor_ram, valor_disco_ia, valor_procesador, grafica]])
@@ -192,3 +193,74 @@ with col1:
         
         #st.success(f"### Precio Sugerido Venta: {v_venta}")
         st.info(f"### Oferta de Compraventa: {v_compra}")
+
+with col2:
+    if st.button("📄 Crear contrato"):
+        st.session_state["precio_calculado"] = True
+        if valor_tasa == 0:
+            st.warning("Porfavor agregue una tasa")
+        else:
+        
+            # 1. Ajuste de peso para que el disco no infle el precio en equipos básicos
+            valor_disco_ia = valor_disco_final * 0.01 if valor_procesador <= 16 else valor_disco_final
+            
+            # 2. Predicción
+            entrada = np.array([[valor_marca, valor_ram, valor_disco_ia, valor_procesador, grafica]])
+            precio_base = modelo.predict(entrada)[0]
+
+            # 3. Filtros de Realidad (Anclas de precio de los procesadores basicos)
+            if valor_procesador <= 5: 
+                precio_base = np.clip(precio_base * 0.25, 100000, 150000)
+            # 3.1 Ancla para los procesadores I3 
+            elif valor_procesador <= 15:
+                if valor_ram >= 7:
+                    precio_base = np.clip(precio_base * 1.05, 300000, 480000)
+                elif valor_ram >= 4 and valor_disco_ia >= 900:
+                    precio_base = np.clip(precio_base * 0.90, 260000, 420000)
+                elif valor_ram >= 4 and precio_base > 460000:
+                    precio_base = np.clip(precio_base * 1.0, 300000, 620000)
+                elif valor_marca == 6 and valor_ram >= 4 and valor_disco_ia == 1.28:
+                    precio_base == 600000
+                else:
+                    precio_base = np.clip(precio_base * 0.35, 120000, 210000)
+            # 3.2 Ancla de los procesadores I5
+            elif valor_procesador <= 30:
+                precio_base = precio_base * 0.88
+                precio_base = precio_base * 1.10
+            # 3.3 Ancla de los procesadores I5
+            elif valor_procesador <= 70:
+                precio_base = precio_base * 1.055
+
+            # 4. Redondear precios
+            precio_base_redondo = round(precio_base / 10000) * 10000
+            precio_venta_redondo = round((precio_base_redondo * 1.4) / 10000) * 10000
+
+            # 3. Formato
+            st.session_state["v_compra"] = f"${precio_base_redondo:,.0f}".replace(",", ".")
+            st.session_state["v_venta"] = f"${precio_venta_redondo:,.0f}".replace(",", ".")
+                
+            #PARA CONTRATOS
+            st.session_state["valor_marca"] = valor_marca
+            st.session_state["valor_ram"] = valor_ram
+            st.session_state["Valor_Memoria_Real"] = Valor_Memoria_Real
+            st.session_state["valor_procesador"] = valor_procesador
+            st.session_state["grafica"] = grafica
+            st.session_state["valor_tasa"] = valor_tasa
+            st.info(f"### Oferta de Compraventa: {st.session_state['v_compra']}")
+
+            if "v_compra" in st.session_state:
+                st.session_state["datos_cotizador"] = {
+                    "Origen": "Computador",
+                    "Marca": st.session_state["valor_marca"],
+                    "RAM": st.session_state["valor_ram"],
+                    "Disco": st.session_state["Valor_Memoria_Real"],
+                    "Procesador": st.session_state["valor_procesador"],
+                    "Grafica": st.session_state["grafica"],
+                    "Precio": st.session_state["v_compra"],
+                    "Tasa": st.session_state["valor_tasa"]
+                    }
+                            
+            else:
+                st.warning("Primero calcula el precio en el cotizador")
+
+            st.switch_page("pages/Contrato_Standard.py")

@@ -35,7 +35,7 @@ if not datos:
 
 # Mostrar solo datos de nevera
 if datos["Origen"] == "Nevera":
-
+    # CONTRATO DE NEVERAS
     # Adaptamos los números a texto ( Marca )
     if datos['Marca'] == 1:
         datos['Marca'] = "Kalley"
@@ -93,3 +93,31 @@ if datos["Origen"] == "Nevera":
         datos['Sistema'] = "No frost"
         
     st.write(f"Este contrato se basa en la compraventa de una {datos["Origen"]}, de la marca {datos['Marca']}, con una capacidad entre {datos['Litros']}, y sistema {datos['Sistema']}, Al precio de: {datos['Precio']}  pesos con una tasa del {datos['Tasa']}%")
+
+elif datos["Origen"] == "Computador":
+    # CONTRATO DE COMPUTADOR
+    # Adaptamos de número a nombre ( Marca )
+    # Adaptamos los números a texto (Marca)
+    if datos['Marca'] == 1:
+        datos['Marca'] = "WINDOWS"
+    elif datos['Marca'] == 2:
+        datos['Marca'] = "Koorui"
+    elif datos['Marca'] == 3:
+        datos['Marca'] = "Acer"
+    elif datos['Marca'] == 4:
+        datos['Marca'] = "Hewlettpacka"
+    elif datos['Marca'] == 5:
+        datos['Marca'] = "VICTUS"
+    elif datos['Marca'] == 6:
+        datos['Marca'] = "Asus"
+    elif datos['Marca'] == 7:
+        datos['Marca'] = "SONY"
+    elif datos['Marca'] == 8:
+        datos['Marca'] = "Samsung"
+    elif datos['Marca'] == 9:
+        datos['Marca'] = "Dell"
+    elif datos['Marca'] == 10:
+        datos['Marca'] = "LENOVO"
+    elif datos['Marca'] == 11:
+        datos['Marca'] = "Apple"
+st.write(f"Este contrato se basa en la compraventa de una {datos["Origen"]}, de la marca {datos['Marca']}")

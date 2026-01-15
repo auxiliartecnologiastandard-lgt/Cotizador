@@ -113,7 +113,7 @@ def main():
 
     # 4. Tasa para contrato
     if st.toggle("OPCIONAL: Agregar tasa"):
-        valor_tasa = st.number_input("Escriba el valor exacto en L:", min_value=1, max_value=100)
+        valor_tasa = st.number_input("Escriba la tasa:", min_value=1, max_value=100)
     else:
         valor_tasa = 0
         
@@ -157,6 +157,7 @@ def main():
                 # 3. Formato
                 st.session_state["v_compra"] = f"${precio_base_redondo:,.0f}".replace(",", ".")
                 st.session_state["v_venta"] = f"${precio_venta_redondo:,.0f}".replace(",", ".")
+                
                 #PARA CONTRATOS
                 st.session_state["valor_marca"] = valor_marca
                 st.session_state["valor_litro_final"] = valor_litro_final
