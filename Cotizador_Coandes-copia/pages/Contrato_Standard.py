@@ -223,7 +223,13 @@ elif datos["Origen"] == "Computador":
     # CONTENIDO DEL PDF
     pdf.ln(15)
     pdf.set_font("Arial", size=12)  # sin "B" que significa negrilla
-    pdf.multi_cell(0, 8, "CONTRATO DE COMPRAVENTA CON PACTO DE RETROVENTA. Artículo 1939 del Código Civil Colombiano.", ln=True)
+    pdf.multi_cell(
+    0,
+    8,
+    "CONTRATO DE COMPRAVENTA CON PACTO DE RETROVENTA. "
+    "Artículo 1939 del Código Civil Colombiano."
+)
+
 
     texto_grande = f"""
     Hola"""
