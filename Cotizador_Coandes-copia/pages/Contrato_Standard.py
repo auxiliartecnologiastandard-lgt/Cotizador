@@ -173,6 +173,11 @@ elif datos["Origen"] == "Computador":
     pdf.add_page()
 
     # LOGO DE LA EMPRESA
+    import os
+    st.write("Directorio actual:", os.getcwd())
+    st.write("Archivos en raíz:", os.listdir())
+    st.write("Archivos en pages:", os.listdir("pages"))
+
     pdf.image("pages/Standard_logo.png", x=10, y=8, w=40)
 
     # TITULO DEL PDF
