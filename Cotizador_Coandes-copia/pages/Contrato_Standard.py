@@ -176,7 +176,7 @@ elif datos["Origen"] == "Computador":
     # LOGO DE LA EMPRESA
     ruta_base = os.path.dirname(__file__)
     ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
-    pdf.image(ruta_logo, x=10, y=8, w=40)
+    pdf.image(ruta_logo, x=5, y=5, w=10)
 
     # TITULO DEL PDF
     pdf.set_font("Arial", "B", 14)
