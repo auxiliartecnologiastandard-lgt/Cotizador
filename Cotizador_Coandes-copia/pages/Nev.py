@@ -67,7 +67,7 @@ def main():
         "Midea / Hisense": 4,
         "Mabe": 5,
         "Haceb": 6,
-        "Abba": 6,
+        "Abba": 6.1,
         "Whirlpool": 7,
         "Electrolux": 8,
         "Samsung": 9,

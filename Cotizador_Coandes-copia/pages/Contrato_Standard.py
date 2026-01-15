@@ -43,6 +43,8 @@ if datos['Marca'] == 1:
     datos['Marca'] = "Kalley"
 elif datos['Marca'] == 2:
     datos['Marca'] = "Indurama"
+elif datos['Marca'] == 3:
+    datos['Marca'] = "Challenger"
 
 # Adaptamos los números a texto ( Sistema de enfriamiento )
 if datos['Sistema'] == 5:
