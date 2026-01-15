@@ -222,7 +222,7 @@ elif datos["Origen"] == "Computador":
 
     # CONTENIDO DEL PDF
     pdf.ln(15)
-    pdf.set_font("Arial", size=12)  # sin "B" que significa negrilla
+    pdf.set_font("Arial", size=7)  # sin "B" que significa negrilla
     pdf.multi_cell(
     0,
     8,
