@@ -230,7 +230,7 @@ elif datos["Origen"] == "Computador":
     y_bloque = 7
 
     # Posición de la tabla (derecha)
-    tabla_x = 150
+    tabla_x = 200
     tabla_y = 7
 
     # QR a la izquierda de la tabla (NO de la hoja)
@@ -244,13 +244,13 @@ elif datos["Origen"] == "Computador":
     pdf.set_xy(tabla_x, tabla_y)
     pdf.set_font("Arial", size=10)
     # Fila 1 – Fecha
-    pdf.cell(35, 8, f"Fecha:  {fecha_actual}", border=1, ln=True)
+    pdf.cell(33, 8, f"Fecha:  {fecha_actual}", border=1, ln=True)
     # Fila 2 – Tasa
     pdf.set_x(tabla_x)
-    pdf.cell(35, 8, f"Plazo:  {datos["Meses"]} Meses", border=1, ln=True)
+    pdf.cell(33, 8, f"Plazo:  {datos["Meses"]} Meses", border=1, ln=True)
     # Fila 3 – Precio
     pdf.set_x(tabla_x)
-    pdf.cell(35, 8, f"Precio:  {datos["Precio"]}", border=1, ln=True)
+    pdf.cell(33, 8, f"Precio:  {datos["Precio"]}", border=1, ln=True)
 
     # CONTENIDO DEL PDF
     pdf.ln(15)
