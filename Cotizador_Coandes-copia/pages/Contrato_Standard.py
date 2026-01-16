@@ -276,12 +276,12 @@ elif datos["Origen"] == "Computador":
         )
     
     # CLAUSULA
-    pdf.ln(1)
+    pdf.ln(5)
     pdf.set_font("Arial","B", size=8)
 
     pdf.multi_cell(
         0,      # ancho automático
-        3,      # alto de línea
+        1,      # alto de línea
         "CLÁUSULAS ACCESORIAS QUE RIGEN EL PRESENTE CONTRATO",
         align="C"   # L, C, R, J
         )
