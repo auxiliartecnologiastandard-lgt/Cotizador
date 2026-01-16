@@ -174,8 +174,6 @@ elif datos["Origen"] == "Computador":
     orientation="P",  # P = vertical, L = horizontal
     unit="mm",
     format="Letter")
-    pdf.set_margins(left=10, top=10, right=10)
-    pdf.set_auto_page_break(auto=True, margin=10)
     pdf.add_page()
 
     # LOGO DE LA EMPRESA
@@ -214,16 +212,16 @@ elif datos["Origen"] == "Computador":
     pdf.set_xy(tabla_x, tabla_y)
     pdf.set_font("Arial", size=10)
     # Fila 1 – Fecha
-    pdf.cell(35, 8, "Fecha", border=1)
-    pdf.cell(40, 8, fecha_actual, border=1, ln=True)
+    pdf.cell(25, 8, "Fecha", border=1)
+    pdf.cell(30, 8, fecha_actual, border=1, ln=True)
     # Fila 2 – Tasa
     pdf.set_x(tabla_x)
-    pdf.cell(35, 8, "Tasa", border=1)
-    pdf.cell(40, 8, f'{datos["Tasa"]}%', border=1, ln=True)
+    pdf.cell(25, 8, "Tasa", border=1)
+    pdf.cell(30, 8, f'{datos["Tasa"]}%', border=1, ln=True)
     # Fila 3 – Precio
     pdf.set_x(tabla_x)
-    pdf.cell(35, 8, "Precio", border=1)
-    pdf.cell(40, 8, f'${datos["Precio"]}', border=1, ln=True)
+    pdf.cell(25, 8, "Precio", border=1)
+    pdf.cell(30, 8, f'${datos["Precio"]}', border=1, ln=True)
 
     # CONTENIDO DEL PDF
     pdf.ln(15)
