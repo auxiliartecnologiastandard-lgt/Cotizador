@@ -38,6 +38,29 @@ if not datos:
     st.warning("No hay datos del cotizador. Regresa y calcula primero.")
     st.stop()
 
+if datos['Sede'] == 1:
+    datos['Sede'] = "La 14 (Pereira)"
+elif datos['Sede'] == 2:
+    datos['Sede'] = "La 18 (Pereira)"
+elif datos['Sede'] == 3:
+    datos['Sede'] = "La 19 (Pereira)"
+elif datos['Sede'] == 4:
+    datos['Sede'] = "Cuba (Pereira)"
+elif datos['Sede'] == 5:
+    datos['Sede'] = "La 29 (Pereira)"
+elif datos['Sede'] == 6:
+    datos['Sede'] = "Crucero (Doquebradas)"
+elif datos['Sede'] == 7:
+    datos['Sede'] = "Naranjos (Dosquebradas)"
+elif datos['Sede'] == 8:
+    datos['Sede'] = "Japón (Dosquebradas)"
+elif datos['Sede'] == 9:
+    datos['Sede'] = "Sol brilla (Tuluá)"
+elif datos['Sede'] == 10:
+    datos['Sede'] = "Super Standard (Tuluá)"
+elif datos['Sede'] == 11:
+    datos['Sede'] = "Armenia"
+
 # Mostrar solo datos de nevera
 if datos["Origen"] == "Nevera":
     # CONTRATO DE NEVERAS
