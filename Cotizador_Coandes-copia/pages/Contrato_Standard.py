@@ -211,7 +211,7 @@ elif datos["Origen"] == "Computador":
     # LOGO DE LA EMPRESA
     ruta_base = os.path.dirname(__file__)
     ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
-    pdf.image(ruta_logo, x=10, y=7, w=40)
+    pdf.image(ruta_logo, x=10, y=3.5, w=40)
 
     # TITULO DEL PDF
     pdf.set_font("Arial", "B", 15)
@@ -227,11 +227,11 @@ elif datos["Origen"] == "Computador":
     qr.save("qr_temp.png")
 
     # Posición base del bloque (debajo del título)
-    y_bloque = 7
+    y_bloque = 3.5
 
     # Posición de la tabla (derecha)
     tabla_x = 175
-    tabla_y = 7
+    tabla_y = 3.5
 
     # QR a la izquierda de la tabla (NO de la hoja)
     pdf.image(
