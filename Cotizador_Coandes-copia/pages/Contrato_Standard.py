@@ -174,8 +174,8 @@ elif datos["Origen"] == "Computador":
     orientation="P",  # P = vertical, L = horizontal
     unit="mm",
     format="Letter")
-    pdf.set_margins(left=15, top=20, right=15)
-    pdf.set_auto_page_break(auto=True, margin=20)
+    pdf.set_margins(left=10, top=10, right=10)
+    pdf.set_auto_page_break(auto=True, margin=10)
     pdf.add_page()
 
     # LOGO DE LA EMPRESA
@@ -184,9 +184,9 @@ elif datos["Origen"] == "Computador":
     pdf.image(ruta_logo, x=10, y=8, w=40)
 
     # TITULO DEL PDF
-    pdf.set_font("Arial", "B", 14)
-    pdf.ln(15)  # baja el cursor para no chocar con el logo
-    pdf.cell(0, 10, "CONTRATO STANDARD", ln=True, align="C")
+    pdf.set_font("Arial", "B", 10)
+    pdf.ln(10)  # baja el cursor para no chocar con el logo
+    pdf.cell(0, 6, "CONTRATO STANDARD", ln=True, align="C")
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
