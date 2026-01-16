@@ -263,6 +263,7 @@ with col2:
             st.session_state["v_venta"] = f"${precio_venta_redondo:,.0f}".replace(",", ".")
             # Conversión explícita a números
             Dinero = st.session_state["v_compra"] + (st.session_state["v_compra"] * (valor_tasa / 100) * Meses)
+            Dinero = round(Dinero / 10000) * 10000
             Dinero = f"${Dinero:,.0f}".replace(",", ".")
             #PARA CONTRATOS
             st.session_state["valor_marca"] = valor_marca
