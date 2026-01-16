@@ -230,7 +230,7 @@ elif datos["Origen"] == "Computador":
 
     pdf.multi_cell(
         0,      # ancho automático
-        1,      # alto de línea
+        8,      # alto de línea
         "CONTRATO DE COMPRAVENTA CON PACTO DE RETROVENTA. "
         "Artículo 1939 del Código Civil Colombiano.",
         align="C"   # L, C, R, J
@@ -240,7 +240,7 @@ elif datos["Origen"] == "Computador":
 
     pdf.multi_cell(
         0,
-        1,
+        1.5,
         f"YO {datos['Origen']} por el poder que me otorga la marca {datos['Marca']} debo decir que el que este equipo con {datos["RAM"]}, {datos["Disco"]} de espacio y {datos["Procesador"]} por solo {datos["Precio"]} pesos me parece justo."
     )
     
