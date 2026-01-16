@@ -48,15 +48,15 @@ else:
     datos['Direcciones'] = "ARMENIA"
 
 if datos['Sede'] == 1:
-    datos['Sede'] = "Calle 14 # 8-24\nStandard La 14\n320 610 403\nstandardcuatro.per@standard.com.co\nNit. 800.205.573-1"
+    datos['Sede'] = "Calle 14 # 8-24 \n Standard La 14 \n 320 610 403 \n standardcuatro.per@standard.com.co\nNit. 800.205.573-1"
 elif datos['Sede'] == 2:
-    datos['Sede'] = "Calle 18 # 8-07\nStandard La 18\n310 397 1905\nstandardla18.per@standard.com.co\nNit. 800.205.573-1"
+    datos['Sede'] = "Calle 18 # 8-07 \n Standard La 18 \n 310 397 1905 \n standardla18.per@standard.com.co \n Nit. 800.205.573-1"
 elif datos['Sede'] == 3:
-    datos['Sede'] = "Calle 19 # 10-53\nStandard La 19\n316 833 6917\nstandardla19.per@standard.com.co\nNit. 800.205.573-1"
+    datos['Sede'] = "Calle 19 # 10-53 \n Standard La 19 \n 316 833 6917 \n standardla19.per@standard.com.co \n Nit. 800.205.573-1"
 elif datos['Sede'] == 4:
-    datos['Sede'] = "Cra 23bis # 71-32\nStandard Cuba\n320 766 9884\nstandardcuba.per@standard.com.co\nNit. 800.205.573-1"
+    datos['Sede'] = "Cra 23bis # 71-32 \n Standard Cuba \n 320 766 9884 \n standardcuba.per@standard.com.co \n Nit. 800.205.573-1"
 elif datos['Sede'] == 5:
-    datos['Sede'] = "Cra 7 # 29-07\nStandard La 29\n322 304 8622\nstandardla29.per@standard.com.co\nNit. 800.205.573-1"
+    datos['Sede'] = "Cra 7 # 29-07 \n Standard La 29 \n 322 304 8622 \n standardla29.per@standard.com.co \n Nit. 800.205.573-1"
 elif datos['Sede'] == 6:
     datos['Sede'] = "Crucero (Doquebradas)"
 elif datos['Sede'] == 7:
