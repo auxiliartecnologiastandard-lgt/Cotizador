@@ -195,7 +195,7 @@ elif datos["Origen"] == "Computador":
     qr.save("qr_temp.png")
 
     # Posición base del bloque (debajo del título)
-    y_bloque = 5
+    y_bloque = 20
 
     # Posición de la tabla (derecha)
     tabla_x = 150
@@ -204,9 +204,9 @@ elif datos["Origen"] == "Computador":
     # QR a la izquierda de la tabla (NO de la hoja)
     pdf.image(
         "qr_temp.png",
-        x=tabla_x - 35,
+        x=tabla_x - 40,
         y=tabla_y,
-        w=30)
+        w=15)
 
     # Tabla
     pdf.set_xy(tabla_x, tabla_y)
