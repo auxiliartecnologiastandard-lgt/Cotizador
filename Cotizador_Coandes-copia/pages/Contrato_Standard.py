@@ -225,17 +225,23 @@ elif datos["Origen"] == "Computador":
 
     # CONTENIDO DEL PDF
     pdf.ln(15)
-    pdf.set_font("Arial", size=7)  # sin "B" que significa negrilla
-    pdf.multi_cell(
-    0,
-    8,
-    align="I"
+    pdf.set_font("Arial", size=7)
 
-    "CONTRATO DE COMPRAVENTA CON PACTO DE RETROVENTA. "
-    "Artículo 1939 del Código Civil Colombiano."
-)
-    texto_grande = f"""
-    Hola"""
+    pdf.multi_cell(
+        0,      # ancho automático
+        8,      # alto de línea
+        "CONTRATO DE COMPRAVENTA CON PACTO DE RETROVENTA. "
+        "Artículo 1939 del Código Civil Colombiano.",
+        align="L"   # L, C, R, J
+        )
+    pdf.ln(5)
+    pdf.set_font("Arial", size=10)
+
+    pdf.multi_cell(
+        0,
+        8,
+        "texto_grande"
+    )
 
     pdf_bytes = pdf.output(dest="S").encode("latin-1")
     pdf_buffer = io.BytesIO(pdf_bytes)
