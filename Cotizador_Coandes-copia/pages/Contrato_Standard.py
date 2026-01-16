@@ -30,7 +30,7 @@ st.markdown(
 
 st.set_page_config(page_title="Contrato de Compraventa")
 
-st.title("📄 Contrato")
+st.success("Contrato creado y listo para la descarga ✔")
 
 datos = st.session_state.get("datos_cotizador")
 
@@ -129,7 +129,116 @@ if datos["Origen"] == "Nevera":
     else:
         datos['Sistema'] = "No frost"
         
-    st.write(f"Este contrato se basa en la compraventa de una {datos["Origen"]}, de la marca {datos['Marca']}, con una capacidad entre {datos['Litros']}, y sistema {datos['Sistema']}, Al precio de: {datos['Precio']}  pesos con una tasa del {datos['Tasa']}%")
+        # CREACIÓN DEL PDF
+    pdf = FPDF(orientation="P",  # P = vertical, L = horizontal
+    unit="mm", format="Letter")
+    pdf.set_margins(left=1, top=1, right=1)
+    pdf.set_auto_page_break(auto=True, margin=1)
+
+    # color rojo para que sea visible
+    pdf.set_draw_color(0, 0, 0)
+    # dibuja un rectángulo que represente el margen
+    pdf.add_page()
+    pdf.rect(
+    x=pdf.l_margin,
+    y=pdf.t_margin,
+    w=pdf.w - pdf.l_margin - pdf.r_margin,
+    h=pdf.h - pdf.t_margin - pdf.b_margin)
+
+    # LOGO DE LA EMPRESA
+    ruta_base = os.path.dirname(__file__)
+    ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
+    pdf.image(ruta_logo, x=10, y=3.5, w=40)
+
+    # TITULO DEL PDF
+    pdf.set_font("Arial", "B", 18)
+    pdf.ln(3)  # baja el cursor para no chocar con el logo
+    pdf.cell(0, 3.5, f"CONTRATO {datos["Direcciones"]}", ln=True, align="C")
+    # DIRRECIONES
+    pdf.set_font("Arial", "", 8)
+    pdf.ln(3)
+    pdf.multi_cell(0, 3.5, f"{datos['Sede']}", align="C")
+
+    # CONSEGUIR FECHA ACTUAL
+    fecha_actual = date.today().strftime("%d/%m/%Y")
+
+    # QR de las redes sociales de la empresa
+    link = "https://hab.me/YCh4LCw"
+    qr = qrcode.make(link)
+    qr.save("qr_temp.png")
+
+    # Posición base del bloque (debajo del título)
+    y_bloque = 3.5
+
+    # Posición de la tabla (derecha)
+    tabla_x = 175
+    tabla_y = 3.5
+
+    # QR a la izquierda de la tabla (NO de la hoja)
+    pdf.image(
+        "qr_temp.png",
+        x=tabla_x - 17,
+        y=y_bloque + 8,
+        w=17)
+
+    # Tabla
+    pdf.set_xy(tabla_x, tabla_y)
+    pdf.set_font("Arial", size=10)
+    # Fila 1 – Fecha
+    pdf.cell(33, 8, f"Fecha:  {fecha_actual}", border=1, ln=True)
+    # Fila 2 – Tasa
+    pdf.set_x(tabla_x)
+    pdf.cell(33, 8, f"Plazo:  {datos["Meses"]} Meses", border=1, ln=True)
+    # Fila 3 – Precio
+    pdf.set_x(tabla_x)
+    pdf.cell(33, 8, f"Precio:  {datos["Precio"]}", border=1, ln=True)
+
+    # CUERPO DEL PDF
+    # INICIO 
+    pdf.ln(15)
+    pdf.set_font("Arial","B", size=7)
+
+    pdf.multi_cell(
+        0,      # ancho automático
+        2,      # alto de línea
+        "CONTRATO DE COMPRAVENTA CON PACTO DE RETROVENTA. "
+        "Artículo 1939 del Código Civil Colombiano.",
+        align="C"   # L, C, R, J
+        )
+    
+    # INICIO TEXTO
+    pdf.ln(5)
+    pdf.set_font("Arial", size=8)
+    
+    pdf.multi_cell(
+        0,
+        3,
+        f"Entre los suscritos {datos['Nombre']} identificado con C.C. {datos['Cedula']}, mayor de edad quien obra en nombre propio y se denomina para efectos del presente contrato EL VENDEDOR de una parte, y por otra parte CASA COMERCIAL DE LOS ANDES S.A.S - Nit. 800.205.573-1, quien para los efectos del presente contrato se denomina EL COMPRADOR. Manifestamos que hemos celebrado un contrato de compraventa entre el siguiente bien que a continuación se identifica.\n\nObjeto: {datos['Origen']}\n Marca: {datos['Marca']} GB\nCapacidad {datos['Litros']}\nSistema: {datos['Sistema']}\n\nEl valor de la compraventa es la suma de {datos['Precio']} M/cte. EL VENDEDOR transfiere AL COMPRADOR, a título de compraventa el derecho de dominio y posesión que tiene y ejerce sobre el anterior articulo y declara que los bienes que transfiere, los adquirió lícitamente, no fue su importador, son de su exclusiva propiedad, los posee de manera regular, publica y pacífica, están libres de gravamen, limitación al dominio, pleitos pendientes y embargos, con la obligación de salir al saneamiento en casos de ley."
+        )
+    
+    # CLAUSULA
+    pdf.ln(5)
+    pdf.set_font("Arial","B", size=8)
+
+    pdf.multi_cell(
+        0,      # ancho automático
+        1,      # alto de línea
+        "CLÁUSULAS ACCESORIAS QUE RIGEN EL PRESENTE CONTRATO",
+        align="C"   # L, C, R, J
+        )
+
+    # CLAUSULA TEXTO
+    pdf.ln(5)
+    pdf.set_font("Arial", size=8)
+
+    pdf.multi_cell(
+        0,
+        3,
+        f"PRIMERA: Los contratantes de conformidad con el artículo 1939 del Código Civil Colombiano, pactan que EL VENDEDOR se reserva la facultad de recobrar los artículos vendidos por medio de este contrato, pagando AL COMPRADOR como precio de retroventa la suma de: {datos['Dinero']} SEGUNDA: El derecho que nace del pacto de retroventa del presente contrato, no podrácederse a ningún título. En caso de pérdida de este contrato EL VENDEDOR se obliga a dar noticia inmediata AL COMPRADOR y este, solo exhibirá el articulo descrito a la terminación del presente contrato. TERCERA: EL VENDEDOR y EL COMPRADOR pactan que la facultad de retroventa del presente contrato la podrá ejercer EL VENDEDOR dentro del término de -- {datos['Meses']} Meses -- prorrogables CUARTA: Autorizo a COANDES S.A.S, a consultar y verificar la información en las listas restrictivas con el fin de prevenir situaciones relacionadas con el lavado de activos y financiación del terrorismo. QUINTA: El VENDEDOR autoriza para que se recopile, almacene, use y suprima los datos personales aquí suministrados. Ley 1581 de 2012 y sus decretos reglamentarios. Podrá revocar esta autorización dirigiendo su petición al correo electrónico servicioalcliente@standard.com.co SEXTA: Las controversias relativas al presente contrato se resolverán por un tribunal de arbitramento de conformidad con las disposiciones que rigen la materia, nombrado por la Cámara de Comercio de esta ciudad. SEPTIMA: Tanto EL VENDEDOR como EL COMPRADOR hemos leído, comprendido y aceptado el texto de este contrato. OCTAVA: Así mismo acepto desde ahora la venta o cesión de los derechos que adquiere Casa comercial de los andes a otra empresa. En constancia de lo anterior lo firman las partes en la fecha {fecha_actual}"
+        )
+
+    pdf_bytes = pdf.output(dest="S").encode("latin-1")
+    pdf_buffer = io.BytesIO(pdf_bytes)
 
 elif datos["Origen"] == "Computador":
     # CONTRATO DE COMPUTADOR
@@ -233,7 +342,7 @@ elif datos["Origen"] == "Computador":
     fecha_actual = date.today().strftime("%d/%m/%Y")
 
     # QR de las redes sociales de la empresa
-    link = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKGOMWCWfns00LGBl_0JZe53sCFCrp1xnQmg&s"
+    link = "https://hab.me/YCh4LCw"
     qr = qrcode.make(link)
     qr.save("qr_temp.png")
 
@@ -310,18 +419,18 @@ elif datos["Origen"] == "Computador":
     pdf_bytes = pdf.output(dest="S").encode("latin-1")
     pdf_buffer = io.BytesIO(pdf_bytes)
 
-    # Botón de descarga
-    if "descargar_pdf" not in st.session_state:
-        st.session_state["descargar_pdf"] = False
+# Botón de descarga
+if "descargar_pdf" not in st.session_state:
+    st.session_state["descargar_pdf"] = False
 
-    if st.download_button(
-        label="📥 Descargar PDF",
-        data=pdf_buffer,
-        file_name=f"Contrato {datos['Origen']}.pdf",
-        mime="application/pdf"
-    ):
-        st.session_state["descargar_pdf"] = True
+if st.download_button(
+    label="📥 Descargar y volver al menu principal",
+    data=pdf_buffer,
+    file_name=f"Contrato {datos['Origen']}.pdf",
+    mime="application/pdf"
+):
+    st.session_state["descargar_pdf"] = True
 
-    if st.session_state["descargar_pdf"]:
-        st.session_state["descargar_pdf"] = False
-        st.switch_page("pages/Contrato_Standard.py")
+if st.session_state["descargar_pdf"]:
+    st.session_state["descargar_pdf"] = False
+    st.switch_page("pages/Computadores.py")
