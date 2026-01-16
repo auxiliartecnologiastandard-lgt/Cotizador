@@ -244,7 +244,7 @@ elif datos["Origen"] == "Computador":
     pdf.set_xy(tabla_x, tabla_y)
     pdf.set_font("Arial", size=10)
     # Fila 1 – Fecha
-    pdf.cell(25, 8, "Fecha:  {fecha_actual}", border=1)
+    pdf.cell(25, 8, f"Fecha:  {fecha_actual}", border=1)
     pdf.cell(30, 8, fecha_actual, border=1, ln=True)
     # Fila 2 – Tasa
     pdf.set_x(tabla_x)
