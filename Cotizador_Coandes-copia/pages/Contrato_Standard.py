@@ -244,7 +244,7 @@ elif datos["Origen"] == "Computador":
     )
     
 
-    pdf_bytes = pdf.output(dest="S").encode("latin-1")
+    pdf_bytes = pdf.output(dest="S").encode("utf-8")
     pdf_buffer = io.BytesIO(pdf_bytes)
 
     # Botón de descarga
