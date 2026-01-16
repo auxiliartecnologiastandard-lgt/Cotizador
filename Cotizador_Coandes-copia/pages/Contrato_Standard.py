@@ -253,10 +253,10 @@ elif datos["Origen"] == "Computador":
     pdf.cell(33, 8, f"Precio:  {datos["Precio"]}", border=1, ln=True)
 
     # CONTENIDO DEL PDF
+    # INICIO 
     pdf.ln(15)
     pdf.set_font("Arial","B", size=7)
 
-    # INICIO 
     pdf.multi_cell(
         0,      # ancho automático
         2,      # alto de línea
@@ -264,9 +264,11 @@ elif datos["Origen"] == "Computador":
         "Artículo 1939 del Código Civil Colombiano.",
         align="C"   # L, C, R, J
         )
+    
+    # INICIO TEXTO
     pdf.ln(5)
     pdf.set_font("Arial", size=8)
-    # INICIO TEXTO
+    
     pdf.multi_cell(
         0,
         3,
@@ -274,16 +276,20 @@ elif datos["Origen"] == "Computador":
         )
     
     # CLAUSULA
+    pdf.ln(5)
+    pdf.set_font("Arial","B", size=8)
+
     pdf.multi_cell(
         0,      # ancho automático
         3,      # alto de línea
         "CLÁUSULAS ACCESORIAS QUE RIGEN EL PRESENTE CONTRATO",
         align="C"   # L, C, R, J
         )
-    pdf.ln(5)
-    pdf.set_font("Arial","B", size=8)
 
     # CLAUSULA TEXTO
+    pdf.ln(5)
+    pdf.set_font("Arial", size=8)
+
     pdf.multi_cell(
         0,
         3,
