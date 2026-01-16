@@ -240,11 +240,11 @@ elif datos["Origen"] == "Computador":
     pdf.multi_cell(
         0,
         8,
-        f"YO {datos['Origen']} por el poder que me otorga la marca {datos['Marca']} debo decir que el que este equipo con {datos["RAM"]}, {datos["Disco"]} de espacio y {datos["Procesador"]} me por solo {datos["Precio"]} pesos me parece justo"
+        f"YO {datos['Origen']} por el poder que me otorga la marca {datos['Marca']} debo decir que el que este equipo con {datos["RAM"]}, {datos["Disco"]} de espacio y {datos["Procesador"]} me por solo {datos["Precio"]} pesos me parece justo."
     )
     
 
-    pdf_bytes = pdf.output(dest="S").encode("utf-8")
+    pdf_bytes = pdf.output(dest="S").encode("latin-1")
     pdf_buffer = io.BytesIO(pdf_bytes)
 
     # Botón de descarga
