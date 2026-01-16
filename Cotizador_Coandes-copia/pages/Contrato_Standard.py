@@ -170,10 +170,11 @@ elif datos["Origen"] == "Computador":
     st.write(f"Este contrato se basa en la compraventa de un {datos["Origen"]}, de la marca {datos['Marca']}, con {datos["RAM"]}, {datos["Disco"]} de espacio, con procesador {datos["Procesador"]}, y {datos["Grafica"]} Al precio de: {datos['Precio']}  pesos con una tasa del {datos['Tasa']}%")
     
     # CREACIÓN DEL PDF
-    pdf = FPDF(
-    orientation="P",  # P = vertical, L = horizontal
-    unit="mm",
-    format="Letter")
+    pdf = FPDF(orientation="P",  # P = vertical, L = horizontal
+    unit="mm", format="Letter")
+    pdf.set_margins(left=15, top=20, right=15)
+    pdf.set_auto_page_break(auto=True, margin=20)
+
     pdf.add_page()
 
     # LOGO DE LA EMPRESA
@@ -225,11 +226,11 @@ elif datos["Origen"] == "Computador":
 
     # CONTENIDO DEL PDF
     pdf.ln(15)
-    pdf.set_font("Arial", size=7)
+    pdf.set_font("Arial","B", size=7)
 
     pdf.multi_cell(
         0,      # ancho automático
-        8,      # alto de línea
+        1,      # alto de línea
         "CONTRATO DE COMPRAVENTA CON PACTO DE RETROVENTA. "
         "Artículo 1939 del Código Civil Colombiano.",
         align="C"   # L, C, R, J
@@ -239,8 +240,8 @@ elif datos["Origen"] == "Computador":
 
     pdf.multi_cell(
         0,
-        8,
-        f"YO {datos['Origen']} por el poder que me otorga la marca {datos['Marca']} debo decir que el que este equipo con {datos["RAM"]}, {datos["Disco"]} de espacio y {datos["Procesador"]} me por solo {datos["Precio"]} pesos me parece justo."
+        1,
+        f"YO {datos['Origen']} por el poder que me otorga la marca {datos['Marca']} debo decir que el que este equipo con {datos["RAM"]}, {datos["Disco"]} de espacio y {datos["Procesador"]} por solo {datos["Precio"]} pesos me parece justo."
     )
     
 
