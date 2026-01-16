@@ -191,7 +191,7 @@ elif datos["Origen"] == "Computador":
     pdf.image(ruta_logo, x=10, y=8, w=40)
 
     # TITULO DEL PDF
-    pdf.set_font("Arial", "B", 15)
+    pdf.set_font("Arial", "B", 14)
     pdf.ln(1)  # baja el cursor para no chocar con el logo
     pdf.cell(0, 1, "CONTRATO STANDARD", ln=True, align="C")
 
@@ -238,7 +238,7 @@ elif datos["Origen"] == "Computador":
 
     pdf.multi_cell(
         0,      # ancho automático
-        8,      # alto de línea
+        2,      # alto de línea
         "CONTRATO DE COMPRAVENTA CON PACTO DE RETROVENTA. "
         "Artículo 1939 del Código Civil Colombiano.",
         align="C"   # L, C, R, J
