@@ -191,9 +191,9 @@ elif datos["Origen"] == "Computador":
     pdf.image(ruta_logo, x=10, y=8, w=40)
 
     # TITULO DEL PDF
-    pdf.set_font("Arial", "B", 14)
-    pdf.ln(1)  # baja el cursor para no chocar con el logo
-    pdf.cell(0, 1, "CONTRATO STANDARD", ln=True, align="C")
+    pdf.set_font("Arial", "B", 15)
+    pdf.ln(2)  # baja el cursor para no chocar con el logo
+    pdf.cell(0, 2, "CONTRATO STANDARD", ln=True, align="C")
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
