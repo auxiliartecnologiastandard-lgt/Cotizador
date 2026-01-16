@@ -192,8 +192,8 @@ elif datos["Origen"] == "Computador":
 
     # TITULO DEL PDF
     pdf.set_font("Arial", "B", 15)
-    pdf.ln(2)  # baja el cursor para no chocar con el logo
-    pdf.cell(0, 2, "CONTRATO STANDARD", ln=True, align="C")
+    pdf.ln(3)  # baja el cursor para no chocar con el logo
+    pdf.cell(0, 3, "CONTRATO STANDARD", ln=True, align="C")
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
@@ -204,11 +204,11 @@ elif datos["Origen"] == "Computador":
     qr.save("qr_temp.png")
 
     # Posición base del bloque (debajo del título)
-    y_bloque = 25
+    y_bloque = 3
 
     # Posición de la tabla (derecha)
     tabla_x = 150
-    tabla_y = 25
+    tabla_y = 3
 
     # QR a la izquierda de la tabla (NO de la hoja)
     pdf.image(
