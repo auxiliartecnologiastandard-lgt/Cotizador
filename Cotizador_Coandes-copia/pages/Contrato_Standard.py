@@ -240,7 +240,7 @@ elif datos["Origen"] == "Computador":
     pdf.multi_cell(
         0,
         8,
-        f"YO {datos['Origen']} por el poder que me otorga la marca {datos['Marca']} debo decir que el que este equipo con {datos["RAM"]}, {datos["Disco"]} de espacio y {datos["Procesador"]} me por solo {datos["Precio"]} pesos me parece justo 😀👍"
+        f"YO {datos['Origen']} por el poder que me otorga la marca {datos['Marca']} debo decir que el que este equipo con {datos["RAM"]}, {datos["Disco"]} de espacio y {datos["Procesador"]} me por solo {datos["Precio"]} pesos me parece justo"
     )
     
 
