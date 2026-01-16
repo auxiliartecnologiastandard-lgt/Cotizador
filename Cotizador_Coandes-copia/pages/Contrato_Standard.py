@@ -170,7 +170,10 @@ elif datos["Origen"] == "Computador":
     st.write(f"Este contrato se basa en la compraventa de un {datos["Origen"]}, de la marca {datos['Marca']}, con {datos["RAM"]}, {datos["Disco"]} de espacio, con procesador {datos["Procesador"]}, y {datos["Grafica"]} Al precio de: {datos['Precio']}  pesos con una tasa del {datos['Tasa']}%")
     
     # CREACIÓN DEL PDF
-    pdf = FPDF()
+    pdf = FPDF(
+    orientation="P",  # P = vertical, L = horizontal
+    unit="mm",
+    format="Letter")
     pdf.add_page()
 
     # LOGO DE LA EMPRESA
