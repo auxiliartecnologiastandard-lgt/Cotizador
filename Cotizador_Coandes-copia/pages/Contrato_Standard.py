@@ -48,7 +48,7 @@ else:
     datos['Direcciones'] = "ARMENIA"
 
 if datos['Sede'] == 1:
-    datos['Sede'] = "Calle 14 # 8-24 \n Standard La 14 \n 320 610 403 \n standardcuatro.per@standard.com.co\nNit. 800.205.573-1"
+    datos['Sede'] = "Calle 14 # 8-24 \n Standard La 14 \n 320 610 403 \n standardcuatro.per@standard.com.co \n Nit. 800.205.573-1"
 elif datos['Sede'] == 2:
     datos['Sede'] = "Calle 18 # 8-07 \n Standard La 18 \n 310 397 1905 \n standardla18.per@standard.com.co \n Nit. 800.205.573-1"
 elif datos['Sede'] == 3:
@@ -58,17 +58,17 @@ elif datos['Sede'] == 4:
 elif datos['Sede'] == 5:
     datos['Sede'] = "Cra 7 # 29-07 \n Standard La 29 \n 322 304 8622 \n standardla29.per@standard.com.co \n Nit. 800.205.573-1"
 elif datos['Sede'] == 6:
-    datos['Sede'] = "Crucero (Doquebradas)"
+    datos['Sede'] = "Cra 16 # 44-23 \n Standard Crucero \n 310 396 8819 \n standardcrucero.per@standard.com.co \n Nit. 800.205.573-1"
 elif datos['Sede'] == 7:
-    datos['Sede'] = "Naranjos (Dosquebradas)"
+    datos['Sede'] = "Cra 16 # 51-27 \n Standard Naranjos \n 310 396 8819 \n standardnaranjos.per@standard.com.co \n Nit. 800.205.573-1"
 elif datos['Sede'] == 8:
-    datos['Sede'] = "Japón (Dosquebradas)"
+    datos['Sede'] = "Calle 8 # 23-10 \n Standard Japón \n 322 311 9148 \n standardjapon.dqs@standard.com.co \n Nit. 800.205.573-1"
 elif datos['Sede'] == 9:
-    datos['Sede'] = "Sol brilla (Tuluá)"
+    datos['Sede'] = "Cra 25 # 26-65 \n Sol Brilla \n 313 496 4897 \n solbrilla.tul@standard.com.co \n Nit. 800.205.573-1"
 elif datos['Sede'] == 10:
-    datos['Sede'] = "Super Standard (Tuluá)"
+    datos['Sede'] = "Cra 21 # 26A-20 \n Super Standard \n 316 833 6924 \n superstandard18.tul@standard.com.co \n Nit. 800.205.573-1"
 elif datos['Sede'] == 11:
-    datos['Sede'] = "Armenia"
+    datos['Sede'] = "Standard Armenia \n Cra 17 # 21-13 \n 320 766 9899 \n standardarmenia@standard.com.co \n Nit. 800.205.573-1"
 
 # Mostrar solo datos de nevera
 if datos["Origen"] == "Nevera":
@@ -229,7 +229,7 @@ elif datos["Origen"] == "Computador":
     # DIRRECIONES
     pdf.set_font("Arial", "", 8)
     pdf.ln(3)
-    pdf.cell(0, 6, f"{datos["Sede"]}", ln=True, align="C")
+    pdf.multi_cell(0, 6, f"{datos["Sede"]}", ln=True, align="C")
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
