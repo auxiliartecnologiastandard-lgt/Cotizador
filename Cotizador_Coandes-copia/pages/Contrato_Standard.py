@@ -185,7 +185,7 @@ elif datos["Origen"] == "Computador":
     # TITULO DEL PDF
     pdf.set_font("Arial", "B", 15)
     pdf.ln(10)  # baja el cursor para no chocar con el logo
-    pdf.cell(0, 20, "CONTRATO STANDARD", ln=True, align="C")
+    pdf.cell(0, 1, "CONTRATO STANDARD", ln=True, align="C")
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
