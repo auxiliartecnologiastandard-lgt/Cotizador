@@ -229,8 +229,8 @@ elif datos["Origen"] == "Computador":
     pdf.multi_cell(
     0,
     8,
-    align="C"
-    
+    align="I"
+
     "CONTRATO DE COMPRAVENTA CON PACTO DE RETROVENTA. "
     "Artículo 1939 del Código Civil Colombiano."
 )
