@@ -174,7 +174,16 @@ elif datos["Origen"] == "Computador":
     unit="mm", format="Letter")
     pdf.set_margins(left=15, top=20, right=15)
     pdf.set_auto_page_break(auto=True, margin=20)
+    # color rojo para que sea visible
+    pdf.set_draw_color(200, 0, 0)
 
+    # dibuja un rectángulo que represente el margen
+    pdf.rect(
+    x=pdf.l_margin,
+    y=pdf.t_margin,
+    w=pdf.w - pdf.l_margin - pdf.r_margin,
+    h=pdf.h - pdf.t_margin - pdf.b_margin
+)
     pdf.add_page()
 
     # LOGO DE LA EMPRESA
@@ -184,7 +193,7 @@ elif datos["Origen"] == "Computador":
 
     # TITULO DEL PDF
     pdf.set_font("Arial", "B", 15)
-    pdf.ln(10)  # baja el cursor para no chocar con el logo
+    pdf.ln(1)  # baja el cursor para no chocar con el logo
     pdf.cell(0, 1, "CONTRATO STANDARD", ln=True, align="C")
 
     # CONSEGUIR FECHA ACTUAL
