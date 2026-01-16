@@ -288,7 +288,7 @@ with col2:
                     "Precio": st.session_state["v_compra"],
                     "Tasa": st.session_state["valor_tasa"],
                     "Nombre": st.session_state["Nombre_Usuario"],
-                    "Cédula": st.session_state["Cedula_Usuario"],
+                    "Cedula": st.session_state["Cedula_Usuario"],
                     "Meses": st.session_state["Meses"],
                     "Sede": st.session_state["SEDE_V"],
                     "Dinero": st.session_state["Dinero"]
