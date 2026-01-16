@@ -185,7 +185,7 @@ elif datos["Origen"] == "Computador":
     # TITULO DEL PDF
     pdf.set_font("Arial", "B", 15)
     pdf.ln(10)  # baja el cursor para no chocar con el logo
-    pdf.cell(0, 6, "CONTRATO STANDARD", ln=True, align="C")
+    pdf.cell(0, 8, "CONTRATO STANDARD", ln=True, align="C")
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
@@ -240,7 +240,7 @@ elif datos["Origen"] == "Computador":
 
     pdf.multi_cell(
         0,
-        1.5,
+        2,
         f"YO {datos['Origen']} por el poder que me otorga la marca {datos['Marca']} debo decir que el que este equipo con {datos["RAM"]}, {datos["Disco"]} de espacio y {datos["Procesador"]} por solo {datos["Precio"]} pesos me parece justo."
     )
     
