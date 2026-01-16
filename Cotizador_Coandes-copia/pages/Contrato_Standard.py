@@ -205,7 +205,7 @@ elif datos["Origen"] == "Computador":
     pdf.image(
         "qr_temp.png",
         x=150 - 17,
-        y=y_bloque + 5,
+        y=y_bloque + 10,
         w=17)
 
     # Tabla
