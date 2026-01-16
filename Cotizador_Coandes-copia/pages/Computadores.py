@@ -207,8 +207,8 @@ with col2:
             st.markdown("### Antes de crear tu contrato porfavor llena danos la información correcta")
             
             Nombre_Usuario = st.text_input("Escribe tu nombre:")
-            Cedula_Usuario = st.number_input("Escribe la cedula del cliente:")
-            Meses = st.number_input("Escribe el plazo que tiene el usuario para pagar:")
+            Cedula_Usuario = st.number_input("Escribe la cedula del cliente:", min_value=1)
+            Meses = st.number_input("Escribe el plazo que tiene el usuario para pagar ( Meses ):", min_value=1)
             SEDES = {
                 "La 14 - Pereira": 1,
                 "La 18 - Pereira": 2,
@@ -273,6 +273,11 @@ with col2:
             st.session_state["valor_procesador"] = valor_procesador
             st.session_state["grafica"] = grafica
             st.session_state["valor_tasa"] = valor_tasa
+            st.session_state["Nombre_Usuario"] = Nombre_Usuario
+            st.session_state["Cedula_Usuario"] = Cedula_Usuario
+            st.session_state["Meses"] = Meses
+            st.session_state["SEDE_V"] = SEDE_V
+            st.session_state["Dinero"] = Dinero
             st.info(f"### Oferta de Compraventa: {st.session_state['v_compra']}")
 
             if "v_compra" in st.session_state:
@@ -284,10 +289,15 @@ with col2:
                     "Procesador": st.session_state["valor_procesador"],
                     "Grafica": st.session_state["grafica"],
                     "Precio": st.session_state["v_compra"],
-                    "Tasa": st.session_state["valor_tasa"]
+                    "Tasa": st.session_state["valor_tasa"],
+                    "Nombre": st.session_state["Nombre_Usuario"],
+                    "Cédula": st.session_state["Cedula_Usuario"],
+                    "Meses": st.session_state["Meses"],
+                    "Sede": st.session_state["SEDE_V"],
+                    "Dinero": st.session_state["Dinero"]
                     }
                             
             else:
                 st.warning("Primero calcula el precio en el cotizador")
 
-            st.switch_page("pages/Otros_Datos.py")
+            st.switch_page("pages/Contrato_Standard.py")
