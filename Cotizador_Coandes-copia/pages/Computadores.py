@@ -279,7 +279,6 @@ with col2:
             st.session_state["Meses"] = Meses
             st.session_state["SEDE_V"] = SEDE_V
             st.session_state["Dinero"] = Dinero
-            st.info(f"### Oferta de Compraventa: {st.session_state['v_compra']}")
 
             if "v_compra" in st.session_state:
                 st.session_state["datos_cotizador"] = {
@@ -300,5 +299,5 @@ with col2:
                             
             else:
                 st.warning("Primero calcula el precio en el cotizador")
-            st.button("📄 Crear contrato")
+            st.button("Hola mucho gusto")
             st.switch_page("pages/Contrato_Standard.py")
