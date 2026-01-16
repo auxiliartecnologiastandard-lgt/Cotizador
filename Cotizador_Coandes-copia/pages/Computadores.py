@@ -300,5 +300,5 @@ with col2:
                             
             else:
                 st.warning("Primero calcula el precio en el cotizador")
-
+            st.button("📄 Crear contrato")
             st.switch_page("pages/Contrato_Standard.py")
