@@ -146,7 +146,7 @@ st.divider()
 if st.toggle("OPCIONAL: Crear contrato"):
     st.markdown("### Antes de crear tu contrato porfavor llena danos la información correcta")
     valor_tasa = st.number_input("Escribe la tasa:", min_value=1, max_value=100)     
-    Nombre_Usuario = st.text_input("Escribe tu nombre:")
+    Nombre_Usuario = st.text_input("Escribe el nombre del cliente:")
     Cedula_Usuario = st.number_input("Escribe la cedula del cliente:", min_value=1)
     Meses = st.number_input("Escribe el plazo que tiene el usuario para pagar ( Meses ):", min_value=1)
     SEDES = {
