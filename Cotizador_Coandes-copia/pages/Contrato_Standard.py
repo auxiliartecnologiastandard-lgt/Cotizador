@@ -198,8 +198,6 @@ elif datos["Origen"] == "Computador":
         datos['Grafica'] = "Sin tarjeta grafica"
     else:
         datos['Grafica'] = "Con tarjeta grafica"
-
-    st.write(f"Este contrato se basa en la compraventa de un {datos["Origen"]}, de la marca {datos['Marca']}, con {datos["RAM"]}, {datos["Disco"]} de espacio, con procesador {datos["Procesador"]}, y {datos["Grafica"]} Al precio de: {datos['Precio']}  pesos con una tasa del {datos['Tasa']}%")
     
     # CREACIÓN DEL PDF
     pdf = FPDF(orientation="P",  # P = vertical, L = horizontal
@@ -313,9 +311,17 @@ elif datos["Origen"] == "Computador":
     pdf_buffer = io.BytesIO(pdf_bytes)
 
     # Botón de descarga
-    st.download_button(
+    if "descargar_pdf" not in st.session_state:
+        st.session_state["descargar_pdf"] = False
+
+    if st.download_button(
         label="📥 Descargar PDF",
         data=pdf_buffer,
-        file_name="contrato.pdf",
+        file_name=f"Contrato {datos['Origen']}.pdf",
         mime="application/pdf"
-    )
+    ):
+        st.session_state["descargar_pdf"] = True
+
+    if st.session_state["descargar_pdf"]:
+        st.session_state["descargar_pdf"] = False
+        st.switch_page("pages/Contrato_Standard.py")
