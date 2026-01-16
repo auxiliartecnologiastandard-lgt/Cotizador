@@ -299,5 +299,5 @@ with col2:
                             
             else:
                 st.warning("Primero calcula el precio en el cotizador")
-            st.button("Hola mucho gusto")
-            st.switch_page("pages/Contrato_Standard.py")
+            if st.button("Hola mucho gusto"):
+                st.switch_page("pages/Contrato_Standard.py")
