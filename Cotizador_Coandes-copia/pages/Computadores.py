@@ -222,7 +222,7 @@ with col2:
                 "Super Standard - Tuluá": 10,
                 "Armenia": 11
             }
-            sel_SEDE = st.selectbox("Seleccione capacidad de RAM:", list(SEDES.keys()), index=1)
+            sel_SEDE = st.selectbox("Seleccione la sede en la que se encuentra:", list(SEDES.keys()), index=1)
             SEDE_V = SEDES[sel_SEDE]
 
 
@@ -262,14 +262,11 @@ with col2:
             precio_venta_redondo = round((precio_base_redondo * 1.4) / 10000) * 10000
 
             # 3. Formato
-            st.session_state["v_compra"] = f"${precio_base_redondo:,.0f}".replace(",", ".")
+            st.session_state["v_compra"] = f"{precio_base_redondo:,.0f}"
             st.session_state["v_venta"] = f"${precio_venta_redondo:,.0f}".replace(",", ".")
             # Conversión explícita a números
-            v_compra = float(st.session_state["v_compra"])
-            valor_tasa = float(st.session_state["valor_tasa"])
-            Meses = int(st.session_state["Meses"])
-            Dinero = v_compra + (v_compra * (valor_tasa / 100) * Meses)
-                
+            Dinero = st.session_state["v_compra"] + (st.session_state["v_compra"] * (valor_tasa / 100) * Meses)
+            Dinero = f"${Dinero:,.0f}".replace(",", ".")
             #PARA CONTRATOS
             st.session_state["valor_marca"] = valor_marca
             st.session_state["valor_ram"] = valor_ram
