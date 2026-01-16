@@ -143,8 +143,28 @@ grafica = 1 if tiene_grafica else 0
 st.divider()
 
 # 6. Tasa para contrato
-if st.toggle("OPCIONAL: Agregar tasa"):
-    valor_tasa = st.number_input("Escriba la tasa:", min_value=1, max_value=100)
+if st.toggle("OPCIONAL: Crear contrato"):
+    st.markdown("### Antes de crear tu contrato porfavor llena danos la información correcta")
+    valor_tasa = st.number_input("Escribe la tasa:", min_value=1, max_value=100)     
+    Nombre_Usuario = st.text_input("Escribe tu nombre:")
+    Cedula_Usuario = st.number_input("Escribe la cedula del cliente:", min_value=1)
+    Meses = st.number_input("Escribe el plazo que tiene el usuario para pagar ( Meses ):", min_value=1)
+    SEDES = {
+        "La 14 - Pereira": 1,
+        "La 18 - Pereira": 2,
+        "La 19 - Pereira": 3,
+        "Cuba - Pereira": 4,
+        "La 29 - Pereira": 5,
+        "Crucero - Doquebradas": 6,
+        "Naranjos - Dosquebradas": 7,
+        "Japón - Dosquebradas": 8,
+        "Sol brilla - Tuluá": 9,
+        "Super Standard - Tuluá": 10,
+        "Armenia": 11
+    }
+    sel_SEDE = st.selectbox("Seleccione la sede en la que se encuentra:", list(SEDES.keys()), index=1)
+    SEDE_V = SEDES[sel_SEDE]
+
 else:
     valor_tasa = 0
 
@@ -201,31 +221,8 @@ with col2:
     if st.button("📄 Crear contrato"):
         st.session_state["precio_calculado"] = True
         if valor_tasa == 0:
-            st.warning("Porfavor agregue una tasa")
+            st.warning("Porfavor agrega la información necesaria")
         else:
-        
-            st.markdown("### Antes de crear tu contrato porfavor llena danos la información correcta")
-            
-            Nombre_Usuario = st.text_input("Escribe tu nombre:")
-            Cedula_Usuario = st.number_input("Escribe la cedula del cliente:", min_value=1)
-            Meses = st.number_input("Escribe el plazo que tiene el usuario para pagar ( Meses ):", min_value=1)
-            SEDES = {
-                "La 14 - Pereira": 1,
-                "La 18 - Pereira": 2,
-                "La 19 - Pereira": 3,
-                "Cuba - Pereira": 4,
-                "La 29 - Pereira": 5,
-                "Crucero - Doquebradas": 6,
-                "Naranjos - Dosquebradas": 7,
-                "Japón - Dosquebradas": 8,
-                "Sol brilla - Tuluá": 9,
-                "Super Standard - Tuluá": 10,
-                "Armenia": 11
-            }
-            sel_SEDE = st.selectbox("Seleccione la sede en la que se encuentra:", list(SEDES.keys()), index=1)
-            SEDE_V = SEDES[sel_SEDE]
-
-
 
             # 1. Ajuste de peso para que el disco no infle el precio en equipos básicos
             valor_disco_ia = valor_disco_final * 0.01 if valor_procesador <= 16 else valor_disco_final
@@ -299,5 +296,5 @@ with col2:
                             
             else:
                 st.warning("Primero calcula el precio en el cotizador")
-            if st.button("Hola mucho gusto"):
-                st.switch_page("pages/Contrato_Standard.py")
+                
+            st.switch_page("pages/Contrato_Standard.py")
