@@ -264,7 +264,7 @@ with col2:
             # 3. Formato
             st.session_state["v_compra"] = f"${precio_base_redondo:,.0f}".replace(",", ".")
             st.session_state["v_venta"] = f"${precio_venta_redondo:,.0f}".replace(",", ".")
-            Dinero = st.session_state["v_compra"] + (st.session_state["v_compra"] * (valor_tasa / 100) * Meses)
+            Dinero = v_compra + (v_compra * (valor_tasa / 100) * Meses)
                 
             #PARA CONTRATOS
             st.session_state["valor_marca"] = valor_marca
