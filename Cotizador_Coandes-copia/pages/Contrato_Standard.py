@@ -232,16 +232,17 @@ elif datos["Origen"] == "Computador":
         8,      # alto de línea
         "CONTRATO DE COMPRAVENTA CON PACTO DE RETROVENTA. "
         "Artículo 1939 del Código Civil Colombiano.",
-        align="L"   # L, C, R, J
+        align="C"   # L, C, R, J
         )
     pdf.ln(5)
-    pdf.set_font("Arial", size=10)
+    pdf.set_font("Arial", size=7)
 
     pdf.multi_cell(
         0,
         8,
-        "texto_grande"
+        f"YO {datos['Origen']} por el poder que me otorga la marca {datos['Marca']} debo decir que el que este equipo con {datos["RAM"]}, {datos["Disco"]} de espacio y {datos["Procesador"]} me por solo {datos["Precio"]} pesos me parece justo 😀👍"
     )
+    
 
     pdf_bytes = pdf.output(dest="S").encode("latin-1")
     pdf_buffer = io.BytesIO(pdf_bytes)
