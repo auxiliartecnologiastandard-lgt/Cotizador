@@ -225,11 +225,11 @@ elif datos["Origen"] == "Computador":
     # TITULO DEL PDF
     pdf.set_font("Arial", "B", 18)
     pdf.ln(3)  # baja el cursor para no chocar con el logo
-    pdf.cell(0, 3.5, f"Contrato {datos["Direcciones"]}", ln=True, align="C")
+    pdf.cell(0, 3.5, f"CONTRATO {datos["Direcciones"]}", ln=True, align="C")
     # DIRRECIONES
     pdf.set_font("Arial", "", 8)
     pdf.ln(3)
-    pdf.cell(0, 6, f"HOLAAAAA {datos["Direcciones"]}", ln=True, align="C")
+    pdf.cell(0, 6, f"{datos["Sede"]}", ln=True, align="C")
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
