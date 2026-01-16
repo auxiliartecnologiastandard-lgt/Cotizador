@@ -236,7 +236,7 @@ elif datos["Origen"] == "Computador":
     # QR a la izquierda de la tabla (NO de la hoja)
     pdf.image(
         "qr_temp.png",
-        x=150 - 17,
+        x=tabla_x - 17,
         y=y_bloque + 8,
         w=17)
 
@@ -269,9 +269,23 @@ elif datos["Origen"] == "Computador":
     pdf.multi_cell(
         0,
         3,
-        f"Entre los suscritos {datos['Nombre']} identificado con C.C. {datos['Cedula']}, mayor de edad quien obra en nombre propio y se denomina para efectos del presente contrato EL VENDEDOR de una parte, y por otra parte CASA COMERCIAL DE LOS ANDES S.A.S - Nit. 800.205.573-1, quien para los efectos del presente contrato se denomina EL COMPRADOR. Manifestamos que hemos celebrado un contrato de compraventa entre el siguiente bien que a continuación se identifica.\n\nObjeto: {datos['Origen']}\nMemoria RAM: {datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}\n\nEl valor de la compraventa es la suma de {datos['Precio']} M/cte. EL VENDEDOR transfiere AL COMPRADOR, a título de compraventa el derecho de dominio y posesión que tiene y ejerce sobre el anterior articulo y declara que los bienes que transfiere, los adquirió lícitamente, no fue su importador, son de su exclusiva propiedad, los posee de manera regular, publica y pacífica, están libres de gravamen, limitación al dominio, pleitos pendientes y embargos, con la obligación de salir al saneamiento en casos de ley.\n\nPRIMERA: Los contratantes de conformidad con el artículo 1939 del Código Civil Colombiano, pactan que EL VENDEDOR se reserva la facultad de recobrar los artículos vendidos por medio de este contrato, pagando AL COMPRADOR como precio de retroventa la suma de: {datos['Dinero']} SEGUNDA: El derecho que nace del pacto de retroventa del presente contrato, no podrácederse a ningún título. En caso de pérdida de este contrato EL VENDEDOR se obliga a dar noticia inmediata AL COMPRADOR y este, solo exhibirá el articulo descrito a la terminación del presente contrato. TERCERA: EL VENDEDOR y EL COMPRADOR pactan que la facultad de retroventa del presente contrato la podrá ejercer EL VENDEDOR dentro del término de -- {datos['Meses']} Meses -- prorrogables CUARTA: Autorizo a COANDES S.A.S, a consultar y verificar la información en las listas restrictivas con el fin de prevenir situaciones relacionadas con el lavado de activos y financiación del terrorismo. QUINTA: El VENDEDOR autoriza para que se recopile, almacene, use y suprima los datos personales aquí suministrados. Ley 1581 de 2012 y sus decretos reglamentarios. Podrá revocar esta autorización dirigiendo su petición al correo electrónico servicioalcliente@standard.com.co SEXTA: Las controversias relativas al presente contrato se resolverán por un tribunal de arbitramento de conformidad con las disposiciones que rigen la materia, nombrado por la Cámara de Comercio de esta ciudad. SEPTIMA: Tanto EL VENDEDOR como EL COMPRADOR hemos leído, comprendido y aceptado el texto de este contrato. OCTAVA: Así mismo acepto desde ahora la venta o cesión de los derechos que adquiere Casa comercial de los andes a otra empresa. En constancia de lo anterior lo firman las partes en la fecha {fecha_actual}"
+        f"Entre los suscritos {datos['Nombre']} identificado con C.C. {datos['Cedula']}, mayor de edad quien obra en nombre propio y se denomina para efectos del presente contrato EL VENDEDOR de una parte, y por otra parte CASA COMERCIAL DE LOS ANDES S.A.S - Nit. 800.205.573-1, quien para los efectos del presente contrato se denomina EL COMPRADOR. Manifestamos que hemos celebrado un contrato de compraventa entre el siguiente bien que a continuación se identifica.\n\nObjeto: {datos['Origen']}\nMemoria RAM: {datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}\n\nEl valor de la compraventa es la suma de {datos['Precio']} M/cte. EL VENDEDOR transfiere AL COMPRADOR, a título de compraventa el derecho de dominio y posesión que tiene y ejerce sobre el anterior articulo y declara que los bienes que transfiere, los adquirió lícitamente, no fue su importador, son de su exclusiva propiedad, los posee de manera regular, publica y pacífica, están libres de gravamen, limitación al dominio, pleitos pendientes y embargos, con la obligación de salir al saneamiento en casos de ley.\n\n"
         )
     
+    pdf.multi_cell(
+        0,      # ancho automático
+        3,      # alto de línea
+        "CLÁUSULAS ACCESORIAS QUE RIGEN EL PRESENTE CONTRATO",
+        align="C"   # L, C, R, J
+        )
+    pdf.ln(5)
+    pdf.set_font("Arial", size=8)
+
+    pdf.multi_cell(
+        0,
+        3,
+        f"PRIMERA: Los contratantes de conformidad con el artículo 1939 del Código Civil Colombiano, pactan que EL VENDEDOR se reserva la facultad de recobrar los artículos vendidos por medio de este contrato, pagando AL COMPRADOR como precio de retroventa la suma de: {datos['Dinero']} SEGUNDA: El derecho que nace del pacto de retroventa del presente contrato, no podrácederse a ningún título. En caso de pérdida de este contrato EL VENDEDOR se obliga a dar noticia inmediata AL COMPRADOR y este, solo exhibirá el articulo descrito a la terminación del presente contrato. TERCERA: EL VENDEDOR y EL COMPRADOR pactan que la facultad de retroventa del presente contrato la podrá ejercer EL VENDEDOR dentro del término de -- {datos['Meses']} Meses -- prorrogables CUARTA: Autorizo a COANDES S.A.S, a consultar y verificar la información en las listas restrictivas con el fin de prevenir situaciones relacionadas con el lavado de activos y financiación del terrorismo. QUINTA: El VENDEDOR autoriza para que se recopile, almacene, use y suprima los datos personales aquí suministrados. Ley 1581 de 2012 y sus decretos reglamentarios. Podrá revocar esta autorización dirigiendo su petición al correo electrónico servicioalcliente@standard.com.co SEXTA: Las controversias relativas al presente contrato se resolverán por un tribunal de arbitramento de conformidad con las disposiciones que rigen la materia, nombrado por la Cámara de Comercio de esta ciudad. SEPTIMA: Tanto EL VENDEDOR como EL COMPRADOR hemos leído, comprendido y aceptado el texto de este contrato. OCTAVA: Así mismo acepto desde ahora la venta o cesión de los derechos que adquiere Casa comercial de los andes a otra empresa. En constancia de lo anterior lo firman las partes en la fecha {fecha_actual}"
+        )
 
     pdf_bytes = pdf.output(dest="S").encode("latin-1")
     pdf_buffer = io.BytesIO(pdf_bytes)
