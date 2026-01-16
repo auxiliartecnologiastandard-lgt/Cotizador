@@ -195,7 +195,7 @@ elif datos["Origen"] == "Computador":
     qr.save("qr_temp.png")
 
     # Posición base del bloque (debajo del título)
-    y_bloque = 20
+    y_bloque = 5
 
     # Posición de la tabla (derecha)
     tabla_x = 150
@@ -221,7 +221,7 @@ elif datos["Origen"] == "Computador":
     # Fila 3 – Precio
     pdf.set_x(tabla_x)
     pdf.cell(25, 8, "Precio", border=1)
-    pdf.cell(30, 8, f'${datos["Precio"]}', border=1, ln=True)
+    pdf.cell(30, 8, f'{datos["Precio"]}', border=1, ln=True)
 
     # CONTENIDO DEL PDF
     pdf.ln(15)
