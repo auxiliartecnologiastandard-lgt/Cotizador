@@ -270,6 +270,7 @@ with col2:
             st.session_state["Valor_Memoria_Real"] = Valor_Memoria_Real
             st.session_state["valor_procesador"] = valor_procesador
             st.session_state["grafica"] = grafica
+            st.session_state["v_compra"] = f"${precio_base_redondo:,.0f}".replace(",", ".")
             st.session_state["valor_tasa"] = valor_tasa
             st.session_state["Nombre_Usuario"] = Nombre_Usuario
             st.session_state["Cedula_Usuario"] = Cedula_Usuario

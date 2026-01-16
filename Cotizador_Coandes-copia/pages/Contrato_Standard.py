@@ -225,8 +225,8 @@ elif datos["Origen"] == "Computador":
     pdf.cell(30, 8, fecha_actual, border=1, ln=True)
     # Fila 2 – Tasa
     pdf.set_x(tabla_x)
-    pdf.cell(25, 8, "Tasa", border=1)
-    pdf.cell(30, 8, f'{datos["Tasa"]}%', border=1, ln=True)
+    pdf.cell(25, 8, "Plazo", border=1)
+    pdf.cell(30, 8, f'{datos["Meses"]} Meses', border=1, ln=True)
     # Fila 3 – Precio
     pdf.set_x(tabla_x)
     pdf.cell(25, 8, "Precio", border=1)
