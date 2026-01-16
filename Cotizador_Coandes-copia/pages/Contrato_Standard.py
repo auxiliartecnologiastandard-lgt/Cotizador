@@ -204,9 +204,9 @@ elif datos["Origen"] == "Computador":
     # QR a la izquierda de la tabla (NO de la hoja)
     pdf.image(
         "qr_temp.png",
-        x=tabla_x - 40,
+        x=tabla_x - 15,
         y=tabla_y,
-        w=15)
+        w=17)
 
     # Tabla
     pdf.set_xy(tabla_x, tabla_y)
