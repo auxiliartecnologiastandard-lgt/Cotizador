@@ -172,11 +172,11 @@ elif datos["Origen"] == "Computador":
     # CREACIÓN DEL PDF
     pdf = FPDF(orientation="P",  # P = vertical, L = horizontal
     unit="mm", format="Letter")
-    pdf.set_margins(left=15, top=20, right=15)
-    pdf.set_auto_page_break(auto=True, margin=20)
+    pdf.set_margins(left=5, top=5, right=5)
+    pdf.set_auto_page_break(auto=True, margin=5)
+
     # color rojo para que sea visible
     pdf.set_draw_color(0, 0, 0)
-
     # dibuja un rectángulo que represente el margen
     pdf.add_page()
     pdf.rect(
