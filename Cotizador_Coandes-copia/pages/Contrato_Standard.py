@@ -178,13 +178,12 @@ elif datos["Origen"] == "Computador":
     pdf.set_draw_color(200, 0, 0)
 
     # dibuja un rectángulo que represente el margen
+    pdf.add_page()
     pdf.rect(
     x=pdf.l_margin,
     y=pdf.t_margin,
     w=pdf.w - pdf.l_margin - pdf.r_margin,
-    h=pdf.h - pdf.t_margin - pdf.b_margin
-)
-    pdf.add_page()
+    h=pdf.h - pdf.t_margin - pdf.b_margin)
 
     # LOGO DE LA EMPRESA
     ruta_base = os.path.dirname(__file__)
