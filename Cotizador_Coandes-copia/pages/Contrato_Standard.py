@@ -33,6 +33,7 @@ st.set_page_config(page_title="Contrato de Compraventa")
 st.title("📄 Contrato")
 
 datos = st.session_state.get("datos_cotizador")
+Dir_Exacta = 0
 
 if not datos:
     st.warning("No hay datos del cotizador. Regresa y calcula primero.")
@@ -60,6 +61,15 @@ elif datos['Sede'] == 10:
     datos['Sede'] = "Super Standard (Tuluá)"
 elif datos['Sede'] == 11:
     datos['Sede'] = "Armenia"
+
+if datos['Sede'] in [1, 2, 3, 4, 5]:
+    datos['Direcciones'] = "PEREIRA"
+elif datos['Sede'] in [6, 7, 8]:
+    datos['Direcciones'] = "DOSQUEBRADAS"
+elif datos['Sede'] in [9, 10]:
+    datos['Direcciones'] = "TULUÁ"
+else:
+    datos['Direcciones'] = "ARMENIA"
 
 # Mostrar solo datos de nevera
 if datos["Origen"] == "Nevera":
@@ -214,9 +224,13 @@ elif datos["Origen"] == "Computador":
     pdf.image(ruta_logo, x=10, y=3.5, w=40)
 
     # TITULO DEL PDF
-    pdf.set_font("Arial", "B", 15)
+    pdf.set_font("Arial", "B", 18)
     pdf.ln(3)  # baja el cursor para no chocar con el logo
-    pdf.cell(0, 3.5, f"Contrato {datos["Sede"]}", ln=True, align="C")
+    pdf.cell(0, 3.5, f"Contrato {datos["Direcciones"]}", ln=True, align="C")
+    # DIRRECIONES
+    pdf.set_font("Arial", 8)
+    pdf.ln(3)  # baja el cursor para no chocar con el logo
+    pdf.cell(0, 6, f"HOLAAAAA {datos["Direcciones"]}", ln=True, align="C")
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
@@ -252,7 +266,7 @@ elif datos["Origen"] == "Computador":
     pdf.set_x(tabla_x)
     pdf.cell(33, 8, f"Precio:  {datos["Precio"]}", border=1, ln=True)
 
-    # CONTENIDO DEL PDF
+    # CUERPO DEL PDF
     # INICIO 
     pdf.ln(15)
     pdf.set_font("Arial","B", size=7)

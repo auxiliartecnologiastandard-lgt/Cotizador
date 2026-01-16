@@ -265,6 +265,7 @@ with col2:
             Dinero = st.session_state["v_compra"] + (st.session_state["v_compra"] * (valor_tasa / 100) * Meses)
             Dinero = round(Dinero / 10000) * 10000
             Dinero = f"${Dinero:,.0f}".replace(",", ".")
+            Direcciones = 0
             #PARA CONTRATOS
             st.session_state["valor_marca"] = valor_marca
             st.session_state["valor_ram"] = valor_ram
@@ -278,6 +279,7 @@ with col2:
             st.session_state["Meses"] = Meses
             st.session_state["SEDE_V"] = SEDE_V
             st.session_state["Dinero"] = Dinero
+            st.session_state["Direcciones"] = Direcciones
 
             if "v_compra" in st.session_state:
                 st.session_state["datos_cotizador"] = {
@@ -293,7 +295,8 @@ with col2:
                     "Cedula": st.session_state["Cedula_Usuario"],
                     "Meses": st.session_state["Meses"],
                     "Sede": st.session_state["SEDE_V"],
-                    "Dinero": st.session_state["Dinero"]
+                    "Dinero": st.session_state["Dinero"],
+                    "Direcciones": st.session_state["Direcciones"]
                     }
                             
             else:
