@@ -262,7 +262,7 @@ with col2:
             precio_venta_redondo = round((precio_base_redondo * 1.4) / 10000) * 10000
 
             # 3. Formato
-            st.session_state["v_compra"] = f"{precio_base_redondo:,.0f}"
+            st.session_state["v_compra"] = precio_base_redondo
             st.session_state["v_venta"] = f"${precio_venta_redondo:,.0f}".replace(",", ".")
             # Conversión explícita a números
             Dinero = st.session_state["v_compra"] + (st.session_state["v_compra"] * (valor_tasa / 100) * Meses)
