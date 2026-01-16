@@ -175,7 +175,7 @@ elif datos["Origen"] == "Computador":
     pdf.set_margins(left=15, top=20, right=15)
     pdf.set_auto_page_break(auto=True, margin=20)
     # color rojo para que sea visible
-    pdf.set_draw_color(200, 0, 0)
+    pdf.set_draw_color(0, 0, 0)
 
     # dibuja un rectángulo que represente el margen
     pdf.add_page()
@@ -192,8 +192,8 @@ elif datos["Origen"] == "Computador":
 
     # TITULO DEL PDF
     pdf.set_font("Arial", "B", 15)
-    pdf.ln(10)  # baja el cursor para no chocar con el logo
-    pdf.cell(0, 10, "CONTRATO STANDARD", ln=True, align="C")
+    pdf.ln(1)  # baja el cursor para no chocar con el logo
+    pdf.cell(0, 1, "CONTRATO STANDARD", ln=True, align="C")
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
