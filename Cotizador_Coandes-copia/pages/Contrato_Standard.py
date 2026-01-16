@@ -211,12 +211,12 @@ elif datos["Origen"] == "Computador":
     # LOGO DE LA EMPRESA
     ruta_base = os.path.dirname(__file__)
     ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
-    pdf.image(ruta_logo, x=10, y=8, w=40)
+    pdf.image(ruta_logo, x=10, y=7, w=40)
 
     # TITULO DEL PDF
     pdf.set_font("Arial", "B", 15)
     pdf.ln(3)  # baja el cursor para no chocar con el logo
-    pdf.cell(0, 3.5, "CONTRATO STANDARD", ln=True, align="C")
+    pdf.cell(0, 3.5, f"Contrato {datos["Sede"]}", ln=True, align="C")
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
