@@ -229,7 +229,7 @@ elif datos["Origen"] == "Computador":
     # DIRRECIONES
     pdf.set_font("Arial", "", 8)
     pdf.ln(3)
-    pdf.multi_cell(0, 6, f"{datos["Sede"]}", ln=True, align="C")
+    pdf.multi_cell(0, 6, f"{datos['Sede']}", align="C")
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
