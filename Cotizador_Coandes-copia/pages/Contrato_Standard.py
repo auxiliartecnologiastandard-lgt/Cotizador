@@ -230,7 +230,7 @@ elif datos["Origen"] == "Computador":
     y_bloque = 7
 
     # Posición de la tabla (derecha)
-    tabla_x = 200
+    tabla_x = 175
     tabla_y = 7
 
     # QR a la izquierda de la tabla (NO de la hoja)
