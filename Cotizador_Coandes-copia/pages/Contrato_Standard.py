@@ -33,22 +33,30 @@ st.set_page_config(page_title="Contrato de Compraventa")
 st.title("📄 Contrato")
 
 datos = st.session_state.get("datos_cotizador")
-Dir_Exacta = 0
 
 if not datos:
     st.warning("No hay datos del cotizador. Regresa y calcula primero.")
     st.stop()
 
+if datos['Sede'] in [1, 2, 3, 4, 5]:
+    datos['Direcciones'] = "PEREIRA"
+elif datos['Sede'] in [6, 7, 8]:
+    datos['Direcciones'] = "DOSQUEBRADAS"
+elif datos['Sede'] in [9, 10]:
+    datos['Direcciones'] = "TULUÁ"
+else:
+    datos['Direcciones'] = "ARMENIA"
+
 if datos['Sede'] == 1:
-    datos['Sede'] = "La 14 (Pereira)"
+    datos['Sede'] = "Calle 14 # 8-24\nStandard La 14\n320 610 403\nstandardcuatro.per@standard.com.co\nNit. 800.205.573-1"
 elif datos['Sede'] == 2:
-    datos['Sede'] = "La 18 (Pereira)"
+    datos['Sede'] = "Calle 18 # 8-07\nStandard La 18\n310 397 1905\nstandardla18.per@standard.com.co\nNit. 800.205.573-1"
 elif datos['Sede'] == 3:
-    datos['Sede'] = "La 19 (Pereira)"
+    datos['Sede'] = "Calle 19 # 10-53\nStandard La 19\n316 833 6917\nstandardla19.per@standard.com.co\nNit. 800.205.573-1"
 elif datos['Sede'] == 4:
-    datos['Sede'] = "Cuba (Pereira)"
+    datos['Sede'] = "Cra 23bis # 71-32\nStandard Cuba\n320 766 9884\nstandardcuba.per@standard.com.co\nNit. 800.205.573-1"
 elif datos['Sede'] == 5:
-    datos['Sede'] = "La 29 (Pereira)"
+    datos['Sede'] = "Cra 7 # 29-07\nStandard La 29\n322 304 8622\nstandardla29.per@standard.com.co\nNit. 800.205.573-1"
 elif datos['Sede'] == 6:
     datos['Sede'] = "Crucero (Doquebradas)"
 elif datos['Sede'] == 7:
@@ -61,15 +69,6 @@ elif datos['Sede'] == 10:
     datos['Sede'] = "Super Standard (Tuluá)"
 elif datos['Sede'] == 11:
     datos['Sede'] = "Armenia"
-
-if datos['Sede'] in [1, 2, 3, 4, 5]:
-    datos['Direcciones'] = "PEREIRA"
-elif datos['Sede'] in [6, 7, 8]:
-    datos['Direcciones'] = "DOSQUEBRADAS"
-elif datos['Sede'] in [9, 10]:
-    datos['Direcciones'] = "TULUÁ"
-else:
-    datos['Direcciones'] = "ARMENIA"
 
 # Mostrar solo datos de nevera
 if datos["Origen"] == "Nevera":
@@ -228,8 +227,8 @@ elif datos["Origen"] == "Computador":
     pdf.ln(3)  # baja el cursor para no chocar con el logo
     pdf.cell(0, 3.5, f"Contrato {datos["Direcciones"]}", ln=True, align="C")
     # DIRRECIONES
-    pdf.set_font("Arial", 8)
-    pdf.ln(3)  # baja el cursor para no chocar con el logo
+    pdf.set_font("Arial", "", 8)
+    pdf.ln(3)
     pdf.cell(0, 6, f"HOLAAAAA {datos["Direcciones"]}", ln=True, align="C")
 
     # CONSEGUIR FECHA ACTUAL
