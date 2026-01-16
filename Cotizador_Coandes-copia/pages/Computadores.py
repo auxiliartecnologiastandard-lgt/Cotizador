@@ -155,7 +155,7 @@ if st.toggle("OPCIONAL: Crear contrato"):
         "La 19 - Pereira": 3,
         "Cuba - Pereira": 4,
         "La 29 - Pereira": 5,
-        "Crucero - Doquebradas": 6,
+        "Crucero - Dosquebradas": 6,
         "Naranjos - Dosquebradas": 7,
         "Japón - Dosquebradas": 8,
         "Sol brilla - Tuluá": 9,
@@ -263,7 +263,6 @@ with col2:
             st.session_state["v_venta"] = f"${precio_venta_redondo:,.0f}".replace(",", ".")
             # Conversión explícita a números
             Dinero = st.session_state["v_compra"] + (st.session_state["v_compra"] * (valor_tasa / 100) * Meses)
-            Dinero = round(Dinero / 10000) * 10000
             Dinero = f"${Dinero:,.0f}".replace(",", ".")
             Direcciones = 0
             #PARA CONTRATOS

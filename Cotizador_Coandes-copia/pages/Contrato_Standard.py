@@ -433,4 +433,4 @@ if st.download_button(
 
 if st.session_state["descargar_pdf"]:
     st.session_state["descargar_pdf"] = False
-    st.switch_page("pages/Computadores.py")
+    st.switch_page("Lobby.py")
