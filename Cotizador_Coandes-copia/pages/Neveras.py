@@ -111,12 +111,34 @@ def main():
     seleccion = st.selectbox("Seleccione el Sistema de Enfriamientoelo:", list(SE_opciones.keys()), index=1)
     valor_Sistema_de_enfriamiento = SE_opciones[seleccion]
 
-    # 4. Tasa para contrato
-    if st.toggle("OPCIONAL: Agregar tasa"):
-        valor_tasa = st.number_input("Escriba la tasa:", min_value=1, max_value=100)
+    st.divider()
+
+    # 6. Tasa para contrato
+    if st.toggle("OPCIONAL: Crear contrato"):
+        st.markdown("### Antes de crear tu contrato porfavor llena los campos con la información correcta")
+        valor_tasa = st.number_input("Escribe la tasa:", min_value=1, max_value=100)     
+        Nombre_Usuario = st.text_input("Escribe el nombre del cliente:")
+        Cedula_Usuario = st.number_input("Escribe la cedula del cliente:", min_value=1)
+        Meses = st.number_input("Escribe el plazo que tiene el usuario para pagar ( Meses ):", min_value=1)
+        SEDES = {
+            "La 14 - Pereira": 1,
+            "La 18 - Pereira": 2,
+            "La 19 - Pereira": 3,
+            "Cuba - Pereira": 4,
+            "La 29 - Pereira": 5,
+            "Crucero - Doquebradas": 6,
+            "Naranjos - Dosquebradas": 7,
+            "Japón - Dosquebradas": 8,
+            "Sol brilla - Tuluá": 9,
+            "Super Standard - Tuluá": 10,
+            "Armenia": 11
+        }
+        sel_SEDE = st.selectbox("Seleccione la sede en la que se encuentra:", list(SEDES.keys()), index=1)
+        SEDE_V = SEDES[sel_SEDE]
+
     else:
         valor_tasa = 0
-        
+
     st.divider()
 
     col1, col2, = st.columns(2)
@@ -144,7 +166,7 @@ def main():
         if st.button("📄 Crear contrato"):
             st.session_state["precio_calculado"] = True
             if valor_tasa == 0:
-                st.warning("Porfavor agregue una tasa")
+                st.warning("Porfavor agrega la información necesaria")
             else:
                 # 1. Predicción
                 entrada = np.array([[valor_marca, valor_litro_final, valor_Sistema_de_enfriamiento]])
@@ -155,16 +177,26 @@ def main():
                 precio_venta_redondo = round((precio_base_redondo * 1.4) / 10000) * 10000
 
                 # 3. Formato
-                st.session_state["v_compra"] = f"${precio_base_redondo:,.0f}".replace(",", ".")
+                st.session_state["v_compra"] = precio_base_redondo
                 st.session_state["v_venta"] = f"${precio_venta_redondo:,.0f}".replace(",", ".")
+                # Conversión explícita a números
+                Dinero = st.session_state["v_compra"] + (st.session_state["v_compra"] * (valor_tasa / 100) * Meses)
+                Dinero = round(Dinero / 10000) * 10000
+                Dinero = f"${Dinero:,.0f}".replace(",", ".")
+                Direcciones = 0
                 
                 #PARA CONTRATOS
                 st.session_state["valor_marca"] = valor_marca
                 st.session_state["valor_litro_final"] = valor_litro_final
                 st.session_state["valor_Sistema_de_enfriamiento"] = valor_Sistema_de_enfriamiento
+                st.session_state["v_compra"] = f"${precio_base_redondo:,.0f}".replace(",", ".")
                 st.session_state["valor_tasa"] = valor_tasa
-                st.info(f"### Oferta de Compraventa: {st.session_state['v_compra']}")
-
+                st.session_state["Nombre_Usuario"] = Nombre_Usuario
+                st.session_state["Cedula_Usuario"] = Cedula_Usuario
+                st.session_state["Meses"] = Meses
+                st.session_state["SEDE_V"] = SEDE_V
+                st.session_state["Dinero"] = Dinero
+                st.session_state["Direcciones"] = Direcciones
 
 
                 if "v_compra" in st.session_state:
@@ -174,7 +206,13 @@ def main():
                         "Litros": st.session_state["valor_litro_final"],
                         "Sistema": st.session_state["valor_Sistema_de_enfriamiento"],
                         "Precio": st.session_state["v_compra"],
-                        "Tasa": st.session_state["valor_tasa"]
+                        "Tasa": st.session_state["valor_tasa"],
+                        "Nombre": st.session_state["Nombre_Usuario"],
+                        "Cedula": st.session_state["Cedula_Usuario"],
+                        "Meses": st.session_state["Meses"],
+                        "Sede": st.session_state["SEDE_V"],
+                        "Dinero": st.session_state["Dinero"],
+                        "Direcciones": st.session_state["Direcciones"]
                         }
                             
                 else:
