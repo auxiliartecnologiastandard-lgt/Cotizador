@@ -148,7 +148,7 @@ if datos["Origen"] == "Nevera":
     pdf.rect(
         x=pdf.l_margin,
         y=pdf.t_margin,
-        w=75,
+        w=90,
         h=alto_bloque
     )
     pdf.set_font("Arial", "B", 18)
@@ -157,7 +157,7 @@ if datos["Origen"] == "Nevera":
     pdf.set_xy(35, 1)
     pdf.multi_cell(0, 3, f"Marca: {datos['Marca']}\nCapacidad: {datos['Litros']}\nSistema: {datos['Sistema']}")
     pdf.set_y(5.5)
-    pdf.cell(0, 3.5, f"{datos['Meses']} Meses", ln=True)
+    pdf.cell(0, 5, f"{datos['Meses']} Meses", ln=True)
     pdf.cell(0, 3.5, f"{datos['Nombre']} - CC {datos['Cedula']} / {datos['Origen']}: {datos['Precio']}", ln=True)
     pdf.set_xy(140, 5.5)
     pdf.multi_cell(0, 6, "__________________________________ \n Firma Vendedor")
@@ -351,7 +351,7 @@ elif datos["Origen"] == "Computador":
     pdf.rect(
         x=pdf.l_margin,
         y=pdf.t_margin,
-        w=75,
+        w=90,
         h=alto_bloque
     )
     pdf.set_font("Arial", "B", 18)
@@ -360,7 +360,7 @@ elif datos["Origen"] == "Computador":
     pdf.set_xy(35, 1)
     pdf.multi_cell(0, 3, f"{datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}")
     pdf.set_y(5.5)
-    pdf.cell(0, 3.5, f"{datos['Meses']} Meses", ln=True)
+    pdf.cell(0, 5, f"{datos['Meses']} Meses", ln=True)
     pdf.cell(0, 3.5, f"{datos['Nombre']} - CC {datos['Cedula']} / {datos['Origen']}: {datos['Precio']}", ln=True)
     pdf.set_xy(140, 5.5)
     pdf.multi_cell(0, 6, "__________________________________ \n Firma Vendedor")
