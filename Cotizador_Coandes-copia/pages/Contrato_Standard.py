@@ -152,10 +152,10 @@ if datos["Origen"] == "Nevera":
         h=alto_bloque
     )
     pdf.set_font("Arial", "B", 20)
-    pdf.cell(0, 3.5, f"{datos["Direcciones"]}")
+    pdf.cell(0, 6, f"{datos["Direcciones"]}")
     pdf.set_font("Arial", "", 9)
     pdf.set_x(35)
-    pdf.multi_cell(0, 3.5, f"Marca: {datos['Marca']}\nCapacidad: {datos['Litros']}\nSistema: {datos['Sistema']}")
+    pdf.multi_cell(0, 1, f"Marca: {datos['Marca']}\nCapacidad: {datos['Litros']}\nSistema: {datos['Sistema']}")
     pdf.cell(0, 3.5, f"{datos['Meses']} Meses", ln=True)
     pdf.cell(0, 3.5, f"{datos['Nombre']} - CC {datos['Cedula']}", ln=True)
     pdf.cell(0, 3.5, f"{datos['Origen']} {datos['Precio']}", ln=True)
