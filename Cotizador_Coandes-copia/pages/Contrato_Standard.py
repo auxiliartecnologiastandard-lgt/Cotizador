@@ -56,7 +56,7 @@ def incrementar_contador():
 
     return contador
 
-numero_contrato = leer_contador()
+numero_contrato = incrementar_contador()
 
 
 if datos['Sede'] in [1, 2, 3, 4, 5]:
