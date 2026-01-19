@@ -158,7 +158,8 @@ if datos["Origen"] == "Nevera":
     pdf.multi_cell(0, 3, f"Marca: {datos['Marca']}\nCapacidad: {datos['Litros']}\nSistema: {datos['Sistema']}")
     pdf.set_y(5.5)
     pdf.cell(0, 10, f"{datos['Meses']} Meses", ln=True)
-    pdf.cell(0, 3.5, f"{datos['Nombre']} - CC {datos['Cedula']} / {datos['Origen']}: {datos['Precio']}", ln=True)
+    pdf.cell(0, 1, f"{datos['Nombre']} - CC {datos['Cedula']}", ln=True)
+    pdf.cell(0, 1, f"{datos['Origen']}: {datos['Precio']}", ln=True)
     pdf.set_xy(140, 5.5)
     pdf.multi_cell(0, 6, "__________________________________ \n Firma Vendedor")
 
@@ -361,7 +362,8 @@ elif datos["Origen"] == "Computador":
     pdf.multi_cell(0, 3, f"{datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}")
     pdf.set_y(5.5)
     pdf.cell(0, 10, f"{datos['Meses']} Meses", ln=True)
-    pdf.cell(0, 3.5, f"{datos['Nombre']} - CC {datos['Cedula']} / {datos['Origen']}: {datos['Precio']}", ln=True)
+    pdf.cell(0, 1, f"{datos['Nombre']} - CC {datos['Cedula']}", ln=True)
+    pdf.cell(0, 1, f"{datos['Origen']}: {datos['Precio']}", ln=True)
     pdf.set_xy(140, 5.5)
     pdf.multi_cell(0, 6, "__________________________________ \n Firma Vendedor")
     # Margen contrato
