@@ -155,9 +155,9 @@ if datos["Origen"] == "Nevera":
     pdf.cell(0, 6, f"Nombre: {datos['Nombre']}", ln=True)
     pdf.cell(0, 6, f"Cédula: {datos['Cedula']}", ln=True)
     pdf.cell(0, 6, f"Sede: {datos["Direcciones"]}", ln=True)
-    pdf.set_xy(175, 5.5)
+    pdf.set_xy(150, 5.5)
     pdf.cell(0, 6, "_________________________ \n Firma Vendedor")
-    
+
     # Margen contrato
     pdf.rect(
     x=pdf.l_margin,
@@ -171,6 +171,7 @@ if datos["Origen"] == "Nevera":
     pdf.image(ruta_logo, x=10, y=21.5, w=40)
 
     # TITULO DEL PDF
+    pdf.set_y(21.5)
     pdf.set_font("Arial", "B", 18)
     pdf.ln(3)  # baja el cursor para no chocar con el logo
     pdf.cell(0, 3.5, f"CONTRATO {datos["Direcciones"]}", ln=True, align="C")
