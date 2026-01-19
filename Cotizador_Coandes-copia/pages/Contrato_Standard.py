@@ -355,13 +355,13 @@ elif datos["Origen"] == "Computador":
         h=alto_bloque
     )
     pdf.set_font("Arial", "B", 18)
-    pdf.cell(0, 6, f"{datos["Direcciones"]}", ln=True)
+    pdf.cell(0, 5, f"{datos["Direcciones"]}", ln=True)
     pdf.set_font("Arial", "", 9)
     pdf.set_x(35)
-    pdf.multi_cell(0, 3, f"{datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']} \n {datos['Grafica']}")
-    pdf.cell(0, 3.5, f"{datos['Meses']} Meses", ln=True)
-    pdf.cell(0, 3.5, f"{datos['Nombre']} - CC {datos['Cedula']}", ln=True)
-    pdf.cell(0, 3.5, f"{datos['Origen']} {datos['Precio']}", ln=True)
+    pdf.multi_cell(0, 3, f"{datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}")
+    pdf.cell(0, 3, f"{datos['Meses']} Meses", ln=True)
+    pdf.cell(0, 3, f"{datos['Nombre']} - CC {datos['Cedula']}", ln=True)
+    pdf.cell(0, 3, f"{datos['Origen']} {datos['Precio']}", ln=True)
     pdf.set_xy(140, 5.5)
     pdf.multi_cell(0, 6, "_________________________ \n Firma Vendedor")
 
