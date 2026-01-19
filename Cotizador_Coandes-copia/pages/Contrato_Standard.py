@@ -31,7 +31,7 @@ st.markdown(
 st.set_page_config(page_title="Contrato de Compraventa")
 
 st.success("Contrato creado y listo para la descarga ✔")
-
+IdentificadorSede = 0
 datos = st.session_state.get("datos_cotizador")
 
 if not datos:
@@ -46,6 +46,29 @@ elif datos['Sede'] in [9, 10]:
     datos['Direcciones'] = "TULUÁ"
 else:
     datos['Direcciones'] = "ARMENIA"
+
+if datos['Sede'] == 1:
+    datos['IdentificadorSede'] = 4
+elif datos['Sede'] == 2:
+    datos['IdentificadorSede'] = 16
+elif datos['Sede'] == 3:
+    datos['IdentificadorSede'] = 11
+elif datos['Sede'] == 4:
+    datos['IdentificadorSede'] = 7
+elif datos['Sede'] == 5:
+    datos['IdentificadorSede'] = 15
+elif datos['Sede'] == 6:
+    datos['IdentificadorSede'] = 8
+elif datos['Sede'] == 7:
+    datos['IdentificadorSede'] = 12
+elif datos['Sede'] == 8:
+    datos['IdentificadorSede'] = 27
+elif datos['Sede'] == 9:
+    datos['IdentificadorSede'] = 19
+elif datos['Sede'] == 10:
+    datos['IdentificadorSede'] = 18
+elif datos['Sede'] == 11:
+    datos['IdentificadorSede'] = 9
 
 if datos['Sede'] == 1:
     datos['Sede'] = "Calle 14 # 8-24 \n Standard La 14 \n 320 610 403 \n standardcuatro.per@standard.com.co \n Nit. 800.205.573-1"
@@ -130,7 +153,7 @@ if datos["Origen"] == "Nevera":
         datos['Sistema'] = "No frost"
         
     # CREACIÓN DEL PDF
-
+    st.session_state["Serial"] = 0
     pdf = FPDF(orientation="P",  # P = vertical, L = horizontal
     unit="mm", format="Letter")
     pdf.set_margins(left=1, top=1, right=1)
@@ -152,7 +175,7 @@ if datos["Origen"] == "Nevera":
         h=alto_bloque
     )
     pdf.set_font("Arial", "B", 18)
-    pdf.cell(0, 6, f"{datos["Direcciones"]}")
+    pdf.cell(0, 6, f"{datos["IdentificadorSede"]}")
     pdf.set_font("Arial", "", 9)
     pdf.set_xy(35, 1)
     pdf.multi_cell(0, 3, f"Marca: {datos['Marca']}\nCapacidad: {datos['Litros']}\nSistema: {datos['Sistema']}")
@@ -356,7 +379,7 @@ elif datos["Origen"] == "Computador":
         h=alto_bloque
     )
     pdf.set_font("Arial", "B", 18)
-    pdf.cell(0, 5, f"{datos["Direcciones"]}", ln=True)
+    pdf.cell(0, 6, f"{datos["IdentificadorSede"]}")
     pdf.set_font("Arial", "", 9)
     pdf.set_xy(35, 1)
     pdf.multi_cell(0, 3, f"{datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}")
