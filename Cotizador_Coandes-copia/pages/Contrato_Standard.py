@@ -536,10 +536,10 @@ elif datos["Origen"] == "Computador":
         align="L"   # L, C, R, J
         )
     
-    pdf.set_xy(70, 140)   # Ajusta posición
-    pdf.cell(60, 25, "", border=1)
+    pdf.set_xy(70, 135)   # Ajusta posición
+    pdf.cell(20, 25, "", border=1)
 
-    pdf.set_xy(70, 165)
+    pdf.set_xy(70, 150)
     pdf.cell(60, 6, "Huella del vendedor", align="C")
 
     
