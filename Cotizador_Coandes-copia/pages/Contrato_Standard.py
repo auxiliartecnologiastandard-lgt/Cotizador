@@ -166,16 +166,16 @@ if datos["Origen"] == "Nevera":
     # LOGO DE LA EMPRESA
     ruta_base = os.path.dirname(__file__)
     ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
-    pdf.image(ruta_logo, x=10, y=10.5, w=40)
+    pdf.image(ruta_logo, x=10, y=20.5, w=40)
 
     # TITULO DEL PDF
     pdf.set_font("Arial", "B", 18)
     pdf.ln(3)  # baja el cursor para no chocar con el logo
-    pdf.cell(0, 3.5, f"CONTRATO {datos["Direcciones"]}", ln=True, align="C")
+    pdf.cell(0, 20.5, f"CONTRATO {datos["Direcciones"]}", ln=True, align="C")
     # DIRRECIONES
     pdf.set_font("Arial", "", 8)
     pdf.ln(3)
-    pdf.multi_cell(0, 10.5, f"{datos['Sede']}", align="C")
+    pdf.multi_cell(0, 20.5, f"{datos['Sede']}", align="C")
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
@@ -186,11 +186,11 @@ if datos["Origen"] == "Nevera":
     qr.save("qr_temp.png")
 
     # Posición base del bloque (debajo del título)
-    y_bloque = 3.5
+    y_bloque = 20.5
 
     # Posición de la tabla (derecha)
     tabla_x = 175
-    tabla_y = 3.5
+    tabla_y = 20.5
 
     # QR a la izquierda de la tabla (NO de la hoja)
     pdf.image(
