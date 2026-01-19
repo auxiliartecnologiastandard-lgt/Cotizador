@@ -31,12 +31,33 @@ st.markdown(
 st.set_page_config(page_title="Contrato de Compraventa")
 
 st.success("Contrato creado y listo para la descarga ✔")
+
 IdentificadorSede = 0
+
 datos = st.session_state.get("datos_cotizador")
 
 if not datos:
     st.warning("No hay datos del cotizador. Regresa y calcula primero.")
     st.stop()
+
+def leer_contador():
+    if not os.path.exists("contador.txt"):
+        with open("contador.txt", "w") as f:
+            f.write("0")
+
+    with open("contador.txt", "r") as f:
+        return int(f.read())
+    
+def incrementar_contador():
+    contador = leer_contador() + 1
+
+    with open("contador.txt", "w") as f:
+        f.write(str(contador))
+
+    return contador
+
+numero_contrato = leer_contador()
+
 
 if datos['Sede'] in [1, 2, 3, 4, 5]:
     datos['Direcciones'] = "PEREIRA"
@@ -153,7 +174,6 @@ if datos["Origen"] == "Nevera":
         datos['Sistema'] = "No frost"
         
     # CREACIÓN DEL PDF
-    st.session_state["Serial"] = 0
     pdf = FPDF(orientation="P",  # P = vertical, L = horizontal
     unit="mm", format="Letter")
     pdf.set_margins(left=1, top=1, right=1)
@@ -175,7 +195,7 @@ if datos["Origen"] == "Nevera":
         h=alto_bloque
     )
     pdf.set_font("Arial", "B", 18)
-    pdf.cell(0, 6, f"{datos["IdentificadorSede"]}")
+    pdf.cell(0, 6, f"{datos["IdentificadorSede"]}-{numero_contrato}")
     pdf.set_font("Arial", "", 9)
     pdf.set_xy(35, 1)
     pdf.multi_cell(0, 3, f"Marca: {datos['Marca']}\nCapacidad: {datos['Litros']}\nSistema: {datos['Sistema']}")
@@ -379,7 +399,7 @@ elif datos["Origen"] == "Computador":
         h=alto_bloque
     )
     pdf.set_font("Arial", "B", 18)
-    pdf.cell(0, 6, f"{datos["IdentificadorSede"]}")
+    pdf.cell(0, 6, f"{datos["IdentificadorSede"]}-{numero_contrato}")
     pdf.set_font("Arial", "", 9)
     pdf.set_xy(35, 1)
     pdf.multi_cell(0, 3, f"{datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}")
