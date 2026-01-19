@@ -402,41 +402,6 @@ elif datos["Origen"] == "Computador":
     tabla_x = 175
     tabla_y = 23.5
 
-    pdf.rect(
-    x=pdf.l_margin,
-    y=pdf.t_margin,
-    w=pdf.w - pdf.l_margin - pdf.r_margin,
-    h=pdf.h - pdf.t_margin - pdf.b_margin)
-
-    # LOGO DE LA EMPRESA
-    ruta_base = os.path.dirname(__file__)
-    ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
-    pdf.image(ruta_logo, x=10, y=3.5, w=40)
-
-    # TITULO DEL PDF
-    pdf.set_font("Arial", "B", 18)
-    pdf.ln(3)  # baja el cursor para no chocar con el logo
-    pdf.cell(0, 3.5, f"CONTRATO {datos["Direcciones"]}", ln=True, align="C")
-    # DIRRECIONES
-    pdf.set_font("Arial", "", 8)
-    pdf.ln(3)
-    pdf.multi_cell(0, 3.5, f"{datos['Sede']}", align="C")
-
-    # CONSEGUIR FECHA ACTUAL
-    fecha_actual = date.today().strftime("%d/%m/%Y")
-
-    # QR de las redes sociales de la empresa
-    link = "https://hab.me/YCh4LCw"
-    qr = qrcode.make(link)
-    qr.save("qr_temp.png")
-
-    # Posición base del bloque (debajo del título)
-    y_bloque = 3.5
-
-    # Posición de la tabla (derecha)
-    tabla_x = 175
-    tabla_y = 3.5
-
     # QR a la izquierda de la tabla (NO de la hoja)
     pdf.image(
         "qr_temp.png",
