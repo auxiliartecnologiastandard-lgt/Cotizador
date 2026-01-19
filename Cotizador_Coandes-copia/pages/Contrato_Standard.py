@@ -53,7 +53,6 @@ def incrementar_contador():
     contador = leer_contador() + 1
     with open("contador.txt", "w") as f:
         f.write(str(contador))
-
     return contador
 
 numero_contrato = incrementar_contador()
