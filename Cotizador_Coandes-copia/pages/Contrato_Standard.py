@@ -156,7 +156,7 @@ if datos["Origen"] == "Nevera":
     pdf.cell(0, 6, f"Cédula: {datos['Cedula']}", ln=True)
     pdf.cell(0, 6, f"Sede: {datos["Direcciones"]}", ln=True)
     pdf.set_xy(150, 5.5)
-    pdf.cell(0, 6, "_________________________ \n Firma Vendedor")
+    pdf.multi_cell(0, 6, "_________________________ \n Firma Vendedor")
 
     # Margen contrato
     pdf.rect(
@@ -168,10 +168,10 @@ if datos["Origen"] == "Nevera":
     # LOGO DE LA EMPRESA
     ruta_base = os.path.dirname(__file__)
     ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
-    pdf.image(ruta_logo, x=10, y=21.5, w=40)
+    pdf.image(ruta_logo, x=10, y=23.5, w=40)
 
     # TITULO DEL PDF
-    pdf.set_y(21.5)
+    pdf.set_y(23.5)
     pdf.set_font("Arial", "B", 18)
     pdf.ln(3)  # baja el cursor para no chocar con el logo
     pdf.cell(0, 3.5, f"CONTRATO {datos["Direcciones"]}", ln=True, align="C")
@@ -189,11 +189,11 @@ if datos["Origen"] == "Nevera":
     qr.save("qr_temp.png")
 
     # Posición base del bloque (debajo del título)
-    y_bloque = 21.5
+    y_bloque = 23.5
 
     # Posición de la tabla (derecha)
     tabla_x = 175
-    tabla_y = 21.5
+    tabla_y = 23.5
 
     # QR a la izquierda de la tabla (NO de la hoja)
     pdf.image(
