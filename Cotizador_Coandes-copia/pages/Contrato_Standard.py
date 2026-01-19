@@ -151,7 +151,7 @@ if datos["Origen"] == "Nevera":
         w=75,
         h=alto_bloque
     )
-    pdf.set_font("Arial", "B", 20)
+    pdf.set_font("Arial", "B", 18)
     pdf.cell(0, 6, f"{datos["Direcciones"]}")
     pdf.set_font("Arial", "", 9)
     pdf.set_x(35)
@@ -159,7 +159,7 @@ if datos["Origen"] == "Nevera":
     pdf.cell(0, 3.5, f"{datos['Meses']} Meses", ln=True)
     pdf.cell(0, 3.5, f"{datos['Nombre']} - CC {datos['Cedula']}", ln=True)
     pdf.cell(0, 3.5, f"{datos['Origen']} {datos['Precio']}", ln=True)
-    pdf.set_xy(150, 5.5)
+    pdf.set_xy(140, 5.5)
     pdf.multi_cell(0, 6, "__________________________________ \n Firma Vendedor")
 
     # Margen contrato
