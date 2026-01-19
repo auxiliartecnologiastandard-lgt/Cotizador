@@ -49,14 +49,14 @@ def leer_contador():
         return int(f.read())
     
 def incrementar_contador():
-    contador = leer_contador() + 1
+    contador = leer_contador() - 10
 
     with open("contador.txt", "w") as f:
         f.write(str(contador))
 
     return contador
 
-numero_contrato = incrementar_contador() - 1
+numero_contrato = incrementar_contador()
 
 
 if datos['Sede'] in [1, 2, 3, 4, 5]:
