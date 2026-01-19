@@ -140,8 +140,9 @@ if datos["Origen"] == "Nevera":
     pdf.set_draw_color(0, 0, 0)
     # dibuja un rectángulo que represente el margen
     pdf.add_page()
-         # --- BLOQUE SUPERIOR ---
-    alto_bloque = 10
+
+    # BLOQUE SUPERIOR ( Identificador )
+    alto_bloque = 20
 
     pdf.set_draw_color(0, 0, 0)
     pdf.rect(
@@ -150,17 +151,12 @@ if datos["Origen"] == "Nevera":
         w=pdf.w - pdf.l_margin - pdf.r_margin,
         h=alto_bloque
     )
-    pdf.set_xy(pdf.l_margin + 3, pdf.t_margin + 5)
-    pdf.set_font("Arial", "B", 10)
-
-    pdf.cell(0, 6, "DATOS PRINCIPALES DEL CONTRATO", ln=True)
-
     pdf.set_font("Arial", "", 9)
     pdf.cell(0, 6, f"Nombre: {datos['Nombre']}", ln=True)
     pdf.cell(0, 6, f"Cédula: {datos['Cedula']}", ln=True)
-    pdf.cell(0, 6, f"Sede: {datos['Sede']}", ln=True)
+    pdf.cell(0, 6, f"Sede: {datos["Direcciones"]}", ln=True)
 
-    #fdsnibhuyfvdcijohuhgfnjjidchyugfvbnjeidu
+    # Margen contrato
     pdf.rect(
     x=pdf.l_margin,
     y=pdf.t_margin,
@@ -170,7 +166,7 @@ if datos["Origen"] == "Nevera":
     # LOGO DE LA EMPRESA
     ruta_base = os.path.dirname(__file__)
     ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
-    pdf.image(ruta_logo, x=10, y=3.5, w=40)
+    pdf.image(ruta_logo, x=10, y=10.5, w=40)
 
     # TITULO DEL PDF
     pdf.set_font("Arial", "B", 18)
@@ -179,7 +175,7 @@ if datos["Origen"] == "Nevera":
     # DIRRECIONES
     pdf.set_font("Arial", "", 8)
     pdf.ln(3)
-    pdf.multi_cell(0, 3.5, f"{datos['Sede']}", align="C")
+    pdf.multi_cell(0, 10.5, f"{datos['Sede']}", align="C")
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
