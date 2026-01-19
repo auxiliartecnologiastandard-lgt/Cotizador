@@ -157,7 +157,7 @@ if datos["Origen"] == "Nevera":
 
     pdf.set_font("Arial", "", 9)
     pdf.cell(0, 6, f"Nombre: {datos['Nombre']}", ln=True)
-    pdf.cell(0, 6, f"Cédula: {datos['Cédula']}", ln=True)
+    pdf.cell(0, 6, f"Cédula: {datos['Cedula']}", ln=True)
     pdf.cell(0, 6, f"Sede: {datos['Sede']}", ln=True)
 
     #fdsnibhuyfvdcijohuhgfnjjidchyugfvbnjeidu
