@@ -146,7 +146,7 @@ if datos["Origen"] == "Nevera":
 
     pdf.set_draw_color(0, 0, 0)
     pdf.rect(
-        x=pdf.l_margin,
+        x=50,
         y=pdf.t_margin,
         w=pdf.w - pdf.l_margin - pdf.r_margin,
         h=alto_bloque
@@ -160,7 +160,7 @@ if datos["Origen"] == "Nevera":
     pdf.cell(0, 3.5, f"{datos['Nombre']} - CC {datos['Cedula']}", ln=True)
     pdf.cell(0, 3.5, f"{datos['Origen']} {datos['Precio']}", ln=True)
     pdf.set_xy(150, 5.5)
-    pdf.multi_cell(0, 6, "_________________________ \n Firma Vendedor")
+    pdf.multi_cell(0, 6, "__________________________________ \n Firma Vendedor")
 
     # Margen contrato
     pdf.rect(
@@ -238,7 +238,7 @@ if datos["Origen"] == "Nevera":
     pdf.multi_cell(
         0,
         3,
-        f"Entre los suscritos {datos['Nombre']} identificado con C.C. {datos['Cedula']}, mayor de edad quien obra en nombre propio y se denomina para efectos del presente contrato EL VENDEDOR de una parte, y por otra parte CASA COMERCIAL DE LOS ANDES S.A.S - Nit. 800.205.573-1, quien para los efectos del presente contrato se denomina EL COMPRADOR. Manifestamos que hemos celebrado un contrato de compraventa entre el siguiente bien que a continuación se identifica.\n\nObjeto: {datos['Origen']}\n Marca: {datos['Marca']}\nCapacidad {datos['Litros']}\nSistema: {datos['Sistema']}\nEl valor de la compraventa es la suma de {datos['Precio']} M/cte. EL VENDEDOR transfiere AL COMPRADOR, a título de compraventa el derecho de dominio y posesión que tiene y ejerce sobre el anterior articulo y declara que los bienes que transfiere, los adquirió lícitamente, no fue su importador, son de su exclusiva propiedad, los posee de manera regular, publica y pacífica, están libres de gravamen, limitación al dominio, pleitos pendientes y embargos, con la obligación de salir al saneamiento en casos de ley."
+        f"Entre los suscritos {datos['Nombre']} identificado con C.C. {datos['Cedula']}, mayor de edad quien obra en nombre propio y se denomina para efectos del presente contrato EL VENDEDOR de una parte, y por otra parte CASA COMERCIAL DE LOS ANDES S.A.S - Nit. 800.205.573-1, quien para los efectos del presente contrato se denomina EL COMPRADOR. Manifestamos que hemos celebrado un contrato de compraventa entre el siguiente bien que a continuación se identifica.\nObjeto: {datos['Origen']}\n Marca: {datos['Marca']}\nCapacidad {datos['Litros']}\nSistema: {datos['Sistema']}\nEl valor de la compraventa es la suma de {datos['Precio']} M/cte. EL VENDEDOR transfiere AL COMPRADOR, a título de compraventa el derecho de dominio y posesión que tiene y ejerce sobre el anterior articulo y declara que los bienes que transfiere, los adquirió lícitamente, no fue su importador, son de su exclusiva propiedad, los posee de manera regular, publica y pacífica, están libres de gravamen, limitación al dominio, pleitos pendientes y embargos, con la obligación de salir al saneamiento en casos de ley."
         )
     
     # CLAUSULA
@@ -417,7 +417,7 @@ elif datos["Origen"] == "Computador":
     pdf.multi_cell(
         0,
         3,
-        f"Entre los suscritos {datos['Nombre']} identificado con C.C. {datos['Cedula']}, mayor de edad quien obra en nombre propio y se denomina para efectos del presente contrato EL VENDEDOR de una parte, y por otra parte CASA COMERCIAL DE LOS ANDES S.A.S - Nit. 800.205.573-1, quien para los efectos del presente contrato se denomina EL COMPRADOR. Manifestamos que hemos celebrado un contrato de compraventa entre el siguiente bien que a continuación se identifica.\n\nObjeto: {datos['Origen']}\nMemoria RAM: {datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}\n\nEl valor de la compraventa es la suma de {datos['Precio']} M/cte. EL VENDEDOR transfiere AL COMPRADOR, a título de compraventa el derecho de dominio y posesión que tiene y ejerce sobre el anterior articulo y declara que los bienes que transfiere, los adquirió lícitamente, no fue su importador, son de su exclusiva propiedad, los posee de manera regular, publica y pacífica, están libres de gravamen, limitación al dominio, pleitos pendientes y embargos, con la obligación de salir al saneamiento en casos de ley."
+        f"Entre los suscritos {datos['Nombre']} identificado con C.C. {datos['Cedula']}, mayor de edad quien obra en nombre propio y se denomina para efectos del presente contrato EL VENDEDOR de una parte, y por otra parte CASA COMERCIAL DE LOS ANDES S.A.S - Nit. 800.205.573-1, quien para los efectos del presente contrato se denomina EL COMPRADOR. Manifestamos que hemos celebrado un contrato de compraventa entre el siguiente bien que a continuación se identifica.\nObjeto: {datos['Origen']}\nMemoria RAM: {datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}\nEl valor de la compraventa es la suma de {datos['Precio']} M/cte. EL VENDEDOR transfiere AL COMPRADOR, a título de compraventa el derecho de dominio y posesión que tiene y ejerce sobre el anterior articulo y declara que los bienes que transfiere, los adquirió lícitamente, no fue su importador, son de su exclusiva propiedad, los posee de manera regular, publica y pacífica, están libres de gravamen, limitación al dominio, pleitos pendientes y embargos, con la obligación de salir al saneamiento en casos de ley."
         )
     
     # CLAUSULA
