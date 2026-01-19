@@ -545,7 +545,7 @@ elif datos["Origen"] == "Computador":
 
 
     pdf.ln(3)
-    pdf.set_xy(100, 135)
+    pdf.set_xy(90, 135)
     pdf.set_font("Arial","B", size=8)
 
     # OTROS
@@ -557,21 +557,21 @@ elif datos["Origen"] == "Computador":
         )
     
     pdf.ln(14)
-    pdf.set_x(100)
+    pdf.set_x(90)
     pdf.set_font("Arial","", size=9)
     pdf.multi_cell(
         0,      # ancho automático
-        3,      # alto de línea
+        3.5,      # alto de línea
         f"_____________________________ \n EL COMPRADOR",   # L, C, R, J
         )
     
     pdf.ln(17)
-    pdf.set_x(150)
+    pdf.set_xy(90, 150)
     pdf.set_font("Arial","", size=9)
     pdf.multi_cell(
         0,      # ancho automático
-        3,      # alto de línea
-        f"_____________________________ \n EL COMPRADOR",   # L, C, R, J
+        3.5,      # alto de línea
+        f"_____________________________ \n VISTO BUENO",   # L, C, R, J
         )
 
     
