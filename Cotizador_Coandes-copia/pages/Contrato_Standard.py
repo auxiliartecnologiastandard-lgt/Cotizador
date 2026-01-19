@@ -363,7 +363,7 @@ if datos["Origen"] == "Nevera":
         )
     
     pdf.ln(17)
-    pdf.set_xy(168, 150)
+    pdf.set_xy(160, 150)
     pdf.set_font("Arial","", size=9)
     pdf.multi_cell(
         0,      # ancho automático
@@ -625,7 +625,7 @@ elif datos["Origen"] == "Computador":
         )
     
     pdf.ln(17)
-    pdf.set_xy(168, 150)
+    pdf.set_xy(160, 150)
     pdf.set_font("Arial","", size=9)
     pdf.multi_cell(
         0,      # ancho automático
