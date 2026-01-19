@@ -283,7 +283,7 @@ if datos["Origen"] == "Nevera":
         )
     
     # INICIO TEXTO
-    pdf.ln(3.5)
+    pdf.ln(1)
     pdf.set_font("Arial", size=8)
     
     pdf.multi_cell(
@@ -293,7 +293,7 @@ if datos["Origen"] == "Nevera":
         )
     
     # CLAUSULA
-    pdf.ln(3.5)
+    pdf.ln(1)
     pdf.set_font("Arial","B", size=8)
 
     pdf.multi_cell(
@@ -304,7 +304,7 @@ if datos["Origen"] == "Nevera":
         )
 
     # CLAUSULA TEXTO
-    pdf.ln(3.5)
+    pdf.ln(1)
     pdf.set_font("Arial", size=8)
 
     pdf.multi_cell(
@@ -486,7 +486,7 @@ elif datos["Origen"] == "Computador":
         )
     
     # INICIO TEXTO
-    pdf.ln(3.5)
+    pdf.ln(1)
     pdf.set_font("Arial", size=8)
     
     pdf.multi_cell(
@@ -496,7 +496,7 @@ elif datos["Origen"] == "Computador":
         )
     
     # CLAUSULA
-    pdf.ln(3.5)
+    pdf.ln(1)
     pdf.set_font("Arial","B", size=8)
 
     pdf.multi_cell(
@@ -507,7 +507,7 @@ elif datos["Origen"] == "Computador":
         )
 
     # CLAUSULA TEXTO
-    pdf.ln(3.5)
+    pdf.ln(1)
     pdf.set_font("Arial", size=8)
 
     pdf.multi_cell(
