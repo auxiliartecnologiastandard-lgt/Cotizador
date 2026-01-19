@@ -46,13 +46,21 @@ def leer_contador():
             f.write("0")
 
     with open("contador.txt", "r") as f:
-        return int(f.read())
+        contenido = f.read().strip()
 
-    
+    if not contenido.isdigit():
+        # si el archivo está dañado, lo reseteamos
+        with open("contador.txt", "w") as f:
+            f.write("0")
+        return 0
+
+    return int(contenido)
+
 def incrementar_contador():
     contador = leer_contador() + 1
     with open("contador.txt", "w") as f:
         f.write(str(contador))
+        
     return contador
 
 numero_contrato = incrementar_contador()
