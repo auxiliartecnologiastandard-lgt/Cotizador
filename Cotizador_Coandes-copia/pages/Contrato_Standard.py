@@ -532,16 +532,37 @@ elif datos["Origen"] == "Computador":
     pdf.multi_cell(
         0,      # ancho automático
         3,      # alto de línea
-        f"__________________________________ \n {datos['Nombre']} \n C.C:",
+        f"_____________________________ \n {datos['Nombre']} \n C.C:",
         align="L"   # L, C, R, J
         )
     
-    pdf.set_xy(70, 135)   # Ajusta posición
+    pdf.set_xy(67, 135)   # Ajusta posición
     pdf.cell(20, 25, "", border=1)
 
     pdf.set_font("Arial","", size=6)
-    pdf.set_xy(70, 145)
+    pdf.set_xy(70, 146)
     pdf.cell(20, 23, "Huella del vendedor", align="C")
+
+
+    pdf.ln(3)
+    pdf.set_font("Arial","B", size=8)
+
+    # OTROS
+    pdf.multi_cell(
+        0,      # ancho automático
+        1,      # alto de línea
+        "EL COMPRADOR",
+        align="L"   # L, C, R, J
+        )
+    
+    pdf.ln(13)
+    pdf.set_font("Arial","", size=9)
+    pdf.multi_cell(
+        0,      # ancho automático
+        3,      # alto de línea
+        f"_____________________________ \n EL COMPRADOR",
+        align="L"   # L, C, R, J
+        )
 
     
     pdf_bytes = pdf.output(dest="S").encode("latin-1")
