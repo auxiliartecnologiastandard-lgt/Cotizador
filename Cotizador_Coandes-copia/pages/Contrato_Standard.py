@@ -557,7 +557,16 @@ elif datos["Origen"] == "Computador":
         )
     
     pdf.ln(14)
-    pdf.set_x(135)
+    pdf.set_x(100)
+    pdf.set_font("Arial","", size=9)
+    pdf.multi_cell(
+        0,      # ancho automático
+        3,      # alto de línea
+        f"_____________________________ \n EL COMPRADOR",   # L, C, R, J
+        )
+    
+    pdf.ln(17)
+    pdf.set_x(150)
     pdf.set_font("Arial","", size=9)
     pdf.multi_cell(
         0,      # ancho automático
