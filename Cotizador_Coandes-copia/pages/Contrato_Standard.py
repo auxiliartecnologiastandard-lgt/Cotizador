@@ -152,10 +152,12 @@ if datos["Origen"] == "Nevera":
         h=alto_bloque
     )
     pdf.set_font("Arial", "B", 20)
-    pdf.cell(0, 6, f"Sede: {datos['Sede']}", ln=True)
+    pdf.cell(0, 6, f"{datos["Direcciones"]}", ln=True)
     pdf.set_font("Arial", "", 9)
-    pdf.cell(0, 6, f"Nombre: {datos['Nombre']}", ln=True)
-    pdf.cell(0, 6, f"Cédula: {datos['Cedula']}", ln=True)
+    pdf.multi_cell(0, 6, f"{datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']} \n {datos['Grafica']}")
+    pdf.cell(0, 6, f"{datos['Nombre']} Meses", ln=True)
+    pdf.cell(0, 6, f"{datos['Nombre']} - CC {datos['Cedula']}", ln=True)
+    pdf.cell(0, 6, f"{datos['Origen']} {datos['Precio']}", ln=True)
     pdf.set_xy(150, 5.5)
     pdf.multi_cell(0, 6, "_________________________ \n Firma Vendedor")
 
