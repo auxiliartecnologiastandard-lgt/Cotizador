@@ -155,7 +155,7 @@ if datos["Origen"] == "Nevera":
     pdf.cell(0, 6, f"Sede: {datos['Sede']}", ln=True)
     pdf.set_font("Arial", "", 9)
     pdf.cell(0, 6, f"Nombre: {datos['Nombre']}", ln=True)
-    pdf.cell(0, 6, f"Cédula: {datos['Cédula']}", ln=True)
+    pdf.cell(0, 6, f"Cédula: {datos['Cedula']}", ln=True)
     pdf.set_xy(150, 5.5)
     pdf.multi_cell(0, 6, "_________________________ \n Firma Vendedor")
 
