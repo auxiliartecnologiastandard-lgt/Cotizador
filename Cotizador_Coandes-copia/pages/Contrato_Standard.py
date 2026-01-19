@@ -528,7 +528,7 @@ elif datos["Origen"] == "Computador":
         )
     
     pdf.ln(13)
-    pdf.set_font("Arial","", size=8)
+    pdf.set_font("Arial","", size=9)
     pdf.multi_cell(
         0,      # ancho automático
         3,      # alto de línea
@@ -536,6 +536,11 @@ elif datos["Origen"] == "Computador":
         align="L"   # L, C, R, J
         )
     
+    pdf.set_xy(140, 230)   # Ajusta posición
+    pdf.cell(60, 25, "", border=1)
+
+    pdf.set_xy(140, 255)
+    pdf.cell(60, 6, "Huella del vendedor", align="C")
 
     
     pdf_bytes = pdf.output(dest="S").encode("latin-1")
