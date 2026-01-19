@@ -63,7 +63,7 @@ def incrementar_contador():
         
     return contador
 
-st.session_state["numero_contrato"] = leer_contador() + 1
+numero_contrato = leer_contador() + 1
 
 
 if datos['Sede'] in [1, 2, 3, 4, 5]:
@@ -202,7 +202,7 @@ if datos["Origen"] == "Nevera":
         h=alto_bloque
     )
     pdf.set_font("Arial", "B", 18)
-    pdf.cell(0, 6, f"{datos["IdentificadorSede"]}-{st.session_state["numero_contrato"]}")
+    pdf.cell(0, 6, f"{datos["IdentificadorSede"]}-{numero_contrato}")
     pdf.set_font("Arial", "", 9)
     pdf.set_xy(35, 1)
     pdf.multi_cell(0, 3, f"Marca: {datos['Marca']}\nCapacidad: {datos['Litros']}\nSistema: {datos['Sistema']}")
@@ -406,7 +406,7 @@ elif datos["Origen"] == "Computador":
         h=alto_bloque
     )
     pdf.set_font("Arial", "B", 18)
-    pdf.cell(0, 6, f"{datos["IdentificadorSede"]}-{st.session_state["numero_contrato"]}")
+    pdf.cell(0, 6, f"{datos["IdentificadorSede"]}-{numero_contrato}")
     pdf.set_font("Arial", "", 9)
     pdf.set_xy(35, 1)
     pdf.multi_cell(0, 3, f"{datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}")
