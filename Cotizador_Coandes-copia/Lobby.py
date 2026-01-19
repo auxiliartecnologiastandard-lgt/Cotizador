@@ -1,8 +1,6 @@
 import streamlit as st
 import os
 
-st.toast('Bienvenido al Sistema de Cotización Inteligente de Standard', icon='🏢')
-
 # 0. Ubicar la imagen del logo
 ruta_base = os.path.dirname(__file__)
 ruta_logo = os.path.join(ruta_base, "Standard_logo.png")

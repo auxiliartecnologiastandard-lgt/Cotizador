@@ -129,11 +129,33 @@ if datos["Origen"] == "Nevera":
     else:
         datos['Sistema'] = "No frost"
         
-        # CREACIÓN DEL PDF
+    # CREACIÓN DEL PDF
+
     pdf = FPDF(orientation="P",  # P = vertical, L = horizontal
     unit="mm", format="Letter")
     pdf.set_margins(left=1, top=1, right=1)
     pdf.set_auto_page_break(auto=True, margin=1)
+
+     # --- BLOQUE SUPERIOR ---
+    alto_bloque = 35
+
+    pdf.set_draw_color(0, 0, 0)
+    pdf.rect(
+        x=pdf.l_margin,
+        y=pdf.t_margin,
+        w=pdf.w - pdf.l_margin - pdf.r_margin,
+        h=alto_bloque
+    )
+    pdf.set_xy(pdf.l_margin + 3, pdf.t_margin + 5)
+    pdf.set_font("Arial", "B", 10)
+
+    pdf.cell(0, 6, "DATOS PRINCIPALES DEL CONTRATO", ln=True)
+
+    pdf.set_font("Arial", "", 9)
+    pdf.cell(0, 6, f"Nombre: {datos['Nombre']}", ln=True)
+    pdf.cell(0, 6, f"Cédula: {datos['Cédula']}", ln=True)
+    pdf.cell(0, 6, f"Sede: {datos['Sede']}", ln=True)
+
 
     # color rojo para que sea visible
     pdf.set_draw_color(0, 0, 0)
@@ -424,7 +446,7 @@ if "descargar_pdf" not in st.session_state:
     st.session_state["descargar_pdf"] = False
 
 if st.download_button(
-    label="📥 Descargar y volver al menu principal",
+    label="📥 Descargar y volver al menú principal",
     data=pdf_buffer,
     file_name=f"Contrato {datos['Origen']}.pdf",
     mime="application/pdf"
