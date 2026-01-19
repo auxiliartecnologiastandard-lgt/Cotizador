@@ -155,7 +155,7 @@ if datos["Origen"] == "Nevera":
     pdf.cell(0, 6, f"Nombre: {datos['Nombre']}", ln=True)
     pdf.cell(0, 6, f"Cédula: {datos['Cedula']}", ln=True)
     pdf.cell(0, 6, f"Sede: {datos["Direcciones"]}", ln=True)
-    pdf.cell(0, 3.5, "_________________________ \n Firma Vendedor")
+    pdf.cell(100, 3.5, "_________________________ \n Firma Vendedor")
     # Margen contrato
     pdf.rect(
     x=pdf.l_margin,
@@ -175,7 +175,7 @@ if datos["Origen"] == "Nevera":
     # DIRRECIONES
     pdf.set_font("Arial", "", 8)
     pdf.ln(3)
-    pdf.multi_cell(0, 1.5, f"{datos['Sede']}", align="C")
+    pdf.multi_cell(0, 1, f"{datos['Sede']}", align="C")
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
