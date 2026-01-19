@@ -220,7 +220,7 @@ if datos["Origen"] == "Nevera":
 
     # CUERPO DEL PDF
     # INICIO 
-    pdf.ln(3.5)
+    pdf.ln(5)
     pdf.set_font("Arial","B", size=7)
 
     pdf.multi_cell(
@@ -343,6 +343,65 @@ elif datos["Origen"] == "Computador":
     pdf.set_draw_color(0, 0, 0)
     # dibuja un rectángulo que represente el margen
     pdf.add_page()
+
+    # BLOQUE SUPERIOR ( Identificador )
+    alto_bloque = 20
+
+    pdf.set_draw_color(0, 0, 0)
+    pdf.rect(
+        x=pdf.l_margin,
+        y=pdf.t_margin,
+        w=75,
+        h=alto_bloque
+    )
+    pdf.set_font("Arial", "B", 18)
+    pdf.cell(0, 6, f"{datos["Direcciones"]}", ln=True)
+    pdf.set_font("Arial", "", 9)
+    pdf.set_x(35)
+    pdf.multi_cell(0, 3, f"{datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']} \n {datos['Grafica']}")
+    pdf.cell(0, 3.5, f"{datos['Meses']} Meses", ln=True)
+    pdf.cell(0, 3.5, f"{datos['Nombre']} - CC {datos['Cedula']}", ln=True)
+    pdf.cell(0, 3.5, f"{datos['Origen']} {datos['Precio']}", ln=True)
+    pdf.set_xy(140, 5.5)
+    pdf.multi_cell(0, 6, "_________________________ \n Firma Vendedor")
+
+    # Margen contrato
+    pdf.rect(
+    x=pdf.l_margin,
+    y=22,
+    w=pdf.w - pdf.l_margin - pdf.r_margin,
+    h=pdf.h - pdf.t_margin - pdf.b_margin)
+
+    # LOGO DE LA EMPRESA
+    ruta_base = os.path.dirname(__file__)
+    ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
+    pdf.image(ruta_logo, x=10, y=23.5, w=40)
+
+    # TITULO DEL PDF
+    pdf.set_y(23.5)
+    pdf.set_font("Arial", "B", 18)
+    pdf.ln(3)  # baja el cursor para no chocar con el logo
+    pdf.cell(0, 3.5, f"CONTRATO {datos["Direcciones"]}", ln=True, align="C")
+    # DIRRECIONES
+    pdf.set_font("Arial", "", 8)
+    pdf.ln(3)
+    pdf.multi_cell(0, 3.5, f"{datos['Sede']}", align="C")
+
+    # CONSEGUIR FECHA ACTUAL
+    fecha_actual = date.today().strftime("%d/%m/%Y")
+
+    # QR de las redes sociales de la empresa
+    link = "https://hab.me/YCh4LCw"
+    qr = qrcode.make(link)
+    qr.save("qr_temp.png")
+
+    # Posición base del bloque (debajo del título)
+    y_bloque = 23.5
+
+    # Posición de la tabla (derecha)
+    tabla_x = 175
+    tabla_y = 23.5
+
     pdf.rect(
     x=pdf.l_margin,
     y=pdf.t_margin,
@@ -399,7 +458,7 @@ elif datos["Origen"] == "Computador":
 
     # CUERPO DEL PDF
     # INICIO 
-    pdf.ln(15)
+    pdf.ln(5)
     pdf.set_font("Arial","B", size=7)
 
     pdf.multi_cell(
@@ -411,7 +470,7 @@ elif datos["Origen"] == "Computador":
         )
     
     # INICIO TEXTO
-    pdf.ln(5)
+    pdf.ln(3.5)
     pdf.set_font("Arial", size=8)
     
     pdf.multi_cell(
@@ -421,7 +480,7 @@ elif datos["Origen"] == "Computador":
         )
     
     # CLAUSULA
-    pdf.ln(5)
+    pdf.ln(3.5)
     pdf.set_font("Arial","B", size=8)
 
     pdf.multi_cell(
@@ -432,7 +491,7 @@ elif datos["Origen"] == "Computador":
         )
 
     # CLAUSULA TEXTO
-    pdf.ln(5)
+    pdf.ln(3.5)
     pdf.set_font("Arial", size=8)
 
     pdf.multi_cell(
