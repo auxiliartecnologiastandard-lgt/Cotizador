@@ -136,7 +136,11 @@ if datos["Origen"] == "Nevera":
     pdf.set_margins(left=1, top=1, right=1)
     pdf.set_auto_page_break(auto=True, margin=1)
 
-     # --- BLOQUE SUPERIOR ---
+    # color rojo para que sea visible
+    pdf.set_draw_color(0, 0, 0)
+    # dibuja un rectángulo que represente el margen
+    pdf.add_page()
+         # --- BLOQUE SUPERIOR ---
     alto_bloque = 35
 
     pdf.set_draw_color(0, 0, 0)
@@ -156,11 +160,7 @@ if datos["Origen"] == "Nevera":
     pdf.cell(0, 6, f"Cédula: {datos['Cédula']}", ln=True)
     pdf.cell(0, 6, f"Sede: {datos['Sede']}", ln=True)
 
-
-    # color rojo para que sea visible
-    pdf.set_draw_color(0, 0, 0)
-    # dibuja un rectángulo que represente el margen
-    pdf.add_page()
+    #fdsnibhuyfvdcijohuhgfnjjidchyugfvbnjeidu
     pdf.rect(
     x=pdf.l_margin,
     y=pdf.t_margin,
