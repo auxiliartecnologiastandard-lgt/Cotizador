@@ -141,7 +141,7 @@ if datos["Origen"] == "Nevera":
     # dibuja un rectángulo que represente el margen
     pdf.add_page()
          # --- BLOQUE SUPERIOR ---
-    alto_bloque = 35
+    alto_bloque = 10
 
     pdf.set_draw_color(0, 0, 0)
     pdf.rect(
