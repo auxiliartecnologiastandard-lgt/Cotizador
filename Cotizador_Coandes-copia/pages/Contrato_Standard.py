@@ -313,6 +313,65 @@ if datos["Origen"] == "Nevera":
         f"PRIMERA: Los contratantes de conformidad con el artículo 1939 del Código Civil Colombiano, pactan que EL VENDEDOR se reserva la facultad de recobrar los artículos vendidos por medio de este contrato, pagando AL COMPRADOR como precio de retroventa la suma de: {datos['Dinero']} SEGUNDA: El derecho que nace del pacto de retroventa del presente contrato, no podrácederse a ningún título. En caso de pérdida de este contrato EL VENDEDOR se obliga a dar noticia inmediata AL COMPRADOR y este, solo exhibirá el articulo descrito a la terminación del presente contrato. TERCERA: EL VENDEDOR y EL COMPRADOR pactan que la facultad de retroventa del presente contrato la podrá ejercer EL VENDEDOR dentro del término de -- {datos['Meses']} Meses -- prorrogables CUARTA: Autorizo a COANDES S.A.S, a consultar y verificar la información en las listas restrictivas con el fin de prevenir situaciones relacionadas con el lavado de activos y financiación del terrorismo. QUINTA: El VENDEDOR autoriza para que se recopile, almacene, use y suprima los datos personales aquí suministrados. Ley 1581 de 2012 y sus decretos reglamentarios. Podrá revocar esta autorización dirigiendo su petición al correo electrónico servicioalcliente@standard.com.co SEXTA: Las controversias relativas al presente contrato se resolverán por un tribunal de arbitramento de conformidad con las disposiciones que rigen la materia, nombrado por la Cámara de Comercio de esta ciudad. SEPTIMA: Tanto EL VENDEDOR como EL COMPRADOR hemos leído, comprendido y aceptado el texto de este contrato. OCTAVA: Así mismo acepto desde ahora la venta o cesión de los derechos que adquiere Casa comercial de los andes a otra empresa. En constancia de lo anterior lo firman las partes en la fecha {fecha_actual}"
         )
 
+    pdf.ln(3)
+    pdf.set_font("Arial","B", size=8)
+
+    # OTROS
+    pdf.multi_cell(
+        0,      # ancho automático
+        1,      # alto de línea
+        "EL VENDEDOR",
+        align="L"   # L, C, R, J
+        )
+    
+    pdf.ln(13)
+    pdf.set_font("Arial","", size=9)
+    pdf.multi_cell(
+        0,      # ancho automático
+        3,      # alto de línea
+        f"_____________________________ \n {datos['Nombre']} \n C.C:",
+        align="L"   # L, C, R, J
+        )
+    
+    pdf.set_xy(67, 135)   # Ajusta posición
+    pdf.cell(20, 25, "", border=1)
+
+    pdf.set_font("Arial","", size=6)
+    pdf.set_xy(67, 146)
+    pdf.cell(20, 23, "Huella del vendedor", align="C")
+
+
+    pdf.ln(3)
+    pdf.set_xy(90, 135)
+    pdf.set_font("Arial","B", size=8)
+
+    # OTROS
+    pdf.multi_cell(
+        0,      # ancho automático
+        1,      # alto de línea
+        "EL COMPRADOR",
+        align="L"   # L, C, R, J
+        )
+    
+    pdf.ln(14)
+    pdf.set_x(90)
+    pdf.set_font("Arial","", size=9)
+    pdf.multi_cell(
+        0,      # ancho automático
+        3.5,      # alto de línea
+        f"_____________________________ \n EL COMPRADOR",   # L, C, R, J
+        )
+    
+    pdf.ln(17)
+    pdf.set_xy(175, 150)
+    pdf.set_font("Arial","", size=9)
+    pdf.multi_cell(
+        0,      # ancho automático
+        3.5,      # alto de línea
+        f"_____________________________ \n VISTO BUENO",   # L, C, R, J
+        )
+
+    
     pdf_bytes = pdf.output(dest="S").encode("latin-1")
     pdf_buffer = io.BytesIO(pdf_bytes)
 
@@ -566,7 +625,7 @@ elif datos["Origen"] == "Computador":
         )
     
     pdf.ln(17)
-    pdf.set_xy(90, 150)
+    pdf.set_xy(175, 150)
     pdf.set_font("Arial","", size=9)
     pdf.multi_cell(
         0,      # ancho automático
