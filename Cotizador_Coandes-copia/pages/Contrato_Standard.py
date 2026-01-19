@@ -537,10 +537,10 @@ elif datos["Origen"] == "Computador":
         )
     
     pdf.set_xy(70, 135)   # Ajusta posición
-    pdf.cell(20, 25, "", border=1)
+    pdf.cell(20, 23, "", border=1)
 
     pdf.set_xy(70, 150)
-    pdf.cell(60, 6, "Huella del vendedor", align="C")
+    pdf.cell(20, 23, "Huella del vendedor", align="C")
 
     
     pdf_bytes = pdf.output(dest="S").encode("latin-1")
