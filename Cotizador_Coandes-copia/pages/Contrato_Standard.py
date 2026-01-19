@@ -361,7 +361,7 @@ elif datos["Origen"] == "Computador":
     pdf.set_xy(35, 1)
     pdf.multi_cell(0, 3, f"{datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}")
     pdf.set_y(5.5)
-    pdf.cell(0, 8, f"{datos['Meses']} Meses", ln=True)
+    pdf.cell(0, 9, f"{datos['Meses']} Meses", ln=True)
     pdf.cell(0, 3, f"{datos['Nombre']} - CC {datos['Cedula']}", ln=True)
     pdf.cell(0, 3, f"{datos['Origen']}: {datos['Precio']}", ln=True)
     pdf.set_xy(140, 5.5)
