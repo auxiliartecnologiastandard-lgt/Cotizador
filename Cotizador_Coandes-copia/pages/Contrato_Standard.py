@@ -527,12 +527,12 @@ elif datos["Origen"] == "Computador":
         align="L"   # L, C, R, J
         )
     
-    pdf.ln(15)
+    pdf.ln(13)
     pdf.set_font("Arial","", size=8)
     pdf.multi_cell(
         0,      # ancho automático
-        1,      # alto de línea
-        "__________________________________ \n Firma Vendedor",
+        3,      # alto de línea
+        f"__________________________________ \n {datos['Nombre']} \n C.C:",
         align="L"   # L, C, R, J
         )
     
