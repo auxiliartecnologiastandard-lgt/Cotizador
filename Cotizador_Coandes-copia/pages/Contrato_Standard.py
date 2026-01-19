@@ -540,11 +540,12 @@ elif datos["Origen"] == "Computador":
     pdf.cell(20, 25, "", border=1)
 
     pdf.set_font("Arial","", size=6)
-    pdf.set_xy(70, 146)
+    pdf.set_xy(67, 146)
     pdf.cell(20, 23, "Huella del vendedor", align="C")
 
 
     pdf.ln(3)
+    pdf.set_xy(100, 135)
     pdf.set_font("Arial","B", size=8)
 
     # OTROS
