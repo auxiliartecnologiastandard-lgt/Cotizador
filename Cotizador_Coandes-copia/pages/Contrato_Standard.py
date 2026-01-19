@@ -49,8 +49,7 @@ def leer_contador():
         return int(f.read())
     
 def incrementar_contador():
-    contador = leer_contador() - 10
-
+    contador = leer_contador() + 0.5
     with open("contador.txt", "w") as f:
         f.write(str(contador))
 
