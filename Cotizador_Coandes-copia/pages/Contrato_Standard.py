@@ -146,9 +146,9 @@ if datos["Origen"] == "Nevera":
 
     pdf.set_draw_color(0, 0, 0)
     pdf.rect(
-        x=50,
+        x=pdf.l_margin,
         y=pdf.t_margin,
-        w=pdf.w - pdf.l_margin - pdf.r_margin,
+        w=60,
         h=alto_bloque
     )
     pdf.set_font("Arial", "B", 20)
