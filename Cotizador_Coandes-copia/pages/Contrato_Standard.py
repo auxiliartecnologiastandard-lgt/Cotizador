@@ -63,8 +63,8 @@ def incrementar_contador():
         
     return contador
 
-numero_contrato = incrementar_contador()
 
+numero_contrato = leer_contador()
 
 if datos['Sede'] in [1, 2, 3, 4, 5]:
     datos['Direcciones'] = "PEREIRA"
@@ -533,4 +533,6 @@ if st.download_button(
 
 if st.session_state["descargar_pdf"]:
     st.session_state["descargar_pdf"] = False
+    
+    numero_contrato = incrementar_contador()
     st.switch_page("Lobby.py")
