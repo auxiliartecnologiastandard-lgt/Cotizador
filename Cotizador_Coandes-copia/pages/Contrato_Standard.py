@@ -151,15 +151,11 @@ if datos["Origen"] == "Nevera":
         w=pdf.w - pdf.l_margin - pdf.r_margin,
         h=alto_bloque
     )
-    pdf.set_y(7)
     pdf.set_font("Arial", "B", 20)
-    pdf.cell(0, 6, f"{datos["Direcciones"]}", ln=True)
-    pdf.set_xy(30, 5)
+    pdf.cell(0, 6, f"Sede: {datos['Sede']}", ln=True)
     pdf.set_font("Arial", "", 9)
     pdf.cell(0, 6, f"Nombre: {datos['Nombre']}", ln=True)
-    pdf.set_xy(30, 10)
-    pdf.set_font("Arial", "", 9)
-    pdf.cell(0, 6, f"Cédula: {datos['Cedula']}", ln=True)
+    pdf.cell(0, 6, f"Cédula: {datos['Cédula']}", ln=True)
     pdf.set_xy(150, 5.5)
     pdf.multi_cell(0, 6, "_________________________ \n Firma Vendedor")
 
