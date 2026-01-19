@@ -557,7 +557,7 @@ elif datos["Origen"] == "Computador":
         )
     
     pdf.ln(14)
-    pdf.set_y(135)
+    pdf.set_x(135)
     pdf.set_font("Arial","", size=9)
     pdf.multi_cell(
         0,      # ancho automático
