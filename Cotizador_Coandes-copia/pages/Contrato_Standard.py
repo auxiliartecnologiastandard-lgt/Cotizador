@@ -40,6 +40,8 @@ if not datos:
     st.warning("No hay datos del cotizador. Regresa y calcula primero.")
     st.stop()
 
+st.session_state["numero_contrato"] = 0
+
 
 if datos['Sede'] in [1, 2, 3, 4, 5]:
     datos['Direcciones'] = "PEREIRA"
@@ -505,7 +507,7 @@ if st.download_button(
     mime="application/pdf"
 ):
     st.session_state["descargar_pdf"] = True
-    
+
     def leer_contador():
         if not os.path.exists("contador.txt"):
             with open("contador.txt", "w") as f:
