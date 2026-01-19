@@ -561,8 +561,7 @@ elif datos["Origen"] == "Computador":
     pdf.multi_cell(
         0,      # ancho automático
         3,      # alto de línea
-        f"_____________________________ \n EL COMPRADOR",
-        align="L"   # L, C, R, J
+        f"_____________________________ \n EL COMPRADOR",   # L, C, R, J
         )
 
     
