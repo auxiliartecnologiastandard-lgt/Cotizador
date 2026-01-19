@@ -527,12 +527,14 @@ elif datos["Origen"] == "Computador":
         align="L"   # L, C, R, J
         )
     
+    pdf.ln(1)
+    pdf.set_font("Arial","", size=8)
     pdf.multi_cell(
-    0,      # ancho automático
-    6,      # alto de línea
-    "__________________________________ \n Firma Vendedor",
-    align="L"   # L, C, R, J
-    )
+        0,      # ancho automático
+        15,      # alto de línea
+        "__________________________________ \n Firma Vendedor",
+        align="L"   # L, C, R, J
+        )
     
     pdf_bytes = pdf.output(dest="S").encode("latin-1")
     pdf_buffer = io.BytesIO(pdf_bytes)
