@@ -40,7 +40,30 @@ if not datos:
     st.warning("No hay datos del cotizador. Regresa y calcula primero.")
     st.stop()
 
-st.session_state["numero_contrato"] = 0
+def leer_contador():
+    if not os.path.exists("contador.txt"):
+        with open("contador.txt", "w") as f:
+            f.write("0")
+
+    with open("contador.txt", "r") as f:
+        contenido = f.read().strip()
+
+    if not contenido.isdigit():
+        # si el archivo está dañado, lo reseteamos
+        with open("contador.txt", "w") as f:
+            f.write("0")
+        return 0
+
+    return int(contenido)
+
+def incrementar_contador():
+    contador = leer_contador() + 1
+    with open("contador.txt", "w") as f:
+        f.write(str(contador))
+        
+    return contador
+
+st.session_state["numero_contrato"] = leer_contador() + 1
 
 
 if datos['Sede'] in [1, 2, 3, 4, 5]:
@@ -507,31 +530,6 @@ if st.download_button(
     mime="application/pdf"
 ):
     st.session_state["descargar_pdf"] = True
-
-    def leer_contador():
-        if not os.path.exists("contador.txt"):
-            with open("contador.txt", "w") as f:
-                f.write("0")
-
-        with open("contador.txt", "r") as f:
-            contenido = f.read().strip()
-
-        if not contenido.isdigit():
-            # si el archivo está dañado, lo reseteamos
-            with open("contador.txt", "w") as f:
-                f.write("0")
-            return 0
-
-        return int(contenido)
-
-    def incrementar_contador():
-        contador = leer_contador() + 1
-        with open("contador.txt", "w") as f:
-            f.write(str(contador))
-            
-        return contador
-
-    st.session_state["numero_contrato"] = incrementar_contador()
 
 if st.session_state["descargar_pdf"]:
     st.session_state["descargar_pdf"] = False
