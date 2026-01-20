@@ -237,8 +237,15 @@ if datos["Origen"] == "Nevera":
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
-    pdf.set_xy(15,30)
-    pdf.multi_cell(0, 1, f"{fecha_actual}", align="L")
+    
+    pdf.set_xy(30,30)
+    pdf.set_draw_color(0, 0, 0)
+    pdf.rect(
+        x=30,
+        y=30,
+        w=3,
+        h=3)
+    pdf.multi_cell(0, 3, f"{fecha_actual}", align="L")
     
 
     # QR de las redes sociales de la empresa
