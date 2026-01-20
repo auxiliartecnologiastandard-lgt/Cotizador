@@ -345,7 +345,7 @@ if datos["Origen"] == "Nevera":
         )
     
     pdf.set_draw_color(0, 0, 0)
-    pdf.rect(x=180, y=150, w=35, h=5)
+    pdf.rect(x=180, y=145, w=30, h=5)
     pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
 
     pdf.ln(13)
