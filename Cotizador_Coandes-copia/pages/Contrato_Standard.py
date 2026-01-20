@@ -242,10 +242,10 @@ if datos["Origen"] == "Nevera":
     pdf.set_draw_color(0, 0, 0)
     pdf.rect(
     x=10,
-    y=50,
-    w=30,
+    y=48,
+    w=35,
     h=5)
-    pdf.multi_cell(0, 3, f"Fecha Inicio {fecha_actual}")
+    pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
     
 
     # QR de las redes sociales de la empresa
