@@ -244,11 +244,11 @@ if datos["Origen"] == "Nevera":
     qr.save("qr_temp.png")
 
     # Posición base del bloque (debajo del título)
-    y_bloque = 23.5
+    y_bloque = 30
 
     # Posición de la tabla (derecha)
     tabla_x = 175
-    tabla_y = 25
+    tabla_y = 30
 
     # QR a la izquierda de la tabla (NO de la hoja)
     pdf.image(
@@ -259,7 +259,7 @@ if datos["Origen"] == "Nevera":
 
     pdf.set_xy(175, 22)
     pdf.set_font("Arial", "B", size=14)
-    pdf.multi_cell(0, 3, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}")
+    pdf.multi_cell(0, 3, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
 
     # Tabla
     pdf.set_xy(tabla_x, tabla_y)
