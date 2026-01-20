@@ -241,10 +241,11 @@ if datos["Origen"] == "Nevera":
     pdf.set_xy(10,50)
     pdf.set_draw_color(0, 0, 0)
     pdf.rect(
-    x=10,
-    y=48,
-    w=35,
-    h=5)
+        x=10,
+        y=49,
+        w=35,
+        h=5)
+    
     pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
     
 
@@ -513,6 +514,17 @@ elif datos["Origen"] == "Computador":
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
+    
+    pdf.set_xy(10,50)
+    pdf.set_draw_color(0, 0, 0)
+    pdf.rect(
+        x=10,
+        y=49,
+        w=35,
+        h=5)
+    
+    pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
+    
 
     # QR de las redes sociales de la empresa
     link = "https://hab.me/YCh4LCw"
