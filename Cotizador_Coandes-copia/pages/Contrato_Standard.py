@@ -244,8 +244,8 @@ if datos["Origen"] == "Nevera":
     x=10,
     y=50,
     w=30,
-    h=3)
-    pdf.multi_cell(0, 3, f"{fecha_actual}", align="L")
+    h=5)
+    pdf.multi_cell(0, 3, f"Fecha Inicio {fecha_actual}")
     
 
     # QR de las redes sociales de la empresa
