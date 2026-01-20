@@ -628,7 +628,7 @@ elif datos["Origen"] == "Computador":
         )
     
     pdf.set_xy(60, 140)   # Ajusta posición
-    pdf.cell(20, 25, "", border=1)
+    pdf.cell(20, 23, "", border=1)
 
     pdf.set_font("Arial","", size=6)
     pdf.set_xy(60, 151)
