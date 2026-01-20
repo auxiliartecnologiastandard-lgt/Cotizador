@@ -342,7 +342,7 @@ if datos["Origen"] == "Nevera":
 
     pdf.set_font("Arial","", size=6)
     pdf.set_xy(60, 151)
-    pdf.cell(20, 23, "Huella del vendedor", align="C")
+    pdf.cell(17, 23, "Huella del vendedor", align="C")
 
 
     pdf.ln(3)
@@ -610,7 +610,7 @@ elif datos["Origen"] == "Computador":
 
     pdf.set_font("Arial","", size=6)
     pdf.set_xy(60, 151)
-    pdf.cell(20, 23, "Huella del vendedor", align="C")
+    pdf.cell(17, 23, "Huella del vendedor", align="C")
 
 
     pdf.ln(3)
