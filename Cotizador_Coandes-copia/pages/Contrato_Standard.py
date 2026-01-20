@@ -258,8 +258,8 @@ if datos["Origen"] == "Nevera":
         w=17)
 
     pdf.set_xy(175, 22)
-    pdf.set_font("Arial", "B", size=12)
-    pdf.multi_cell(0, 5, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
+    pdf.set_font("Arial", "B", size=9)
+    pdf.multi_cell(0, 4, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
 
     # Tabla
     pdf.set_xy(tabla_x, tabla_y)
@@ -510,11 +510,11 @@ elif datos["Origen"] == "Computador":
     qr.save("qr_temp.png")
 
     # Posición base del bloque (debajo del título)
-    y_bloque = 23.5
+    y_bloque = 30
 
     # Posición de la tabla (derecha)
     tabla_x = 175
-    tabla_y = 23.5
+    tabla_y = 30
 
     # QR a la izquierda de la tabla (NO de la hoja)
     pdf.image(
@@ -522,7 +522,13 @@ elif datos["Origen"] == "Computador":
         x=tabla_x - 17,
         y=y_bloque + 8,
         w=17)
+    
 
+    pdf.set_xy(175, 22)
+    pdf.set_font("Arial", "B", size=9)
+    pdf.multi_cell(0, 4, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
+
+    
     # Tabla
     pdf.set_xy(tabla_x, tabla_y)
     pdf.set_font("Arial", size=10)
@@ -599,16 +605,16 @@ elif datos["Origen"] == "Computador":
         align="L"   # L, C, R, J
         )
     
-    pdf.set_xy(60, 135)   # Ajusta posición
+    pdf.set_xy(60, 140)   # Ajusta posición
     pdf.cell(20, 25, "", border=1)
 
     pdf.set_font("Arial","", size=6)
-    pdf.set_xy(60, 146)
+    pdf.set_xy(60, 151)
     pdf.cell(20, 23, "Huella del vendedor", align="C")
 
 
     pdf.ln(3)
-    pdf.set_xy(90, 135)
+    pdf.set_xy(90, 140)
     pdf.set_font("Arial","B", size=8)
 
     # OTROS
@@ -629,7 +635,7 @@ elif datos["Origen"] == "Computador":
         )
     
     pdf.ln(17)
-    pdf.set_xy(160, 150)
+    pdf.set_xy(160, 155)
     pdf.set_font("Arial","", size=9)
     pdf.multi_cell(
         0,      # ancho automático
