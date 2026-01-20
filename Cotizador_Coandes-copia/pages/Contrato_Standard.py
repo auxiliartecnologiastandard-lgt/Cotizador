@@ -248,7 +248,7 @@ if datos["Origen"] == "Nevera":
 
     # Posición de la tabla (derecha)
     tabla_x = 175
-    tabla_y = 23.5
+    tabla_y = 25
 
     # QR a la izquierda de la tabla (NO de la hoja)
     pdf.image(
@@ -257,8 +257,9 @@ if datos["Origen"] == "Nevera":
         y=y_bloque + 8,
         w=17)
 
-    pdf.set_xy(175, 20)
-    pdf.multi_cell(0, 6, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}")
+    pdf.set_xy(175, 22)
+    pdf.set_font("Arial", "B", size=14)
+    pdf.multi_cell(0, 3, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}")
 
     # Tabla
     pdf.set_xy(tabla_x, tabla_y)
