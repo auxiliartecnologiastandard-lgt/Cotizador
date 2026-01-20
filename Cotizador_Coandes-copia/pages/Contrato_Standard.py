@@ -644,7 +644,7 @@ elif datos["Origen"] == "Computador":
     
     
     pdf.set_draw_color(0, 0, 0)
-    pdf.rect(x=185, y=140, w=30, h=5)
+    pdf.rect(x=185, y=142, w=30, h=5)
     pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
 
     
