@@ -105,7 +105,7 @@ def main():
     # 3. Sistema de enfriamiento
     st.markdown("### 3. Sistema de Enfriamiento")
     SE_opciones = {
-        "Auto frost": 0.0001, 
+        "Auto frost": 1, 
         "No frost": 10,
     }
     seleccion = st.selectbox("Seleccione el Sistema de Enfriamientoelo:", list(SE_opciones.keys()), index=1)
