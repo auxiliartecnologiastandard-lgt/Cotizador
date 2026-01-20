@@ -238,8 +238,13 @@ if datos["Origen"] == "Nevera":
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
     
-    pdf.set_xy(10,55)
+    pdf.set_xy(10,50)
     pdf.set_draw_color(0, 0, 0)
+    pdf.rect(
+    x=10,
+    y=50,
+    w=30,
+    h=3)
     pdf.multi_cell(0, 3, f"{fecha_actual}", align="L")
     
 
