@@ -345,7 +345,7 @@ if datos["Origen"] == "Nevera":
         )
     
     pdf.set_draw_color(0, 0, 0)
-    pdf.rect(x=185, y=140, w=30, h=5)
+    pdf.rect(x=185, y=139, w=30, h=5)
     pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
 
     pdf.ln(13)
@@ -522,7 +522,22 @@ elif datos["Origen"] == "Computador":
     pdf.multi_cell(0, 3.5, f"{datos['Sede']}", align="C")
 
     # CONSEGUIR FECHA ACTUAL
+    fecha_actual = date.today()
+
+    # FECHA VENCIMIENTO
+    Meses = int(datos["Meses"])  # o tu variable Meses
+    fecha_vencimiento = fecha_actual + relativedelta(months=Meses)
+    fecha_vencimiento_str = fecha_vencimiento.strftime("%d/%m/%Y")
     fecha_actual = date.today().strftime("%d/%m/%Y")
+
+    pdf.set_xy(10,50)
+    pdf.set_draw_color(0, 0, 0)
+    pdf.rect(
+        x=10,
+        y=49,
+        w=35,
+        h=5)
+    pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
     
     pdf.set_xy(10,50)
     pdf.set_draw_color(0, 0, 0)
@@ -626,6 +641,12 @@ elif datos["Origen"] == "Computador":
         "EL VENDEDOR",
         align="L"   # L, C, R, J
         )
+    
+    
+    pdf.set_draw_color(0, 0, 0)
+    pdf.rect(x=185, y=139, w=30, h=5)
+    pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
+
     
     pdf.ln(13)
     pdf.set_font("Arial","", size=9)
