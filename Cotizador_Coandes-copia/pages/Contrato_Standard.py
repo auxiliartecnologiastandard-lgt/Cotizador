@@ -4,6 +4,7 @@ from datetime import date
 import qrcode
 import os
 import io
+from dateutil.relativedelta import relativedelta
 
 st.markdown(
     """
@@ -238,16 +239,12 @@ if datos["Origen"] == "Nevera":
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
     
-    pdf.set_xy(10,50)
-    pdf.set_draw_color(0, 0, 0)
-    pdf.rect(
-        x=10,
-        y=49,
-        w=35,
-        h=5)
-    
-    pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
-    
+    pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}" , border=1)
+
+    # FECHA VENCIMIENTO
+    Meses = int(datos["Meses"])  # o tu variable Meses
+    fecha_vencimiento = fecha_actual + relativedelta(months=Meses)
+    fecha_vencimiento_str = fecha_vencimiento.strftime("%d/%m/%Y")
 
     # QR de las redes sociales de la empresa
     link = "https://hab.me/YCh4LCw"
@@ -339,6 +336,8 @@ if datos["Origen"] == "Nevera":
         align="L"   # L, C, R, J
         )
     
+    pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_vencimiento_str}", align="R")
+
     pdf.ln(13)
     pdf.set_font("Arial","", size=9)
     pdf.multi_cell(
