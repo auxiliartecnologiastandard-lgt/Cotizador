@@ -244,6 +244,14 @@ if datos["Origen"] == "Nevera":
     fecha_vencimiento = fecha_actual + relativedelta(months=Meses)
     fecha_vencimiento_str = fecha_vencimiento.strftime("%d/%m/%Y")
     fecha_actual = date.today().strftime("%d/%m/%Y")
+
+    pdf.set_xy(10,50)
+    pdf.set_draw_color(0, 0, 0)
+    pdf.rect(
+        x=10,
+        y=49,
+        w=35,
+        h=5)
     pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}" , border=1)
 
     # QR de las redes sociales de la empresa
@@ -336,7 +344,8 @@ if datos["Origen"] == "Nevera":
         align="L"   # L, C, R, J
         )
     
-    pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_vencimiento_str}", align="R")
+
+    pdf.multi_cell(0, 3, f"Vence:  {fecha_vencimiento_str}", align="R", border=1)
 
     pdf.ln(13)
     pdf.set_font("Arial","", size=9)
