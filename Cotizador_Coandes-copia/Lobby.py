@@ -54,20 +54,20 @@ with col2:
 
 with col3:
     if st.button("🛵 Motos (Próximamente)", use_container_width=True, disabled=True):
-        pass
+        pass #):
         st.switch_page("pages/Motos.py")
 
 with col1:
     if st.button("🥇 Oro (Próximamente)", use_container_width=True, disabled=True):
-        pass
+        pass #):
         st.switch_page("pages/Oro.py")
 
 with col2:
     if st.button("🔨 Herramientas (Próximamente)", use_container_width=True, disabled=True):
-        pass
+        pass #):
         st.switch_page("pages/Herramientas.py")
 
 with col3:
     if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True, disabled=True):
-        pass
+        pass #):
         st.switch_page("pages/instrumentos.py")
