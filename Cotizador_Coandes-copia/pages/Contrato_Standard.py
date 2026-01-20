@@ -333,11 +333,11 @@ if datos["Origen"] == "Nevera":
         align="L"   # L, C, R, J
         )
     
-    pdf.set_xy(65, 135)   # Ajusta posición
+    pdf.set_xy(60, 135)   # Ajusta posición
     pdf.cell(20, 25, "", border=1)
 
     pdf.set_font("Arial","", size=6)
-    pdf.set_xy(65, 146)
+    pdf.set_xy(60, 146)
     pdf.cell(20, 23, "Huella del vendedor", align="C")
 
 
@@ -595,11 +595,11 @@ elif datos["Origen"] == "Computador":
         align="L"   # L, C, R, J
         )
     
-    pdf.set_xy(67, 135)   # Ajusta posición
+    pdf.set_xy(60, 135)   # Ajusta posición
     pdf.cell(20, 25, "", border=1)
 
     pdf.set_font("Arial","", size=6)
-    pdf.set_xy(67, 146)
+    pdf.set_xy(60, 146)
     pdf.cell(20, 23, "Huella del vendedor", align="C")
 
 
