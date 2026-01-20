@@ -259,7 +259,7 @@ if datos["Origen"] == "Nevera":
 
     pdf.set_xy(175, 22)
     pdf.set_font("Arial", "B", size=14)
-    pdf.multi_cell(0, 3, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
+    pdf.multi_cell(0, 5, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
 
     # Tabla
     pdf.set_xy(tabla_x, tabla_y)
@@ -346,7 +346,7 @@ if datos["Origen"] == "Nevera":
 
 
     pdf.ln(3)
-    pdf.set_xy(90, 133)
+    pdf.set_xy(97, 133)
     pdf.set_font("Arial","B", size=8)
 
     # OTROS
@@ -367,7 +367,7 @@ if datos["Origen"] == "Nevera":
         )
     
     pdf.ln(17)
-    pdf.set_xy(160, 149)
+    pdf.set_xy(167, 149)
     pdf.set_font("Arial","", size=9)
     pdf.multi_cell(
         0,      # ancho automático
