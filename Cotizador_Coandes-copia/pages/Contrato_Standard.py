@@ -258,7 +258,7 @@ if datos["Origen"] == "Nevera":
         w=17)
 
     pdf.set_xy(175, 22)
-    pdf.set_font("Arial", "B", size=9)
+    pdf.set_font("Arial", "B", size=10)
     pdf.multi_cell(0, 4, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
 
     # Tabla
@@ -525,7 +525,7 @@ elif datos["Origen"] == "Computador":
     
 
     pdf.set_xy(175, 22)
-    pdf.set_font("Arial", "B", size=9)
+    pdf.set_font("Arial", "B", size=10)
     pdf.multi_cell(0, 4, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
 
     
@@ -614,7 +614,7 @@ elif datos["Origen"] == "Computador":
 
 
     pdf.ln(3)
-    pdf.set_xy(90, 140)
+    pdf.set_xy(90, 143)
     pdf.set_font("Arial","B", size=8)
 
     # OTROS
