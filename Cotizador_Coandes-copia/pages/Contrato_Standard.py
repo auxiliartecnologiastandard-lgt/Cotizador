@@ -237,6 +237,9 @@ if datos["Origen"] == "Nevera":
 
     # CONSEGUIR FECHA ACTUAL
     fecha_actual = date.today().strftime("%d/%m/%Y")
+    pdf.set_xy(15,30)
+    pdf.multi_cell(0, 1, f"{fecha_actual}", align="L")
+    
 
     # QR de las redes sociales de la empresa
     link = "https://hab.me/YCh4LCw"
@@ -342,7 +345,7 @@ if datos["Origen"] == "Nevera":
 
     pdf.set_font("Arial","", size=6)
     pdf.set_xy(60, 151)
-    pdf.cell(17, 23, "Huella del vendedor", align="C")
+    pdf.cell(20, 20, "Huella del vendedor", align="C")
 
 
     pdf.ln(3)
@@ -610,7 +613,7 @@ elif datos["Origen"] == "Computador":
 
     pdf.set_font("Arial","", size=6)
     pdf.set_xy(60, 151)
-    pdf.cell(17, 23, "Huella del vendedor", align="C")
+    pdf.cell(20, 20, "Huella del vendedor", align="C")
 
 
     pdf.ln(3)
