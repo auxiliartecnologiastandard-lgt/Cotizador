@@ -252,7 +252,7 @@ if datos["Origen"] == "Nevera":
         y=49,
         w=35,
         h=5)
-    pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}" , border=1)
+    pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
 
     # QR de las redes sociales de la empresa
     link = "https://hab.me/YCh4LCw"
@@ -344,8 +344,9 @@ if datos["Origen"] == "Nevera":
         align="L"   # L, C, R, J
         )
     
-
-    pdf.multi_cell(0, 3, f"Vence:  {fecha_vencimiento_str}", align="R", border=1)
+    pdf.set_draw_color(0, 0, 0)
+    pdf.rect(x=60, y=175, w=35, h=5)
+    pdf.multi_cell(0, 3, f"Vence:  {fecha_vencimiento_str}", align="R")
 
     pdf.ln(13)
     pdf.set_font("Arial","", size=9)
