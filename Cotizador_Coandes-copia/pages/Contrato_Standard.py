@@ -237,14 +237,14 @@ if datos["Origen"] == "Nevera":
     pdf.multi_cell(0, 3.5, f"{datos['Sede']}", align="C")
 
     # CONSEGUIR FECHA ACTUAL
-    fecha_actual = date.today().strftime("%d/%m/%Y")
-    
-    pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}" , border=1)
+    fecha_actual = date.today()
 
     # FECHA VENCIMIENTO
     Meses = int(datos["Meses"])  # o tu variable Meses
     fecha_vencimiento = fecha_actual + relativedelta(months=Meses)
     fecha_vencimiento_str = fecha_vencimiento.strftime("%d/%m/%Y")
+    fecha_actual = date.today().strftime("%d/%m/%Y")
+    pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}" , border=1)
 
     # QR de las redes sociales de la empresa
     link = "https://hab.me/YCh4LCw"
