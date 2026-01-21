@@ -245,6 +245,8 @@ if datos["Origen"] == "Nevera":
     fecha_vencimiento_str = fecha_vencimiento.strftime("%d/%m/%Y")
     fecha_actual = date.today().strftime("%d/%m/%Y")
 
+    hora_actual = date.now().strftime("%I:%M %p")
+
     pdf.set_xy(10,50)
     pdf.set_draw_color(0, 0, 0)
     pdf.rect(
@@ -254,7 +256,6 @@ if datos["Origen"] == "Nevera":
         h=5)
     pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
 
-    hora_actual = datetime.now().strftime("%I:%M %p")
 
     # QR de las redes sociales de la empresa
     link = "https://hab.me/YCh4LCw"
@@ -531,6 +532,8 @@ elif datos["Origen"] == "Computador":
     fecha_vencimiento = fecha_actual + relativedelta(months=Meses)
     fecha_vencimiento_str = fecha_vencimiento.strftime("%d/%m/%Y")
     fecha_actual = date.today().strftime("%d/%m/%Y")
+
+    hora_actual = date.now().strftime("%I:%M %p")
 
     pdf.set_xy(10,50)
     pdf.set_draw_color(0, 0, 0)
