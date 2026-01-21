@@ -151,6 +151,9 @@ def main():
             entrada = np.array([[valor_marca, valor_litro_final, valor_Sistema_de_enfriamiento]])
             precio_base = modelo.predict(entrada)[0]
 
+            # 1.1 Ancla de realidad
+             
+
             # 2. Redondear precios
             precio_base_redondo = round(precio_base / 10000) * 10000
             precio_venta_redondo = round((precio_base_redondo * 1.4) / 10000) * 10000
