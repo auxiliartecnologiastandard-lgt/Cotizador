@@ -31,9 +31,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.set_page_config(page_title="Contrato de Compraventa")
-
-st.success("Contrato creado y listo para la descarga ✔")
+st.set_page_config(page_title="Contrato standard")
 
 IdentificadorSede = 0
 
@@ -232,7 +230,7 @@ if datos["Origen"] == "Nevera":
     pdf.set_y(23.5)
     pdf.set_font("Arial", "B", 18)
     pdf.ln(3)  # baja el cursor para no chocar con el logo
-    pdf.cell(0, 3.5, f"CONTRATO {datos["Direcciones"]}", ln=True, align="C")
+    pdf.cell(0, 3.5, f"STANDARD {datos["Direcciones"]}", ln=True, align="C")
     # DIRRECIONES
     pdf.set_font("Arial", "", 8)
     pdf.ln(3)
@@ -520,7 +518,7 @@ elif datos["Origen"] == "Computador":
     pdf.set_y(23.5)
     pdf.set_font("Arial", "B", 18)
     pdf.ln(3)  # baja el cursor para no chocar con el logo
-    pdf.cell(0, 3.5, f"CONTRATO {datos["Direcciones"]}", ln=True, align="C")
+    pdf.cell(0, 3.5, f"STANDARD {datos["Direcciones"]}", ln=True, align="C")
     # DIRRECIONES
     pdf.set_font("Arial", "", 8)
     pdf.ln(3)
@@ -706,6 +704,8 @@ elif datos["Origen"] == "Computador":
     pdf_bytes = pdf.output(dest="S").encode("latin-1")
     pdf_buffer = io.BytesIO(pdf_bytes)
 
+
+st.success("Contrato creado y listo para la descarga ✔")
 # Botón de descarga
 if "descargar_pdf" not in st.session_state:
     st.session_state["descargar_pdf"] = False
