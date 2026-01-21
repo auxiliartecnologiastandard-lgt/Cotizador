@@ -219,7 +219,7 @@ if datos["Origen"] == "Nevera":
     x=pdf.l_margin,
     y=22,
     w=pdf.w - pdf.l_margin - pdf.r_margin,
-    h=147)
+    h=146)
 
     # LOGO DE LA EMPRESA
     ruta_base = os.path.dirname(__file__)
