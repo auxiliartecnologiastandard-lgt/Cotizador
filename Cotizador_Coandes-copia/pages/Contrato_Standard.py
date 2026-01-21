@@ -38,12 +38,6 @@ IdentificadorSede = 0
 datos = st.session_state.get("datos_cotizador")
 
 if not datos:
-    if datos["Origen"] == "Computador":
-        st.button("Volver y calcular precio"):
-        st.switch_page("pages/Computadores.py")
-    elif datos["Origen"] == "Nevera":
-        st.button("Volver y calcular precio"):
-        st.switch_page("pages/Neveras.py")
     st.warning("No hay datos del cotizador. Regresa y calcula primero.")
     st.stop()
 
