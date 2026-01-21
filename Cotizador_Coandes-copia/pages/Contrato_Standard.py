@@ -219,7 +219,7 @@ if datos["Origen"] == "Nevera":
     x=pdf.l_margin,
     y=22,
     w=pdf.w - pdf.l_margin - pdf.r_margin,
-    h=150)
+    h=147)
 
     # LOGO DE LA EMPRESA
     ruta_base = os.path.dirname(__file__)
@@ -356,7 +356,7 @@ if datos["Origen"] == "Nevera":
     pdf.multi_cell(
         0,      # ancho automático
         3,      # alto de línea
-        f"_____________________________ \n {datos['Nombre']} \n C.C:",
+        f"_____________________________ \n {datos['Nombre']} \n C.C: {datos['Cedula']}",
         align="L"   # L, C, R, J
         )
     
@@ -507,7 +507,7 @@ elif datos["Origen"] == "Computador":
     x=pdf.l_margin,
     y=22,
     w=pdf.w - pdf.l_margin - pdf.r_margin,
-    h=pdf.h - pdf.t_margin - pdf.b_margin)
+    h=148)
 
     # LOGO DE LA EMPRESA
     ruta_base = os.path.dirname(__file__)
@@ -658,7 +658,7 @@ elif datos["Origen"] == "Computador":
     pdf.multi_cell(
         0,      # ancho automático
         3,      # alto de línea
-        f"_____________________________ \n {datos['Nombre']} \n C.C:",
+        f"_____________________________ \n {datos['Nombre']} \n C.C: {datos['Cedula']}",
         align="L"   # L, C, R, J
         )
     
