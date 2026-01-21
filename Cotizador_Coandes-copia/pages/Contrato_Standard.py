@@ -1,11 +1,11 @@
 import streamlit as st
 from fpdf import FPDF
-from datetime import date
 from datetime import datetime
 import qrcode
 import os
 import io
 from dateutil.relativedelta import relativedelta
+from zoneinfo import ZoneInfo
 
 st.markdown(
     """
@@ -246,7 +246,7 @@ if datos["Origen"] == "Nevera":
     fecha_vencimiento_str = fecha_vencimiento.strftime("%d/%m/%Y")
     fecha_actual = date.today().strftime("%d/%m/%Y")
 
-    hora_actual = datetime.now().strftime("%I:%M %p")
+    hora_actual = datetime.now(ZoneInfo("America/Bogota")).strftime("%I:%M %p")
 
     pdf.set_xy(10,50)
     pdf.set_draw_color(0, 0, 0)
@@ -534,7 +534,7 @@ elif datos["Origen"] == "Computador":
     fecha_vencimiento_str = fecha_vencimiento.strftime("%d/%m/%Y")
     fecha_actual = date.today().strftime("%d/%m/%Y")
 
-    hora_actual = datetime.now().strftime("%I:%M %p")
+    hora_actual = datetime.now(ZoneInfo("America/Bogota")).strftime("%I:%M %p")
 
     pdf.set_xy(10,50)
     pdf.set_draw_color(0, 0, 0)
