@@ -217,9 +217,9 @@ if datos["Origen"] == "Nevera":
     # Margen contrato
     pdf.rect(
     x=pdf.l_margin,
-    y=160,
+    y=22,
     w=pdf.w - pdf.l_margin - pdf.r_margin,
-    h=pdf.h - pdf.t_margin - pdf.b_margin)
+    h=160)
 
     # LOGO DE LA EMPRESA
     ruta_base = os.path.dirname(__file__)
