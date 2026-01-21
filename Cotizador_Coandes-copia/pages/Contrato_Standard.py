@@ -245,7 +245,7 @@ if datos["Origen"] == "Nevera":
     fecha_vencimiento_str = fecha_vencimiento.strftime("%d/%m/%Y")
     fecha_actual = date.today().strftime("%d/%m/%Y")
 
-    hora_actual = date.now().strftime("%I:%M %p")
+    hora_actual = datetime.now().strftime("%I:%M %p")
 
     pdf.set_xy(10,50)
     pdf.set_draw_color(0, 0, 0)
@@ -533,7 +533,7 @@ elif datos["Origen"] == "Computador":
     fecha_vencimiento_str = fecha_vencimiento.strftime("%d/%m/%Y")
     fecha_actual = date.today().strftime("%d/%m/%Y")
 
-    hora_actual = date.now().strftime("%I:%M %p")
+    hora_actual = datetime.now().strftime("%I:%M %p")
 
     pdf.set_xy(10,50)
     pdf.set_draw_color(0, 0, 0)
