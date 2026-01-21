@@ -218,7 +218,7 @@ if datos["Origen"] == "Nevera":
     pdf.rect(
     x=pdf.l_margin,
     y=22,
-    w=pdf.w - pdf.l_margin - pdf.r_margin,
+    w=160,
     h=pdf.h - pdf.t_margin - pdf.b_margin)
 
     # LOGO DE LA EMPRESA
