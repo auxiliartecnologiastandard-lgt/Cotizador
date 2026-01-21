@@ -720,7 +720,7 @@ if st.download_button(
 
 if st.session_state["descargar_pdf"]:
     st.session_state["descargar_pdf"] = False
-    st.success("Hola mucho gusto :D")
+    
     numero_contrato = incrementar_contador()
     st.switch_page("Lobby.py")
     
