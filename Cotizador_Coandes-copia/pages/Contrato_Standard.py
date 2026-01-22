@@ -122,8 +122,8 @@ elif datos['Sede'] == 10:
 elif datos['Sede'] == 11:
     datos['Sede'] = "Cra 17 # 21-13 \n Standard Armenia \n 320 766 9899 \n standardarmenia@standard.com.co \n Nit. 800.205.573-1"
 
-def mc(pdf, txt, h=3, max_size=8, min_size=3):
-    limite_y = pdf.h - pdf.b_margin - 5
+def mc(pdf, txt, h=3, max_size=8, min_size=1):
+    limite_y = pdf.h - pdf.b_margin
     y_start = pdf.get_y()
 
     for size in [x / 2 for x in range(int(max_size*2), int(min_size*2)-1, -1)]:
@@ -543,11 +543,11 @@ elif datos["Origen"] == "Computador":
         qr.save("qr_temp.png")
 
         # Posición base del bloque (debajo del título)
-        y_bloque = 30
+        y_bloque = 29
 
         # Posición de la tabla (derecha)
         tabla_x = 175
-        tabla_y = 29.5 + y_offset
+        tabla_y = 29 + y_offset
 
         # QR a la izquierda de la tabla (NO de la hoja)
         pdf.image(
@@ -566,13 +566,13 @@ elif datos["Origen"] == "Computador":
         pdf.set_xy(tabla_x, tabla_y)
         pdf.set_font("Arial", size=8)
         # Fila 1 – Fecha
-        pdf.cell(33, 6, f"Fecha:  {fecha_actual}", border=1, ln=True)
+        pdf.cell(33, 5.5, f"Fecha:  {fecha_actual}", border=1, ln=True)
         # Fila 2 – Tasa
         pdf.set_x(tabla_x)
-        pdf.cell(33, 6, f"Plazo:  {datos["Meses"]} Meses", border=1, ln=True)
+        pdf.cell(33, 5.5, f"Plazo:  {datos["Meses"]} Meses", border=1, ln=True)
         # Fila 3 – Precio
         pdf.set_x(tabla_x)
-        pdf.cell(33, 6, f"Precio:  {datos["Precio"]}", border=1, ln=True)
+        pdf.cell(33, 5.5, f"Precio:  {datos["Precio"]}", border=1, ln=True)
 
         # CUERPO DEL PDF
         # INICIO 
