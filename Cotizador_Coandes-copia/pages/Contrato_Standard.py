@@ -558,15 +558,15 @@ elif datos["Origen"] == "Computador":
         
 
         pdf.set_xy(175, 22 + y_offset)
-        pdf.set_font("Arial", "B", size=10)
+        pdf.set_font("Arial", "B", size=8)
         pdf.multi_cell(0, 4, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
 
         
         # Tabla
         pdf.set_xy(tabla_x, tabla_y)
-        pdf.set_font("Arial", size=10)
+        pdf.set_font("Arial", size=8)
         # Fila 1 – Fecha
-        pdf.cell(33, 8, f"Fecha:  {fecha_actual}", border=1, ln=True)
+        pdf.cell(20, 8, f"Fecha:  {fecha_actual}", border=1, ln=True)
         # Fila 2 – Tasa
         pdf.set_x(tabla_x)
         pdf.cell(33, 8, f"Plazo:  {datos["Meses"]} Meses", border=1, ln=True)
