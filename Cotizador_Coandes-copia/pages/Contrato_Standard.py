@@ -122,7 +122,7 @@ elif datos['Sede'] == 10:
 elif datos['Sede'] == 11:
     datos['Sede'] = "Cra 17 # 21-13 \n Standard Armenia \n 320 766 9899 \n standardarmenia@standard.com.co \n Nit. 800.205.573-1"
 
-def mc(pdf, txt, h=5, max_size=10, min_size=7):
+def mc(pdf, txt, h=5, max_size=8, min_size=3):
     limite_y = pdf.h - pdf.b_margin - 5
 
     auto = pdf.auto_page_break
@@ -687,7 +687,6 @@ elif datos["Origen"] == "Computador":
     pdf = FPDF(orientation="P",  # P = vertical, L = horizontal
     unit="mm", format="Letter")
     pdf.set_margins(left=1, top=1, right=1)
-    pdf.set_auto_page_break(auto=True, margin=1)
 
     # color rojo para que sea visible
     pdf.set_draw_color(0, 0, 0)
