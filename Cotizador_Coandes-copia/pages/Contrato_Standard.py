@@ -122,21 +122,33 @@ elif datos['Sede'] == 10:
 elif datos['Sede'] == 11:
     datos['Sede'] = "Cra 17 # 21-13 \n Standard Armenia \n 320 766 9899 \n standardarmenia@standard.com.co \n Nit. 800.205.573-1"
 
-def mc(pdf, txt, h=5, max_size=10, min_size=6):
+def mc(pdf, txt, h=5, max_size=10, min_size=7):
     limite_y = pdf.h - pdf.b_margin - 5
+
+    auto = pdf.auto_page_break
+    margin = pdf.b_margin
+    pdf.set_auto_page_break(False)
+
     size = max_size
+    y_start = pdf.get_y()
 
     while size >= min_size:
         pdf.set_font("Arial", "", size)
-        y = pdf.get_y()
+        pdf.set_y(y_start)
+
         pdf.multi_cell(0, h, txt)
+
         if pdf.get_y() <= limite_y:
+            pdf.set_auto_page_break(auto, margin)
             return
-        pdf.set_y(y)
+
         size -= 0.5
 
     pdf.set_font("Arial", "", min_size)
+    pdf.set_y(y_start)
     pdf.multi_cell(0, h, txt)
+
+    pdf.set_auto_page_break(auto, margin)
 
 
 # Mostrar solo datos de nevera
