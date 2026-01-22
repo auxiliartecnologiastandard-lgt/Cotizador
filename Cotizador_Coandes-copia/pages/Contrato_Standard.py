@@ -469,44 +469,8 @@ elif datos["Origen"] == "Computador":
         datos['Grafica'] = "Sin tarjeta grafica"
     else:
         datos['Grafica'] = "Con tarjeta grafica"
-    
-    # CREACIÓN DEL PDF
-    pdf = FPDF(orientation="P",  # P = vertical, L = horizontal
-    unit="mm", format="Letter")
-    pdf.set_margins(left=1, top=1, right=1)
-    pdf.set_auto_page_break(auto=True, margin=1)
 
-    # color rojo para que sea visible
-    pdf.set_draw_color(0, 0, 0)
-    # dibuja un rectángulo que represente el margen
-    pdf.add_page()
 
-    pdf_buffer = BytesIO()
-    pdf.output(pdf_buffer)
-    pdf_buffer.seek(0)
-
-    # BLOQUE SUPERIOR ( Identificador )
-    alto_bloque = 20
-
-    pdf.set_draw_color(0, 0, 0)
-    pdf.rect(
-        x=pdf.l_margin,
-        y=pdf.t_margin,
-        w=90,
-        h=alto_bloque
-    )
-    pdf.set_font("Arial", "B", 18)
-    pdf.cell(0, 6, f"{datos["IdentificadorSede"]}-{numero_contrato}")
-    pdf.set_font("Arial", "", 9)
-    pdf.set_xy(35, 1)
-    pdf.multi_cell(0, 3, f"{datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}")
-    pdf.set_y(5.5)
-    pdf.cell(0, 9, f"{datos['Meses']} Meses", ln=True)
-    pdf.cell(0, 3, f"{datos['Nombre']} - CC {datos['Cedula']}", ln=True)
-    pdf.cell(0, 3, f"{datos['Origen']}: {datos['Precio']}", ln=True)
-    pdf.set_xy(140, 5.5)
-    pdf.multi_cell(0, 6, "__________________________________ \n Firma Vendedor")
-    
     def dibujar_contrato(pdf, datos, y_offset=0):
     
         # Margen contrato
@@ -698,9 +662,46 @@ elif datos["Origen"] == "Computador":
                 )
 
 
-        pdf_bytes = pdf.output(dest="S").encode("latin-1")
-        pdf_buffer = io.BytesIO(pdf_bytes)
+    # CREACIÓN DEL PDF
+    pdf = FPDF(orientation="P",  # P = vertical, L = horizontal
+    unit="mm", format="Letter")
+    pdf.set_margins(left=1, top=1, right=1)
+    pdf.set_auto_page_break(auto=True, margin=1)
 
+    # color rojo para que sea visible
+    pdf.set_draw_color(0, 0, 0)
+    # dibuja un rectángulo que represente el margen
+    pdf.add_page()
+
+    
+    # BLOQUE SUPERIOR ( Identificador )
+    alto_bloque = 20
+
+    pdf.set_draw_color(0, 0, 0)
+    pdf.rect(
+        x=pdf.l_margin,
+        y=pdf.t_margin,
+        w=90,
+        h=alto_bloque
+    )
+    pdf.set_font("Arial", "B", 18)
+    pdf.cell(0, 6, f"{datos["IdentificadorSede"]}-{numero_contrato}")
+    pdf.set_font("Arial", "", 9)
+    pdf.set_xy(35, 1)
+    pdf.multi_cell(0, 3, f"{datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}")
+    pdf.set_y(5.5)
+    pdf.cell(0, 9, f"{datos['Meses']} Meses", ln=True)
+    pdf.cell(0, 3, f"{datos['Nombre']} - CC {datos['Cedula']}", ln=True)
+    pdf.cell(0, 3, f"{datos['Origen']}: {datos['Precio']}", ln=True)
+    pdf.set_xy(140, 5.5)
+    pdf.multi_cell(0, 6, "__________________________________ \n Firma Vendedor")
+    
+
+dibujar_contrato(pdf, datos, y_offset=0)
+dibujar_contrato(pdf, datos, y_offset=160)
+
+pdf_bytes = pdf.output(dest="S").encode("latin-1")
+pdf_buffer = io.BytesIO(pdf_bytes)
 
 st.success("Contrato creado y listo para la descarga ✔")
 # Botón de descarga
