@@ -122,6 +122,25 @@ elif datos['Sede'] == 10:
 elif datos['Sede'] == 11:
     datos['Sede'] = "Cra 17 # 21-13 \n Standard Armenia \n 320 766 9899 \n standardarmenia@standard.com.co \n Nit. 800.205.573-1"
 
+def multi_cell_auto_font(pdf, w, h, txt, max_y, font="Arial", style="", max_size=10, min_size=6):
+    size = max_size
+    while size >= min_size:
+        pdf.set_font(font, style, size)
+        y_inicial = pdf.get_y()
+        pdf.multi_cell(w, h, txt)
+        y_final = pdf.get_y()
+
+        if y_final <= max_y:
+            return  # ✔ Cabe, listo
+
+        # ❌ No cabe → probamos más pequeño
+        pdf.set_y(y_inicial)
+        size -= 0.5
+
+    # Si llega aquí, escribe igual (último recurso)
+    pdf.set_font(font, style, min_size)
+    pdf.multi_cell(w, h, txt)
+
 # Mostrar solo datos de nevera
 if datos["Origen"] == "Nevera":
     # CONTRATO DE NEVERAS
@@ -698,7 +717,7 @@ elif datos["Origen"] == "Computador":
     
 
 dibujar_contrato(pdf, datos, y_offset=0)
-dibujar_contrato(pdf, datos, y_offset=155)
+dibujar_contrato(pdf, datos, y_offset=152)
 
 pdf_bytes = pdf.output(dest="S").encode("latin-1")
 pdf_buffer = io.BytesIO(pdf_bytes)
