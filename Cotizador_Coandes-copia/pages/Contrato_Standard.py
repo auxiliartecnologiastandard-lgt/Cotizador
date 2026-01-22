@@ -123,7 +123,7 @@ elif datos['Sede'] == 11:
     datos['Sede'] = "Cra 17 # 21-13 \n Standard Armenia \n 320 766 9899 \n standardarmenia@standard.com.co \n Nit. 800.205.573-1"
 
 def mc(pdf, txt, h=3, max_size=8, min_size=1):
-    limite_y = pdf.h - pdf.b_margin
+    limite_y = pdf.h - pdf.b_margin - 5
     y_start = pdf.get_y()
 
     for size in [x / 2 for x in range(int(max_size*2), int(min_size*2)-1, -1)]:
@@ -714,7 +714,7 @@ elif datos["Origen"] == "Computador":
     
 
 dibujar_contrato(pdf, datos, y_offset=0)
-dibujar_contrato(pdf, datos, y_offset=152)
+dibujar_contrato(pdf, datos, y_offset=150)
 
 pdf_bytes = pdf.output(dest="S").encode("latin-1")
 pdf_buffer = io.BytesIO(pdf_bytes)
