@@ -543,7 +543,7 @@ elif datos["Origen"] == "Computador":
         qr.save("qr_temp.png")
 
         # Posición base del bloque (debajo del título)
-        y_bloque = 25
+        y_bloque = 23.5
 
         # Posición de la tabla (derecha)
         tabla_x = 175
