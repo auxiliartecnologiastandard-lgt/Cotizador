@@ -696,6 +696,8 @@ elif datos["Origen"] == "Computador":
     pdf.set_margins(left=1, top=1, right=1)
     pdf.set_auto_page_break(auto=True, margin=1)
 
+    pdf.add_page()
+
     # Margen contrato
     pdf.rect(
     x=pdf.l_margin,
