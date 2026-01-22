@@ -124,31 +124,27 @@ elif datos['Sede'] == 11:
 
 def mc(pdf, txt, h=3, max_size=8, min_size=3):
     limite_y = pdf.h - pdf.b_margin - 5
-
-    auto = pdf.auto_page_break
-    margin = pdf.b_margin
-    pdf.set_auto_page_break(False)
-
-    size = max_size
     y_start = pdf.get_y()
 
-    while size >= min_size:
+    for size in [x / 2 for x in range(int(max_size*2), int(min_size*2)-1, -1)]:
         pdf.set_font("Arial", "", size)
-        pdf.set_y(y_start)
 
-        pdf.multi_cell(0, h, txt)
+        # Simulación sin imprimir
+        y_test = y_start
+        for line in pdf.multi_cell(0, h, txt, split_only=True):
+            y_test += h
 
-        if pdf.get_y() <= limite_y:
-            pdf.set_auto_page_break(auto, margin)
+        if y_test <= limite_y:
+            pdf.set_font("Arial", "", size)
+            pdf.set_y(y_start)
+            pdf.multi_cell(0, h, txt)
             return
 
-        size -= 0.5
-
+    # Último recurso
     pdf.set_font("Arial", "", min_size)
     pdf.set_y(y_start)
     pdf.multi_cell(0, h, txt)
 
-    pdf.set_auto_page_break(auto, margin)
 
 
 # Mostrar solo datos de nevera
