@@ -507,7 +507,7 @@ elif datos["Origen"] == "Computador":
     x=pdf.l_margin,
     y=22,
     w=pdf.w - pdf.l_margin - pdf.r_margin,
-    h=148.5)
+    h=149)
 
     # LOGO DE LA EMPRESA
     ruta_base = os.path.dirname(__file__)
@@ -542,16 +542,6 @@ elif datos["Origen"] == "Computador":
         y=49,
         w=35,
         h=5)
-    pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
-    
-    pdf.set_xy(10,50)
-    pdf.set_draw_color(0, 0, 0)
-    pdf.rect(
-        x=10,
-        y=49,
-        w=35,
-        h=5)
-    
     pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
     
 
@@ -700,6 +690,44 @@ elif datos["Origen"] == "Computador":
         f"_____________________________ \n VISTO BUENO",   # L, C, R, J
         )
 
+
+    # CREACIÓN DEL PDF
+    pdf = FPDF(orientation="P",  # P = vertical, L = horizontal
+    unit="mm", format="Letter")
+    pdf.set_margins(left=1, top=1, right=1)
+    pdf.set_auto_page_break(auto=True, margin=1)
+
+    # Margen contrato
+    pdf.rect(
+    x=pdf.l_margin,
+    y=151,
+    w=pdf.w - pdf.l_margin - pdf.r_margin,
+    h=h=pdf.h - pdf.t_margin - pdf.b_margin)
+
+    # LOGO DE LA EMPRESA
+    ruta_base = os.path.dirname(__file__)
+    ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
+    pdf.image(ruta_logo, x=10, y=160, w=40)
+
+    # TITULO DEL PDF
+    pdf.set_y(160)
+    pdf.set_font("Arial", "B", 18)
+    pdf.ln(3)  # baja el cursor para no chocar con el logo
+    pdf.cell(0, 3.5, f"STANDARD {datos["Direcciones"]}", ln=True, align="C")
+    # DIRRECIONES
+    pdf.set_font("Arial", "", 8)
+    pdf.ln(3)
+    pdf.multi_cell(0, 3.5, f"{datos['Sede']}", align="C")
+
+    # CONSEGUIR FECHA ACTUAL
+    pdf.set_xy(10,179)
+    pdf.set_draw_color(0, 0, 0)
+    pdf.rect(
+        x=10,
+        y=180,
+        w=35,
+        h=5)
+    pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
     
     pdf_bytes = pdf.output(dest="S").encode("latin-1")
     pdf_buffer = io.BytesIO(pdf_bytes)
