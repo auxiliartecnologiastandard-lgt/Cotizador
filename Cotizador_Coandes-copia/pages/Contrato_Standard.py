@@ -518,7 +518,7 @@ elif datos["Origen"] == "Computador":
         pdf.image(ruta_logo, x=10, y=23.5 + y_offset, w=40)
 
         # TITULO DEL PDF
-        pdf.set_y(23.5)
+        pdf.set_y(23.5 + y_offset)
         pdf.set_font("Arial", "B", 18)
         pdf.ln(3)  # baja el cursor para no chocar con el logo
         pdf.cell(0, 3.5, f"STANDARD {datos["Direcciones"]}", ln=True, align="C")
@@ -538,7 +538,7 @@ elif datos["Origen"] == "Computador":
 
         hora_actual = datetime.now(ZoneInfo("America/Bogota")).strftime("%I:%M %p")
 
-        pdf.set_xy(10,50)
+        pdf.set_xy(10,50 + y_offset)
         pdf.set_draw_color(0, 0, 0)
         pdf.rect(
             x=10,
@@ -568,7 +568,7 @@ elif datos["Origen"] == "Computador":
             w=17)
         
 
-        pdf.set_xy(175, 22)
+        pdf.set_xy(175, 22 + y_offset)
         pdf.set_font("Arial", "B", size=10)
         pdf.multi_cell(0, 4, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
 
@@ -655,16 +655,16 @@ elif datos["Origen"] == "Computador":
             align="L"   # L, C, R, J
             )
         
-        pdf.set_xy(60, 145)   # Ajusta posición
+        pdf.set_xy(60, 145 + y_offset)   # Ajusta posición
         pdf.cell(20, 25, "", border=1)
 
         pdf.set_font("Arial","", size=6)
-        pdf.set_xy(60, 158)
+        pdf.set_xy(60, 158 + y_offset)
         pdf.cell(20, 20, "Huella del vendedor", align="C")
 
 
         pdf.ln(3)
-        pdf.set_xy(90, 143)
+        pdf.set_xy(90, 143 + y_offset)
         pdf.set_font("Arial","B", size=8)
 
         # OTROS
@@ -685,7 +685,7 @@ elif datos["Origen"] == "Computador":
             )
         
         pdf.ln(17)
-        pdf.set_xy(160, 158)
+        pdf.set_xy(160, 158 + y_offset)
         pdf.set_font("Arial","", size=9)
         pdf.multi_cell(
             0,      # ancho automático
