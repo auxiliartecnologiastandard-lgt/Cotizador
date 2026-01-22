@@ -698,7 +698,7 @@ elif datos["Origen"] == "Computador":
     
 
 dibujar_contrato(pdf, datos, y_offset=0)
-dibujar_contrato(pdf, datos, y_offset=160)
+dibujar_contrato(pdf, datos, y_offset=155)
 
 pdf_bytes = pdf.output(dest="S").encode("latin-1")
 pdf_buffer = io.BytesIO(pdf_bytes)
