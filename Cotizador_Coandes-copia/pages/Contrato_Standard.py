@@ -481,6 +481,10 @@ elif datos["Origen"] == "Computador":
     # dibuja un rectángulo que represente el margen
     pdf.add_page()
 
+    pdf_buffer = BytesIO()
+    pdf.output(pdf_buffer)
+    pdf_buffer.seek(0)
+
     # BLOQUE SUPERIOR ( Identificador )
     alto_bloque = 20
 
