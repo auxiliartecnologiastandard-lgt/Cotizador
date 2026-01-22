@@ -703,7 +703,8 @@ elif datos["Origen"] == "Computador":
     x=pdf.l_margin,
     y=151,
     w=pdf.w - pdf.l_margin - pdf.r_margin,
-    h=pdf.h - pdf.t_margin - pdf.b_margin)
+    h = pdf.h - 151 - pdf.b_margin )
+
 
     # LOGO DE LA EMPRESA
     ruta_base = os.path.dirname(__file__)
@@ -729,6 +730,8 @@ elif datos["Origen"] == "Computador":
         w=35,
         h=5)
     pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
+
+
     pdf_bytes = pdf.output(dest="S").encode("latin-1")
     pdf_buffer = io.BytesIO(pdf_bytes)
 
