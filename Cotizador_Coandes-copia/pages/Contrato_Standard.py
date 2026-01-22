@@ -543,11 +543,11 @@ elif datos["Origen"] == "Computador":
         qr.save("qr_temp.png")
 
         # Posición base del bloque (debajo del título)
-        y_bloque = 30 + y_offset
+        y_bloque = 30
 
         # Posición de la tabla (derecha)
         tabla_x = 175
-        tabla_y = 30 + y_offset
+        tabla_y = 29.5 + y_offset
 
         # QR a la izquierda de la tabla (NO de la hoja)
         pdf.image(
@@ -566,13 +566,13 @@ elif datos["Origen"] == "Computador":
         pdf.set_xy(tabla_x, tabla_y)
         pdf.set_font("Arial", size=8)
         # Fila 1 – Fecha
-        pdf.cell(33, 3, f"Fecha:  {fecha_actual}", border=1, ln=True)
+        pdf.cell(33, 6, f"Fecha:  {fecha_actual}", border=1, ln=True)
         # Fila 2 – Tasa
         pdf.set_x(tabla_x)
-        pdf.cell(33, 3, f"Plazo:  {datos["Meses"]} Meses", border=1, ln=True)
+        pdf.cell(33, 6, f"Plazo:  {datos["Meses"]} Meses", border=1, ln=True)
         # Fila 3 – Precio
         pdf.set_x(tabla_x)
-        pdf.cell(33, 3, f"Precio:  {datos["Precio"]}", border=1, ln=True)
+        pdf.cell(33, 6, f"Precio:  {datos["Precio"]}", border=1, ln=True)
 
         # CUERPO DEL PDF
         # INICIO 
