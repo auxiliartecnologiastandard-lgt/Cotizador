@@ -566,13 +566,13 @@ elif datos["Origen"] == "Computador":
         pdf.set_xy(tabla_x, tabla_y)
         pdf.set_font("Arial", size=8)
         # Fila 1 – Fecha
-        pdf.cell(20, 8, f"Fecha:  {fecha_actual}", border=1, ln=True)
+        pdf.cell(33, 3, f"Fecha:  {fecha_actual}", border=1, ln=True)
         # Fila 2 – Tasa
         pdf.set_x(tabla_x)
-        pdf.cell(33, 8, f"Plazo:  {datos["Meses"]} Meses", border=1, ln=True)
+        pdf.cell(33, 3, f"Plazo:  {datos["Meses"]} Meses", border=1, ln=True)
         # Fila 3 – Precio
         pdf.set_x(tabla_x)
-        pdf.cell(33, 8, f"Precio:  {datos["Precio"]}", border=1, ln=True)
+        pdf.cell(33, 3, f"Precio:  {datos["Precio"]}", border=1, ln=True)
 
         # CUERPO DEL PDF
         # INICIO 
