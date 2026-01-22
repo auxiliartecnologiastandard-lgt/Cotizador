@@ -120,7 +120,7 @@ elif datos['Sede'] == 9:
 elif datos['Sede'] == 10:
     datos['Sede'] = "Cra 21 # 26A-20 \n Super Standard \n 316 833 6924 \n superstandard18.tul@standard.com.co \n Nit. 800.205.573-1"
 elif datos['Sede'] == 11:
-    datos['Sede'] = "Standard Armenia \n Cra 17 # 21-13 \n 320 766 9899 \n standardarmenia@standard.com.co \n Nit. 800.205.573-1"
+    datos['Sede'] = "Cra 17 # 21-13 \n Standard Armenia \n 320 766 9899 \n standardarmenia@standard.com.co \n Nit. 800.205.573-1"
 
 # Mostrar solo datos de nevera
 if datos["Origen"] == "Nevera":
@@ -723,4 +723,3 @@ if st.session_state["descargar_pdf"]:
     
     numero_contrato = incrementar_contador()
     st.switch_page("Lobby.py")
-    
