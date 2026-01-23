@@ -122,7 +122,7 @@ elif datos['Sede'] == 10:
 elif datos['Sede'] == 11:
     datos['Sede'] = "Cra 17 # 21-13 \n Standard Armenia \n 320 766 9899 \n standardarmenia@standard.com.co \n Nit. 800.205.573-1"
 
-def mc(pdf, txt, h=3, max_size=8, min_size=1):
+def mc(pdf, txt, h=3, max_size=8, min_size=0.001):
     limite_y = pdf.h - pdf.b_margin - 5
     y_start = pdf.get_y()
 
@@ -564,7 +564,7 @@ elif datos["Origen"] == "Computador":
         
         # Tabla
         pdf.set_xy(tabla_x, tabla_y)
-        pdf.set_font("Arial", size=8)
+        pdf.set_font("Arial", size=7)
         # Fila 1 – Fecha
         pdf.cell(33, 5.5, f"Fecha:  {fecha_actual}", border=1, ln=True)
         # Fila 2 – Tasa
@@ -577,7 +577,7 @@ elif datos["Origen"] == "Computador":
         # CUERPO DEL PDF
         # INICIO 
         pdf.ln(5)
-        pdf.set_font("Arial","B", size=5)
+        pdf.set_font("Arial","B", size=8)
 
         pdf.multi_cell(
             0,      # ancho automático
@@ -627,11 +627,11 @@ elif datos["Origen"] == "Computador":
         
         
         pdf.set_draw_color(0, 0, 0)
-        pdf.rect(x=185, y=139 + y_offset, w=30, h=5)
+        pdf.rect(x=185, y=135 + y_offset, w=30, h=5)
         pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
 
         
-        pdf.ln(13)
+        pdf.ln(7)
         pdf.set_font("Arial","", size=7)
         pdf.multi_cell(
             0,      # ancho automático
