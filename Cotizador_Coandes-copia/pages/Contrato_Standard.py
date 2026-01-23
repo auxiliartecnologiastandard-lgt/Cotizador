@@ -697,7 +697,7 @@ elif datos["Origen"] == "Computador":
     pdf.rect(
         x=pdf.l_margin,
         y=pdf.t_margin,
-        w=90,
+        w=85,
         h=alto_bloque
     )
     pdf.set_font("Arial", "B", 18)
@@ -707,8 +707,8 @@ elif datos["Origen"] == "Computador":
     pdf.multi_cell(0, 3, f"{datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}")
     pdf.set_y(5.2)
     pdf.cell(0, 5, f"{datos['Meses']} Meses", ln=True)
-    pdf.cell(0, 3, f"{datos['Nombre']} - CC {datos['Cedula']}", ln=True)
     pdf.cell(0, 3, f"{datos['Origen']}: {datos['Precio']}", ln=True)
+    pdf.cell(0, 3, f"{datos['Nombre']} - CC {datos['Cedula']}", ln=True)
     pdf.set_xy(140, 5.5)
     pdf.multi_cell(0, 6, "__________________________________ \n Firma Vendedor")
     
