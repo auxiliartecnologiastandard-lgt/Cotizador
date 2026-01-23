@@ -507,7 +507,7 @@ elif datos["Origen"] == "Computador":
         pdf.image(ruta_logo, x=10, y=23.5 + y_offset, w=40)
 
         # TITULO DEL PDF
-        pdf.set_y(23.5 + y_offset)
+        pdf.set_y(23 + y_offset)
         pdf.set_font("Arial", "B", 18)
         pdf.ln(3)  # baja el cursor para no chocar con el logo
         pdf.cell(0, 3.5, f"STANDARD {datos["Direcciones"]}", ln=True, align="C")
@@ -527,11 +527,11 @@ elif datos["Origen"] == "Computador":
 
         hora_actual = datetime.now(ZoneInfo("America/Bogota")).strftime("%I:%M %p")
 
-        pdf.set_xy(10,50 + y_offset)
+        pdf.set_xy(10,48 + y_offset)
         pdf.set_draw_color(0, 0, 0)
         pdf.rect(
             x=10,
-            y=49 + y_offset,
+            y=47 + y_offset,
             w=35,
             h=5)
         pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
@@ -640,11 +640,11 @@ elif datos["Origen"] == "Computador":
             align="L"   # L, C, R, J
             )
         
-        pdf.set_xy(50, 130 + y_offset)   # Ajusta posición
+        pdf.set_xy(50, 135 + y_offset)   # Ajusta posición
         pdf.cell(20, 21, "", border=1)
 
         pdf.set_font("Arial","", size=5)
-        pdf.set_xy(50, 140 + y_offset)
+        pdf.set_xy(50, 145 + y_offset)
         pdf.cell(20, 20, "Huella del vendedor", align="C")
 
 
