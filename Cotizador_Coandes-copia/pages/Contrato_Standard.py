@@ -122,7 +122,28 @@ elif datos['Sede'] == 10:
 elif datos['Sede'] == 11:
     datos['Sede'] = "Cra 17 # 21-13 \n Standard Armenia \n 320 766 9899 \n standardarmenia@standard.com.co \n Nit. 800.205.573-1"
 
+def mc(pdf, txt, h=3, max_size=8, min_size=0.001):
+    limite_y = pdf.h - pdf.b_margin - 5
+    y_start = pdf.get_y()
 
+    for size in [x / 2 for x in range(int(max_size*2), int(min_size*2)-1, -1)]:
+        pdf.set_font("Arial", "", size)
+
+        # Simulación sin imprimir
+        y_test = y_start
+        for line in pdf.multi_cell(0, h, txt, split_only=True):
+            y_test += h
+
+        if y_test <= limite_y:
+            pdf.set_font("Arial", "", size)
+            pdf.set_y(y_start)
+            pdf.multi_cell(0, h, txt)
+            return
+
+    # Último recurso
+    pdf.set_font("Arial", "", min_size)
+    pdf.set_y(y_start)
+    pdf.multi_cell(0, h, txt)
 
 
 
