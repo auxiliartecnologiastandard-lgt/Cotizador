@@ -499,7 +499,7 @@ elif datos["Origen"] == "Computador":
         x=pdf.l_margin,
         y=22 + y_offset,
         w=pdf.w - pdf.l_margin - pdf.r_margin,
-        h=149)
+        h=145)
 
         # LOGO DE LA EMPRESA
         ruta_base = os.path.dirname(__file__)
