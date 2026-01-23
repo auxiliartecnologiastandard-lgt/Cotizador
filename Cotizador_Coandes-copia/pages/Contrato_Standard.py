@@ -507,7 +507,7 @@ elif datos["Origen"] == "Computador":
         pdf.image(ruta_logo, x=10, y=23.5 + y_offset, w=40)
 
         # TITULO DEL PDF
-        pdf.set_y(20 + y_offset)
+        pdf.set_y(21 + y_offset)
         pdf.set_font("Arial", "B", 18)
         pdf.ln(3)  # baja el cursor para no chocar con el logo
         pdf.cell(0, 3.5, f"STANDARD {datos["Direcciones"]}", ln=True, align="C")
@@ -527,11 +527,11 @@ elif datos["Origen"] == "Computador":
 
         hora_actual = datetime.now(ZoneInfo("America/Bogota")).strftime("%I:%M %p")
 
-        pdf.set_xy(10,47 + y_offset)
+        pdf.set_xy(10,46 + y_offset)
         pdf.set_draw_color(0, 0, 0)
         pdf.rect(
             x=10,
-            y=46 + y_offset,
+            y=45 + y_offset,
             w=35,
             h=5)
         pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
@@ -543,11 +543,11 @@ elif datos["Origen"] == "Computador":
         qr.save("qr_temp.png")
 
         # Posición base del bloque (debajo del título)
-        y_bloque = 23
+        y_bloque = 20
 
         # Posición de la tabla (derecha)
         tabla_x = 175
-        tabla_y = 29 + y_offset
+        tabla_y = 27 + y_offset
 
         # QR a la izquierda de la tabla (NO de la hoja)
         pdf.image(
