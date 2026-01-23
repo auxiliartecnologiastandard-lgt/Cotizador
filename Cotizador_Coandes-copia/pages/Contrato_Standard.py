@@ -507,14 +507,14 @@ elif datos["Origen"] == "Computador":
         pdf.image(ruta_logo, x=10, y=23.5 + y_offset, w=40)
 
         # TITULO DEL PDF
-        pdf.set_y(21 + y_offset)
+        pdf.set_y(20 + y_offset)
         pdf.set_font("Arial", "B", 10)
         pdf.ln(3)  # baja el cursor para no chocar con el logo
         pdf.cell(0, 3, f"STANDARD {datos["Direcciones"]}", ln=True, align="C")
         # DIRRECIONES
         pdf.set_font("Arial", "", 7)
-        pdf.ln(3)
-        pdf.multi_cell(0, 3, f"{datos['Sede']}", align="C")
+        pdf.ln(2.5)
+        pdf.multi_cell(0, 2.5, f"{datos['Sede']}", align="C")
 
         # CONSEGUIR FECHA ACTUAL
         fecha_actual = date.today()
