@@ -577,7 +577,7 @@ elif datos["Origen"] == "Computador":
         # CUERPO DEL PDF
         # INICIO 
         pdf.ln(5)
-        pdf.set_font("Arial","B", size=7)
+        pdf.set_font("Arial","B", size=5)
 
         pdf.multi_cell(
             0,      # ancho automático
@@ -589,7 +589,7 @@ elif datos["Origen"] == "Computador":
         
         # INICIO TEXTO
         pdf.ln(1)
-        pdf.set_font("Arial", size=8)
+        pdf.set_font("Arial", size=5)
         
         mc(pdf,
             f"Entre los suscritos {datos['Nombre']} identificado con C.C. {datos['Cedula']}, mayor de edad quien obra en nombre propio y se denomina para efectos del presente contrato EL VENDEDOR de una parte, y por otra parte CASA COMERCIAL DE LOS ANDES S.A.S - Nit. 800.205.573-1, quien para los efectos del presente contrato se denomina EL COMPRADOR. Manifestamos que hemos celebrado un contrato de compraventa entre el siguiente bien que a continuación se identifica.\n\nObjeto: {datos['Origen']}\nMemoria RAM: {datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}\n\nEl valor de la compraventa es la suma de {datos['Precio']} M/cte. EL VENDEDOR transfiere AL COMPRADOR, a título de compraventa el derecho de dominio y posesión que tiene y ejerce sobre el anterior articulo y declara que los bienes que transfiere, los adquirió lícitamente, no fue su importador, son de su exclusiva propiedad, los posee de manera regular, publica y pacífica, están libres de gravamen, limitación al dominio, pleitos pendientes y embargos, con la obligación de salir al saneamiento en casos de ley."
@@ -597,7 +597,7 @@ elif datos["Origen"] == "Computador":
         
         # CLAUSULA
         pdf.ln(1)
-        pdf.set_font("Arial","B", size=8)
+        pdf.set_font("Arial","B", size=5)
 
         pdf.multi_cell(
             0,      # ancho automático
@@ -608,14 +608,14 @@ elif datos["Origen"] == "Computador":
 
         # CLAUSULA TEXTO
         pdf.ln(1)
-        pdf.set_font("Arial", size=8)
+        pdf.set_font("Arial", size=5)
 
         mc(pdf,
             f"PRIMERA: Los contratantes de conformidad con el artículo 1939 del Código Civil Colombiano, pactan que EL VENDEDOR se reserva la facultad de recobrar los artículos vendidos por medio de este contrato, pagando AL COMPRADOR como precio de retroventa la suma de: {datos['Dinero']} SEGUNDA: El derecho que nace del pacto de retroventa del presente contrato, no podrácederse a ningún título. En caso de pérdida de este contrato EL VENDEDOR se obliga a dar noticia inmediata AL COMPRADOR y este, solo exhibirá el articulo descrito a la terminación del presente contrato. TERCERA: EL VENDEDOR y EL COMPRADOR pactan que la facultad de retroventa del presente contrato la podrá ejercer EL VENDEDOR dentro del término de -- {datos['Meses']} Meses -- prorrogables CUARTA: Autorizo a COANDES S.A.S, a consultar y verificar la información en las listas restrictivas con el fin de prevenir situaciones relacionadas con el lavado de activos y financiación del terrorismo. QUINTA: El VENDEDOR autoriza para que se recopile, almacene, use y suprima los datos personales aquí suministrados. Ley 1581 de 2012 y sus decretos reglamentarios. Podrá revocar esta autorización dirigiendo su petición al correo electrónico servicioalcliente@standard.com.co SEXTA: Las controversias relativas al presente contrato se resolverán por un tribunal de arbitramento de conformidad con las disposiciones que rigen la materia, nombrado por la Cámara de Comercio de esta ciudad. SEPTIMA: Tanto EL VENDEDOR como EL COMPRADOR hemos leído, comprendido y aceptado el texto de este contrato. OCTAVA: Así mismo acepto desde ahora la venta o cesión de los derechos que adquiere Casa comercial de los andes a otra empresa. En constancia de lo anterior lo firman las partes en la fecha {fecha_actual}, {hora_actual}."
             )
 
         pdf.ln(3)
-        pdf.set_font("Arial","B", size=8)
+        pdf.set_font("Arial","B", size=5)
 
         # OTROS
         pdf.multi_cell(
@@ -632,7 +632,7 @@ elif datos["Origen"] == "Computador":
 
         
         pdf.ln(13)
-        pdf.set_font("Arial","", size=9)
+        pdf.set_font("Arial","", size=5)
         pdf.multi_cell(
             0,      # ancho automático
             3,      # alto de línea
@@ -643,14 +643,14 @@ elif datos["Origen"] == "Computador":
         pdf.set_xy(60, 145 + y_offset)   # Ajusta posición
         pdf.cell(20, 25, "", border=1)
 
-        pdf.set_font("Arial","", size=6)
+        pdf.set_font("Arial","", size=5)
         pdf.set_xy(60, 158 + y_offset)
         pdf.cell(20, 20, "Huella del vendedor", align="C")
 
 
         pdf.ln(3)
         pdf.set_xy(90, 143 + y_offset)
-        pdf.set_font("Arial","B", size=8)
+        pdf.set_font("Arial","B", size=5)
 
         # OTROS
         pdf.multi_cell(
@@ -662,16 +662,16 @@ elif datos["Origen"] == "Computador":
         
         pdf.ln(14)
         pdf.set_x(90)
-        pdf.set_font("Arial","", size=9)
+        pdf.set_font("Arial","", size=5)
         pdf.multi_cell(
             0,      # ancho automático
             3.5,      # alto de línea
             f"_____________________________ \n EL COMPRADOR",   # L, C, R, J
             )
         
-        pdf.ln(17)
+        pdf.ln(10)
         pdf.set_xy(160, 158 + y_offset)
-        pdf.set_font("Arial","", size=9)
+        pdf.set_font("Arial","", size=5)
         pdf.multi_cell(
             0,      # ancho automático
             3.5,      # alto de línea
@@ -706,9 +706,9 @@ elif datos["Origen"] == "Computador":
     pdf.set_xy(35, 1)
     pdf.multi_cell(0, 3, f"{datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}")
     pdf.set_y(5.2)
-    pdf.cell(0, 5, f"{datos['Meses']} Meses", ln=True)
-    pdf.cell(0, 3, f"{datos['Origen']}: {datos['Precio']}", ln=True)
+    pdf.cell(0, 9, f"{datos['Meses']} Meses", ln=True)
     pdf.cell(0, 3, f"{datos['Nombre']} - CC {datos['Cedula']}", ln=True)
+    pdf.cell(0, 3, f"{datos['Origen']}: {datos['Precio']}", ln=True)
     pdf.set_xy(140, 5.5)
     pdf.multi_cell(0, 6, "__________________________________ \n Firma Vendedor")
     
