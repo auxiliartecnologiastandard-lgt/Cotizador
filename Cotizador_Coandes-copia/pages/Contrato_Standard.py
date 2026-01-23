@@ -507,7 +507,7 @@ elif datos["Origen"] == "Computador":
         pdf.image(ruta_logo, x=10, y=23.5 + y_offset, w=40)
 
         # TITULO DEL PDF
-        pdf.set_y(23 + y_offset)
+        pdf.set_y(20 + y_offset)
         pdf.set_font("Arial", "B", 18)
         pdf.ln(3)  # baja el cursor para no chocar con el logo
         pdf.cell(0, 3.5, f"STANDARD {datos["Direcciones"]}", ln=True, align="C")
@@ -559,7 +559,7 @@ elif datos["Origen"] == "Computador":
 
         pdf.set_xy(175, 22 + y_offset)
         pdf.set_font("Arial", "B", size=8)
-        pdf.multi_cell(0, 2, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
+        pdf.multi_cell(0, 2.5, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
 
         
         # Tabla
