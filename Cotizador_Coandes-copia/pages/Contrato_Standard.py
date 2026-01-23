@@ -508,13 +508,13 @@ elif datos["Origen"] == "Computador":
 
         # TITULO DEL PDF
         pdf.set_y(21 + y_offset)
-        pdf.set_font("Arial", "B", 18)
+        pdf.set_font("Arial", "B", 10)
         pdf.ln(3)  # baja el cursor para no chocar con el logo
-        pdf.cell(0, 3.5, f"STANDARD {datos["Direcciones"]}", ln=True, align="C")
+        pdf.cell(0, 3, f"STANDARD {datos["Direcciones"]}", ln=True, align="C")
         # DIRRECIONES
-        pdf.set_font("Arial", "", 8)
+        pdf.set_font("Arial", "", 7)
         pdf.ln(3)
-        pdf.multi_cell(0, 3.5, f"{datos['Sede']}", align="C")
+        pdf.multi_cell(0, 3, f"{datos['Sede']}", align="C")
 
         # CONSEGUIR FECHA ACTUAL
         fecha_actual = date.today()
