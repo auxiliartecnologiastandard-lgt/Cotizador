@@ -627,7 +627,7 @@ elif datos["Origen"] == "Computador":
         
         
         pdf.set_draw_color(0, 0, 0)
-        pdf.rect(x=185, y=131 + y_offset, w=30, h=4)
+        pdf.rect(x=185, y=131.5 + y_offset, w=30, h=4)
         pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
 
         
@@ -661,7 +661,7 @@ elif datos["Origen"] == "Computador":
             )
         
         pdf.ln(14)
-        pdf.set_xy(90, 141 + y_offset)
+        pdf.set_xy(90, 141.5 + y_offset)
         pdf.set_font("Arial","", size=7)
         pdf.multi_cell(
             0,      # ancho automático
@@ -670,7 +670,7 @@ elif datos["Origen"] == "Computador":
             )
         
         pdf.ln(10)
-        pdf.set_xy(160, 141 + y_offset)
+        pdf.set_xy(160, 141.5 + y_offset)
         pdf.set_font("Arial","", size=7)
         pdf.multi_cell(
             0,      # ancho automático
