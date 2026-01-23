@@ -527,11 +527,11 @@ elif datos["Origen"] == "Computador":
 
         hora_actual = datetime.now(ZoneInfo("America/Bogota")).strftime("%I:%M %p")
 
-        pdf.set_xy(10,48 + y_offset)
+        pdf.set_xy(10,47 + y_offset)
         pdf.set_draw_color(0, 0, 0)
         pdf.rect(
             x=10,
-            y=47 + y_offset,
+            y=46 + y_offset,
             w=35,
             h=5)
         pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
@@ -559,7 +559,7 @@ elif datos["Origen"] == "Computador":
 
         pdf.set_xy(175, 22 + y_offset)
         pdf.set_font("Arial", "B", size=8)
-        pdf.multi_cell(0, 4, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
+        pdf.multi_cell(0, 2, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
 
         
         # Tabla
