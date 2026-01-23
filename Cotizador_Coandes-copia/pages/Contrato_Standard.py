@@ -499,7 +499,7 @@ elif datos["Origen"] == "Computador":
         x=pdf.l_margin,
         y=22 + y_offset,
         w=pdf.w - pdf.l_margin - pdf.r_margin,
-        h=130)
+        h=133)
 
         # LOGO DE LA EMPRESA
         ruta_base = os.path.dirname(__file__)
@@ -714,7 +714,7 @@ elif datos["Origen"] == "Computador":
     
 
 dibujar_contrato(pdf, datos, y_offset=0)
-dibujar_contrato(pdf, datos, y_offset=150)
+dibujar_contrato(pdf, datos, y_offset=135)
 
 pdf_bytes = pdf.output(dest="S").encode("latin-1")
 pdf_buffer = io.BytesIO(pdf_bytes)
