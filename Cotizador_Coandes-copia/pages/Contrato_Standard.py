@@ -532,7 +532,7 @@ elif datos["Origen"] == "Computador":
         pdf.rect(
             x=1,
             y=45 + y_offset,
-            w=34,
+            w=32.5,
             h=5)
         pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}", align="L")
         
@@ -640,17 +640,17 @@ elif datos["Origen"] == "Computador":
             align="L"   # L, C, R, J
             )
         
-        pdf.set_xy(50, 132 + y_offset)   # Ajusta posición
+        pdf.set_xy(50, 131 + y_offset)   # Ajusta posición
         pdf.cell(20, 21, "", border=1)
 
         pdf.set_font("Arial","", size=5)
-        pdf.set_xy(50, 142 + y_offset)
+        pdf.set_xy(50, 141 + y_offset)
         pdf.cell(20, 20, "Huella del vendedor", align="C")
 
 
         pdf.ln(3)
-        pdf.set_xy(90, 143 + y_offset)
-        pdf.set_font("Arial","B", size=7)
+        pdf.set_xy(90, 130.5 + y_offset)
+        pdf.set_font("Arial","B", size=8)
 
         # OTROS
         pdf.multi_cell(
