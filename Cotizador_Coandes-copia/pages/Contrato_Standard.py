@@ -532,9 +532,9 @@ elif datos["Origen"] == "Computador":
         pdf.rect(
             x=1,
             y=45 + y_offset,
-            w=35,
+            w=34,
             h=5)
-        pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}", align="C")
+        pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}", align="L")
         
 
         # QR de las redes sociales de la empresa
