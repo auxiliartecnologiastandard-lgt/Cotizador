@@ -597,7 +597,7 @@ elif datos["Origen"] == "Computador":
         
         # CLAUSULA
         pdf.ln(1)
-        pdf.set_font("Arial","B", size=5)
+        pdf.set_font("Arial","B", size=7)
 
         pdf.multi_cell(
             0,      # ancho automático
@@ -615,7 +615,7 @@ elif datos["Origen"] == "Computador":
             )
 
         pdf.ln(3)
-        pdf.set_font("Arial","B", size=5)
+        pdf.set_font("Arial","B", size=8)
 
         # OTROS
         pdf.multi_cell(
@@ -627,12 +627,12 @@ elif datos["Origen"] == "Computador":
         
         
         pdf.set_draw_color(0, 0, 0)
-        pdf.rect(x=185, y=142 + y_offset, w=30, h=5)
+        pdf.rect(x=185, y=139 + y_offset, w=30, h=5)
         pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
 
         
         pdf.ln(13)
-        pdf.set_font("Arial","", size=5)
+        pdf.set_font("Arial","", size=7)
         pdf.multi_cell(
             0,      # ancho automático
             3,      # alto de línea
@@ -640,11 +640,11 @@ elif datos["Origen"] == "Computador":
             align="L"   # L, C, R, J
             )
         
-        pdf.set_xy(60, 145 + y_offset)   # Ajusta posición
-        pdf.cell(20, 25, "", border=1)
+        pdf.set_xy(50, 140 + y_offset)   # Ajusta posición
+        pdf.cell(20, 21, "", border=1)
 
         pdf.set_font("Arial","", size=5)
-        pdf.set_xy(60, 158 + y_offset)
+        pdf.set_xy(50, 150 + y_offset)
         pdf.cell(20, 20, "Huella del vendedor", align="C")
 
 
