@@ -527,14 +527,14 @@ elif datos["Origen"] == "Computador":
 
         hora_actual = datetime.now(ZoneInfo("America/Bogota")).strftime("%I:%M %p")
 
-        pdf.set_xy(10,46 + y_offset)
+        pdf.set_xy(1,46 + y_offset)
         pdf.set_draw_color(0, 0, 0)
         pdf.rect(
-            x=10,
+            x=1,
             y=45 + y_offset,
             w=35,
             h=5)
-        pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
+        pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}", align="C")
         
 
         # QR de las redes sociales de la empresa
@@ -627,7 +627,7 @@ elif datos["Origen"] == "Computador":
         
         
         pdf.set_draw_color(0, 0, 0)
-        pdf.rect(x=185, y=135 + y_offset, w=30, h=5)
+        pdf.rect(x=185, y=130 + y_offset, w=30, h=5)
         pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
 
         
@@ -640,17 +640,17 @@ elif datos["Origen"] == "Computador":
             align="L"   # L, C, R, J
             )
         
-        pdf.set_xy(50, 135 + y_offset)   # Ajusta posición
+        pdf.set_xy(50, 132 + y_offset)   # Ajusta posición
         pdf.cell(20, 21, "", border=1)
 
         pdf.set_font("Arial","", size=5)
-        pdf.set_xy(50, 145 + y_offset)
+        pdf.set_xy(50, 142 + y_offset)
         pdf.cell(20, 20, "Huella del vendedor", align="C")
 
 
         pdf.ln(3)
         pdf.set_xy(90, 143 + y_offset)
-        pdf.set_font("Arial","B", size=5)
+        pdf.set_font("Arial","B", size=7)
 
         # OTROS
         pdf.multi_cell(
@@ -662,7 +662,7 @@ elif datos["Origen"] == "Computador":
         
         pdf.ln(14)
         pdf.set_x(90)
-        pdf.set_font("Arial","", size=5)
+        pdf.set_font("Arial","", size=7)
         pdf.multi_cell(
             0,      # ancho automático
             3.5,      # alto de línea
@@ -671,7 +671,7 @@ elif datos["Origen"] == "Computador":
         
         pdf.ln(10)
         pdf.set_xy(160, 158 + y_offset)
-        pdf.set_font("Arial","", size=5)
+        pdf.set_font("Arial","", size=7)
         pdf.multi_cell(
             0,      # ancho automático
             3.5,      # alto de línea
