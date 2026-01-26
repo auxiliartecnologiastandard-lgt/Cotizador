@@ -242,14 +242,14 @@ if datos["Origen"] == "Nevera":
 
         hora_actual = datetime.now(ZoneInfo("America/Bogota")).strftime("%I:%M %p")
 
-        pdf.set_xy(10,50 + y_offset)
+        pdf.set_xy(1,46 + y_offset)
         pdf.set_draw_color(0, 0, 0)
         pdf.rect(
-            x=10,
-            y=49 + y_offset,
-            w=35,
+            x=1,
+            y=45 + y_offset,
+            w=33,
             h=5)
-        pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
+        pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}", align="L")
 
 
         # QR de las redes sociales de la empresa
@@ -340,7 +340,7 @@ if datos["Origen"] == "Nevera":
             )
         
         pdf.set_draw_color(0, 0, 0)
-        pdf.rect(x=185, y=132.5 + y_offset, w=30, h=5)
+        pdf.rect(x=185, y=132 + y_offset, w=30, h=5)
         pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
 
         pdf.ln(7)
