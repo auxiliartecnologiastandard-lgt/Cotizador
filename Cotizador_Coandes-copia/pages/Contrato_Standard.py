@@ -360,7 +360,7 @@ if datos["Origen"] == "Nevera":
 
 
         pdf.ln(3)
-        pdf.set_xy(90, 140 + y_offset)
+        pdf.set_xy(90, 131 + y_offset)
         pdf.set_font("Arial","B", size=8)
 
         # OTROS
@@ -372,22 +372,22 @@ if datos["Origen"] == "Nevera":
             )
         
         pdf.ln(14)
-        pdf.set_x(90)
-        pdf.set_font("Arial","", size=9)
+        pdf.set_xy(90, 141.5 + y_offset)
+        pdf.set_font("Arial","", size=7)
         pdf.multi_cell(
             0,      # ancho automático
-            3.5,      # alto de línea
+            3,      # alto de línea
             f"_____________________________ \n EL COMPRADOR",   # L, C, R, J
             )
         
-        pdf.ln(17)
-        pdf.set_xy(160, 155 + y_offset)
-        pdf.set_font("Arial","", size=9)
+        pdf.ln(10)
+        pdf.set_xy(160, 141.5 + y_offset)
+        pdf.set_font("Arial","", size=7)
         pdf.multi_cell(
             0,      # ancho automático
             3.5,      # alto de línea
             f"_____________________________ \n VISTO BUENO",   # L, C, R, J
-            )
+                )
 
 
     # CREACIÓN DEL PDF
