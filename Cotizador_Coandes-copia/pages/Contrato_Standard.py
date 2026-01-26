@@ -364,7 +364,7 @@ if datos["Origen"] == "Nevera":
 
 
             pdf.ln(3)
-            pdf.set_xy(90, 33)
+            pdf.set_xy(90, 1)
             pdf.set_font("Arial","B", size=8)
 
             # OTROS
