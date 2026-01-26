@@ -359,7 +359,7 @@ if datos["Origen"] == "Nevera":
             pdf.cell(20, 18, "", border=1)
 
             pdf.ln(3)
-            pdf.set_xy(90, 1)
+            pdf.set_xy(90, 128.5 + y_offset)
             pdf.set_font("Arial","B", size=8)
 
             # OTROS
@@ -370,8 +370,7 @@ if datos["Origen"] == "Nevera":
                 align="L"   # L, C, R, J
                 )
             
-            pdf.ln(14)
-            pdf.set_xy(90, 141.5 + y_offset)
+            pdf.ln(3)
             pdf.set_font("Arial","", size=7)
             pdf.multi_cell(
                 0,      # ancho automático
