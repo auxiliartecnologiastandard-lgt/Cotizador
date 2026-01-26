@@ -210,11 +210,12 @@ if datos["Origen"] == "Nevera":
     def dibujar_contrato(pdf, datos, y_offset=0):
 
         # Margen contrato
+        # Margen contrato
         pdf.rect(
         x=pdf.l_margin,
         y=22 + y_offset,
         w=pdf.w - pdf.l_margin - pdf.r_margin,
-        h=145)
+        h=133)
 
         # LOGO DE LA EMPRESA
         ruta_base = os.path.dirname(__file__)
