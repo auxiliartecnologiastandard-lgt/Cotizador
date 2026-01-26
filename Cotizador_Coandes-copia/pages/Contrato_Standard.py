@@ -376,16 +376,16 @@ if datos["Origen"] == "Nevera":
             pdf.multi_cell(
                 0,      # ancho automático
                 3,      # alto de línea
-                f"_____________________________ \n EL COMPRADOR",   # L, C, R, J
+                f"_____________________________\nEL COMPRADOR",   # L, C, R, J
                 )
             
             pdf.ln(10)
-            pdf.set_xy(160, 138 + y_offset)
+            pdf.set_xy(140, 137 + y_offset)
             pdf.set_font("Arial","", size=7)
             pdf.multi_cell(
                 0,      # ancho automático
                 3.5,      # alto de línea
-                f"_____________________________ \n VISTO BUENO",   # L, C, R, J
+                f"_____________________________\nVISTO BUENO",   # L, C, R, J
                     )
         else:
 
