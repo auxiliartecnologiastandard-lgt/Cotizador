@@ -222,14 +222,14 @@ if datos["Origen"] == "Nevera":
         pdf.image(ruta_logo, x=10, y=23.5 + y_offset, w=40)
 
         # TITULO DEL PDF
-        pdf.set_y(23.5 + y_offset)
-        pdf.set_font("Arial", "B", 18)
+        pdf.set_y(20 + y_offset)
+        pdf.set_font("Arial", "B", 10)
         pdf.ln(3)  # baja el cursor para no chocar con el logo
-        pdf.cell(0, 3.5, f"STANDARD {datos["Direcciones"]}", ln=True, align="C")
+        pdf.cell(0, 3, f"STANDARD {datos["Direcciones"]}", ln=True, align="C")
         # DIRRECIONES
-        pdf.set_font("Arial", "", 8)
-        pdf.ln(3)
-        pdf.multi_cell(0, 3.5, f"{datos['Sede']}", align="C")
+        pdf.set_font("Arial", "", 7)
+        pdf.ln(2.5)
+        pdf.multi_cell(0, 2.5, f"{datos['Sede']}", align="C")
 
         # CONSEGUIR FECHA ACTUAL
         fecha_actual = date.today()
@@ -277,15 +277,15 @@ if datos["Origen"] == "Nevera":
 
         # Tabla
         pdf.set_xy(tabla_x, tabla_y)
-        pdf.set_font("Arial", size=10)
+        pdf.set_font("Arial", size=7)
         # Fila 1 – Fecha
-        pdf.cell(33, 8, f"Fecha:  {fecha_actual}", border=1, ln=True)
+        pdf.cell(33, 5.5, f"Fecha:  {fecha_actual}", border=1, ln=True)
         # Fila 2 – Tasa
         pdf.set_x(tabla_x)
-        pdf.cell(33, 8, f"Plazo:  {datos["Meses"]} Meses", border=1, ln=True)
+        pdf.cell(33, 5.5, f"Plazo:  {datos["Meses"]} Meses", border=1, ln=True)
         # Fila 3 – Precio
         pdf.set_x(tabla_x)
-        pdf.cell(33, 8, f"Precio:  {datos["Precio"]}", border=1, ln=True)
+        pdf.cell(33, 5.5, f"Precio:  {datos["Precio"]}", border=1, ln=True)
 
         # CUERPO DEL PDF
         # INICIO 
@@ -342,8 +342,8 @@ if datos["Origen"] == "Nevera":
         pdf.rect(x=185, y=139 + y_offset, w=30, h=5)
         pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
 
-        pdf.ln(13)
-        pdf.set_font("Arial","", size=9)
+        pdf.ln(7)
+        pdf.set_font("Arial","", size=7)
         pdf.multi_cell(
             0,      # ancho automático
             3,      # alto de línea
