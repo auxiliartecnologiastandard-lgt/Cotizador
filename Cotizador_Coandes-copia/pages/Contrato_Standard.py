@@ -355,7 +355,7 @@ if datos["Origen"] == "Nevera":
                 align="L"   # L, C, R, J
                 )
 
-            pdf.set_xy(50, 126.2 + y_offset)   # Ajusta posición
+            pdf.set_xy(50, 126.3 + y_offset)   # Ajusta posición
             pdf.cell(20, 18, "", border=1)
 
             pdf.set_font("Arial","", size=5)
