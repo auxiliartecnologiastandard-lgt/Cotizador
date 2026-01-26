@@ -351,11 +351,11 @@ if datos["Origen"] == "Nevera":
             align="L"   # L, C, R, J
             )
         
-        pdf.set_xy(60, 140 + y_offset)   # Ajusta posición
-        pdf.cell(20, 25, "", border=1)
+        pdf.set_xy(50, 131 + y_offset)   # Ajusta posición
+        pdf.cell(20, 21, "", border=1)
 
-        pdf.set_font("Arial","", size=6)
-        pdf.set_xy(60, 153 + y_offset)
+        pdf.set_font("Arial","", size=5)
+        pdf.set_xy(50, 141 + y_offset)
         pdf.cell(20, 20, "Huella del vendedor", align="C")
 
 
