@@ -258,22 +258,23 @@ if datos["Origen"] == "Nevera":
         qr.save("qr_temp.png")
 
         # Posición base del bloque (debajo del título)
-        y_bloque = 30 + y_offset
+        y_bloque = 20
 
         # Posición de la tabla (derecha)
         tabla_x = 175
-        tabla_y = 30 + y_offset
+        tabla_y = 27 + y_offset
 
         # QR a la izquierda de la tabla (NO de la hoja)
         pdf.image(
             "qr_temp.png",
             x=tabla_x - 17,
-            y=y_bloque + 8,
+            y=y_bloque + 8 + y_offset,
             w=17)
+        
 
         pdf.set_xy(175, 22 + y_offset)
-        pdf.set_font("Arial", "B", size=10)
-        pdf.multi_cell(0, 4, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
+        pdf.set_font("Arial", "B", size=8)
+        pdf.multi_cell(0, 2.5, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
 
         # Tabla
         pdf.set_xy(tabla_x, tabla_y)
@@ -339,7 +340,7 @@ if datos["Origen"] == "Nevera":
             )
         
         pdf.set_draw_color(0, 0, 0)
-        pdf.rect(x=185, y=133 + y_offset, w=30, h=5)
+        pdf.rect(x=185, y=132.5 + y_offset, w=30, h=5)
         pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
 
         pdf.ln(7)
