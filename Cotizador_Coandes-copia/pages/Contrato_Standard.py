@@ -392,7 +392,7 @@ if datos["Origen"] == "Nevera":
                 )
 
         pdf.set_font("Arial", "", 10)
-        pdf.set_xy(10, 150 + y_offset)
+        pdf.set_xy(10, 100 + y_offset)
         pdf.cell(0, 5, "Este es un texto de prueba en una sola línea.")
 
 
