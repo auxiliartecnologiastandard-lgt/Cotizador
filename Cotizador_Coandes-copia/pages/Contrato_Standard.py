@@ -341,7 +341,7 @@ if datos["Origen"] == "Nevera":
             )
         
         pdf.set_draw_color(0, 0, 0)
-        pdf.rect(x=185, y=132 + y_offset, w=30, h=5)
+        pdf.rect(x=185, y=131.5 + y_offset, w=30, h=5)
         pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
 
         pdf.ln(7)
@@ -674,15 +674,6 @@ elif datos["Origen"] == "Computador":
         
         pdf.ln(10)
         pdf.set_xy(160, 141.5 + y_offset)
-        pdf.set_font("Arial","", size=7)
-        pdf.multi_cell(
-            0,      # ancho automático
-            3.5,      # alto de línea
-            f"_____________________________ \n VISTO BUENO",   # L, C, R, J
-                )
-
-        pdf.ln(10)
-        pdf.set_xy(160, 200 + y_offset)
         pdf.set_font("Arial","", size=7)
         pdf.multi_cell(
             0,      # ancho automático
