@@ -341,7 +341,7 @@ if datos["Origen"] == "Nevera":
             )
         
         pdf.set_draw_color(0, 0, 0)
-        pdf.rect(x=185, y=131 + y_offset, w=30, h=5)
+        pdf.rect(x=185, y=130 + y_offset, w=30, h=5)
         pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
 
         pdf.ln(7)
@@ -349,7 +349,7 @@ if datos["Origen"] == "Nevera":
         pdf.multi_cell(
             0,      # ancho automático
             3,      # alto de línea
-            f"_____________________________ \n {datos['Nombre']} \n C.C: {datos['Cedula']}",
+            f"_____________________________\n{datos['Nombre']}\nC.C: {datos['Cedula']}",
             align="L"   # L, C, R, J
             )
         
@@ -390,6 +390,10 @@ if datos["Origen"] == "Nevera":
             3.5,      # alto de línea
             f"_____________________________ \n VISTO BUENO",   # L, C, R, J
                 )
+
+        pdf.set_font("Arial", "", 10)
+        pdf.set_xy(10, 150 + y_offset)
+        pdf.cell(0, 5, "Este es un texto de prueba en una sola línea.")
 
 
     # CREACIÓN DEL PDF
