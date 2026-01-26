@@ -391,10 +391,6 @@ if datos["Origen"] == "Nevera":
             f"_____________________________ \n VISTO BUENO",   # L, C, R, J
                 )
 
-        pdf.set_font("Arial", "", 10)
-        pdf.set_xy(10, 200)
-        pdf.cell(0, 5, "Este es un texto de prueba en una sola línea.")
-
 
     # CREACIÓN DEL PDF
     pdf = FPDF(orientation="P",  # P = vertical, L = horizontal
@@ -506,7 +502,7 @@ elif datos["Origen"] == "Computador":
         x=pdf.l_margin,
         y=22 + y_offset,
         w=pdf.w - pdf.l_margin - pdf.r_margin,
-        h=133)
+        h=132)
 
         # LOGO DE LA EMPRESA
         ruta_base = os.path.dirname(__file__)
