@@ -354,7 +354,10 @@ if datos["Origen"] == "Nevera":
                 f"_____________________________\n{datos['Nombre']}\nC.C: {datos['Cedula']}",
                 align="L"   # L, C, R, J
                 )
-            
+
+            pdf.set_xy(50, 126.4 + y_offset)   # Ajusta posición
+            pdf.cell(20, 18, "", border=1)
+
             pdf.ln(3)
             pdf.set_xy(90, 1)
             pdf.set_font("Arial","B", size=8)
