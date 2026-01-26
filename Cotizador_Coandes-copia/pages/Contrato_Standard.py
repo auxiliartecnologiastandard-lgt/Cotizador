@@ -346,7 +346,7 @@ if datos["Origen"] == "Nevera":
 
         if y_offset >= 130:
 
-            pdf.ln(5)
+            pdf.ln(4)
             pdf.set_font("Arial","", size=7)
             pdf.multi_cell(
                 0,      # ancho automático
