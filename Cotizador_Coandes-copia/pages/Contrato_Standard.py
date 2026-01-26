@@ -681,6 +681,15 @@ elif datos["Origen"] == "Computador":
             f"_____________________________ \n VISTO BUENO",   # L, C, R, J
                 )
 
+        pdf.ln(10)
+        pdf.set_xy(160, 200 + y_offset)
+        pdf.set_font("Arial","", size=7)
+        pdf.multi_cell(
+            0,      # ancho automático
+            3.5,      # alto de línea
+            f"_____________________________ \n VISTO BUENO",   # L, C, R, J
+                )
+
 
     # CREACIÓN DEL PDF
     pdf = FPDF(orientation="P",  # P = vertical, L = horizontal
