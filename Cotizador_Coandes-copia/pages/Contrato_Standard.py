@@ -212,17 +212,17 @@ if datos["Origen"] == "Nevera":
         # Margen contrato
         pdf.rect(
         x=pdf.l_margin,
-        y=22,
+        y=22 + y_offset,
         w=pdf.w - pdf.l_margin - pdf.r_margin,
         h=145)
 
         # LOGO DE LA EMPRESA
         ruta_base = os.path.dirname(__file__)
         ruta_logo = os.path.join(ruta_base, "Standard_logo.png")
-        pdf.image(ruta_logo, x=10, y=23.5, w=40)
+        pdf.image(ruta_logo, x=10, y=23.5 + y_offset, w=40)
 
         # TITULO DEL PDF
-        pdf.set_y(23.5)
+        pdf.set_y(23.5 + y_offset)
         pdf.set_font("Arial", "B", 18)
         pdf.ln(3)  # baja el cursor para no chocar con el logo
         pdf.cell(0, 3.5, f"STANDARD {datos["Direcciones"]}", ln=True, align="C")
@@ -242,11 +242,11 @@ if datos["Origen"] == "Nevera":
 
         hora_actual = datetime.now(ZoneInfo("America/Bogota")).strftime("%I:%M %p")
 
-        pdf.set_xy(10,50)
+        pdf.set_xy(10,50 + y_offset)
         pdf.set_draw_color(0, 0, 0)
         pdf.rect(
             x=10,
-            y=49,
+            y=49 + y_offset,
             w=35,
             h=5)
         pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}")
@@ -258,11 +258,11 @@ if datos["Origen"] == "Nevera":
         qr.save("qr_temp.png")
 
         # Posición base del bloque (debajo del título)
-        y_bloque = 30
+        y_bloque = 30 + y_offset
 
         # Posición de la tabla (derecha)
         tabla_x = 175
-        tabla_y = 30
+        tabla_y = 30 + y_offset
 
         # QR a la izquierda de la tabla (NO de la hoja)
         pdf.image(
@@ -271,7 +271,7 @@ if datos["Origen"] == "Nevera":
             y=y_bloque + 8,
             w=17)
 
-        pdf.set_xy(175, 22)
+        pdf.set_xy(175, 22 + y_offset)
         pdf.set_font("Arial", "B", size=10)
         pdf.multi_cell(0, 4, f"Contrato No.\n{datos["IdentificadorSede"]}-{numero_contrato}", align="C")
 
@@ -339,7 +339,7 @@ if datos["Origen"] == "Nevera":
             )
         
         pdf.set_draw_color(0, 0, 0)
-        pdf.rect(x=185, y=139, w=30, h=5)
+        pdf.rect(x=185, y=139 + y_offset, w=30, h=5)
         pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
 
         pdf.ln(13)
@@ -351,16 +351,16 @@ if datos["Origen"] == "Nevera":
             align="L"   # L, C, R, J
             )
         
-        pdf.set_xy(60, 140)   # Ajusta posición
+        pdf.set_xy(60, 140 + y_offset)   # Ajusta posición
         pdf.cell(20, 25, "", border=1)
 
         pdf.set_font("Arial","", size=6)
-        pdf.set_xy(60, 153)
+        pdf.set_xy(60, 153 + y_offset)
         pdf.cell(20, 20, "Huella del vendedor", align="C")
 
 
         pdf.ln(3)
-        pdf.set_xy(90, 140)
+        pdf.set_xy(90, 140 + y_offset)
         pdf.set_font("Arial","B", size=8)
 
         # OTROS
@@ -381,7 +381,7 @@ if datos["Origen"] == "Nevera":
             )
         
         pdf.ln(17)
-        pdf.set_xy(160, 155)
+        pdf.set_xy(160, 155 + y_offset)
         pdf.set_font("Arial","", size=9)
         pdf.multi_cell(
             0,      # ancho automático
