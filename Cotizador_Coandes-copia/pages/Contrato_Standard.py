@@ -210,7 +210,6 @@ if datos["Origen"] == "Nevera":
     def dibujar_contrato(pdf, datos, y_offset=0):
 
         # Margen contrato
-        # Margen contrato
         pdf.rect(
         x=pdf.l_margin,
         y=22 + y_offset,
@@ -248,7 +247,7 @@ if datos["Origen"] == "Nevera":
         pdf.rect(
             x=1,
             y=45 + y_offset,
-            w=33,
+            w=32,
             h=5)
         pdf.set_font("Arial","B", size=7)
         pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}", align="L")
