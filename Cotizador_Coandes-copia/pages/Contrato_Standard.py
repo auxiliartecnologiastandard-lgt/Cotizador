@@ -250,6 +250,7 @@ if datos["Origen"] == "Nevera":
             y=45 + y_offset,
             w=33,
             h=5)
+        pdf.set_font("Arial","B", size=8)
         pdf.multi_cell(0, 3, f"Fecha Inicio:  {fecha_actual}", align="L")
 
 
