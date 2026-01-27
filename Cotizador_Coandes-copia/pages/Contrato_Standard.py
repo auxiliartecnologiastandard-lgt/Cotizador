@@ -637,7 +637,7 @@ elif datos["Origen"] == "Computador":
         pdf.set_font("Arial", size=4)
         
         mc(pdf,
-            f"Entre los suscritos {datos['Nombre']} identificado con C.C. {datos['Cedula']}, mayor de edad quien obra en nombre propio y se denomina para efectos del presente contrato EL VENDEDOR de una parte, y por otra parte CASA COMERCIAL DE LOS ANDES S.A.S - Nit. 800.205.573-1, quien para los efectos del presente contrato se denomina EL COMPRADOR. Manifestamos que hemos celebrado un contrato de compraventa entre el siguiente bien que a continuación se identifica.\n\nObjeto: {datos['Origen']}\nMemoria RAM: {datos['RAM']}\nAlmacenamiento: {datos['Disco']} GB\nProcesador: {datos['Procesador']}\n{datos['Grafica']}\n\nEl valor de la compraventa es la suma de {datos['Precio']} M/cte. EL VENDEDOR transfiere AL COMPRADOR, a título de compraventa el derecho de dominio y posesión que tiene y ejerce sobre el anterior articulo y declara que los bienes que transfiere, los adquirió lícitamente, no fue su importador, son de su exclusiva propiedad, los posee de manera regular, publica y pacífica, están libres de gravamen, limitación al dominio, pleitos pendientes y embargos, con la obligación de salir al saneamiento en casos de ley."
+            f"Entre los suscritos {datos['Nombre']} identificado con C.C. {datos['Cedula']}, mayor de edad quien obra en nombre propio y se denomina para efectos del presente contrato EL VENDEDOR de una parte, y por otra parte CASA COMERCIAL DE LOS ANDES S.A.S - Nit. 800.205.573-1, quien para los efectos del presente contrato se denomina EL COMPRADOR. Manifestamos que hemos celebrado un contrato de compraventa entre el siguiente bien que a continuación se identifica.\n\nObjeto: {datos['Origen']}\n{datos['RAM']}\n & {datos['Disco']} GB de almacenamiento\nProcesador: {datos['Procesador']}\n{datos['Grafica']}\n\nEl valor de la compraventa es la suma de {datos['Precio']} M/cte. EL VENDEDOR transfiere AL COMPRADOR, a título de compraventa el derecho de dominio y posesión que tiene y ejerce sobre el anterior articulo y declara que los bienes que transfiere, los adquirió lícitamente, no fue su importador, son de su exclusiva propiedad, los posee de manera regular, publica y pacífica, están libres de gravamen, limitación al dominio, pleitos pendientes y embargos, con la obligación de salir al saneamiento en casos de ley."
             )
         
         # CLAUSULA
@@ -684,6 +684,48 @@ elif datos["Origen"] == "Computador":
             f"_____________________________ \n {datos['Nombre']} \n C.C: {datos['Cedula']}",
             align="L"   # L, C, R, J
             )
+
+        if y_offset >= 130:
+
+            pdf.ln(3.5)
+            pdf.set_font("Arial","", size=7)
+            pdf.multi_cell(
+                0,      # ancho automático
+                3,      # alto de línea
+                f"_____________________________\n{datos['Nombre']}\nC.C: {datos['Cedula']}",
+                align="L"   # L, C, R, J
+                )
+
+            pdf.ln(3)
+            pdf.set_xy(50, 128.9 + y_offset)
+            pdf.set_font("Arial","B", size=8)
+
+            # OTROS
+            pdf.multi_cell(
+                0,      # ancho automático
+                1,      # alto de línea
+                "EL COMPRADOR",
+                align="L"   # L, C, R, J
+                )
+            
+            pdf.ln(3)
+            pdf.set_xy(50, 135.5 + y_offset)
+            pdf.set_font("Arial","", size=7)
+            pdf.multi_cell(
+                0,      # ancho automático
+                3,      # alto de línea
+                f"_____________________________\nEL COMPRADOR",   # L, C, R, J
+                )
+            
+            pdf.ln(10)
+            pdf.set_xy(97, 135 + y_offset)
+            pdf.set_font("Arial","", size=7)
+            pdf.multi_cell(
+                0,      # ancho automático
+                3.5,      # alto de línea
+                f"_____________________________\nVISTO BUENO",   # L, C, R, J
+                    )
+        else:
         
         pdf.set_xy(50, 131 + y_offset)   # Ajusta posición
         pdf.cell(20, 21, "", border=1)
