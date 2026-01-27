@@ -725,45 +725,46 @@ elif datos["Origen"] == "Computador":
                 3.5,      # alto de línea
                 f"_____________________________\nVISTO BUENO",   # L, C, R, J
                     )
+                    
         else:
         
-        pdf.set_xy(50, 131 + y_offset)   # Ajusta posición
-        pdf.cell(20, 21, "", border=1)
+            pdf.set_xy(50, 131 + y_offset)   # Ajusta posición
+            pdf.cell(20, 21, "", border=1)
 
-        pdf.set_font("Arial","", size=5)
-        pdf.set_xy(50, 141 + y_offset)
-        pdf.cell(20, 20, "Huella del vendedor", align="C")
+            pdf.set_font("Arial","", size=5)
+            pdf.set_xy(50, 141 + y_offset)
+            pdf.cell(20, 20, "Huella del vendedor", align="C")
 
 
-        pdf.ln(3)
-        pdf.set_xy(90, 131 + y_offset)
-        pdf.set_font("Arial","B", size=8)
+            pdf.ln(3)
+            pdf.set_xy(90, 131 + y_offset)
+            pdf.set_font("Arial","B", size=8)
 
-        # OTROS
-        pdf.multi_cell(
-            0,      # ancho automático
-            1,      # alto de línea
-            "EL COMPRADOR",
-            align="L"   # L, C, R, J
-            )
-        
-        pdf.ln(14)
-        pdf.set_xy(90, 141.5 + y_offset)
-        pdf.set_font("Arial","", size=7)
-        pdf.multi_cell(
-            0,      # ancho automático
-            3,      # alto de línea
-            f"_____________________________ \n EL COMPRADOR",   # L, C, R, J
-            )
-        
-        pdf.ln(10)
-        pdf.set_xy(160, 141.5 + y_offset)
-        pdf.set_font("Arial","", size=7)
-        pdf.multi_cell(
-            0,      # ancho automático
-            3.5,      # alto de línea
-            f"_____________________________ \n VISTO BUENO",   # L, C, R, J
+            # OTROS
+            pdf.multi_cell(
+                0,      # ancho automático
+                1,      # alto de línea
+                "EL COMPRADOR",
+                align="L"   # L, C, R, J
                 )
+            
+            pdf.ln(14)
+            pdf.set_xy(90, 141.5 + y_offset)
+            pdf.set_font("Arial","", size=7)
+            pdf.multi_cell(
+                0,      # ancho automático
+                3,      # alto de línea
+                f"_____________________________ \n EL COMPRADOR",   # L, C, R, J
+                )
+            
+            pdf.ln(10)
+            pdf.set_xy(160, 141.5 + y_offset)
+            pdf.set_font("Arial","", size=7)
+            pdf.multi_cell(
+                0,      # ancho automático
+                3.5,      # alto de línea
+                f"_____________________________ \n VISTO BUENO",   # L, C, R, J
+                    )
 
 
     # CREACIÓN DEL PDF
