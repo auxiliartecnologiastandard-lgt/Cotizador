@@ -670,9 +670,11 @@ elif datos["Origen"] == "Computador":
             align="L"   # L, C, R, J
             )
         
+        
         pdf.set_draw_color(0, 0, 0)
-        pdf.rect(x=185, y=128.5 + y_offset, w=30, h=5)
+        pdf.rect(x=185, y=131 + y_offset, w=30, h=4)
         pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
+
 
         if y_offset >= 130:
 
@@ -714,16 +716,17 @@ elif datos["Origen"] == "Computador":
                 3.5,      # alto de línea
                 f"_____________________________\nVISTO BUENO",   # L, C, R, J
                     )
+
         else:
 
-            pdf.ln(7)
+            pdf.ln(14)
             pdf.set_font("Arial","", size=7)
             pdf.multi_cell(
-                0,      # ancho automático
-                3,      # alto de línea
-                f"_____________________________\n{datos['Nombre']}\nC.C: {datos['Cedula']}",
-                align="L"   # L, C, R, J
-                )
+            0,      # ancho automático
+            3,      # alto de línea
+            f"_____________________________\n{datos['Nombre']}\nC.C: {datos['Cedula']}",
+            align="L"   # L, C, R, J
+            )
         
             pdf.set_xy(50, 131 + y_offset)   # Ajusta posición
             pdf.cell(20, 21, "", border=1)
