@@ -623,7 +623,6 @@ elif datos["Origen"] == "Computador":
         # INICIO 
         pdf.ln(5)
         pdf.set_font("Arial","B", size=8)
-
         pdf.multi_cell(
             0,      # ancho automático
             2,      # alto de línea
@@ -661,7 +660,6 @@ elif datos["Origen"] == "Computador":
 
         pdf.ln(3)
         pdf.set_font("Arial","B", size=8)
-
         # OTROS
         pdf.multi_cell(
             0,      # ancho automático
@@ -716,14 +714,14 @@ elif datos["Origen"] == "Computador":
                     )
         else:
 
-            pdf.ln(7)
+            pdf.ln(14)
             pdf.set_font("Arial","", size=7)
             pdf.multi_cell(
-                0,      # ancho automático
-                3,      # alto de línea
-                f"_____________________________\n{datos['Nombre']}\nC.C: {datos['Cedula']}",
-                align="L"   # L, C, R, J
-                )
+            0,      # ancho automático
+            3,      # alto de línea
+            f"_____________________________\n{datos['Nombre']}\nC.C: {datos['Cedula']}",
+            align="L"   # L, C, R, J
+            )
         
             pdf.set_xy(50, 131 + y_offset)   # Ajusta posición
             pdf.cell(20, 21, "", border=1)
