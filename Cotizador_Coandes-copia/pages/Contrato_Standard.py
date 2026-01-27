@@ -659,9 +659,9 @@ elif datos["Origen"] == "Computador":
             f"PRIMERA: Los contratantes de conformidad con el artículo 1939 del Código Civil Colombiano, pactan que EL VENDEDOR se reserva la facultad de recobrar los artículos vendidos por medio de este contrato, pagando AL COMPRADOR como precio de retroventa la suma de: {datos['Dinero']} SEGUNDA: El derecho que nace del pacto de retroventa del presente contrato, no podrácederse a ningún título. En caso de pérdida de este contrato EL VENDEDOR se obliga a dar noticia inmediata AL COMPRADOR y este, solo exhibirá el articulo descrito a la terminación del presente contrato. TERCERA: EL VENDEDOR y EL COMPRADOR pactan que la facultad de retroventa del presente contrato la podrá ejercer EL VENDEDOR dentro del término de -- {datos['Meses']} Meses -- prorrogables CUARTA: Autorizo a COANDES S.A.S, a consultar y verificar la información en las listas restrictivas con el fin de prevenir situaciones relacionadas con el lavado de activos y financiación del terrorismo. QUINTA: El VENDEDOR autoriza para que se recopile, almacene, use y suprima los datos personales aquí suministrados. Ley 1581 de 2012 y sus decretos reglamentarios. Podrá revocar esta autorización dirigiendo su petición al correo electrónico servicioalcliente@standard.com.co SEXTA: Las controversias relativas al presente contrato se resolverán por un tribunal de arbitramento de conformidad con las disposiciones que rigen la materia, nombrado por la Cámara de Comercio de esta ciudad. SEPTIMA: Tanto EL VENDEDOR como EL COMPRADOR hemos leído, comprendido y aceptado el texto de este contrato. OCTAVA: Así mismo acepto desde ahora la venta o cesión de los derechos que adquiere Casa comercial de los andes a otra empresa. En constancia de lo anterior lo firman las partes en la fecha {fecha_actual}, {hora_actual}."
             )
 
-        pdf.ln(2.5)
+        pdf.ln(3)
         pdf.set_font("Arial","B", size=8)
-        pdf.set_xy(50, 128.9 + y_offset)
+
         # OTROS
         pdf.multi_cell(
             0,      # ancho automático
@@ -670,10 +670,10 @@ elif datos["Origen"] == "Computador":
             align="L"   # L, C, R, J
             )
         
-        
         pdf.set_draw_color(0, 0, 0)
-        pdf.rect(x=185, y=131 + y_offset, w=30, h=4)
+        pdf.rect(x=185, y=128.5 + y_offset, w=30, h=5)
         pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
+
 
 
         if y_offset >= 130:
@@ -716,16 +716,17 @@ elif datos["Origen"] == "Computador":
                 3.5,      # alto de línea
                 f"_____________________________\nVISTO BUENO",   # L, C, R, J
                     )
+
         else:
 
-            pdf.ln(7)
+            pdf.ln(14)
             pdf.set_font("Arial","", size=7)
             pdf.multi_cell(
-                0,      # ancho automático
-                3,      # alto de línea
-                f"_____________________________\n{datos['Nombre']}\nC.C: {datos['Cedula']}",
-                align="L"   # L, C, R, J
-                )
+            0,      # ancho automático
+            3,      # alto de línea
+            f"_____________________________\n{datos['Nombre']}\nC.C: {datos['Cedula']}",
+            align="L"   # L, C, R, J
+            )
         
             pdf.set_xy(50, 131 + y_offset)   # Ajusta posición
             pdf.cell(20, 21, "", border=1)
