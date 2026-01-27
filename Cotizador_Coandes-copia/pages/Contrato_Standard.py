@@ -122,7 +122,7 @@ elif datos['Sede'] == 10:
 elif datos['Sede'] == 11:
     datos['Sede'] = "Cra 17 # 21-13 \n Standard Armenia \n 320 766 9899 \n standardarmenia@standard.com.co \n Nit. 800.205.573-1"
 
-def mc(pdf, txt, h=3, max_size=8, min_size=5):
+def mc(pdf, txt, h=3, max_size=8, min_size=7):
     limite_y = pdf.h - pdf.b_margin - 5
     y_start = pdf.get_y()
 
@@ -674,6 +674,15 @@ elif datos["Origen"] == "Computador":
         pdf.set_draw_color(0, 0, 0)
         pdf.rect(x=185, y=131 + y_offset, w=30, h=4)
         pdf.multi_cell(0, 1, f"Vence:  {fecha_vencimiento_str}", align="R")
+
+        pdf.ln(3.5)
+        pdf.set_font("Arial","", size=7)
+        pdf.multi_cell(
+            0,      # ancho automático
+            3,      # alto de línea
+            f"_____________________________\n{datos['Nombre']}\nC.C: {datos['Cedula']}",
+            align="L"   # L, C, R, J
+            )
 
 
         if y_offset >= 130:
