@@ -768,6 +768,7 @@ elif datos["Origen"] == "Computador":
     pdf = FPDF(orientation="P",  # P = vertical, L = horizontal
     unit="mm", format="Letter")
     pdf.set_margins(left=1, top=1, right=1)
+    pdf.set_auto_page_break(auto=True, margin=1)
 
     # color rojo para que sea visible
     pdf.set_draw_color(0, 0, 0)
