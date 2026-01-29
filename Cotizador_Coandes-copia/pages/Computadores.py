@@ -62,7 +62,7 @@ marca_opciones = {
     "WINDOWS": 1,
     "Koorui": 2,
     "Acer": 3,
-    "Hewlettpacka": 4,
+    "HP": 4,
     "VICTUS": 5,
     "Asus": 6,
     "SONY": 7,

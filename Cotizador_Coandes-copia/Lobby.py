@@ -71,3 +71,6 @@ with col3:
     if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True, disabled=True):
         pass #):
         st.switch_page("pages/instrumentos.py")
+
+with col2:
+    st.link_button("👉 Ir a ChatGPT", "https://chatgpt.com")
