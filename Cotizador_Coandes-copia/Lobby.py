@@ -74,12 +74,14 @@ with col3:
         st.switch_page("pages/instrumentos.py")
 
 with col3:
-    if st.button("💰 Ir al asistente"):
-        components.html(
-            """
+    st.button("Probar")
+
+    if st.session_state.get("run"):
+        components.html("""
             <script>
                 window.location.replace("https://chatgpt.com");
             </script>
-            """,
-            height=0,
-        )
+        """, height=0)
+
+    if st.button("Ir"):
+        st.session_state["run"] = True
