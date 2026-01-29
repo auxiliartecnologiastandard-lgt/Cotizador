@@ -1,5 +1,4 @@
 import streamlit as st
-import streamlit.components.v1 as components
 import os
 
 # 0. Ubicar la imagen del logo
@@ -74,14 +73,4 @@ with col3:
         st.switch_page("pages/instrumentos.py")
 
 with col3:
-    st.button("Probar")
-
-    if st.session_state.get("run"):
-        components.html("""
-            <script>
-                window.location.replace("https://chatgpt.com");
-            </script>
-        """, height=0)
-
-    if st.button("Ir"):
-        st.session_state["run"] = True
+    st.link_button("Ir a la web", "https://chatgpt.com")
