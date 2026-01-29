@@ -73,4 +73,4 @@ with col3:
         st.switch_page("pages/instrumentos.py")
 
 with col3:
-    st.link_button("Ir a la web", "https://chatgpt.com")
+    st.link_button("🚪 Ir al asistente", "https://www.google.com")
