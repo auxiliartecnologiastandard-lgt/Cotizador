@@ -74,11 +74,11 @@ with col3:
 
 with col3:
     if st.button("💰 Ir al asistente"):
-    st.markdown(
-        """
-        <script>
-            window.location.href = "https://chatgpt.com";
-        </script>
-        """,
-        unsafe_allow_html=True
-    )
+        st.markdown(
+            """
+            <script>
+                window.location.href = "https://chatgpt.com";
+            </script>
+            """,
+            unsafe_allow_html=True
+        )
