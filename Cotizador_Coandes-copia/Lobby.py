@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import os
 
 # 0. Ubicar la imagen del logo
@@ -74,11 +75,11 @@ with col3:
 
 with col3:
     if st.button("💰 Ir al asistente"):
-        st.markdown(
+        components.html(
             """
             <script>
-                window.location.href = "https://chatgpt.com";
+                window.location.replace("https://chatgpt.com");
             </script>
             """,
-            unsafe_allow_html=True
+            height=0,
         )
