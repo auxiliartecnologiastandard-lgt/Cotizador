@@ -71,6 +71,3 @@ with col3:
     if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True, disabled=True):
         pass #):
         st.switch_page("pages/instrumentos.py")
-
-with col3:
-    st.link_button("🚪 Ir al asistente", "https://www.google.com")
