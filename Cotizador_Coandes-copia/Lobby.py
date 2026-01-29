@@ -72,7 +72,7 @@ with col3:
         pass #):
         st.switch_page("pages/instrumentos.py")
 
-    st.divider()
 with col1:
-    if st.button("📄 Checklist", use_container_width=True):
+    st.divider()
+    if st.button("📝 Checklist", use_container_width=True):
         st.switch_page("pages/Checklist.py")
