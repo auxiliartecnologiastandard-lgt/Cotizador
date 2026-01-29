@@ -72,5 +72,13 @@ with col3:
         pass #):
         st.switch_page("pages/instrumentos.py")
 
-with col2:
-    st.link_button("👉 Ir a ChatGPT", "https://chatgpt.com")
+with col3:
+    if st.button("💰 Ir al asistente"):
+    st.markdown(
+        """
+        <script>
+            window.location.href = "https://chatgpt.com";
+        </script>
+        """,
+        unsafe_allow_html=True
+    )
