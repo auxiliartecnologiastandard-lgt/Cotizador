@@ -74,5 +74,5 @@ with col3:
 
 with col1:
     st.divider()
-    if st.button("📝 Checklist", use_container_width=True):
+    if st.button("📝 Checklist de equipos", use_container_width=True):
         st.switch_page("pages/Checklist.py")

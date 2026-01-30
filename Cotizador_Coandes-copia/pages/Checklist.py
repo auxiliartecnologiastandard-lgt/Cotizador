@@ -33,7 +33,39 @@ st.markdown(
 if st.button("⬅  Volver al Menú Principal"):
     st.switch_page("Lobby.py")
 
-check_bateria = st.checkbox("Esrado de la bateria")
+base_datos = [
+    # Intel compatibles
+    "Intel Atom X7000 Series",
+    "Intel Celeron 3000 Series",
+    "Intel Celeron 4000 Series",
+    "Intel Celeron 5000 Series",
+    "Intel Celeron 6000 Series",
+    "Intel Celeron 7000 Series",
+    "Intel Core i3 (8th-14th Gen)",
+    "Intel Core i5 (8th-14th Gen)",
+    "Intel Core i7 (8th-14th Gen)",
+    "Intel Core i9 (8th-14th Gen)",
+    "Intel Core Ultra Series",
+    "Intel Pentium Gold",
+    "Intel Pentium Silver",
+    "Intel Xeon Series",
+
+    # AMD compatibles
+    "AMD 3015e",
+    "AMD 3020e",
+    "AMD Athlon 3000 Series",
+    "AMD Athlon 7120 Series",
+    "AMD Athlon 7220 Series",
+    "AMD Ryzen 3 Series",
+    "AMD Ryzen 5 Series",
+    "AMD Ryzen 7 Series",
+    "AMD Ryzen Embedded R2000",
+    "AMD Ryzen Z1",
+    "AMD Ryzen Z1 Extreme",
+    "AMD EPYC Series"
+]
+
+check_bateria = st.checkbox("Estado de la bateria")
 
 if not check_bateria:
     with st.expander("📝 Como sacar el estado de la bateria"):
@@ -45,6 +77,21 @@ if not check_bateria:
         st.write('6. Busca en installed bateries secciones que digan " DESIGN CAPACITY " y " FULL CHARGE CAPACITY " ')
         st.write('7. Divide el numero alfrente de FULL CHARGE CAPACITY por DESIGN CAPACITY y el resultado multiplicalo por 100')
         st.write('8. Copia el numero en la casilla de texto aqui abajo ( ⚠ NO COPIES DECIMALES )')
-        observacion = st.text_input(
-            "Observación",
-            placeholder="Estado de la bateria" )
+        observacion = st.number_input(
+            "Estado actual de la bateria",
+            placeholder="" )
+        st.session_state["Estado_B"] = observacion
+
+col1, col2 = st.columns([3, 1])
+
+with col1:
+    st.session_state["Win_11"] = st.number_input("Observación",placeholder="Procesador del equipo" )
+with col2:
+    validar = st.button("Buscar procesador")
+        if validar:
+            if texto_usuario in base_datos:
+                st.success("✅ El procesador es compatible con windows 11")
+            else:
+                st.error("❌ El procesador NO es compatible con windows 11")
+
+Descripcion = st.text_input("Agrega una descripcion del equipo")
