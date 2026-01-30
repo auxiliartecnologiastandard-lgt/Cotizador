@@ -40,7 +40,7 @@ with st.expander("Como sacar el modelo del equipo"):
     st.write('1. Presionar " Windows + R ", escribe cmd y preciona enter')
     st.write('2. Escribe " wmic csproduct get name " y despues presiona Enter')
     st.write('3. Aparecera la palabra " Name " y justo debajo el modelo del equipo')
-Serial = st.text_input("Escribe la marca del equipo")
+Serial = st.text_input("Escribe el serial del equipo")
 with st.expander("Como sacar el serial del equipo"):
     st.write('1. Presionar " Windows + R ", escribe cmd y preciona enter')
     st.write('2. Escribe " wmic bios get serialnumber " y despues presiona Enter')
