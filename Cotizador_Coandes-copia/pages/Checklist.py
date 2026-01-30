@@ -85,10 +85,12 @@ if not check_bateria:
         st.session_state["Estado_B"] = observacion
 
 col1, col2 = st.columns([3, 1])
-st.divider()
+
 with col1:
+    st.divider()
     st.session_state["Win_11"] = st.text_input("Observación",placeholder="Procesador del equipo" )
 with col2:
+    st.divider()
     validar = st.button("Buscar procesador")
     if validar:
         if st.session_state["Win_11"] in base_datos:
