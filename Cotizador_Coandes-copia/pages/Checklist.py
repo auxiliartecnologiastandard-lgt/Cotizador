@@ -88,10 +88,10 @@ with col1:
     st.session_state["Win_11"] = st.number_input("Observación",placeholder="Procesador del equipo" )
 with col2:
     validar = st.button("Buscar procesador")
-        if validar:
-            if texto_usuario in base_datos:
-                st.success("✅ El procesador es compatible con windows 11")
-            else:
-                st.error("❌ El procesador NO es compatible con windows 11")
+    if validar:
+        if st.session_state["Win_11"] in base_datos:
+            st.success("✅ El procesador es compatible con windows 11")
+        else:
+            st.error("❌ El procesador NO es compatible con windows 11")
 
 Descripcion = st.text_input("Agrega una descripcion del equipo")
