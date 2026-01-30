@@ -67,6 +67,8 @@ base_datos = [
 
 check_bateria = st.checkbox("Estado de la bateria")
 
+st.divider()
+
 if not check_bateria:
     with st.expander("📝 Como sacar el estado de la bateria"):
         st.write('1. Presionar " Windows + X "y selecciona Windows powershell')
@@ -83,7 +85,7 @@ if not check_bateria:
         st.session_state["Estado_B"] = observacion
 
 col1, col2 = st.columns([3, 1])
-
+st.divider()
 with col1:
     st.session_state["Win_11"] = st.text_input("Observación",placeholder="Procesador del equipo" )
 with col2:
@@ -93,5 +95,5 @@ with col2:
             st.success("✅ El procesador es compatible con windows 11")
         else:
             st.error("❌ El procesador NO es compatible con windows 11")
-
+st.divider()
 Descripcion = st.text_input("Agrega una descripcion del equipo")
