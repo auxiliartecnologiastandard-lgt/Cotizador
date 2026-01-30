@@ -48,7 +48,7 @@ with st.expander("Como sacar el serial del equipo"):
 RAM = st.number_input("Escribe la RAM ( Solo el número )", min_value=1)
 Disco = st.number_input("Escribe la capacidad ( Solo el número )", min_value=1)
 Nombre = st.text_input("Escribe el nombre del equipo")
-with st.expander("Como sacar la RAM y capacidad del disco duro del equipo"):
+with st.expander("Como sacar la RAM, capacidad del disco duro y nombre del equipo"):
     st.write('1. Presionar la tecla windows ( El cuadrado dividdido en 4 )')
     st.write('2. Escribe " Configuracion " y despues presiona Enter')
     st.write('3. Busca el apartado que diga sistema')
@@ -66,4 +66,9 @@ with st.expander("Como sacar el estado de la bateria"):
     st.write('8. ⚠ NO COPIES DECIMALES')
 
 st.markdown("### 2. Pruebas de conectividad")
-Wifi = 8
+WifiCheck = st.checkbox("Conectate a una red wifi inalambrica ( Router o hotspot )", value=False)
+Wifi = 1 if WifiCheck else 0
+EthernetCheck = st.checkbox("Conecta un cable ethernet al equipo ( En caso de no tener puerto para cable ethernet no marques esta casilla )", value=False)
+Ethernet = 1 if EthernetCheck else 0
+BluetoothCheck = st.checkbox("Conectate por bluetooth y envia un archivo al equipo", value=False)
+Bluetooth = 1 if BluetoothCheck else 0
