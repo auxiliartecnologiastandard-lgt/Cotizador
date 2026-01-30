@@ -71,8 +71,3 @@ with col3:
     if st.button("🎸 Instrumentos (Próximamente)", use_container_width=True, disabled=True):
         pass #):
         st.switch_page("pages/instrumentos.py")
-
-with col1:
-    st.divider()
-    if st.button("📝 Checklist de equipos", use_container_width=True):
-        st.switch_page("pages/Checklist.py")
