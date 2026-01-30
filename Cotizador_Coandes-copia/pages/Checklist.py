@@ -33,6 +33,24 @@ st.markdown(
 if st.button("⬅  Volver al Menú Principal"):
     st.switch_page("Lobby.py")
 
+st.markdown("### 0. Como formatear un equipo e instalar windows 11")
+col1, col2 = st.columns(2)
+with col1:
+    with st.expander("Como crear una USB bootable"):
+        st.write('1. Consigue una USB de almenos 8 GB de espacio')
+        st.write('Apartir de aqui el proceso cambia dependiendo del equipo asi que elije la opcion correcta')
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Crear USB bootable para windows 10"):
+                st.write('WINDOWS 10')
+        with col2:
+            if st.button("Crear USB bootable para windows 1"):
+                st.write('WINDOWS 11')
+
+
+
+
+
 st.markdown("### 1. Información del equipo") 
 Marca = st.text_input("Escribe la marca del equipo")
 Modelo = st.text_input("Escribe la modelo del equipo")
