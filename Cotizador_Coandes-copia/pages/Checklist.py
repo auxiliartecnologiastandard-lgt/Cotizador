@@ -35,7 +35,7 @@ if st.button("⬅  Volver al Menú Principal"):
 
 st.markdown("### 1. Información del equipo") 
 Marca = st.text_input("Escribe la marca del equipo")
-Modelo = st.text_input("Escribe la marca del equipo")
+Modelo = st.text_input("Escribe la modelo del equipo")
 with st.expander("Como sacar el modelo del equipo"):
     st.write('1. Presionar " Windows + R ", escribe cmd y preciona enter')
     st.write('2. Escribe " wmic csproduct get name " y despues presiona Enter')
@@ -63,6 +63,7 @@ with st.expander("Como sacar el estado de la bateria"):
     st.write('5. Busca un apartado que diga " Installed batteries " ( Esta al principio de la pagina )')
     st.write('6. Busca en installed bateries secciones que digan " DESIGN CAPACITY " y " FULL CHARGE CAPACITY " ')
     st.write('7. Divide el numero alfrente de FULL CHARGE CAPACITY por DESIGN CAPACITY y el resultado multiplicalo por 100')
-    st.write('8. Copia el numero en la casilla de texto aqui abajo ( ⚠ NO COPIES DECIMALES )')
+    st.write('8. ⚠ NO COPIES DECIMALES')
 
-st.markdown("### 2. Pruebas post formateo") 
+st.markdown("### 2. Pruebas de conectividad")
+Wifi = 8
