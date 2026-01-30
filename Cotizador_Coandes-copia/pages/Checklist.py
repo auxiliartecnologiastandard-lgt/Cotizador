@@ -85,7 +85,7 @@ if not check_bateria:
 col1, col2 = st.columns([3, 1])
 
 with col1:
-    st.session_state["Win_11"] = st.number_input("Observación",placeholder="Procesador del equipo" )
+    st.session_state["Win_11"] = st.text_input("Observación",placeholder="Procesador del equipo" )
 with col2:
     validar = st.button("Buscar procesador")
     if validar:
