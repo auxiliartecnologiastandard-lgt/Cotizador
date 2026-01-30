@@ -77,9 +77,7 @@ if not check_bateria:
         st.write('6. Busca en installed bateries secciones que digan " DESIGN CAPACITY " y " FULL CHARGE CAPACITY " ')
         st.write('7. Divide el numero alfrente de FULL CHARGE CAPACITY por DESIGN CAPACITY y el resultado multiplicalo por 100')
         st.write('8. Copia el numero en la casilla de texto aqui abajo ( ⚠ NO COPIES DECIMALES )')
-        observacion = st.number_input(
-            "Estado actual de la bateria",
-            placeholder="" )
+        observacion = st.number_input("Estado actual de la bateria", min_value=1, max_value=100 )
         st.session_state["Estado_B"] = observacion
 
 col1, col2 = st.columns([3, 1])
