@@ -65,10 +65,8 @@ base_datos = [
     "AMD EPYC Series"
 ]
 
-check_bateria = st.checkbox("Estado de la bateria")
-
 st.divider()
-
+check_bateria = st.checkbox("Estado de la bateria")
 if not check_bateria:
     with st.expander("📝 Como sacar el estado de la bateria"):
         st.write('1. Presionar " Windows + X "y selecciona Windows powershell')
